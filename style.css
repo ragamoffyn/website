@@ -1147,6 +1147,19 @@ button {
   padding-top: 0.5rem;
 }
 
+.project-card-link {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.project-card-link:hover {
+  color: var(--accent-hover);
+}
+
 .projects-cta {
   text-align: center;
   margin-top: var(--space-md);
