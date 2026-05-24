@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>National Security — Michael Stiso, Ph.D.</title>
+  <meta name="description" content="Case study: Highlighting patterns in heterogeneous risk data for analysts performing work critical to national security." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .case-page-wrapper { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+    .case-header { padding-top: calc(68px + 3rem); padding-bottom: 2.5rem; border-bottom: 1px solid var(--color-border); margin-bottom: 3rem; }
+    .case-back { margin-bottom: 1.5rem; }
+    .case-back a { font-size: 0.875rem; color: var(--accent); font-weight: 500; text-decoration: none; }
+    .case-back a:hover { color: var(--accent-hover); }
+    .case-meta { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .case-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--color-text); margin-bottom: 1rem; }
+    .case-subtitle { font-size: 1.1rem; color: var(--color-muted); line-height: 1.6; }
+    .case-body section { margin-bottom: 3rem; }
+    .case-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 600; color: var(--color-text); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-light); }
+    .case-body p { font-size: 1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1rem; }
+    .case-body ul { margin: 0 0 1rem 1.25rem; }
+    .case-body li { font-size: 1rem; line-height: 1.75; color: var(--color-text); margin-bottom: 0.4rem; }
+    .case-body .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 2rem; }
+    .case-body .case-tags span { background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 4px; letter-spacing: 0.04em; }
+    .case-nav { display: flex; justify-content: space-between; padding-top: 3rem; margin-top: 3rem; border-top: 1px solid var(--color-border); font-size: 0.875rem; }
+    .case-nav a { color: var(--accent); font-weight: 500; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="index.html#hero" class="nav-logo" aria-label="Michael Stiso home">MS</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="index.html#ai-ux" class="nav-link">AI &amp; UX</a></li>
+          <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="case-page-wrapper">
+
+      <div class="case-header">
+        <p class="case-back"><a href="index.html#portfolio">← Back to portfolio</a></p>
+        <p class="case-meta">2022 · Data Visualization · Decision Support</p>
+        <h1 class="case-title">National Security</h1>
+        <p class="case-subtitle">Highlighting patterns in heterogeneous risk data for analysts performing work critical to national security.</p>
+      </div>
+
+      <div class="case-body">
+
+        <section>
+          <h2>The Project</h2>
+          <p>Risk analysts faced the challenge of finding meaningful patterns across large volumes of unconnected data drawn from heterogeneous sources. The goal was to reduce both the time and effort required for analysis while getting more value from data that was already available — by combining multiple information sources into a single, coherent view.</p>
+          <p>The strategy was a common, dynamic threat picture: a visualization of multi-source data designed to highlight connections that would otherwise go unnoticed when analysts worked through individual sources in isolation.</p>
+        </section>
+
+        <section>
+          <h2>Background and Context</h2>
+          <p>The client performs analyses critical to national security. A recent increase in workload had created two related needs: first, to increase throughput — to do more analyses within the same operational constraints — and second, to get more value from the data that was already available. The project team included developers, risk engineers, and me as the UX lead.</p>
+          <p>There were a number of existing back-end tools that could, in combination, support a solution. What was missing was a user interface to tie them together. The analysts had no existing visualization or dedicated interface for this kind of work — they needed something built from scratch.</p>
+        </section>
+
+        <section>
+          <h2>My Role</h2>
+          <p>I served as UX lead on a cross-company team, responsible for all user research, interaction design, and prototyping on the project.</p>
+        </section>
+
+        <section>
+          <h2>Constraints and Approach</h2>
+          <p>The client needed an interactive prototype that could accomplish three things: demonstrate how the solution could reduce analysis time and increase risk detection, look credible enough to convince the funding agency that it was feasible, and demonstrate the concept clearly within a few minutes. The project deadline left me with only 100 hours over five weeks for all research, design, and prototyping combined.</p>
+          <p>The first step was managing client expectations. Their ambitions for the prototype exceeded what the timeline could reasonably support, so I worked with them to reframe the project as an initial step in a larger, longer-term effort rather than a finished product. This shift in framing made a meaningful difference to the subsequent work.</p>
+          <p>The second step was tight scoping. In collaboration with both the client and my own team, I defined a very specific scenario: a single incident, a sequence of analyst activities in response to it, and a clear endpoint. This constraint allowed me to focus the user research exclusively on the actions, decisions, and information needs that fell within that scenario — rather than attempting to document the full range of analyst work. It also allowed me to design only those parts of the interface that the scenario would actually encounter, and to add only enough interactivity to support a scripted demonstration rather than open-ended exploration.</p>
+        </section>
+
+        <section>
+          <h2>Results</h2>
+          <p>Despite the limited hours available for user interviews and the tight design window, the prototype met the client's needs and was well received. The underlying design is confidential, so specific visuals are not shareable here.</p>
+        </section>
+
+        <section>
+          <h2>Challenges and Lessons</h2>
+          <p>This project involved the largest set of compromises I had faced on any single engagement — both the research and the design were considerably further from ideal than I would have preferred. The user interviews were fewer and shorter than the work called for, and the design process was compressed to the point where iteration was limited.</p>
+          <p>What made the project successful despite those constraints was the combination of careful expectation management, very deliberate scoping, and a firm focus on a single, well-defined scenario. Those decisions produced something that satisfied the client within both the time available and the budget — which is ultimately the appropriate measure of success in that kind of context.</p>
+          <p>The core lesson: when time and resources are limited, scope well rather than trying to cover more ground with less care.</p>
+
+          <div class="case-tags">
+            <span>Data Visualization</span>
+            <span>Decision Support</span>
+            <span>Rapid Prototyping</span>
+            <span>Figma</span>
+            <span>User Research</span>
+          </div>
+        </section>
+
+        <div class="case-nav">
+          <span></span>
+          <a href="maritime-refueling.html">Next: Maritime Refueling →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-name">Michael Stiso, Ph.D.</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span class="footer-role">UX Researcher &amp; Designer</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span class="footer-location">Oslo, Norway</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
