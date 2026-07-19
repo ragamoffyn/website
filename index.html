@@ -4,583 +4,270 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Michael Stiso, Ph.D. — UX Researcher &amp; Designer</title>
-  <meta name="description" content="Michael Stiso is a UX Researcher and Designer with a Ph.D. in cognitive psychology, designing interfaces for high-stakes professional environments across military, aviation, energy, banking, and more." />
+  <meta name="description" content="Michael Stiso is a UX researcher and designer with a Ph.D. in cognitive psychology, designing decision-support tools for professionals in complex, high-stakes environments — offshore energy, aviation, military, banking, and more." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Archivo:wght@400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
-  <header class="site-nav" id="site-nav">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Michael Stiso home">MS</a>
-      <nav aria-label="Main navigation">
-        <ul class="nav-links" id="nav-links">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#ai-ux" class="nav-link">AI &amp; UX</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+  <div class="layout">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar">
+      <!--
+        Replace the placeholder below with a real photo:
+        <img class="portrait" src="portrait.jpg" alt="Michael Stiso" width="148" height="148" />
+      -->
+      <div class="portrait-placeholder" aria-hidden="true">MS</div>
+
+      <h1 class="sidebar-name">Michael E. Stiso, Ph.D.</h1>
+      <div class="sidebar-title">UX Researcher &amp; Designer</div>
+      <p class="sidebar-blurb">I use a background in cognitive psychology to research and design the interfaces professionals depend on — particularly those doing complex, high-stakes work.</p>
+
+      <button class="rail-toggle" id="rail-toggle" aria-expanded="false" aria-controls="rail-nav">
+        <span class="bar" aria-hidden="true"></span> Menu
       </button>
-    </div>
-  </header>
 
-  <main>
+      <nav class="sidebar-nav" id="rail-nav" aria-label="Section navigation">
+        <a href="#summary" class="rail-link">Summary</a>
+        <a href="#cv" class="rail-link">CV</a>
+        <a href="#projects" class="rail-link">Projects</a>
+        <a href="#ai" class="rail-link">AI &amp; UX</a>
+        <a href="#contact" class="rail-link">Contact</a>
+      </nav>
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="hero">
-      <div class="hero-lines" aria-hidden="true">
-        <div class="hero-line hero-line-1"></div>
-        <div class="hero-line hero-line-2"></div>
-        <div class="hero-line hero-line-3"></div>
+      <div class="sidebar-contact">
+        <a href="mailto:mikestiso@gmail.com">mikestiso@gmail.com</a>
+        <a href="https://www.linkedin.com/in/mikestiso" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+        <span style="color:var(--railSub)">Oslo, Norway</span>
       </div>
-      <div class="container">
-        <div class="hero-top">
-          <p class="hero-eyebrow">UX and Human Factors</p>
-          <h1 class="hero-name">Michael E. Stiso, <span class="hero-phd">Ph.D.</span></h1>
-          <div class="hero-rule" aria-hidden="true"></div>
-          <p class="hero-tagline">I use a background in cognitive psychology to research and design the interfaces professionals depend on — particularly those doing complex, high-stakes work.</p>
-          <div class="hero-ctas">
-            <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
-            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="main">
+
+      <!-- ---------- Summary ---------- -->
+      <section id="summary">
+        <div class="eyebrow">Summary</div>
+        <p class="lede">Cognitive psychologist by training, UX researcher and designer by practice. I build decision-support tools for professionals working in <em>complex, high-stakes environments</em> — and I do the research and the design together, because each keeps the other honest.</p>
+        <div class="summary-grid">
+          <div class="summary-cell">
+            <h3>Cognitive Psychology Ph.D.</h3>
+            <p>My graduate training was in human mental capabilities and limitations, with a focus on learning and decision making. It continues to shape how I approach both research and design.</p>
+          </div>
+          <div class="summary-cell">
+            <h3>Research + Design</h3>
+            <p>Most of my work involves both user research and interface design. Research shapes what gets designed; designing raises new research questions. The two inform each other.</p>
+          </div>
+          <div class="summary-cell">
+            <h3>Expert-User Focus</h3>
+            <p>My passion is decision-support tools for professionals in dynamic environments where their choices carry real consequences — people who need tools that reflect their expertise.</p>
+          </div>
+          <div class="summary-cell">
+            <h3>Adaptable Across Domains</h3>
+            <p>Military, aviation, banking, agriculture, gaming, offshore energy. The domain changes; the underlying design problem does not.</p>
           </div>
         </div>
-        <div class="hero-bottom">
-          <dl class="hero-strengths">
-            <div class="hero-strength">
-              <dt>Cognitive Psychology Ph.D.</dt>
-              <dd>My graduate training was in the study of human mental capabilities and limitations, with a focus on learning and decision making.</dd>
-            </div>
-            <div class="hero-strength">
-              <dt>Research &amp; Design</dt>
-              <dd>My work typically involves both user research and interface design — each tends to inform the other in ways that are difficult to replicate otherwise.</dd>
-            </div>
-            <div class="hero-strength">
-              <dt>Expert User Focus</dt>
-              <dd>Most of my work has been for professionals in complex, high-stakes domains who need tools that reflect their expertise.</dd>
-            </div>
-            <div class="hero-strength">
-              <dt>Adaptable Across Domains</dt>
-              <dd>Military, aviation, banking, agriculture, gaming, offshore energy. The domain changes; the underlying design problem does not.</dd>
-            </div>
-          </dl>
-          <p class="hero-location">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Oslo, Norway
-          </p>
+      </section>
+
+      <!-- ---------- CV ---------- -->
+      <section id="cv">
+        <div class="eyebrow">Curriculum Vitae</div>
+        <div class="cv-summary">
+          <div><strong>Research &amp; design.</strong> Two decades doing both together, not as separate functions.</div>
+          <div><strong>Expert users.</strong> Decision support for professionals in high-stakes, dynamic work.</div>
+          <div><strong>Across domains.</strong> Offshore energy, aviation, military, finance, agriculture, gaming.</div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===================== ABOUT ===================== -->
-    <section class="section about-section" id="about">
-      <div class="container">
-        <!-- <p class="section-label">About me</p> -->
-        <div class="about-grid">
-          <div class="about-text">
-            <h2 class="section-heading">About me</h2>
-            <p>My educational background is in cognitive psychology, which is essentially the study of human mental capabilities and limitations. I had a particular focus on human learning and decision making. It was not originally intended as preparation for UX work, but it has proven well-suited to it — and it continues to inform how I approach both the research and the design sides of my work.</p>
-            <p>Over the course of my career, I have worked in a number of different domains and on a number of quite different products, including military decision support systems, air traffic control, crisis management platforms, precision agriculture tools, and offshore energy software, among others. My expertise and passion, however, is in the research and design of decision-support tools for professionals — particularly those working in complex, dynamic environments where their decisions carry real consequences.</p>
-            <p>My work typically involves both user research and interface design, which I find to be an advantage over specializing in one or the other. Research shapes what gets designed, and the act of designing tends to raise new research questions. The two inform each other in ways that are difficult to replicate when they are treated as separate activities.</p>
-            <p>Currently I am based in Oslo, where I lead UX for a digital solutions platform in the offshore energy sector. The work involves establishing and refining the company's design system, improving the overall coherence of the platform, and expanding user research across a number of product teams.</p>
+        <div class="timeline">
+
+          <div class="tl-entry">
+            <div class="tl-years">2023 — now</div>
+            <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">UX Lead &amp; Product Designer</div>
+              <div class="tl-org">4Subsea · Asker, Norway</div>
+              <div class="tl-note">Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</div>
+            </div>
           </div>
-          <aside class="about-sidebar"  style="padding-top: 3.5em;">
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Education</h3>
-              <ul class="education-list">
-                <li>
-                  <strong>Ph.D., Cognitive Psychology</strong>
-                  <span>Texas A&amp;M University</span>
-                </li>
-              </ul>
+
+          <div class="tl-entry">
+            <div class="tl-years">2019 — 2023</div>
+            <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">UX Lead</div>
+              <div class="tl-org">DNV · Høvik, Norway</div>
+              <div class="tl-note">Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products. Contributed to revising the design system.</div>
             </div>
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Honors</h3>
-              <ul class="honors-list">
-                <li>NASA Graduate Student Researchers Program Fellowship</li>
-                <li>Air Force Office of Scientific Research Graduate Fellowship Program</li>
-              </ul>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-years">2016 — 2019</div>
+            <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">Experience Designer</div>
+              <div class="tl-org">Yara International · Oslo, Norway</div>
+              <div class="tl-note">Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals and measurable criteria.</div>
             </div>
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Domains</h3>
-              <div class="domain-tags">
-                <span class="tag">Offshore Energy</span>
-                <span class="tag">Aviation / ATC</span>
-                <span class="tag">Military Systems</span>
-                <span class="tag">Crisis Management</span>
-                <span class="tag">Banking</span>
-                <span class="tag">Agriculture</span>
-                <span class="tag">Gaming</span>
-                <span class="tag">Enterprise Software</span>
-              </div>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-years">2015 — 2016</div>
+            <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">Innovation Experimentation Lead</div>
+              <div class="tl-org">Nordea · Oslo, Norway</div>
+              <div class="tl-note">Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</div>
             </div>
-          </aside>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-years">2008 — 2015</div>
+            <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">HCI Researcher</div>
+              <div class="tl-org">SINTEF ICT · Oslo, Norway</div>
+              <div class="tl-note">Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</div>
+            </div>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-years">2005 — 2008</div>
+            <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">Senior Usability Engineer</div>
+              <div class="tl-org">Oracle</div>
+              <div class="tl-note">Iterative usability testing on enterprise software. Designed interaction widgets — two patented, one adopted organization-wide.</div>
+            </div>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-years">2003 — 2005</div>
+            <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">Human-Systems Engineer</div>
+              <div class="tl-org">CHI Systems</div>
+              <div class="tl-note">Military training and decision-support systems. Cognitive task analyses of military specialists. (Earlier: research internships with the Naval SPAWAR command, SBC Laboratories, and the Air Force Office of Scientific Research.)</div>
+            </div>
+          </div>
+
+          <div class="tl-entry">
+            <div class="tl-years">Ph.D.</div>
+            <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div class="tl-title">Ph.D., Cognitive Psychology</div>
+              <div class="tl-org">Texas A&amp;M University</div>
+              <div class="tl-note">The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</div>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </section>
 
-    <!-- ===================== PORTFOLIO ===================== -->
-    <section class="section portfolio-section" id="portfolio">
-      <div class="container">
-        <p class="section-label">Portfolio</p>
-        <h2 class="section-heading">Selected Work</h2>
-
-        <!-- Featured Project -->
-        <article class="featured-project">
-          <div class="featured-header">
-            <div class="featured-meta">
-              <span class="featured-badge">Featured — Current Work</span>
-              <h3 class="featured-title">4Subsea — Digital Solutions Platform</h3>
-              <p class="featured-subtitle">Platform UX for offshore wind &amp; oil and gas operations</p>
-            </div>
-            <div class="featured-tags">
-              <span class="tag">Design Systems</span>
-              <span class="tag">Platform UX</span>
-              <span class="tag">User Research</span>
-              <span class="tag">Data Visualization</span>
-              <span class="tag">Figma</span>
-            </div>
+        <div class="cv-cols">
+          <div class="cv-col">
+            <h3>Honors</h3>
+            <p>NASA Graduate Student Researchers Program Fellowship · Air Force Office of Scientific Research Graduate Fellowship Program</p>
           </div>
-
-          <div class="featured-body">
-            <div class="featured-visual-placeholder" aria-hidden="true">
-              <span>Case study visuals available upon request</span>
-            </div>
-
-            <div class="featured-case">
-              <div class="case-block">
-                <h4 class="case-label">Context</h4>
-                <p>4Subsea develops monitoring and integrity management software for the offshore energy industry — tools used by engineers who are responsible for assets in physically demanding and high-stakes environments. I have been the sole UX practitioner on the team, which means my responsibilities cover the full scope of UX: from individual component design to the overall structure and consistency of the platform.</p>
-              </div>
-              <div class="case-block">
-                <h4 class="case-label">Challenge</h4>
-                <p>The platform had grown product by product, without a unified design foundation to maintain consistency across it. The result was a degree of variation in interaction patterns, terminology, and navigation that created unnecessary friction for users who move between products regularly. At the same time, the company was expanding its user base, which made addressing those inconsistencies more urgent.</p>
-              </div>
-              <div class="case-block">
-                <h4 class="case-label">Constraints</h4>
-                <p>Working as a solo practitioner in an engineering-led organization involves managing a number of competing priorities. The users are experienced engineers with well-developed opinions about their tools and limited availability for formal research sessions, which meant finding ways to embed research into existing workflows rather than staging it separately.</p>
-              </div>
-              <div class="case-block">
-                <h4 class="case-label">What I Did</h4>
-                <ul class="case-list">
-                  <li>Adopted and refined the company's first design system — shared components, patterns, documentation — bringing consistency across products.</li>
-                  <li>Led a platform-level usability redesign: auditing products, improving navigation models, information hierarchy, and data display conventions.</li>
-                  <li>Embedded user research across product teams, making research a shared practice rather than a siloed function.</li>
-                </ul>
-              </div>
-              <div class="case-block">
-                <h4 class="case-label">What I Learned</h4>
-                <p>Getting a design system adopted requires as much effort on the communication side as on the design side — perhaps more. The users in this context also reinforced something I have observed in a number of other expert-user settings: they are more tolerant of interface complexity than of inconsistency. They will navigate a dense interface if the underlying logic is clear; what they find frustrating is when similar things behave differently for no apparent reason.</p>
-              </div>
-              <p class="case-note">Case study visuals available upon request — no screenshots are publicly shareable.</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Past Projects Grid -->
-        <div class="past-projects">
-          <h3 class="past-projects-heading">Past Projects</h3>
-          <p class="past-projects-intro">A selection of past work. <a href="https://www.mikestiso.com/process" class="text-link" target="_blank" rel="noopener noreferrer">Full case studies →</a></p>
-          <div class="projects-grid">
-
-            <article class="project-card">
-              <div class="project-card-header">
-                <div>
-                  <h4 class="project-card-title">National Security</h4>
-                  <p class="project-card-subtitle">2022 · Risk pattern visualization</p>
-                </div>
-              </div>
-              <p class="project-card-desc">A cross-company team was developing a solution to help risk analysts identify patterns across large volumes of heterogeneous, unconnected data. My role was to cover the full UX process — from user research through interactive prototype — within a 100-hour window over 5 weeks.</p>
-              <div class="project-card-tags">
-                <span class="tag tag-sm">Data Visualization</span>
-                <span class="tag tag-sm">Decision Support</span>
-                <span class="tag tag-sm">Rapid Prototyping</span>
-              </div>
-              <a href="national-security.html" class="project-card-link">View case study →</a>
-            </article>
-
-            <article class="project-card">
-              <div class="project-card-header">
-                <div>
-                  <h4 class="project-card-title">Maritime Refueling</h4>
-                  <p class="project-card-subtitle">2020 · Ad hoc scheduling tool</p>
-                </div>
-              </div>
-              <p class="project-card-desc">Ships at sea frequently need to negotiate unplanned fuel purchases with nearby suppliers — a process with no dedicated tooling. User research quickly revealed that the original scope was too broad, which led to a pivot toward the specific scheduling problem that caused the most friction.</p>
-              <div class="project-card-tags">
-                <span class="tag tag-sm">UX Research</span>
-                <span class="tag tag-sm">Task Analysis</span>
-                <span class="tag tag-sm">Interaction Design</span>
-              </div>
-              <a href="maritime-refueling.html" class="project-card-link">View case study →</a>
-            </article>
-
-            <article class="project-card">
-              <div class="project-card-header">
-                <div>
-                  <h4 class="project-card-title">Coffee Ecosystem</h4>
-                  <p class="project-card-subtitle">2019 · Opportunity mapping</p>
-                </div>
-              </div>
-              <p class="project-card-desc">A team had in mind a matchmaking service to support small coffee farms, but the opportunity space was poorly defined. I led the research effort to map the field-to-cup journey, interview buyers and other actors in the ecosystem, and determine where a viable product might actually fit.</p>
-              <div class="project-card-tags">
-                <span class="tag tag-sm">User Research</span>
-                <span class="tag tag-sm">Service Design</span>
-                <span class="tag tag-sm">Contextual Inquiry</span>
-              </div>
-              <a href="coffee-ecosystem.html" class="project-card-link">View case study →</a>
-            </article>
-
-            <article class="project-card">
-              <div class="project-card-header">
-                <div>
-                  <h4 class="project-card-title">Sewer Corrosion</h4>
-                  <p class="project-card-subtitle">2017 · Decision support tool</p>
-                </div>
-              </div>
-              <p class="project-card-desc">A company had a useful tool for estimating sewer corrosion and repair options, but it existed as an Excel spreadsheet that was difficult to use and hard to interpret. The goal was to redesign it as an actual app, with particular attention to making the results understandable to non-expert users.</p>
-              <div class="project-card-tags">
-                <span class="tag tag-sm">Interaction Design</span>
-                <span class="tag tag-sm">Data Visualization</span>
-                <span class="tag tag-sm">Enterprise UX</span>
-              </div>
-              <a href="sewer-corrosion.html" class="project-card-link">View case study →</a>
-            </article>
-
-            <article class="project-card">
-              <div class="project-card-header">
-                <div>
-                  <h4 class="project-card-title">Search and Rescue</h4>
-                  <p class="project-card-subtitle">2015 · Drone command interface</p>
-                </div>
-              </div>
-              <p class="project-card-desc">Drones are increasingly used in search-and-rescue operations, but field commanders typically receive information about them only indirectly, via radio. I led the UX and UI design of a system to give commanders a direct visualization of drone locations and feeds — from needs analysis through usability evaluation.</p>
-              <div class="project-card-tags">
-                <span class="tag tag-sm">Decision Support</span>
-                <span class="tag tag-sm">Human Factors</span>
-                <span class="tag tag-sm">UX Research</span>
-              </div>
-              <a href="search-rescue.html" class="project-card-link">View case study →</a>
-            </article>
-
-            <article class="project-card">
-              <div class="project-card-header">
-                <div>
-                  <h4 class="project-card-title">Mobile Games</h4>
-                  <p class="project-card-subtitle">2012–2013 · Tablet game UX</p>
-                </div>
-              </div>
-              <p class="project-card-desc">A small Agile startup in San Francisco was developing a line of turn-based strategy tablet games. I was brought on as a UX consultant to ensure the games were not only usable and learnable, but genuinely fun — drawing on research literature on game engagement alongside standard UX methods.</p>
-              <div class="project-card-tags">
-                <span class="tag tag-sm">Mobile UX</span>
-                <span class="tag tag-sm">Game Design</span>
-                <span class="tag tag-sm">Agile</span>
-              </div>
-              <a href="mobile-games.html" class="project-card-link">View case study →</a>
-            </article>
-
-          </div>
-          <div class="projects-cta">
-            <a href="https://www.mikestiso.com/process" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Full Case Studies</a>
+          <div class="cv-col">
+            <h3>Patents</h3>
+            <p>Navigational tools for large trees · Graphical tool for defining a set of ranges</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===================== AI & UX ===================== -->
-    <section class="section ai-section" id="ai-ux">
-      <div class="container">
-        <p class="section-label">AI &amp; UX</p>
-        <h2 class="section-heading">AI in the Research &amp; Design Process</h2>
-        <p class="section-intro">AI is changing a significant portion of the UX process, and keeping pace with that requires active effort. I have been paying particular attention to the areas below — both as a practitioner exploring how AI tools can support my own work, and as a designer thinking about what it means to design for products that incorporate AI.</p>
+      <!-- ---------- Projects ---------- -->
+      <section id="projects">
+        <div class="eyebrow">Past projects</div>
+        <p class="projects-intro">My process is the same at any scale: understand the work before the workflow. Observe experts in context, find where the tool fights them, prototype the fix, and check whether it held. Each case study below follows that arc.</p>
+
+        <div class="projects-grid">
+
+          <a class="project-card" href="foursubsea.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">4Subsea — Digital Solutions Platform</div>
+            <div class="project-blurb">Platform UX for offshore wind and oil-and-gas operations: adopting a first design system and leading a platform-wide usability redesign as the sole UX practitioner.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="national-security.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">National Security</div>
+            <div class="project-blurb">Full UX process — research through interactive prototype — for a risk-pattern visualization, delivered in a 100-hour window over five weeks.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="maritime-refueling.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Maritime Refueling</div>
+            <div class="project-blurb">Research revealed the original scope was too broad and drove a pivot to the specific scheduling problem that caused ships the most friction at sea.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="coffee-ecosystem.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">The Coffee Ecosystem</div>
+            <div class="project-blurb">Mapping the field-to-cup journey and interviewing buyers and roasters to find where a new matchmaking service could actually fit.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="sewer-corrosion.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Sewer Corrosion</div>
+            <div class="project-blurb">Turning a hard-to-read Excel corrosion model into a real app — with attention to making the results legible to non-expert decision-makers.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="search-rescue.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Search and Rescue</div>
+            <div class="project-blurb">A drone command interface giving field commanders direct situational awareness of aerial assets — from needs analysis through usability evaluation.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="mobile-games.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Mobile Games</div>
+            <div class="project-blurb">UX consulting for a San Francisco startup building turn-based strategy tablet games — usable and learnable, but also genuinely fun.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ---------- AI & UX ---------- -->
+      <section id="ai">
+        <div class="eyebrow">AI &amp; UX</div>
+        <p class="ai-intro">AI is changing a significant portion of the UX process, and keeping pace with it takes active effort. I pay particular attention to the areas below — both as a practitioner using AI tools in my own work, and as a designer thinking about what it means to design products that incorporate AI.</p>
         <div class="ai-grid">
-
           <div class="ai-card">
-            <div class="ai-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="6" y="10" width="36" height="6" rx="2" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-                <rect x="6" y="22" width="24" height="4" rx="2" fill="var(--accent-light)"/>
-                <rect x="6" y="32" width="30" height="4" rx="2" fill="var(--accent-light)"/>
-                <circle cx="38" cy="34" r="7" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1.5"/>
-                <path d="M35 34l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="ai-card-title">AI-Assisted Research</h3>
-            <p class="ai-card-desc">There is a good deal of value in using AI to support qualitative research synthesis — identifying themes across interview transcripts, comparing findings across sessions, and flagging potential gaps in coverage. The part that still requires a trained researcher is evaluating what those patterns mean and whether the interpretations they suggest hold up against what was actually observed.</p>
-            <p class="ai-placeholder">[Placeholder — specific examples to be added]</p>
+            <h3>AI-Assisted Research</h3>
+            <p>There is real value in using AI to support qualitative synthesis — surfacing themes across transcripts, comparing findings across sessions, flagging gaps in coverage. What still requires a trained researcher is judging what those patterns mean and whether they hold up against what was actually observed.</p>
           </div>
-
           <div class="ai-card">
-            <div class="ai-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="8" y="8" width="32" height="32" rx="4" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-                <rect x="14" y="14" width="20" height="3" rx="1.5" fill="var(--accent)" opacity="0.4"/>
-                <rect x="14" y="21" width="14" height="3" rx="1.5" fill="var(--accent)" opacity="0.4"/>
-                <circle cx="34" cy="34" r="6" fill="var(--color-bg-dark)" stroke="var(--accent)" stroke-width="1.5"/>
-                <path d="M31.5 34h5M34 31.5v5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="ai-card-title">AI-Augmented Design</h3>
-            <p class="ai-card-desc">Generative tools can accelerate the ideation phase of design work considerably. Where they are less reliable is in decisions that depend on a real understanding of the user's context. AI can produce variations quickly, but determining which of those variations are appropriate still requires someone with familiarity with the work the users are actually doing.</p>
-            <p class="ai-placeholder">[Placeholder — specific examples to be added]</p>
+            <h3>AI-Augmented Design</h3>
+            <p>Generative tools can accelerate ideation considerably. Where they are less reliable is in decisions that depend on real understanding of a user's context. AI produces variations quickly; deciding which are appropriate still takes someone familiar with the work the users are actually doing.</p>
           </div>
-
           <div class="ai-card">
-            <div class="ai-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="24" cy="24" r="14" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-                <circle cx="24" cy="24" r="6" fill="var(--accent)" opacity="0.2"/>
-                <path d="M24 10v4M24 34v4M10 24h4M34 24h4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M17 17l2.5 2.5M28.5 28.5l2.5 2.5M17 31l2.5-2.5M28.5 19.5l2.5-2.5" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-              </svg>
-            </div>
-            <h3 class="ai-card-title">Designing AI Experiences</h3>
-            <p class="ai-card-desc">Designing for AI-powered features involves some specific UX challenges, largely because the system's behavior is not fully predictable. This affects how one thinks about trust, feedback, and error handling. Users need enough transparency to calibrate their confidence in the system appropriately, without that transparency itself becoming a source of cognitive overhead.</p>
-            <p class="ai-placeholder">[Placeholder — specific examples to be added]</p>
+            <h3>Designing AI Experiences</h3>
+            <p>Designing AI-powered features carries specific UX challenges, largely because the system's behavior isn't fully predictable. That reshapes how you think about trust, feedback, and error handling — users need enough transparency to calibrate their confidence without that transparency becoming its own cognitive burden.</p>
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===================== EXPERIENCE ===================== -->
-    <section class="section experience-section" id="experience">
-      <div class="container">
-        <p class="section-label">Experience</p>
-        <h2 class="section-heading">Work History</h2>
-        <div class="experience-grid">
-
-          <div class="timeline">
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3 class="timeline-role">UX Lead &amp; Product Designer</h3>
-                    <p class="timeline-org">4Subsea</p>
-                  </div>
-                  <div class="timeline-meta">
-                    <span class="timeline-period">2023–Present</span>
-                    <span class="timeline-location">Asker, Norway</span>
-                  </div>
-                </div>
-                <p class="timeline-desc">Responsible for all aspects of UX for a digital solutions platform serving the offshore energy sector, including both the consistency of the products within it and the design of a number of those products directly. My time here has involved the adoption and refinement of the company's first design system, a redesign of the platform focused on improved usability, and an expansion of user research across product teams.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3 class="timeline-role">UX Lead</h3>
-                    <p class="timeline-org">DNV</p>
-                  </div>
-                  <div class="timeline-meta">
-                    <span class="timeline-period">2019–2023</span>
-                    <span class="timeline-location">Høvik, Norway</span>
-                  </div>
-                </div>
-                <p class="timeline-desc">My work covered a number of roles across a large professional services organization undergoing digital transformation, including UX evangelism, innovation strategy, data visualization design (in PowerBI and various design tools, based on principles of cognitive psychology), and UX research and design across a number of teams and products. I also participated in revising the company's design system.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3 class="timeline-role">Experience Designer</h3>
-                    <p class="timeline-org">Yara International</p>
-                  </div>
-                  <div class="timeline-meta">
-                    <span class="timeline-period">2016–2019</span>
-                    <span class="timeline-location">Oslo, Norway</span>
-                  </div>
-                </div>
-                <p class="timeline-desc">UX research and design on a variety of digital tools for precision farming, across a range of media including augmented reality (Microsoft HoloLens), mobile apps, websites, and chatbots. As the company underwent a digital transformation, I also helped develop an experience design strategy that involved aligning user needs with business goals and establishing measurable criteria for progress.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3 class="timeline-role">Innovation Experimentation Lead</h3>
-                    <p class="timeline-org">Nordea</p>
-                  </div>
-                  <div class="timeline-meta">
-                    <span class="timeline-period">2015–2016</span>
-                    <span class="timeline-location">Oslo, Norway</span>
-                  </div>
-                </div>
-                <p class="timeline-desc">Designed fast-and-frugal experiments to assess new financial product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <div class="timeline-header">
-                  <div>
-                    <h3 class="timeline-role">HCI Researcher</h3>
-                    <p class="timeline-org">SINTEF ICT</p>
-                  </div>
-                  <div class="timeline-meta">
-                    <span class="timeline-period">2008–2015</span>
-                    <span class="timeline-location">Oslo, Norway</span>
-                  </div>
-                </div>
-                <p class="timeline-desc">Established a "decision support in complex environments" research area. Led two major EU-funded crisis management projects (decision support, distributed collaboration). Led the successful bid for SINTEF's role in the EU SESAR air traffic management programme. Also conducted social media behavior research.</p>
-              </div>
-            </div>
-
-            <div class="timeline-condensed">
-              <h4 class="timeline-condensed-heading">Earlier Roles</h4>
-              <div class="condensed-roles">
-                <div class="condensed-role">
-                  <span class="condensed-role-title">UX Consultant</span>
-                  <span class="condensed-role-org">Threadbare Games</span>
-                  <span class="condensed-role-period">2012–2013 · San Francisco, CA</span>
-                  <span class="condensed-role-desc">UX for mobile and iPad games in an agile studio. Wireframes, mockups, requirements prioritization. Applied research literature on "fun" to design decisions.</span>
-                </div>
-                <div class="condensed-role">
-                  <span class="condensed-role-title">Senior Usability Engineer</span>
-                  <span class="condensed-role-org">Oracle</span>
-                  <span class="condensed-role-period">2005–2008</span>
-                  <span class="condensed-role-desc">Iterative usability testing on enterprise software. Designed interaction widgets — two patented, one adopted organization-wide.</span>
-                </div>
-                <div class="condensed-role">
-                  <span class="condensed-role-title">Human-Systems Engineer</span>
-                  <span class="condensed-role-org">CHI Systems</span>
-                  <span class="condensed-role-period">2003–2005</span>
-                  <span class="condensed-role-desc">Military training and decision support systems. Cognitive task analyses of military specialists.</span>
-                </div>
-                <div class="condensed-role">
-                  <span class="condensed-role-title">Naval Research Intern</span>
-                  <span class="condensed-role-org">Space and Naval Warfare Systems Command</span>
-                  <span class="condensed-role-period">2002</span>
-                </div>
-                <div class="condensed-role">
-                  <span class="condensed-role-title">Human-Factors Intern</span>
-                  <span class="condensed-role-org">SBC Laboratories</span>
-                  <span class="condensed-role-period">2000</span>
-                </div>
-                <div class="condensed-role">
-                  <span class="condensed-role-title">Human-Factors Intern</span>
-                  <span class="condensed-role-org">Air Force Office of Scientific Research</span>
-                  <span class="condensed-role-period">1998</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <aside class="skills-sidebar">
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Research</h3>
-              <ul class="skills-list">
-                <li>User interviews</li>
-                <li>Contextual inquiry</li>
-                <li>Usability testing</li>
-                <li>Cognitive task analysis</li>
-                <li>Quantitative research</li>
-                <li>Survey design</li>
-                <li>Concept testing</li>
-              </ul>
-            </div>
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Design</h3>
-              <ul class="skills-list">
-                <li>Interaction design</li>
-                <li>Information architecture</li>
-                <li>Design systems</li>
-                <li>Data visualization</li>
-                <li>Prototyping</li>
-                <li>Wireframing</li>
-              </ul>
-            </div>
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Tools</h3>
-              <ul class="skills-list">
-                <li>Figma</li>
-                <li>Sketch</li>
-                <li>PowerBI</li>
-              </ul>
-            </div>
-            <div class="sidebar-card">
-              <h3 class="sidebar-card-title">Patents</h3>
-              <ul class="patents-list">
-                <li>Navigational tools for large trees</li>
-                <li>Graphical tool for defining a set of ranges</li>
-              </ul>
-            </div>
-          </aside>
-
+      <!-- ---------- Contact ---------- -->
+      <section id="contact">
+        <div class="eyebrow">Contact</div>
+        <div class="contact-headline">Interested in research and design for expert users? <a href="mailto:mikestiso@gmail.com">mikestiso@gmail.com</a></div>
+        <div class="contact-links">
+          <a href="mailto:mikestiso@gmail.com">Email &#8594;</a>
+          <a href="https://www.linkedin.com/in/mikestiso" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===================== CONTACT ===================== -->
-    <section class="section contact-section" id="contact">
-      <div class="container contact-inner">
-        <p class="section-label">Contact</p>
-        <h2 class="section-heading">Get in Touch</h2>
-        <p class="contact-intro">Feel free to reach out about a project, an opportunity, or a conversation about UX research and design more generally.</p>
-        <div class="contact-cards">
-          <a href="mailto:mikestiso@gmail.com" class="contact-card" aria-label="Send email to mikestiso@gmail.com">
-            <div class="contact-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="12" width="36" height="26" rx="3" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-                <path d="M6 15l18 13 18-13" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="contact-card-text">
-              <span class="contact-card-label">Email</span>
-              <span class="contact-card-value">mikestiso@gmail.com</span>
-            </div>
-            <div class="contact-card-arrow" aria-hidden="true">→</div>
-          </a>
-          <a href="https://www.linkedin.com/in/mikestiso" class="contact-card" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile (opens in new tab)">
-            <div class="contact-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="6" width="36" height="36" rx="5" fill="var(--accent-light)" stroke="var(--accent)" stroke-width="1.5"/>
-                <rect x="14" y="20" width="4" height="14" rx="1" fill="var(--accent)"/>
-                <circle cx="16" cy="15" r="2.5" fill="var(--accent)"/>
-                <path d="M22 20h4v3s1-3 5-3c4 0 5 2.5 5 6v8h-4v-7c0-2-1-3-3-3s-3 1-3 3v7h-4V20z" fill="var(--accent)"/>
-              </svg>
-            </div>
-            <div class="contact-card-text">
-              <span class="contact-card-label">LinkedIn</span>
-              <span class="contact-card-value">linkedin.com/in/mikestiso</span>
-            </div>
-            <div class="contact-card-arrow" aria-hidden="true">→</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span class="footer-name">Michael Stiso, Ph.D.</span>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span class="footer-role">UX Researcher &amp; Designer</span>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span class="footer-location">Oslo, Norway</span>
-    </div>
-  </footer>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -7,61 +7,22 @@
   <meta name="description" content="Case study: Designing a drone command interface to give search-and-rescue field commanders direct situational awareness." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Archivo:wght@400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .case-page-wrapper { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
-    .case-header { background: var(--color-bg-dark); padding-top: calc(64px + 3rem); padding-bottom: 2.5rem; padding-left: 1.5rem; padding-right: 1.5rem; margin-left: -1.5rem; margin-right: -1.5rem; margin-bottom: 3rem; }
-    .case-back { margin-bottom: 1.5rem; }
-    .case-back a { font-size: 0.875rem; color: rgba(255,255,255,0.6); font-weight: 500; text-decoration: none; }
-    .case-back a:hover { color: #fff; }
-    .case-meta { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-    .case-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.15; color: #fff; margin-bottom: 1rem; }
-    .case-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
-    .case-body section { margin-bottom: 3rem; }
-    .case-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 600; font-style: italic; color: var(--color-text); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-light); }
-    .case-body p { font-size: 1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1rem; }
-    .case-body ul { margin: 0 0 1rem 1.25rem; }
-    .case-body li { font-size: 1rem; line-height: 1.75; color: var(--color-text); margin-bottom: 0.4rem; }
-    .case-body .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 2rem; }
-    .case-body .case-tags span { background: var(--accent-light); color: var(--accent); font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 2px; letter-spacing: 0.04em; }
-    .case-nav { display: flex; justify-content: space-between; padding-top: 3rem; margin-top: 3rem; border-top: 1px solid var(--color-border); font-size: 0.875rem; }
-    .case-nav a { color: var(--accent); font-weight: 500; text-decoration: none; }
-  </style>
 </head>
 <body>
-
-  <!-- ===================== NAV ===================== -->
-  <header class="site-nav" id="site-nav">
-    <div class="nav-inner">
-      <a href="index.html#hero" class="nav-logo" aria-label="Michael Stiso home">MS</a>
-      <nav aria-label="Main navigation">
-        <ul class="nav-links" id="nav-links">
-          <li><a href="index.html#about" class="nav-link">About</a></li>
-          <li><a href="index.html#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="index.html#ai-ux" class="nav-link">AI &amp; UX</a></li>
-          <li><a href="index.html#experience" class="nav-link">Experience</a></li>
-          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
-
   <main>
-    <div class="case-page-wrapper">
-
-      <div class="case-header">
-        <p class="case-back"><a href="index.html#portfolio">← Back to portfolio</a></p>
-        <p class="case-meta">2015 · Decision Support · Human Factors</p>
+    <header class="case-header">
+      <div class="case-header-inner">
+        <a class="case-back" href="index.html#projects">&#8592; Back to projects</a>
+        <div class="case-meta">2015 · Decision Support · Human Factors</div>
         <h1 class="case-title">Search and Rescue</h1>
         <p class="case-subtitle">Designing a drone command interface to give search-and-rescue field commanders direct situational awareness.</p>
       </div>
+    </header>
 
+    <article class="case">
+      <div class="case-hero" aria-hidden="true">Case study visuals available on request</div>
       <div class="case-body">
 
         <section>
@@ -98,34 +59,28 @@
           <h2>Challenges and Lessons</h2>
           <p>The project team included approximately a dozen partner organizations — a mix of academic institutions, corporate partners, small and medium-sized enterprises, and research groups — distributed across Europe. The coordination challenges that come with that kind of distributed, multi-stakeholder structure were considerable. Early in the project, the team discovered that the implementation being developed by the technical partners had diverged in a number of ways from the UX designs, which required additional effort to diagnose and correct. This served as a clear illustration of the importance of establishing explicit communication channels between design and development in any distributed project team — not as a formality, but as an active and ongoing practice.</p>
           <p>A separate challenge was the nature of the domain itself. Search-and-rescue events occur infrequently and unpredictably, which made it difficult to observe them in realistic conditions or to test design solutions in the field. The team had to be both strategic and opportunistic — building research plans that could adapt to whatever opportunities arose, while also looking ahead to scheduled events, such as product demonstrations and first-responder training exercises, that would provide access to real users in relevant contexts.</p>
-
-          <div class="case-tags">
-            <span>Human Factors</span>
-            <span>Decision Support</span>
-            <span>UX Research</span>
-            <span>Wireframing</span>
-            <span>Participatory Design</span>
-            <span>Usability Testing</span>
-          </div>
         </section>
 
-        <div class="case-nav">
-          <a href="sewer-corrosion.html">← Sewer Corrosion</a>
-          <a href="mobile-games.html">Mobile Games →</a>
+        <div class="case-tags">
+          <span>Human Factors</span>
+          <span>Decision Support</span>
+          <span>UX Research</span>
+          <span>Wireframing</span>
+          <span>Participatory Design</span>
+          <span>Usability Testing</span>
         </div>
 
+        <nav class="case-nav">
+          <a href="sewer-corrosion.html">&#8592; Sewer Corrosion</a>
+          <a href="mobile-games.html">Mobile Games &#8594;</a>
+        </nav>
+
       </div>
-    </div>
+    </article>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <span class="footer-name">Michael Stiso, Ph.D.</span>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span class="footer-role">UX Researcher &amp; Designer</span>
-      <span class="footer-sep" aria-hidden="true">·</span>
-      <span class="footer-location">Oslo, Norway</span>
-    </div>
+    Michael Stiso, Ph.D. <span class="sep">·</span> UX Researcher &amp; Designer <span class="sep">·</span> Oslo, Norway
   </footer>
 
   <script src="script.js"></script>
