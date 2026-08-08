@@ -294,6 +294,176 @@ ul { padding: 0; list-style: none; }
 .cv-col p  { font: 400 14.5px/1.7 var(--serif); color: var(--sub); }
 
 /* ---------------------------------------------------------------
+   6b. Work-history phase diagram
+   Vertical proportional spine: every row's height is flex-weighted
+   by its duration in years, so 1 year is the same distance anywhere.
+   --------------------------------------------------------------- */
+.wh { margin: 0 0 48px; }
+
+.wh-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.wh-caption {
+  font: 400 14.5px/1.55 var(--serif);
+  color: var(--sub);
+  max-width: 460px;
+  text-wrap: pretty;
+}
+.wh-toggle {
+  flex: none;
+  font: 500 10.5px/1 var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--line);
+  padding: 9px 13px;
+  cursor: pointer;
+}
+.wh-toggle:hover { border-color: var(--accent); }
+
+.wh-chart { display: flex; flex-direction: column; height: 620px; }
+.wh-phase { display: flex; align-items: stretch; min-height: 0; }
+
+/* Phase label column */
+.wh-phase-label {
+  width: 148px;
+  flex: none;
+  padding-right: 14px;
+  text-align: right;
+}
+.wh-phase-name { display: block; font: 600 12px/1.25 var(--sans); color: var(--ink); }
+.wh-phase-span {
+  display: block;
+  font: 400 10.5px/1.4 var(--sans);
+  letter-spacing: .04em;
+  color: var(--sub);
+  margin-top: 3px;
+}
+
+/* The bar itself — one chunk per phase, stacking into a continuous spine */
+.wh-bar { width: 14px; flex: none; display: flex; flex-direction: column; }
+.wh-seg { flex: 1; position: relative; }
+.wh-p1 .wh-seg { background: #ebd2c0; }
+.wh-p2 .wh-seg { background: #deaf90; }
+.wh-p3 .wh-seg { background: #d1885c; }
+.wh-p4 .wh-seg { background: var(--accent); }
+
+/* An interruption in a phase (the enterprise-UX break) reads as a gap */
+.wh-seg.brk { background: var(--page); border: 1px solid var(--line); }
+
+/* Hairline where one role hands off to the next inside a phase */
+.wh-seg + .wh-seg::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 1px;
+  background: rgba(247, 244, 238, .55);
+}
+.wh-seg.brk + .wh-seg::before, .wh-seg + .wh-seg.brk::before { display: none; }
+
+/* Point-in-time notches (internships) */
+.wh-tick { position: absolute; left: 0; right: 0; height: 1px; background: rgba(33, 29, 25, .32); }
+
+/* A role running alongside another — parallel track beside the spine */
+.wh-concurrent {
+  position: absolute;
+  left: calc(100% + 4px);
+  width: 5px;
+  border: 1px solid var(--accent);
+  background: var(--page);
+}
+
+/* Employer rows */
+.wh-rows { flex: 1; min-width: 0; margin-left: 14px; display: flex; flex-direction: column; position: relative; }
+.wh-row { flex: 1; min-height: 0; position: relative; }
+.wh-row-abs { position: absolute; left: 0; right: 0; }
+
+.wh-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.wh-emp { font: 600 14px/1.3 var(--serif); color: var(--ink); }
+.wh-dates { font: 500 10.5px/1.3 var(--sans); letter-spacing: .05em; color: var(--sub); flex: none; }
+.wh-role { font: 400 11px/1.3 var(--sans); color: var(--sub); overflow: hidden; text-overflow: ellipsis; }
+.wh-item:hover .wh-emp,
+.wh-item:focus-visible .wh-emp { color: var(--accent); }
+.wh-row.concurrent .wh-emp { font-style: italic; }
+
+/* Balloon */
+.wh-balloon {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 2px);
+  z-index: 20;
+  width: min(380px, 100%);
+  padding: 14px 16px;
+  background: var(--page);
+  border: 1px solid var(--ink);
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .12s ease;
+  /* On hover the balloon is a preview only, so it never swallows clicks
+     meant for the rows underneath it. Pinning it makes links reachable. */
+  pointer-events: none;
+}
+.wh-item:hover + .wh-balloon,
+.wh-item:focus-visible + .wh-balloon,
+.wh-row.pinned .wh-balloon { opacity: 1; visibility: visible; }
+.wh-row.pinned .wh-balloon { pointer-events: auto; }
+.wh-row.flip .wh-balloon { top: auto; bottom: calc(100% + 2px); }
+
+.wh-balloon .t { font: 600 15px/1.3 var(--serif); }
+.wh-balloon .m {
+  font: 500 10.5px/1.4 var(--sans);
+  letter-spacing: .05em;
+  color: var(--accent);
+  margin-top: 4px;
+}
+.wh-balloon .n { font: 400 14px/1.55 var(--serif); color: var(--sub); margin-top: 8px; text-wrap: pretty; }
+.wh-balloon .cs { display: inline-block; margin-top: 10px; margin-right: 14px; font: 500 11px/1 var(--sans); color: var(--accent); text-decoration: none; }
+.wh-balloon .cs:hover { color: var(--ink); }
+
+/* Show-all-details panel */
+.wh-details {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 30px;
+}
+.wh-details[hidden] { display: none; }
+.wh-dgroup h4 {
+  font: 600 11px/1 var(--sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.wh-dentry { margin-bottom: 16px; }
+.wh-dentry .t { font: 600 14.5px/1.3 var(--serif); }
+.wh-dentry .m { font: 500 10.5px/1.4 var(--sans); letter-spacing: .05em; color: var(--sub); margin-top: 3px; }
+.wh-dentry .n { font: 400 14px/1.55 var(--serif); color: var(--sub); margin-top: 5px; text-wrap: pretty; }
+
+/* ---------------------------------------------------------------
    7. Projects
    --------------------------------------------------------------- */
 .projects-intro {
@@ -602,6 +772,10 @@ ul { padding: 0; list-style: none; }
 
   .case { padding: 40px 28px 72px; }
   .case-header { padding: 48px 28px 40px; }
+
+  .wh-chart { height: 560px; }
+  .wh-phase-label { width: 108px; padding-right: 10px; }
+  .wh-details { grid-template-columns: 1fr; }
 }
 
 /* Phones */
@@ -618,4 +792,17 @@ ul { padding: 0; list-style: none; }
   .main { padding: 36px 22px 56px; }
   .case { padding: 36px 22px 64px; }
   .case-header { padding: 44px 22px 36px; }
+
+  .wh-chart { height: 520px; }
+  .wh-phase-label { width: 74px; padding-right: 8px; }
+  .wh-phase-name { font-size: 10.5px; }
+  .wh-phase-span { font-size: 9px; }
+  .wh-bar { width: 10px; }
+  .wh-rows { margin-left: 10px; }
+  .wh-emp { font-size: 13px; }
+  .wh-role { display: none; }
+  /* Let the balloon reclaim the phase-label gutter instead of
+     overhanging the viewport (left/right both set, so width is derived) */
+  .wh-balloon { width: auto; left: -92px; right: 0; padding: 12px 14px; }
+  .wh-head { gap: 14px; }
 }
