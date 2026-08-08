@@ -336,7 +336,18 @@ ul { padding: 0; list-style: none; }
   flex: none;
   padding-right: 14px;
   text-align: right;
+  position: relative;
 }
+/* A named stretch nested inside a phase (Enterprise UX inside Applied
+   research). Positioned to line up with its own segment on the bar. */
+.wh-phase-sub {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 14px;
+  text-align: right;
+}
+.wh-phase-sub .wh-phase-name { color: var(--sub); }
 .wh-phase-name { display: block; font: 600 12px/1.25 var(--sans); color: var(--ink); }
 .wh-phase-span {
   display: block;
@@ -774,7 +785,10 @@ ul { padding: 0; list-style: none; }
   .case-header { padding: 48px 28px 40px; }
 
   .wh-chart { height: 560px; }
-  .wh-phase-label { width: 108px; padding-right: 10px; }
+  /* Wide enough to keep "Applied research" on one line, so it cannot
+     run down into the nested Enterprise UX label below it */
+  .wh-phase-label { width: 132px; padding-right: 10px; }
+  .wh-phase-sub { right: 10px; }
   .wh-details { grid-template-columns: 1fr; }
 }
 
@@ -795,8 +809,11 @@ ul { padding: 0; list-style: none; }
 
   .wh-chart { height: 520px; }
   .wh-phase-label { width: 74px; padding-right: 8px; }
+  .wh-phase-sub { right: 8px; }
   .wh-phase-name { font-size: 10.5px; }
-  .wh-phase-span { font-size: 9px; }
+  /* Too little room here for phase durations to sit beside the nested
+     label without overlapping; the bar and the per-role dates carry it */
+  .wh-phase-span { display: none; }
   .wh-bar { width: 10px; }
   .wh-rows { margin-left: 10px; }
   .wh-emp { font-size: 13px; }
