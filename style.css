@@ -367,7 +367,38 @@ ul { padding: 0; list-style: none; }
 }
 
 /* The bar itself — one chunk per phase, stacking into a continuous spine */
-.wh-bar { width: 14px; flex: none; display: flex; flex-direction: column; }
+.wh-bar { width: 14px; flex: none; display: flex; flex-direction: column; position: relative; }
+
+/* Direction of travel: the spine opens on a dot and closes on an
+   arrowhead, so it reads top-to-bottom as time. Both are positioned
+   absolutely — as ordinary pseudo-elements they would become flex items
+   of the bar and take height away from the phases. */
+.wh-phase:first-child .wh-bar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  margin-bottom: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--page);
+  border: 2px solid var(--accent);
+}
+.wh-phase:last-child .wh-bar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  margin-top: 5px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 11px solid var(--accent);
+}
 .wh-seg { flex: 1; position: relative; }
 .wh-p1 .wh-seg { background: #ebd2c0; }
 .wh-p2 .wh-seg { background: #deaf90; }
@@ -824,6 +855,13 @@ ul { padding: 0; list-style: none; }
      label without overlapping; the bar and the per-role dates carry it */
   .wh-phase-span { display: none; }
   .wh-bar { width: 10px; }
+  .wh-phase:first-child .wh-bar::before { width: 8px; height: 8px; margin-bottom: 5px; }
+  .wh-phase:last-child .wh-bar::after {
+    border-left-width: 7px;
+    border-right-width: 7px;
+    border-top-width: 9px;
+    margin-top: 4px;
+  }
   .wh-rows { margin-left: 10px; }
   .wh-emp { font-size: 13px; }
   .wh-role { display: none; }
