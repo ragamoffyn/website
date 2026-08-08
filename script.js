@@ -57,6 +57,8 @@
 
       item.addEventListener('click', function (e) {
         e.stopPropagation();
+        // In the expanded view every detail is already on the page
+        if (wh.classList.contains('detail')) { return; }
         var wasPinned = row.classList.contains('pinned');
         whRows.forEach(function (r) { r.classList.remove('pinned'); });
         if (!wasPinned) {
@@ -76,19 +78,16 @@
       }
     });
 
-    var whToggle  = document.getElementById('wh-toggle');
-    var whDetails = document.getElementById('wh-details');
-    if (whToggle && whDetails) {
+    // Toggle expands the diagram itself, dropping every balloon inline
+    var whToggle = document.getElementById('wh-toggle');
+    if (whToggle) {
       whToggle.addEventListener('click', function (e) {
         e.stopPropagation();
-        var opening = whDetails.hasAttribute('hidden');
-        if (opening) {
-          whDetails.removeAttribute('hidden');
-        } else {
-          whDetails.setAttribute('hidden', '');
-        }
+        var opening = !wh.classList.contains('detail');
+        wh.classList.toggle('detail', opening);
         whToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
         whToggle.textContent = opening ? 'Hide all details' : 'Show all details';
+        whRows.forEach(function (r) { r.classList.remove('pinned', 'flip'); });
       });
     }
   }

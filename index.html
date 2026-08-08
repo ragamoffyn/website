@@ -74,7 +74,10 @@
 
       <!-- ---------- CV ---------- -->
       <section id="cv">
-        <div class="eyebrow">Curriculum Vitae</div>
+        <div class="cv-head">
+          <div class="eyebrow">Work history</div>
+          <button class="wh-toggle" id="wh-toggle" aria-expanded="false" aria-controls="wh">Show all details</button>
+        </div>
         <!-- PARKED (not rendered): the three CV lead-in summaries. Kept for
              now pending a decision on whether to restore or remove them.
              Remove the "parked" class to bring this back. See CLAUDE.md. -->
@@ -86,14 +89,11 @@
 
         <!-- ---------- Work-history phase diagram ---------- -->
         <div class="wh" id="wh">
-          <div class="wh-head">
-            <p class="wh-caption">Four phases, drawn to scale — each band's height is the time spent in it. Hover or tap any employer for detail.</p>
-            <button class="wh-toggle" id="wh-toggle" aria-expanded="false" aria-controls="wh-details">Show all details</button>
-          </div>
+          <p class="wh-caption">Hover or tap any employer for detail.</p>
 
           <div class="wh-chart">
 
-            <!-- Phase 1 — Foundations (1998–2003, 5 yrs) -->
+            <!-- Foundations -->
             <div class="wh-phase wh-p1" style="flex:5">
               <div class="wh-phase-label">
                 <span class="wh-phase-name">Foundations</span>
@@ -108,33 +108,38 @@
               </div>
               <div class="wh-rows">
                 <div class="wh-row" style="flex:1">
-                  <button class="wh-item" aria-describedby="wh-b1">
-                    <span class="wh-emp">Texas A&amp;M University</span>
-                    <span class="wh-dates">1998–2003</span>
-                    <span class="wh-role">Ph.D., Cognitive Psychology</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b1" role="tooltip">
-                    <div class="t">Ph.D., Cognitive Psychology</div>
-                    <div class="m">Texas A&amp;M University · 1998–2003</div>
-                    <div class="n">The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</div>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b1">
+                      <span class="wh-emp">Texas A&amp;M University</span>
+                      <span class="wh-dates">1998–2003</span>
+                      <span class="wh-role">Ph.D., Cognitive Psychology</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b1" role="tooltip">
+                      <div class="t">Ph.D., Cognitive Psychology</div>
+                      <div class="n">The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</div>
+                    </div>
                   </div>
                 </div>
                 <div class="wh-row" style="flex:1">
-                  <button class="wh-item" aria-describedby="wh-b2">
-                    <span class="wh-emp">Internships</span>
-                    <span class="wh-dates">1998 · 2000 · 2002</span>
-                    <span class="wh-role">Human factors</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b2" role="tooltip">
-                    <div class="t">Human-factors internships</div>
-                    <div class="m">Three placements during graduate study</div>
-                    <div class="n">Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</div>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b2">
+                      <span class="wh-emp">Internships</span>
+                      <span class="wh-dates">1998 · 2000 · 2002</span>
+                      <span class="wh-role">Human factors</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b2" role="tooltip">
+                      <div class="t">Human-factors internships</div>
+                      <div class="m">Three placements during graduate study</div>
+                      <div class="n">Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Phase 2 — Applied research (2003–2015, 12 yrs) -->
+            <!-- Applied research -->
             <div class="wh-phase wh-p2" style="flex:12">
               <div class="wh-phase-label">
                 <span class="wh-phase-name">Applied research</span>
@@ -153,59 +158,69 @@
               </div>
               <div class="wh-rows">
                 <div class="wh-row" style="flex:2">
-                  <button class="wh-item" aria-describedby="wh-b3">
-                    <span class="wh-emp">CHI Systems</span>
-                    <span class="wh-dates">2003–2005</span>
-                    <span class="wh-role">Human-Systems Engineer</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b3" role="tooltip">
-                    <div class="t">Human-Systems Engineer</div>
-                    <div class="m">CHI Systems · 2003–2005</div>
-                    <div class="n">Military training and decision-support systems. Cognitive task analyses of military specialists.</div>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b3">
+                      <span class="wh-emp">CHI Systems</span>
+                      <span class="wh-dates">2003–2005</span>
+                      <span class="wh-role">Human-Systems Engineer</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b3" role="tooltip">
+                      <div class="t">Human-Systems Engineer</div>
+                      <div class="n">Military training and decision-support systems. Cognitive task analyses of military specialists.</div>
+                    </div>
                   </div>
                 </div>
                 <div class="wh-row" style="flex:3">
-                  <button class="wh-item" aria-describedby="wh-b4">
-                    <span class="wh-emp">Oracle</span>
-                    <span class="wh-dates">2005–2008</span>
-                    <span class="wh-role">Senior Usability Engineer</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b4" role="tooltip">
-                    <div class="t">Senior Usability Engineer</div>
-                    <div class="m">Oracle · 2005–2008</div>
-                    <div class="n">A step out of research and into enterprise UX. Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</div>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b4">
+                      <span class="wh-emp">Oracle</span>
+                      <span class="wh-dates">2005–2008</span>
+                      <span class="wh-role">Senior Usability Engineer</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b4" role="tooltip">
+                      <div class="t">Senior Usability Engineer</div>
+                      <div class="n">A step out of research and into enterprise UX. Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</div>
+                    </div>
                   </div>
                 </div>
                 <div class="wh-row" style="flex:7">
-                  <button class="wh-item" aria-describedby="wh-b5">
-                    <span class="wh-emp">SINTEF ICT</span>
-                    <span class="wh-dates">2008–2015</span>
-                    <span class="wh-role">HCI Researcher</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b5" role="tooltip">
-                    <div class="t">HCI Researcher</div>
-                    <div class="m">SINTEF ICT · Oslo, Norway · 2008–2015</div>
-                    <div class="n">Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</div>
-                    <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b5">
+                      <span class="wh-emp">SINTEF ICT</span>
+                      <span class="wh-dates">2008–2015</span>
+                      <span class="wh-role">HCI Researcher</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b5" role="tooltip">
+                      <div class="t">HCI Researcher</div>
+                      <div class="m">Oslo, Norway</div>
+                      <div class="n">Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</div>
+                      <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
+                    </div>
                   </div>
                 </div>
                 <div class="wh-row wh-row-abs concurrent" style="top:75%;height:8.33%">
-                  <button class="wh-item" aria-describedby="wh-b6">
-                    <span class="wh-emp">Threadbare Games</span>
-                    <span class="wh-dates">2012–2013</span>
-                    <span class="wh-role">UX Consultant · alongside SINTEF</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b6" role="tooltip">
-                    <div class="t">UX Consultant</div>
-                    <div class="m">Threadbare Games · San Francisco · 2012–2013</div>
-                    <div class="n">Ran alongside the SINTEF years. UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</div>
-                    <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b6">
+                      <span class="wh-emp">Threadbare Games</span>
+                      <span class="wh-dates">2012–2013</span>
+                      <span class="wh-role">UX Consultant · alongside SINTEF</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b6" role="tooltip">
+                      <div class="t">UX Consultant</div>
+                      <div class="m">San Francisco</div>
+                      <div class="n">Ran alongside the SINTEF years. UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</div>
+                      <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Phase 3 — Innovation (2015–2023, 8 yrs) -->
+            <!-- Innovation skunkworks -->
             <div class="wh-phase wh-p3" style="flex:8">
               <div class="wh-phase-label">
                 <span class="wh-phase-name">Innovation skunkworks</span>
@@ -218,49 +233,58 @@
               </div>
               <div class="wh-rows">
                 <div class="wh-row" style="flex:1">
-                  <button class="wh-item" aria-describedby="wh-b7">
-                    <span class="wh-emp">Nordea</span>
-                    <span class="wh-dates">2015–2016</span>
-                    <span class="wh-role">Innovation Experimentation Lead</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b7" role="tooltip">
-                    <div class="t">Innovation Experimentation Lead</div>
-                    <div class="m">Nordea · Oslo, Norway · 2015–2016</div>
-                    <div class="n">Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</div>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b7">
+                      <span class="wh-emp">Nordea</span>
+                      <span class="wh-dates">2015–2016</span>
+                      <span class="wh-role">Innovation Experimentation Lead</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b7" role="tooltip">
+                      <div class="t">Innovation Experimentation Lead</div>
+                      <div class="m">Oslo, Norway</div>
+                      <div class="n">Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</div>
+                    </div>
                   </div>
                 </div>
                 <div class="wh-row" style="flex:3">
-                  <button class="wh-item" aria-describedby="wh-b8">
-                    <span class="wh-emp">Yara International</span>
-                    <span class="wh-dates">2016–2019</span>
-                    <span class="wh-role">Experience Designer</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b8" role="tooltip">
-                    <div class="t">Experience Designer</div>
-                    <div class="m">Yara International · Oslo, Norway · 2016–2019</div>
-                    <div class="n">Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</div>
-                    <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
-                    <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b8">
+                      <span class="wh-emp">Yara International</span>
+                      <span class="wh-dates">2016–2019</span>
+                      <span class="wh-role">Experience Designer</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b8" role="tooltip">
+                      <div class="t">Experience Designer</div>
+                      <div class="m">Oslo, Norway</div>
+                      <div class="n">Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</div>
+                      <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
+                      <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
+                    </div>
                   </div>
                 </div>
                 <div class="wh-row" style="flex:4">
-                  <button class="wh-item" aria-describedby="wh-b9">
-                    <span class="wh-emp">DNV</span>
-                    <span class="wh-dates">2019–2023</span>
-                    <span class="wh-role">UX Lead</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b9" role="tooltip">
-                    <div class="t">UX Lead</div>
-                    <div class="m">DNV · Høvik, Norway · 2019–2023</div>
-                    <div class="n">Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</div>
-                    <a class="cs" href="national-security.html">National Security &#8594;</a>
-                    <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b9">
+                      <span class="wh-emp">DNV</span>
+                      <span class="wh-dates">2019–2023</span>
+                      <span class="wh-role">UX Lead</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b9" role="tooltip">
+                      <div class="t">UX Lead</div>
+                      <div class="m">Høvik, Norway</div>
+                      <div class="n">Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</div>
+                      <a class="cs" href="national-security.html">National Security &#8594;</a>
+                      <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Phase 4 — Industrial UX (2023–now, 3 yrs) -->
+            <!-- Industrial UX -->
             <div class="wh-phase wh-p4" style="flex:3">
               <div class="wh-phase-label">
                 <span class="wh-phase-name">Industrial UX</span>
@@ -271,86 +295,24 @@
               </div>
               <div class="wh-rows">
                 <div class="wh-row" style="flex:3">
-                  <button class="wh-item" aria-describedby="wh-b10">
-                    <span class="wh-emp">4Subsea</span>
-                    <span class="wh-dates">2023 — now</span>
-                    <span class="wh-role">UX Lead &amp; Product Designer</span>
-                  </button>
-                  <div class="wh-balloon" id="wh-b10" role="tooltip">
-                    <div class="t">UX Lead &amp; Product Designer</div>
-                    <div class="m">4Subsea · Asker, Norway · 2023 — now</div>
-                    <div class="n">Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</div>
-                    <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
+                  <div class="wh-anchor">
+                    <button class="wh-item" aria-describedby="wh-b10">
+                      <span class="wh-emp">4Subsea</span>
+                      <span class="wh-dates">2023 — now</span>
+                      <span class="wh-role">UX Lead &amp; Product Designer</span>
+                      <span class="wh-info" aria-hidden="true"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6.9" stroke="currentColor" stroke-width="1.3"/><path d="M8 7.1v4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="4.7" r=".95" fill="currentColor"/></svg></span>
+                    </button>
+                    <div class="wh-balloon" id="wh-b10" role="tooltip">
+                      <div class="t">UX Lead &amp; Product Designer</div>
+                      <div class="m">Asker, Norway</div>
+                      <div class="n">Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</div>
+                      <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-          </div>
-
-          <div class="wh-details" id="wh-details" hidden>
-            <div class="wh-dgroup">
-              <h4>Foundations · 1998–2003</h4>
-              <div class="wh-dentry">
-                <div class="t">Ph.D., Cognitive Psychology</div>
-                <div class="m">Texas A&amp;M University · 1998–2003</div>
-                <div class="n">The study of human mental capabilities and limitations, with a focus on human learning and decision making.</div>
-              </div>
-              <div class="wh-dentry">
-                <div class="t">Human-factors internships</div>
-                <div class="m">1998 · 2000 · 2002</div>
-                <div class="n">Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</div>
-              </div>
-            </div>
-            <div class="wh-dgroup">
-              <h4>Applied research · 2003–2015</h4>
-              <div class="wh-dentry">
-                <div class="t">Human-Systems Engineer</div>
-                <div class="m">CHI Systems · 2003–2005</div>
-                <div class="n">Military training and decision-support systems. Cognitive task analyses of military specialists.</div>
-              </div>
-              <div class="wh-dentry">
-                <div class="t">Senior Usability Engineer</div>
-                <div class="m">Oracle · 2005–2008 · Enterprise UX</div>
-                <div class="n">Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</div>
-              </div>
-              <div class="wh-dentry">
-                <div class="t">HCI Researcher</div>
-                <div class="m">SINTEF ICT · Oslo, Norway · 2008–2015</div>
-                <div class="n">Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</div>
-              </div>
-              <div class="wh-dentry">
-                <div class="t">UX Consultant</div>
-                <div class="m">Threadbare Games · San Francisco · 2012–2013 · alongside SINTEF</div>
-                <div class="n">UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</div>
-              </div>
-            </div>
-            <div class="wh-dgroup">
-              <h4>Innovation skunkworks · 2015–2023</h4>
-              <div class="wh-dentry">
-                <div class="t">Innovation Experimentation Lead</div>
-                <div class="m">Nordea · Oslo, Norway · 2015–2016</div>
-                <div class="n">Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</div>
-              </div>
-              <div class="wh-dentry">
-                <div class="t">Experience Designer</div>
-                <div class="m">Yara International · Oslo, Norway · 2016–2019</div>
-                <div class="n">Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</div>
-              </div>
-              <div class="wh-dentry">
-                <div class="t">UX Lead</div>
-                <div class="m">DNV · Høvik, Norway · 2019–2023</div>
-                <div class="n">Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</div>
-              </div>
-            </div>
-            <div class="wh-dgroup">
-              <h4>Industrial UX · 2023–now</h4>
-              <div class="wh-dentry">
-                <div class="t">UX Lead &amp; Product Designer</div>
-                <div class="m">4Subsea · Asker, Norway · 2023 — now</div>
-                <div class="n">Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</div>
-              </div>
-            </div>
           </div>
         </div>
 

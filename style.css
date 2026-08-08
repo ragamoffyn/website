@@ -300,19 +300,20 @@ ul { padding: 0; list-style: none; }
    --------------------------------------------------------------- */
 .wh { margin: 0 0 48px; }
 
-.wh-head {
+/* Section heading row — "Work history" with the details toggle beside it */
+.cv-head {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  margin-bottom: 24px;
+  align-items: baseline;
+  gap: 18px;
   flex-wrap: wrap;
+  margin-bottom: 18px;
 }
+.cv-head .eyebrow { margin-bottom: 0; }
+
 .wh-caption {
-  font: 400 14.5px/1.55 var(--serif);
+  font: 400 14px/1.5 var(--serif);
   color: var(--sub);
-  max-width: 460px;
-  text-wrap: pretty;
+  margin-bottom: 22px;
 }
 .wh-toggle {
   flex: none;
@@ -446,12 +447,30 @@ ul { padding: 0; list-style: none; }
   white-space: nowrap;
   cursor: pointer;
 }
+/* Wraps the label and its balloon. Height is the label's single line, so
+   the balloon hangs directly beneath the name — anchoring it to .wh-row
+   instead would drop it by the row's full duration (155px for SINTEF). */
+.wh-anchor { position: relative; display: block; }
+
 .wh-emp { font: 600 14px/1.3 var(--serif); color: var(--ink); }
 .wh-dates { font: 500 10.5px/1.3 var(--sans); letter-spacing: .05em; color: var(--sub); flex: none; }
 .wh-role { font: 400 11px/1.3 var(--sans); color: var(--sub); overflow: hidden; text-overflow: ellipsis; }
 .wh-item:hover .wh-emp,
 .wh-item:focus-visible .wh-emp { color: var(--accent); }
 .wh-row.concurrent .wh-emp { font-style: italic; }
+
+/* Marks each row as having more behind it — the labels gave no other
+   sign that they were interactive */
+.wh-info {
+  display: inline-flex;
+  align-self: center;
+  flex: none;
+  margin-left: 2px;
+  color: rgba(33, 29, 25, .38);
+}
+.wh-info svg { display: block; }
+.wh-item:hover .wh-info,
+.wh-item:focus-visible .wh-info { color: var(--accent); }
 
 /* Balloon */
 .wh-balloon {
@@ -467,17 +486,24 @@ ul { padding: 0; list-style: none; }
   opacity: 0;
   visibility: hidden;
   transition: opacity .12s ease;
-  /* On hover the balloon is a preview only, so it never swallows clicks
-     meant for the rows underneath it. Pinning it makes links reachable. */
   pointer-events: none;
 }
-.wh-item:hover + .wh-balloon,
+/* Hovering the balloon keeps it open — :hover reaches .wh-anchor from a
+   child even though the balloon is painted outside the anchor's box — so
+   the case-study links inside are actually reachable with the pointer. */
+.wh-anchor:hover .wh-balloon,
 .wh-item:focus-visible + .wh-balloon,
-.wh-row.pinned .wh-balloon { opacity: 1; visibility: visible; }
-.wh-row.pinned .wh-balloon { pointer-events: auto; }
+.wh-row.pinned .wh-balloon {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 .wh-row.flip .wh-balloon { top: auto; bottom: calc(100% + 2px); }
 
-.wh-balloon .t { font: 600 15px/1.3 var(--serif); }
+/* The row beside the balloon already names the role, so the heading is
+   suppressed — except on phones, where the row drops .wh-role for space
+   and the balloon becomes the only place the role appears. */
+.wh-balloon .t { display: none; font: 600 15px/1.3 var(--serif); }
 .wh-balloon .m {
   font: 500 10.5px/1.4 var(--sans);
   letter-spacing: .05em;
@@ -488,27 +514,37 @@ ul { padding: 0; list-style: none; }
 .wh-balloon .cs { display: inline-block; margin-top: 10px; margin-right: 14px; font: 500 11px/1 var(--sans); color: var(--accent); text-decoration: none; }
 .wh-balloon .cs:hover { color: var(--ink); }
 
-/* Show-all-details panel */
-.wh-details {
-  margin-top: 30px;
-  padding-top: 24px;
-  border-top: 1px solid var(--line);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px 30px;
+/* ---- Expanded view -------------------------------------------------
+   The same diagram, with every balloon dropped inline beneath its
+   employer instead of floating. Rows size to their text, so the strict
+   time scale is traded for readability while the phases, order and
+   colour ramp stay put. The bar still spans each phase; its internal
+   divisions are hidden because they can no longer line up with rows
+   whose heights are now set by prose.
+   The flex weights are inline attributes, so overriding them needs
+   !important — without it the rows keep a 0 flex-basis and collapse. */
+.wh.detail .wh-chart { height: auto; }
+.wh.detail .wh-phase { flex: 0 0 auto !important; }
+.wh.detail .wh-row { flex: 0 0 auto !important; padding-bottom: 20px; }
+.wh.detail .wh-row-abs { position: static; height: auto !important; }
+.wh.detail .wh-concurrent { display: none; }
+.wh.detail .wh-seg + .wh-seg::before { display: none; }
+.wh.detail .wh-phase-sub { position: static; margin-top: 12px; }
+.wh.detail .wh-info,
+.wh.detail .wh-caption { display: none; }
+
+.wh.detail .wh-balloon {
+  position: static;
+  width: auto;
+  max-width: 560px;
+  padding: 7px 0 0;
+  background: none;
+  border: none;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
-.wh-details[hidden] { display: none; }
-.wh-dgroup h4 {
-  font: 600 11px/1 var(--sans);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-.wh-dentry { margin-bottom: 16px; }
-.wh-dentry .t { font: 600 14.5px/1.3 var(--serif); }
-.wh-dentry .m { font: 500 10.5px/1.4 var(--sans); letter-spacing: .05em; color: var(--sub); margin-top: 3px; }
-.wh-dentry .n { font: 400 14px/1.55 var(--serif); color: var(--sub); margin-top: 5px; text-wrap: pretty; }
+.wh.detail .wh-balloon .m { margin-top: 0; }
 
 /* ---------------------------------------------------------------
    7. Projects
@@ -861,6 +897,7 @@ ul { padding: 0; list-style: none; }
   .wh-rows { margin-left: 10px; }
   .wh-emp { font-size: 13px; }
   .wh-role { display: none; }
+  .wh-balloon .t { display: block; }   /* .wh-role is hidden here */
   /* Let the balloon reclaim the phase-label gutter instead of
      overhanging the viewport (left/right both set, so width is derived) */
   .wh-balloon { width: auto; left: -92px; right: 0; padding: 12px 14px; }
