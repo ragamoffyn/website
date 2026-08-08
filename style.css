@@ -405,9 +405,6 @@ ul { padding: 0; list-style: none; }
 .wh-p3 .wh-seg { background: #d1885c; }
 .wh-p4 .wh-seg { background: var(--accent); }
 
-/* An interruption in a phase (the enterprise-UX break) reads as a gap */
-.wh-seg.brk { background: var(--page); border: 1px solid var(--line); }
-
 /* Hairline where one role hands off to the next inside a phase */
 .wh-seg + .wh-seg::before {
   content: "";
@@ -416,7 +413,6 @@ ul { padding: 0; list-style: none; }
   height: 1px;
   background: rgba(247, 244, 238, .55);
 }
-.wh-seg.brk + .wh-seg::before, .wh-seg + .wh-seg.brk::before { display: none; }
 
 /* Point-in-time notches (internships) */
 .wh-tick { position: absolute; left: 0; right: 0; height: 1px; background: rgba(33, 29, 25, .32); }
@@ -870,3 +866,14 @@ ul { padding: 0; list-style: none; }
   .wh-balloon { width: auto; left: -92px; right: 0; padding: 12px 14px; }
   .wh-head { gap: 14px; }
 }
+
+/* ---------------------------------------------------------------
+   13. Parked content
+   Kept in the markup, deliberately not rendered, while we decide
+   whether to bring it back or remove it for good. Currently parked:
+   the CV lead-in summaries and the old text timeline.
+   Last in the file and !important so it beats the layout rules for
+   whatever it is applied to, regardless of their source order.
+   See CLAUDE.md before deleting anything carrying this class.
+   --------------------------------------------------------------- */
+.parked { display: none !important; }
