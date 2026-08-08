@@ -348,6 +348,15 @@ ul { padding: 0; list-style: none; }
   text-align: right;
 }
 .wh-phase-sub .wh-phase-name { color: var(--sub); }
+
+/* Phase labels are Archivo 12px; the employer rows they sit beside are
+   Newsreader 14px. Their line boxes start level, but the differing font
+   sizes leave the label's baseline 2px high. Drop the labels onto the
+   row baseline so each one reads as belonging to the role next to it.
+   (The sub-label carries an inline `top`, so it is nudged by transform.) */
+.wh-phase-label > .wh-phase-name,
+.wh-phase-label > .wh-phase-span { position: relative; top: 2px; }
+.wh-phase-sub { transform: translateY(2px); }
 .wh-phase-name { display: block; font: 600 12px/1.25 var(--sans); color: var(--ink); }
 .wh-phase-span {
   display: block;
