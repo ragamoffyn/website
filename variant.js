@@ -75,19 +75,61 @@
     });
   });
 
-  /* ---- Work-history Gantt chart ----
+  /* ---- Work-history chart ----
      CSS already handles hover and focus balloons; this adds click-to-pin,
-     flipping balloons that would fall off the right edge, and the
-     details toggle. */
+     flipping balloons that would leave the chart, and deciding which
+     employer names actually fit inside their segment. */
   var wg = document.getElementById('wg');
   if (wg) {
     var chart = wg.querySelector('.wg-chart');
-    var roles = Array.prototype.slice.call(wg.querySelectorAll('.wg-row'));
+    var units = Array.prototype.slice.call(wg.querySelectorAll('.wg-unit'));
 
-    /* The markup already flips the late rows, which is what a reader
-       without JS gets; this re-measures against the real chart width. */
-    function placeBalloon (role) {
-      var balloon = role.querySelector('.wg-balloon');
+    /* A name only stays inside its segment if the segment is wide enough
+       to hold it; the rest drop into the callout lane below the line,
+       alternating between two lanes so consecutive callouts cannot
+       collide. Re-run on resize, since the segments are percentages. */
+    function placeNames () {
+      var rows = Array.prototype.slice.call(wg.querySelectorAll('.wg-row'));
+      rows.forEach(function (row) {
+        var segs = Array.prototype.slice.call(row.querySelectorAll('.wg-seg'));
+        var out = [];
+
+        // Which names overflow the segment they belong to?
+        segs.forEach(function (seg) {
+          var item = seg.querySelector('.wg-item');
+          if (!item) { return; }
+          seg.classList.remove('out', 'lane2', 'out-end');
+          if (item.scrollWidth > item.clientWidth + 1) {
+            seg.classList.add('out');
+            out.push(seg);
+          }
+        });
+
+        /* Callouts alternate between two lanes so consecutive ones cannot
+           collide. The leftmost takes the deeper lane: a long leader on a
+           callout to the right would otherwise cross the text of the one
+           beside it. A lone callout always sits in the shallow lane. */
+        out.forEach(function (seg, i) {
+          if (out.length > 1 && i % 2 === 0) { seg.classList.add('lane2'); }
+          // Keep the callout inside the chart at the end of the axis
+          var item = seg.querySelector('.wg-item');
+          if (chart && item.getBoundingClientRect().right > chart.getBoundingClientRect().right) {
+            seg.classList.add('out-end');
+          }
+        });
+
+        row.classList.toggle('has-out', out.length > 0);
+        row.classList.toggle('has-lane2', out.length > 1);
+      });
+    }
+
+    placeNames();
+    window.addEventListener('resize', placeNames);
+    // Web fonts land after first paint and change every measurement
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(placeNames); }
+
+    function placeBalloon (unit) {
+      var balloon = unit.querySelector('.wg-balloon');
       if (!balloon || !chart) { return; }
 
       balloon.classList.remove('flip-x', 'flip-y');
@@ -102,31 +144,30 @@
       }
     }
 
-    roles.forEach(function (role) {
-      var item = role.querySelector('.wg-item');
+    units.forEach(function (unit) {
+      var item = unit.querySelector('.wg-item');
       if (!item) { return; }
 
-      /* The whole row is the hover target in this layout, label included */
-      role.addEventListener('mouseenter', function () { placeBalloon(role); });
-      item.addEventListener('focus', function () { placeBalloon(role); });
+      unit.addEventListener('mouseenter', function () { placeBalloon(unit); });
+      item.addEventListener('focus', function () { placeBalloon(unit); });
 
       item.addEventListener('click', function (e) {
         e.stopPropagation();
-        var wasPinned = role.classList.contains('pinned');
-        roles.forEach(function (r) { r.classList.remove('pinned'); });
+        var wasPinned = unit.classList.contains('pinned');
+        units.forEach(function (u) { u.classList.remove('pinned'); });
         if (!wasPinned) {
-          placeBalloon(role);
-          role.classList.add('pinned');
+          placeBalloon(unit);
+          unit.classList.add('pinned');
         }
       });
     });
 
     document.addEventListener('click', function () {
-      roles.forEach(function (r) { r.classList.remove('pinned'); });
+      units.forEach(function (u) { u.classList.remove('pinned'); });
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        roles.forEach(function (r) { r.classList.remove('pinned'); });
+        units.forEach(function (u) { u.classList.remove('pinned'); });
       }
     });
 
@@ -140,7 +181,7 @@
         else { wgDetails.setAttribute('hidden', ''); }
         wgToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
         wgToggle.textContent = opening ? 'Hide all details' : 'Show all details';
-        roles.forEach(function (r) { r.classList.remove('pinned'); });
+        units.forEach(function (u) { u.classList.remove('pinned'); });
       });
     }
   }

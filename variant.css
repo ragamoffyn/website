@@ -145,34 +145,35 @@ body.variant { padding-top: var(--topbar-h); }
 .summary-grid.cols-4 { grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
 
 /* ---------------------------------------------------------------
-   4. Work history as a Gantt / waterfall
-   A label column on the left, and one plotted row per employer on
-   the right. Every bar's left and width are inline percentages of
-   the 1998–2026 span, so a year is the same distance anywhere and
-   the bars step down and to the right as time advances.
+   4. Work history — one line per phase
+   A label column on the left; on the right, each phase is a single
+   bar positioned on the 1998–2026 axis and divided into the
+   employers inside it. So one line carries both the length of the
+   phase and the shape of the years within it.
+   Three lanes make up a row: annotations above the line (things
+   that are not segments of it), the line itself, and a callout lane
+   beneath for names too long to sit inside their own segment.
    --------------------------------------------------------------- */
-:root { --wg-label: 208px; }
+:root { --wg-label: 208px; --wg-note: 32px; --wg-line: 34px; }
 
 .wg { margin: 0 0 44px; }
 .wg-caption {
   font: 400 14px/1.5 var(--serif);
   color: var(--sub);
-  margin-bottom: 24px;
-  max-width: 620px;
+  margin-bottom: 26px;
+  max-width: 660px;
 }
 
-/* Balloons hang below their bar, so nothing is clipped at full width.
-   Only when the chart is wider than the screen does this box start
-   scrolling — see the narrow-screen rules at the end of the file. */
+/* Balloons hang below their segment, so nothing is clipped at full
+   width. Only when the chart is wider than the screen does this box
+   start scrolling — see the narrow-screen rules at the end of the file. */
 .wg-scroll { overflow: visible; }
 .wg-hint { display: none; font: 400 13px/1.5 var(--serif); color: var(--sub); margin: 14px 0 0; }
 
-.wg-chart { position: relative; min-width: 720px; }
+.wg-chart { position: relative; min-width: 760px; }
 
-/* Every row is a label cell and a plotted track, so the two columns
-   line up down the whole chart */
-.wg-row, .wg-group, .wg-axis { display: flex; align-items: stretch; }
-.wg-label, .wg-glabel, .wg-alabel {
+.wg-row, .wg-axis { display: flex; align-items: stretch; }
+.wg-label, .wg-alabel {
   width: var(--wg-label);
   flex: none;
   padding-right: 18px;
@@ -192,158 +193,210 @@ body.variant { padding-top: var(--topbar-h); }
 }
 .wg-grid i { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(33, 29, 25, .08); }
 
-/* ---- Phase group heading ---- */
-.wg-group { padding-top: 16px; margin-bottom: 2px; }
-.wg-group:first-of-type { padding-top: 0; }
-.wg-glabel { padding-top: 1px; }
-.wg-phase-name { display: block; font: 600 12px/1.25 var(--sans); color: var(--ink); }
+/* ---- Row ---- */
+.wg-row { padding-bottom: 14px; }
+/* The note lane and the line are always there; room for the callout lanes
+   is added only on rows that use them (variant.js sets the classes) */
+.wg-track { min-height: calc(var(--wg-note) + var(--wg-line) + 8px); }
+.wg-row.has-out .wg-track { min-height: calc(var(--wg-note) + var(--wg-line) + 40px); }
+.wg-row.has-lane2 .wg-track { min-height: calc(var(--wg-note) + var(--wg-line) + 72px); }
+.wg-label { padding-top: calc(var(--wg-note) + 5px); }
+.wg-phase-name { display: block; font: 600 14px/1.25 var(--sans); color: var(--ink); }
 .wg-phase-span {
   display: block;
-  font: 400 10.5px/1.4 var(--sans);
+  font: 400 11px/1.4 var(--sans);
   letter-spacing: .04em;
   color: var(--sub);
-  margin-top: 2px;
-}
-/* The phase's own extent, tinted behind the roles that belong to it */
-.wg-band {
-  position: absolute;
-  top: 2px;
-  height: 14px;
-  border-left: 1px solid rgba(33, 29, 25, .22);
-  border-right: 1px solid rgba(33, 29, 25, .22);
-}
-.wg-p1 .wg-band { background: rgba(235, 210, 192, .5); }
-.wg-p2 .wg-band { background: rgba(222, 175, 144, .5); }
-.wg-p3 .wg-band { background: rgba(209, 136, 92, .45); }
-.wg-p4 .wg-band { background: rgba(192, 90, 30, .38); }
-
-/* A named stretch nested inside a phase (Enterprise UX inside Applied
-   research): outlined on the band, labelled just below it */
-.wg-subband {
-  position: absolute;
-  top: 2px;
-  height: 14px;
-  border: 1px dashed var(--accent);
-}
-.wg-subband span {
-  position: absolute;
-  top: calc(100% + 3px);
-  left: 0;
-  white-space: nowrap;
-  font: 400 10px/1.3 var(--sans);
-  letter-spacing: .04em;
-  color: var(--sub);
+  margin-top: 3px;
 }
 
-/* ---- Employer row ---- */
-.wg-row { padding: 5px 0; }
-.wg-row:hover { background: rgba(33, 29, 25, .022); }
-.wg-label { padding-top: 2px; }
-.wg-emp { display: block; font: 600 14px/1.3 var(--serif); color: var(--ink); }
-.wg-job { display: block; font: 400 11px/1.35 var(--sans); color: var(--sub); margin-top: 2px; }
-.wg-concurrent .wg-emp { font-style: italic; }
+/* ---- The line: one bar per phase, split into its employers ---- */
+.wg-line {
+  position: absolute;
+  top: var(--wg-note);
+  height: var(--wg-line);
+  display: flex;
+  align-items: stretch;
+}
+.wg-p1 .wg-line { background: #ebd2c0; }
+.wg-p2 .wg-line { background: #deaf90; }
+.wg-p3 .wg-line { background: #d1885c; }
+.wg-p4 .wg-line { background: var(--accent); }
 
-/* Carries the bar's position on the axis. The button and the balloon both
-   sit inside it, so the balloon opens at the bar rather than at the start
-   of the row. */
-.wg-plot { position: absolute; top: 4px; }
+/* A segment's flex weight is its duration in years, so the divisions
+   land on the same scale as the axis */
+.wg-seg { position: relative; flex: 1; min-width: 0; }
+/* Hairline where one employer hands off to the next */
+.wg-seg + .wg-seg::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 1px;
+  background: rgba(247, 244, 238, .65);
+  z-index: 2;
+}
 
 .wg-item {
   display: block;
   width: 100%;
-  margin: 0; padding: 0; border: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0 9px;
+  border: 0;
   background: none;
   font: inherit;
   color: inherit;
   text-align: left;
   cursor: pointer;
+  overflow: hidden;
 }
-.wg-bar { display: block; height: 22px; position: relative; }
-.wg-p1 .wg-bar { background: #ebd2c0; }
-.wg-p2 .wg-bar { background: #deaf90; }
-.wg-p3 .wg-bar { background: #d1885c; }
-.wg-p4 .wg-bar { background: var(--accent); }
-.wg-item:hover .wg-bar,
-.wg-item:focus-visible .wg-bar { filter: brightness(.9); }
+.wg-seg:hover { background: rgba(33, 29, 25, .09); }
 
-/* The concurrent role reads as an overlay on the row above it, not as a
-   step in the sequence, so it is drawn hollow and half height */
-.wg-concurrent .wg-bar {
-  height: 12px;
-  margin-top: 5px;
-  background: var(--page);
-  border: 1px solid var(--accent);
+.wg-emp { display: block; font: 600 11.5px/1.2 var(--sans); white-space: nowrap; }
+.wg-dates {
+  display: block;
+  font: 400 10px/1.3 var(--sans);
+  letter-spacing: .04em;
+  white-space: nowrap;
+  opacity: .78;
+  margin-top: 1px;
 }
-/* Point-in-time markers (the internships) — a span with no duration */
-.wg-marks .wg-bar { background: none; height: 22px; }
-.wg-marks .wg-bar::before {
+/* Ink on the pale end of the ramp, page colour on the dark end */
+.wg-p1 .wg-seg, .wg-p2 .wg-seg { color: var(--ink); }
+.wg-p3 .wg-seg, .wg-p4 .wg-seg { color: var(--page); }
+
+/* Names that do not fit inside their segment drop into the lane below,
+   joined to the line by a leader. variant.js sets .out and picks the
+   lane; the markup ships with the known-narrow ones already marked, so
+   the chart is still readable with no script. */
+.wg-seg.out > .wg-item {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  height: auto;
+  padding: 9px 0 0 7px;
+  color: var(--sub);
+}
+.wg-seg.out.lane2 > .wg-item { padding-top: 41px; }
+.wg-seg.out > .wg-item::before {
   content: "";
   position: absolute;
-  left: 0; right: 0; top: 50%;
-  border-top: 1px dashed rgba(33, 29, 25, .35);
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 7px;
+  background: rgba(33, 29, 25, .3);
 }
-.wg-dot {
+.wg-seg.out.lane2 > .wg-item::before { height: 39px; }
+/* A callout at the end of the axis has no room to the right of its
+   segment, so it hangs from the segment's other edge instead */
+.wg-seg.out.out-end > .wg-item { left: auto; right: 0; padding-left: 0; padding-right: 7px; text-align: right; }
+.wg-seg.out.out-end > .wg-item::before { left: auto; right: 0; }
+.wg-seg.out .wg-emp { color: var(--ink); }
+.wg-seg.out .wg-dates { opacity: 1; color: var(--sub); }
+.wg-seg.out:hover .wg-emp { color: var(--accent); }
+
+/* ---- Annotations above the line ----
+   A named stretch of the phase, and a role that ran alongside another:
+   neither is a segment of the line, so both sit above it. */
+.wg-note { position: absolute; top: 0; height: var(--wg-note); }
+/* Names here are wider than the stretch they annotate, so they must be
+   free to overhang it */
+.wg-note .wg-item { padding: 0 0 10px; overflow: visible; }
+.wg-note-name { display: block; font: 600 10.5px/1.2 var(--sans); color: var(--ink); white-space: nowrap; }
+.wg-note-dates {
+  display: block;
+  font: 400 9.5px/1.3 var(--sans);
+  letter-spacing: .04em;
+  color: var(--sub);
+  white-space: nowrap;
+}
+.wg-alongside .wg-note-name { font-style: italic; }
+/* The bar the annotation refers to, pinned to the bottom of its lane */
+.wg-note-mark {
   position: absolute;
-  top: 50%;
+  left: 0; right: 0;
+  bottom: 0;
+  height: 7px;
+  border: 1px solid var(--accent);
+  border-bottom: none;
+  background: var(--page);
+}
+.wg-marks .wg-note-mark { border: none; border-top: 1px dashed rgba(33, 29, 25, .35); }
+.wg-marks .wg-note-mark i {
+  position: absolute;
+  top: 0;
   transform: translate(-50%, -50%);
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--page);
   border: 2px solid var(--accent);
 }
+.wg-marks .wg-note-mark i:nth-child(1) { left: 0; }
+.wg-marks .wg-note-mark i:nth-child(2) { left: 50%; }
+.wg-marks .wg-note-mark i:nth-child(3) { left: 100%; }
 
-/* Dates ride just past the end of the bar, except where the bar runs to
-   the end of the axis and there is no room beside it */
-.wg-dates {
+.wg-bracket {
+  border-bottom: 1px dashed var(--accent);
+  border-left: 1px dashed var(--accent);
+  border-right: 1px dashed var(--accent);
+  /* Sits low enough in the lane that its label stays inside the row */
+  top: 15px;
+  height: calc(var(--wg-note) - 15px);
+}
+.wg-bracket span {
   position: absolute;
-  left: calc(100% + 9px);
-  top: 4px;
+  left: 0;
+  bottom: calc(100% + 2px);
   white-space: nowrap;
-  font: 500 10.5px/1.3 var(--sans);
-  letter-spacing: .05em;
+  font: 400 10px/1.3 var(--sans);
+  letter-spacing: .04em;
   color: var(--sub);
 }
-.dates-in .wg-dates { left: auto; right: 9px; color: var(--page); }
+
+.wg-unit .wg-item:hover .wg-note-name,
+.wg-unit .wg-item:focus-visible .wg-note-name { color: var(--accent); }
 
 /* ---- Balloon ---- */
 .wg-balloon {
   position: absolute;
   left: 0;
-  top: 30px;
+  top: calc(100% + 10px);
   z-index: 30;
   width: 340px;
   padding: 14px 16px;
   background: var(--page);
   border: 1px solid var(--ink);
+  color: var(--ink);
   opacity: 0;
   visibility: hidden;
   transition: opacity .12s ease;
   pointer-events: none;
 }
-/* Rows late in the timeline open their balloon to the left instead, so it
-   cannot run off the chart. variant.js re-checks this at hover time, and
-   flips the bottom rows upward so their balloons stay over the chart. */
+.wg-note .wg-balloon { top: calc(100% + 4px); }
+/* Segments late in the timeline open their balloon to the left, and the
+   bottom rows open theirs upward, so neither leaves the chart.
+   variant.js re-checks both at hover time. */
 .wg-balloon.flip-x { left: auto; right: 0; }
-.wg-balloon.flip-y { top: auto; bottom: 28px; }
+.wg-balloon.flip-y { top: auto; bottom: calc(100% + 10px); }
 
-.wg-row:hover .wg-balloon,
+.wg-unit:hover > .wg-balloon,
 .wg-item:focus-visible + .wg-balloon,
-.wg-row.pinned .wg-balloon {
+.wg-unit.pinned > .wg-balloon {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-/* The label column already names the role, so the balloon's own heading
-   is only needed where the balloon adds a different one */
-.wg-balloon .t { display: none; font: 600 15px/1.3 var(--serif); }
+.wg-balloon .t { font: 600 15px/1.3 var(--serif); color: var(--ink); }
 .wg-balloon .m {
   font: 500 10.5px/1.4 var(--sans);
   letter-spacing: .05em;
   color: var(--accent);
+  margin-top: 4px;
 }
 .wg-balloon .n { font: 400 14px/1.55 var(--serif); color: var(--sub); margin-top: 8px; text-wrap: pretty; }
-.wg-balloon .m + .n { margin-top: 6px; }
 .wg-balloon .cs,
 .wg-detail .cs {
   display: inline-block;
@@ -356,13 +409,14 @@ body.variant { padding-top: var(--topbar-h); }
 .wg-balloon .cs:hover, .wg-detail .cs:hover { color: var(--ink); }
 
 /* ---- Year axis ---- */
-.wg-axis { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); height: 26px; }
+.wg-axis { padding-top: 8px; border-top: 1px solid var(--line); height: 26px; }
 .wg-alabel {
   font: 500 10.5px/1 var(--sans);
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--sub);
 }
+.wg-axis .wg-track { min-height: 0; }
 .wg-axis .wg-track span {
   position: absolute;
   top: 0;
@@ -414,6 +468,13 @@ body.variant { padding-top: var(--topbar-h); }
    gives that empty space back to the page. */
 @media (max-width: 880px) {
   .wg-hint { display: block; }
+  /* The phase names stay put while the years scroll past them */
+  .wg-label, .wg-alabel {
+    position: sticky;
+    left: 0;
+    z-index: 6;
+    background: var(--page);
+  }
   .wg-scroll {
     overflow-x: auto;
     overflow-y: hidden;
