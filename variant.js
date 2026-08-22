@@ -75,29 +75,39 @@
     });
   });
 
-  /* ---- Horizontal work-history chart ----
+  /* ---- Work-history Gantt chart ----
      CSS already handles hover and focus balloons; this adds click-to-pin,
      flipping balloons that would fall off the right edge, and the
      details toggle. */
-  var wx = document.getElementById('wx');
-  if (wx) {
-    var chart = wx.querySelector('.wx-chart');
-    var roles = Array.prototype.slice.call(wx.querySelectorAll('.wx-role'));
+  var wg = document.getElementById('wg');
+  if (wg) {
+    var chart = wg.querySelector('.wg-chart');
+    var roles = Array.prototype.slice.call(wg.querySelectorAll('.wg-row'));
 
+    /* The markup already flips the late rows, which is what a reader
+       without JS gets; this re-measures against the real chart width. */
     function placeBalloon (role) {
-      role.classList.remove('flip-x');
-      var balloon = role.querySelector('.wx-balloon');
+      var balloon = role.querySelector('.wg-balloon');
       if (!balloon || !chart) { return; }
-      if (balloon.getBoundingClientRect().right > chart.getBoundingClientRect().right) {
-        role.classList.add('flip-x');
+
+      balloon.classList.remove('flip-x', 'flip-y');
+      var c = chart.getBoundingClientRect();
+      if (balloon.getBoundingClientRect().right > c.right) {
+        balloon.classList.add('flip-x');
+      }
+      // Bottom rows would drop their balloon past the axis and onto the
+      // next section, so open those upward instead
+      if (balloon.getBoundingClientRect().bottom > c.bottom) {
+        balloon.classList.add('flip-y');
       }
     }
 
     roles.forEach(function (role) {
-      var item = role.querySelector('.wx-item');
+      var item = role.querySelector('.wg-item');
       if (!item) { return; }
 
-      item.addEventListener('mouseenter', function () { placeBalloon(role); });
+      /* The whole row is the hover target in this layout, label included */
+      role.addEventListener('mouseenter', function () { placeBalloon(role); });
       item.addEventListener('focus', function () { placeBalloon(role); });
 
       item.addEventListener('click', function (e) {
@@ -120,17 +130,17 @@
       }
     });
 
-    var wxToggle = document.getElementById('wx-toggle');
-    var wxDetails = document.getElementById('wx-details');
-    if (wxToggle && wxDetails) {
-      wxToggle.addEventListener('click', function (e) {
+    var wgToggle = document.getElementById('wg-toggle');
+    var wgDetails = document.getElementById('wg-details');
+    if (wgToggle && wgDetails) {
+      wgToggle.addEventListener('click', function (e) {
         e.stopPropagation();
-        var opening = wxDetails.hasAttribute('hidden');
-        if (opening) { wxDetails.removeAttribute('hidden'); }
-        else { wxDetails.setAttribute('hidden', ''); }
-        wxToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
-        wxToggle.textContent = opening ? 'Hide all details' : 'Show all details';
-        roles.forEach(function (r) { r.classList.remove('pinned', 'flip-x'); });
+        var opening = wgDetails.hasAttribute('hidden');
+        if (opening) { wgDetails.removeAttribute('hidden'); }
+        else { wgDetails.setAttribute('hidden', ''); }
+        wgToggle.setAttribute('aria-expanded', opening ? 'true' : 'false');
+        wgToggle.textContent = opening ? 'Hide all details' : 'Show all details';
+        roles.forEach(function (r) { r.classList.remove('pinned'); });
       });
     }
   }
