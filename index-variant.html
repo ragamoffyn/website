@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michael Stiso, Ph.D. — UX Researcher &amp; Designer (design variant)</title>
+  <meta name="description" content="Michael Stiso is a UX researcher and designer with a Ph.D. in cognitive psychology, designing decision-support tools for professionals in complex, high-stakes environments — offshore energy, aviation, military, banking, and more." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=Archivo:wght@400..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="variant.css" />
+</head>
+<body class="variant">
+
+  <!-- ===================== TOP BAR (hides on scroll down) ===================== -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a class="topbar-name" href="#top">Michael E. Stiso, Ph.D.</a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="topbar-nav">
+        <span class="bar" aria-hidden="true"></span> Menu
+      </button>
+
+      <nav class="topbar-nav" id="topbar-nav" aria-label="Section navigation">
+        <a href="#introduction" class="rail-link">Introduction</a>
+        <a href="#cv" class="rail-link">CV</a>
+        <a href="#projects" class="rail-link">Projects</a>
+        <a href="#ai" class="rail-link">AI &amp; UX</a>
+        <a href="#contact" class="rail-link">Contact</a>
+        <a href="mailto:mikestiso@gmail.com" class="topbar-mail">mikestiso@gmail.com</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page" id="top">
+    <main class="main main-flow">
+
+      <!-- ---------- Hero: portrait, intro, four summaries ---------- -->
+      <section id="introduction">
+        <div class="hero">
+          <figure class="hero-photo">
+            <!-- Drop portrait.jpg in the repo root. Until it is there, the
+                 script swaps in the "MS" placeholder underneath. -->
+            <img class="hero-img" id="hero-img" src="portrait.jpg" alt="Michael Stiso" width="360" height="450" />
+            <div class="hero-img-fallback" aria-hidden="true">MS</div>
+          </figure>
+
+          <div class="hero-copy">
+            <div class="eyebrow">Introduction</div>
+            <h1 class="hero-name">Michael E. Stiso, Ph.D.</h1>
+            <div class="hero-title">UX Researcher &amp; Designer</div>
+
+            <p class="lede">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer.</p>
+            <p class="lede">I tend to focus on decision-support tools for professionals working in complex, high-stakes environments, but I have worked on many kinds of products.</p>
+
+            <div class="hero-meta">
+              <span>Oslo, Norway</span>
+              <a href="mailto:mikestiso@gmail.com">mikestiso@gmail.com</a>
+              <a href="https://www.linkedin.com/in/mikestiso" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-grid cols-4">
+          <div class="summary-cell">
+            <h3>Cognitive Psychology Ph.D.</h3>
+            <p>My graduate training was in human mental capabilities and limitations, with a focus on learning and decision making. It continues to shape how I approach both research and design.</p>
+          </div>
+          <div class="summary-cell">
+            <h3>Research + Design</h3>
+            <p>My experience has been primarily in small teams, letting me perform both user research and interface design. Research shapes what gets designed; design raises new research questions.</p>
+          </div>
+          <div class="summary-cell">
+            <h3>Expert-User Focus</h3>
+            <p>The thread connecting my work is a passion for building decision-support tools for professionals in dynamic environments where choices carry real consequences, and I have pursued both in research labs and in commercial settings.</p>
+          </div>
+          <div class="summary-cell">
+            <h3>Adaptable Across Domains</h3>
+            <p>Military, aviation, banking, agriculture, gaming, offshore energy. While the domain changes, the underlying design problem does not.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- CV ---------- -->
+      <section id="cv">
+        <div class="cv-head">
+          <div class="eyebrow">Work history</div>
+          <button class="wh-toggle" id="wx-toggle" aria-expanded="false" aria-controls="wx-details">Show all details</button>
+        </div>
+
+        <!-- ---------- Horizontal work-history timeline ----------
+             Time runs left to right; every element's width is its
+             duration as a percentage of the 1998–2026 span, so a year is
+             the same distance anywhere on the chart. Positions are inline
+             percentages: left = (startYear - 1998) / 28, width =
+             duration / 28. Edit those two numbers if a role changes. -->
+        <div class="wx" id="wx">
+          <p class="wx-caption">Hover or tap any employer for detail.</p>
+
+          <div class="wx-scroll">
+            <div class="wx-chart">
+
+              <!-- Phase band -->
+              <div class="wx-phases">
+                <div class="wx-phase wx-p1" style="left:0%;width:17.857%">
+                  <span class="wx-phase-name">Foundations</span>
+                  <span class="wx-phase-span">1998–2003 · 5 years</span>
+                </div>
+                <div class="wx-phase wx-p2" style="left:17.857%;width:42.857%">
+                  <span class="wx-phase-name">Applied research</span>
+                  <span class="wx-phase-span">2003–2015 · 12 years</span>
+                </div>
+                <div class="wx-phase wx-p3" style="left:60.714%;width:28.571%">
+                  <span class="wx-phase-name">Innovation skunkworks</span>
+                  <span class="wx-phase-span">2015–2023 · 8 years</span>
+                </div>
+                <div class="wx-phase wx-p4" style="left:89.286%;width:10.714%">
+                  <span class="wx-phase-name">Industrial UX</span>
+                  <span class="wx-phase-span">2023–now · 3 years</span>
+                </div>
+                <!-- A named stretch nested inside Applied research -->
+                <div class="wx-subphase" style="left:25%;width:10.714%">
+                  <span class="wx-phase-name">Enterprise UX</span>
+                </div>
+              </div>
+
+              <!-- Track: gridlines, the spine, and every role -->
+              <div class="wx-track" id="wx-track">
+
+                <div class="wx-grid" aria-hidden="true">
+                  <i style="left:7.143%"></i><i style="left:25%"></i><i style="left:42.857%"></i>
+                  <i style="left:60.714%"></i><i style="left:78.571%"></i><i style="left:96.429%"></i>
+                </div>
+
+                <!-- The spine: a continuous rule the role bars sit on, opening
+                     on a dot and closing on an arrowhead so it reads as time -->
+                <div class="wx-spine" aria-hidden="true"></div>
+
+                <!-- Point-in-time markers: the three internships -->
+                <div class="wx-role wx-marks" style="left:0%;width:14.286%">
+                  <button class="wx-item" aria-describedby="wx-b2">
+                    <span class="wx-tag">
+                      <span class="wx-emp">Internships</span>
+                      <span class="wx-dates">1998 · 2000 · 2002</span>
+                    </span>
+                    <span class="wx-bar">
+                      <i class="wx-dot" style="left:0%"></i>
+                      <i class="wx-dot" style="left:50%"></i>
+                      <i class="wx-dot" style="left:100%"></i>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b2" role="tooltip">
+                    <div class="t">Human-factors internships</div>
+                    <div class="m">Three placements during graduate study</div>
+                    <div class="n">Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</div>
+                  </div>
+                </div>
+
+                <!-- A role running alongside another — parallel track above the spine -->
+                <div class="wx-role wx-concurrent" style="left:50%;width:3.571%">
+                  <button class="wx-item" aria-describedby="wx-b6">
+                    <span class="wx-tag">
+                      <span class="wx-emp">Threadbare Games</span>
+                      <span class="wx-dates">2012–2013 · alongside SINTEF</span>
+                    </span>
+                    <span class="wx-bar"></span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b6" role="tooltip">
+                    <div class="t">UX Consultant</div>
+                    <div class="m">San Francisco</div>
+                    <div class="n">Ran alongside the SINTEF years. UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</div>
+                    <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
+                  </div>
+                </div>
+
+                <!-- Employers, in order. Tags alternate between two lanes so
+                     neighbouring names cannot collide. -->
+                <div class="wx-role wx-p1 lane-a" style="left:0%;width:17.857%">
+                  <button class="wx-item" aria-describedby="wx-b1">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">Texas A&amp;M University</span>
+                      <span class="wx-dates">1998–2003</span>
+                      <span class="wx-job">Ph.D., Cognitive Psychology</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b1" role="tooltip">
+                    <div class="t">Ph.D., Cognitive Psychology</div>
+                    <div class="n">The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</div>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p2 lane-b" style="left:17.857%;width:7.143%">
+                  <button class="wx-item" aria-describedby="wx-b3">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">CHI Systems</span>
+                      <span class="wx-dates">2003–2005</span>
+                      <span class="wx-job">Human-Systems Engineer</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b3" role="tooltip">
+                    <div class="t">Human-Systems Engineer</div>
+                    <div class="n">Military training and decision-support systems. Cognitive task analyses of military specialists.</div>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p2 lane-a" style="left:25%;width:10.714%">
+                  <button class="wx-item" aria-describedby="wx-b4">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">Oracle</span>
+                      <span class="wx-dates">2005–2008</span>
+                      <span class="wx-job">Senior Usability Engineer</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b4" role="tooltip">
+                    <div class="t">Senior Usability Engineer</div>
+                    <div class="n">A step out of research and into enterprise UX. Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</div>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p2 lane-b" style="left:35.714%;width:25%">
+                  <button class="wx-item" aria-describedby="wx-b5">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">SINTEF ICT</span>
+                      <span class="wx-dates">2008–2015</span>
+                      <span class="wx-job">HCI Researcher</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b5" role="tooltip">
+                    <div class="t">HCI Researcher</div>
+                    <div class="m">Oslo, Norway</div>
+                    <div class="n">Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</div>
+                    <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p3 lane-a" style="left:60.714%;width:3.571%">
+                  <button class="wx-item" aria-describedby="wx-b7">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">Nordea</span>
+                      <span class="wx-dates">2015–2016</span>
+                      <span class="wx-job">Innovation Experimentation Lead</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b7" role="tooltip">
+                    <div class="t">Innovation Experimentation Lead</div>
+                    <div class="m">Oslo, Norway</div>
+                    <div class="n">Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</div>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p3 lane-b" style="left:64.286%;width:10.714%">
+                  <button class="wx-item" aria-describedby="wx-b8">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">Yara International</span>
+                      <span class="wx-dates">2016–2019</span>
+                      <span class="wx-job">Experience Designer</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b8" role="tooltip">
+                    <div class="t">Experience Designer</div>
+                    <div class="m">Oslo, Norway</div>
+                    <div class="n">Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</div>
+                    <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
+                    <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p3 lane-a" style="left:75%;width:14.286%">
+                  <button class="wx-item" aria-describedby="wx-b9">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">DNV</span>
+                      <span class="wx-dates">2019–2023</span>
+                      <span class="wx-job">UX Lead</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b9" role="tooltip">
+                    <div class="t">UX Lead</div>
+                    <div class="m">Høvik, Norway</div>
+                    <div class="n">Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</div>
+                    <a class="cs" href="national-security.html">National Security &#8594;</a>
+                    <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
+                  </div>
+                </div>
+
+                <div class="wx-role wx-p4 lane-b tag-end" style="left:89.286%;width:10.714%">
+                  <button class="wx-item" aria-describedby="wx-b10">
+                    <span class="wx-bar"></span>
+                    <span class="wx-tag">
+                      <span class="wx-emp">4Subsea</span>
+                      <span class="wx-dates">2023 — now</span>
+                      <span class="wx-job">UX Lead &amp; Product Designer</span>
+                    </span>
+                  </button>
+                  <div class="wx-balloon" id="wx-b10" role="tooltip">
+                    <div class="t">UX Lead &amp; Product Designer</div>
+                    <div class="m">Asker, Norway</div>
+                    <div class="n">Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</div>
+                    <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Year axis -->
+              <div class="wx-axis" aria-hidden="true">
+                <span style="left:7.143%">2000</span><span style="left:25%">2005</span><span style="left:42.857%">2010</span>
+                <span style="left:60.714%">2015</span><span style="left:78.571%">2020</span><span style="left:96.429%">2025</span>
+              </div>
+
+            </div>
+          </div>
+          <p class="wx-hint">The chart is wider than this screen — drag it sideways, or open the details below.</p>
+        </div>
+
+        <!-- Every balloon's prose, laid out flat. Toggled by the button above. -->
+        <div class="wx-details" id="wx-details" hidden>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">4Subsea</span><span class="wx-detail-dates">2023 — now</span></div>
+            <div class="wx-detail-role">UX Lead &amp; Product Designer · Asker, Norway</div>
+            <p>Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</p>
+            <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">DNV</span><span class="wx-detail-dates">2019–2023</span></div>
+            <div class="wx-detail-role">UX Lead · Høvik, Norway</div>
+            <p>Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</p>
+            <a class="cs" href="national-security.html">National Security &#8594;</a>
+            <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">Yara International</span><span class="wx-detail-dates">2016–2019</span></div>
+            <div class="wx-detail-role">Experience Designer · Oslo, Norway</div>
+            <p>Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</p>
+            <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
+            <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">Nordea</span><span class="wx-detail-dates">2015–2016</span></div>
+            <div class="wx-detail-role">Innovation Experimentation Lead · Oslo, Norway</div>
+            <p>Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</p>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">Threadbare Games</span><span class="wx-detail-dates">2012–2013</span></div>
+            <div class="wx-detail-role">UX Consultant · San Francisco · alongside SINTEF</div>
+            <p>Ran alongside the SINTEF years. UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</p>
+            <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">SINTEF ICT</span><span class="wx-detail-dates">2008–2015</span></div>
+            <div class="wx-detail-role">HCI Researcher · Oslo, Norway</div>
+            <p>Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</p>
+            <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">Oracle</span><span class="wx-detail-dates">2005–2008</span></div>
+            <div class="wx-detail-role">Senior Usability Engineer</div>
+            <p>A step out of research and into enterprise UX. Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</p>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">CHI Systems</span><span class="wx-detail-dates">2003–2005</span></div>
+            <div class="wx-detail-role">Human-Systems Engineer</div>
+            <p>Military training and decision-support systems. Cognitive task analyses of military specialists.</p>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">Internships</span><span class="wx-detail-dates">1998 · 2000 · 2002</span></div>
+            <div class="wx-detail-role">Human factors</div>
+            <p>Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</p>
+          </div>
+          <div class="wx-detail">
+            <div class="wx-detail-head"><span class="wx-detail-emp">Texas A&amp;M University</span><span class="wx-detail-dates">1998–2003</span></div>
+            <div class="wx-detail-role">Ph.D., Cognitive Psychology</div>
+            <p>The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</p>
+          </div>
+        </div>
+
+        <div class="cv-cols">
+          <div class="cv-col">
+            <h3>Honors</h3>
+            <p>NASA Graduate Student Researchers Program Fellowship · Air Force Office of Scientific Research Graduate Fellowship Program</p>
+          </div>
+          <div class="cv-col">
+            <h3>Patents</h3>
+            <p>Navigational tools for large trees · Graphical tool for defining a set of ranges</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- Projects ---------- -->
+      <section id="projects">
+        <div class="eyebrow">Past projects</div>
+        <p class="projects-intro">My process is the same at any scale: Understand the work before the workflow. Observe experts in context, find where the tool fights them, prototype the fix, and check whether it held. And then adjust all that as needed depending on project constraints. My design style tends to be minimalistic.</p>
+
+        <div class="projects-grid">
+
+          <a class="project-card" href="foursubsea.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">4Subsea — Digital Solutions Platform</div>
+            <div class="project-blurb">Platform UX for offshore wind and oil-and-gas operations: adopting a first design system and leading a platform-wide usability redesign as the sole UX practitioner.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="national-security.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">National Security</div>
+            <div class="project-blurb">
+              <ul>
+                <li><i>Deliverable</i>: Proof of concept</li>
+                <li><i>Topic</i>: Risk analysts looking for patterns in large amounts of unconnected information</li>
+                <li><i>Goal</i>: Reduce decision making time and effort, and get more value from data by combining different info sources</li>
+                <li><i>Strategy</i>: Provide a common, dynamic threat picture that visualizes data from multiple sources in a way that highlights connections that would otherwise go unnoticed</li>
+              </ul>
+            </div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="maritime-refueling.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Maritime Refueling</div>
+            <div class="project-blurb">
+             <ul>
+                <li><i>Deliverable</i>: Proof of concept</li>
+                <li><i>Topic</i>: Ships at sea negotiating unplanned fuel purchases with nearby suppliers</li>
+                <li><i>Goal</i>: The team wanted to pursue a solution for this relatively unsupported area.</li>
+                <li><i>Strategy</i>: They envisioned building a tool that would cover the whole negotiation process from beginning to end.</li>
+              </ul>
+            </div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+          
+          <a class="project-card" href="coffee-ecosystem.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">The Coffee Ecosystem</div>
+            <div class="project-blurb">
+              <ul>
+                <li><i>Deliverable</i>: Ecosystem map</li>
+                <li><i>Topic</i>: Coffee bean purchasing</li>
+                <li><i>Goal</i>: The team wanted to identify potential opportunities for support somewhere in the coffee ecosystem.</li>
+                <li><i>Strategy</i>: The team had in mind some matchmaking service to help small farms.</li>
+              </ul>
+            </div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+          
+          <a class="project-card" href="sewer-corrosion.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Sewer Corrosion</div>
+            <div class="project-blurb">
+              <ul>
+                <li><i>Deliverable</i>: Ecosystem map</li>
+                <li><i>Topic</i>: Estimating corrosion within a sewer system and what the options are for dealing with it</li>
+                <li><i>Goal</i>: Help users to understand the current state of the system, what they can do about it, and how those options compare to the company’s product</li>
+                <li><i>Strategy</i>: An app that eases the data entry process and makes the results more understandable by non-experts</li>
+              </ul>
+            </div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+          
+          <a class="project-card" href="search-rescue.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Search and Rescue</div>
+            <div class="project-blurb">A drone command interface giving field commanders direct situational awareness of aerial assets — from needs analysis through usability evaluation.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+          <a class="project-card" href="mobile-games.html">
+            <div class="project-thumb placeholder" aria-hidden="true">Project image</div>
+            <div class="project-title">Mobile Games</div>
+            <div class="project-blurb">UX consulting for a San Francisco startup building turn-based strategy tablet games — usable and learnable, but also genuinely fun.</div>
+            <span class="project-link">Case study &#8594;</span>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ---------- AI & UX ---------- -->
+      <section id="ai">
+        <div class="eyebrow">AI &amp; UX</div>
+        <p class="ai-intro">AI is changing a significant portion of the UX process, and keeping pace with it takes active effort. I pay particular attention to the areas below — both as a practitioner using AI tools in my own work, and as a designer thinking about what it means to design products that incorporate AI.</p>
+        <div class="ai-grid">
+          <div class="ai-card">
+            <h3>AI-Assisted Research</h3>
+            <p>There is real value in using AI to support qualitative synthesis — surfacing themes across transcripts, comparing findings across sessions, flagging gaps in coverage. What still requires a trained researcher is judging what those patterns mean and whether they hold up against what was actually observed.</p>
+          </div>
+          <div class="ai-card">
+            <h3>AI-Augmented Design</h3>
+            <p>Generative tools can accelerate ideation considerably. Where they are less reliable is in decisions that depend on real understanding of a user's context. AI produces variations quickly; deciding which are appropriate still takes someone familiar with the work the users are actually doing.</p>
+          </div>
+          <div class="ai-card">
+            <h3>Designing AI Experiences</h3>
+            <p>Designing AI-powered features carries specific UX challenges, largely because the system's behavior isn't fully predictable. That reshapes how you think about trust, feedback, and error handling — users need enough transparency to calibrate their confidence without that transparency becoming its own cognitive burden.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- Contact ---------- -->
+      <section id="contact">
+        <div class="eyebrow">Contact</div>
+        <div class="contact-headline">Interested in research and design for expert users? <a href="mailto:mikestiso@gmail.com">mikestiso@gmail.com</a></div>
+        <div class="contact-links">
+          <a href="mailto:mikestiso@gmail.com">Email &#8594;</a>
+          <a href="https://www.linkedin.com/in/mikestiso" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+        </div>
+      </section>
+
+
+    </main>
+  </div>
+
+  <script src="variant.js"></script>
+</body>
+</html>
