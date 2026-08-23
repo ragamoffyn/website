@@ -60,6 +60,41 @@ absolutely positioned pseudo-elements on `.wh-bar`. As ordinary
 pseudo-elements they would become flex items of the bar column and steal
 height from the phases, silently breaking the scale.
 
+## The design variant (`index-variant.html`)
+
+A second, unlinked home page (`noindex`) trying a different shape: a top
+bar instead of the left rail, and a **vertical, proportional work-history
+timeline** rebuilt from a Claude Design handoff. Its own `variant.css`
+and `variant.js`; it still loads `style.css` for the shared tokens.
+
+The timeline (`#wt`) is data-driven. Each role is an `<li>` carrying
+`data-months` and `data-phase`, and `variant.js` computes every top and
+height from those — segment height = months x scale, floored at a
+minimum. **Correct a duration in the markup and the whole figure
+re-flows; never write a pixel height by hand.**
+
+- The scale is chosen so no row is shorter than its own contents, at any
+  width and in either state. Expanding the details raises the scale
+  rather than growing individual rows, which is what keeps every segment
+  proportional to every other one. It also makes the expanded figure
+  tall (~3000px at 1280) — `breath` and the `.wt` measure in
+  `variant.css` are the dials if that ever needs tightening.
+- Only the three internships hit the minimum height, which is why they
+  are hatched and footnoted. Everything else is strictly to scale.
+- DNV spans two phases: `data-phase-to` and `data-split-at` end the
+  Innovation band partway down it and start Industrial UX there. The
+  split fraction is a judgment call, not a fact.
+- Roles that ran *concurrently* with others (the Texas A&M Ph.D., and
+  Threadbare Games alongside SINTEF) cannot be segments of a single
+  stacked scale, so they sit in the "Alongside" strip under the
+  footnote. The design handoff omitted both; they are kept here so the
+  Mobile Games case study stays reachable.
+- Without JS the figure degrades to a plain list of roles with their
+  descriptions — `variant.js` adds `.is-live` before it positions
+  anything. Keep that split if you touch the CSS.
+- Phase colours are one hue each at matching lightness, with the site
+  accent carrying the innovation years.
+
 ## Conventions
 
 - Fonts: Newsreader (serif, body and headings) and Archivo (sans,

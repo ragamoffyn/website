@@ -87,269 +87,232 @@
       <section id="cv">
         <div class="cv-head">
           <div class="eyebrow">Work history</div>
-          <button class="wh-toggle" id="wg-toggle" aria-expanded="false" aria-controls="wg-details">Show all details</button>
+          <button class="wh-toggle" id="wt-toggle" aria-expanded="false" aria-controls="wt-roles">Show all details</button>
         </div>
 
-        <!-- ---------- Work history: one line per phase ----------
-             Each phase is a single bar on the shared year axis —
-             left = (startYear - 1998) / 28, width = duration / 28 as
-             inline percentages — divided into the employers inside it.
-             A segment's flex weight is its duration in years, so the
-             divisions land on the same scale the axis uses; keep the
-             weights summing to the phase length if a role changes.
-             variant.js decides which names fit inside their segment and
-             drops the rest into the callout lane beneath the line. -->
-        <div class="wg" id="wg">
-          <p class="wg-caption">One line per phase, divided into the employers inside it. Bars are drawn against the axis below, so every length is a duration. Hover or tap any employer for detail.</p>
+        <!-- ---------- Work history: proportional vertical timeline ----------
+             Recreated from the "Work History Timeline" design handoff.
+             Every role is a bar whose LENGTH IS ITS DURATION, so the whole
+             figure is one shared scale; roles are grouped into named career
+             phases in the left rail. Calendar gaps between jobs are not drawn.
 
-          <div class="wg-scroll">
-            <div class="wg-chart">
+             The list below is the single source of truth: variant.js reads
+             data-months / data-phase off each <li> and computes every top
+             and height from them (segment height = months x scale). Change a
+             duration here and the diagram re-flows; nothing is hard-coded in
+             pixels. Without JS the list stays a plain, readable CV.
 
-              <!-- Five-year gridlines, drawn once behind every line -->
-              <div class="wg-grid" aria-hidden="true">
-                <i style="left:7.143%"></i><i style="left:25%"></i><i style="left:42.857%"></i><i style="left:60.714%"></i><i style="left:78.571%"></i><i style="left:96.429%"></i>
-              </div>
-
-              <!-- Foundations -->
-              <div class="wg-row wg-p1">
-                <div class="wg-label">
-                  <span class="wg-phase-name">Foundations</span>
-                  <span class="wg-phase-span">1998–2003 · 5 years</span>
-                </div>
-                <div class="wg-track">
-                  <div class="wg-note wg-unit wg-marks" style="left:0%;width:14.286%">
-                    <button class="wg-item" aria-describedby="wg-b2">
-                      <span class="wg-note-name">Internships</span>
-                      <span class="wg-note-dates">1998 · 2000 · 2002</span>
-                      <span class="wg-note-mark"><i></i><i></i><i></i></span>
-                    </button>
-                    <div class="wg-balloon" id="wg-b2" role="tooltip">
-                      <div class="t">Human factors</div>
-                      <div class="m">Three placements during graduate study</div>
-                      <div class="n">Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</div>
-                    </div>
-                  </div>
-                  <div class="wg-line" style="left:0%;width:17.857%">
-                    <div class="wg-seg wg-unit" style="flex:5">
-                      <button class="wg-item" aria-describedby="wg-b1">
-                        <span class="wg-emp">Texas A&amp;M University</span>
-                        <span class="wg-dates">1998–2003</span>
-                      </button>
-                      <div class="wg-balloon" id="wg-b1" role="tooltip">
-                        <div class="t">Ph.D., Cognitive Psychology</div>
-                        <div class="n">The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Applied research -->
-              <div class="wg-row wg-p2">
-                <div class="wg-label">
-                  <span class="wg-phase-name">Applied research</span>
-                  <span class="wg-phase-span">2003–2015 · 12 years</span>
-                </div>
-                <div class="wg-track">
-                  <!-- A named stretch inside the phase, not a separate employer -->
-                  <div class="wg-note wg-bracket" style="left:25%;width:10.714%"><span>Enterprise UX</span></div>
-                  <div class="wg-note wg-unit wg-alongside" style="left:50%;width:3.571%">
-                    <button class="wg-item" aria-describedby="wg-b6">
-                      <span class="wg-note-name">Threadbare Games</span>
-                      <span class="wg-note-dates">2012–2013</span>
-                      <span class="wg-note-mark"></span>
-                    </button>
-                    <div class="wg-balloon" id="wg-b6" role="tooltip">
-                      <div class="t">UX Consultant</div>
-                      <div class="m">San Francisco</div>
-                      <div class="n">Ran alongside the SINTEF years. UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</div>
-                      <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
-                    </div>
-                  </div>
-                  <div class="wg-line" style="left:17.857%;width:42.857%">
-                    <div class="wg-seg wg-unit out" style="flex:2">
-                      <button class="wg-item" aria-describedby="wg-b3">
-                        <span class="wg-emp">CHI Systems</span>
-                        <span class="wg-dates">2003–2005</span>
-                      </button>
-                      <div class="wg-balloon" id="wg-b3" role="tooltip">
-                        <div class="t">Human-Systems Engineer</div>
-                        <div class="n">Military training and decision-support systems. Cognitive task analyses of military specialists.</div>
-                      </div>
-                    </div>
-                    <div class="wg-seg wg-unit" style="flex:3">
-                      <button class="wg-item" aria-describedby="wg-b4">
-                        <span class="wg-emp">Oracle</span>
-                        <span class="wg-dates">2005–2008</span>
-                      </button>
-                      <div class="wg-balloon" id="wg-b4" role="tooltip">
-                        <div class="t">Senior Usability Engineer</div>
-                        <div class="n">A step out of research and into enterprise UX. Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</div>
-                      </div>
-                    </div>
-                    <div class="wg-seg wg-unit" style="flex:7">
-                      <button class="wg-item" aria-describedby="wg-b5">
-                        <span class="wg-emp">SINTEF ICT</span>
-                        <span class="wg-dates">2008–2015</span>
-                      </button>
-                      <div class="wg-balloon" id="wg-b5" role="tooltip">
-                        <div class="t">HCI Researcher</div>
-                        <div class="m">Oslo, Norway</div>
-                        <div class="n">Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</div>
-                        <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Innovation skunkworks -->
-              <div class="wg-row wg-p3">
-                <div class="wg-label">
-                  <span class="wg-phase-name">Innovation skunkworks</span>
-                  <span class="wg-phase-span">2015–2023 · 8 years</span>
-                </div>
-                <div class="wg-track">
-                  <div class="wg-line" style="left:60.714%;width:28.571%">
-                    <div class="wg-seg wg-unit out" style="flex:1">
-                      <button class="wg-item" aria-describedby="wg-b7">
-                        <span class="wg-emp">Nordea</span>
-                        <span class="wg-dates">2015–2016</span>
-                      </button>
-                      <div class="wg-balloon flip-x" id="wg-b7" role="tooltip">
-                        <div class="t">Innovation Experimentation Lead</div>
-                        <div class="m">Oslo, Norway</div>
-                        <div class="n">Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</div>
-                      </div>
-                    </div>
-                    <div class="wg-seg wg-unit out" style="flex:3">
-                      <button class="wg-item" aria-describedby="wg-b8">
-                        <span class="wg-emp">Yara International</span>
-                        <span class="wg-dates">2016–2019</span>
-                      </button>
-                      <div class="wg-balloon flip-x" id="wg-b8" role="tooltip">
-                        <div class="t">Experience Designer</div>
-                        <div class="m">Oslo, Norway</div>
-                        <div class="n">Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</div>
-                        <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
-                        <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
-                      </div>
-                    </div>
-                    <div class="wg-seg wg-unit" style="flex:4">
-                      <button class="wg-item" aria-describedby="wg-b9">
-                        <span class="wg-emp">DNV</span>
-                        <span class="wg-dates">2019–2023</span>
-                      </button>
-                      <div class="wg-balloon flip-x" id="wg-b9" role="tooltip">
-                        <div class="t">UX Lead</div>
-                        <div class="m">Høvik, Norway</div>
-                        <div class="n">Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</div>
-                        <a class="cs" href="national-security.html">National Security &#8594;</a>
-                        <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Industrial UX -->
-              <div class="wg-row wg-p4">
-                <div class="wg-label">
-                  <span class="wg-phase-name">Industrial UX</span>
-                  <span class="wg-phase-span">2023–now · 3 years</span>
-                </div>
-                <div class="wg-track">
-                  <div class="wg-line" style="left:89.286%;width:10.714%">
-                    <div class="wg-seg wg-unit" style="flex:3">
-                      <button class="wg-item" aria-describedby="wg-b10">
-                        <span class="wg-emp">4Subsea</span>
-                        <span class="wg-dates">2023 — now</span>
-                      </button>
-                      <div class="wg-balloon flip-x" id="wg-b10" role="tooltip">
-                        <div class="t">UX Lead &amp; Product Designer</div>
-                        <div class="m">Asker, Norway</div>
-                        <div class="n">Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</div>
-                        <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Year axis -->
-              <div class="wg-axis">
-                <div class="wg-alabel">Time &#8594;</div>
-                <div class="wg-track">
-                  <span style="left:7.143%">2000</span><span style="left:25%">2005</span><span style="left:42.857%">2010</span><span style="left:60.714%">2015</span><span style="left:78.571%">2020</span><span style="left:96.429%">2025</span>
-                </div>
-              </div>
-
+             Only the three internships (3, 8 and 3 months) are too short to
+             draw to scale — they are clamped to a minimum height and hatched,
+             which is what the footnote explains. -->
+        <div class="wt" id="wt">
+          <div class="wt-meta">
+            <p class="wt-caption">One bar per role, drawn to a single scale, so every length on this figure is a duration. Hover or tap a role for the detail; “Show all details” opens them all in place.</p>
+            <div class="wt-range">
+              <span>1998 &rarr; 2025</span>
+              <span>Segment length &prop; time in role</span>
             </div>
           </div>
-          <p class="wg-hint">The chart is wider than this screen — drag it sideways, or open the details below.</p>
-        </div>
 
-        <!-- Every balloon's prose, laid out flat. Toggled by the button above. -->
-        <div class="wg-details" id="wg-details" hidden>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">4Subsea</span><span class="wg-detail-dates">2023 — now</span></div>
-            <div class="wg-detail-role">UX Lead &amp; Product Designer · Asker, Norway</div>
-            <p>Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</p>
-            <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
+          <div class="wt-figure">
+            <!-- Phase bands, computed from the roles and drawn by variant.js -->
+            <div class="wt-rail" id="wt-rail" aria-hidden="true"></div>
+
+            <ol class="wt-roles" id="wt-roles">
+              <li class="wt-role" data-months="3" data-phase="foundations" data-minor="true"
+                  data-phase-note="Internships across human factors and commercial UX, alongside the Ph.D.">
+                <div class="wt-date"><b>1998</b><i>3 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d1">
+                    <span class="wt-company">Air Force Office of Scientific Research</span>
+                    <span class="wt-title">Human-Factors Intern</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d1" role="tooltip">
+                    <p>Investigated the decision-making strategies of the crews who plan the flights of unmanned aerial vehicles, using surveys and a purpose-built simulated task to tease out what drove those decisions.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="8" data-phase="foundations" data-minor="true">
+                <div class="wt-date"><b>2000</b><i>8 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d2">
+                    <span class="wt-company">SBC Laboratories</span>
+                    <span class="wt-title">Human-Factors Intern</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d2" role="tooltip">
+                    <p>Expert evaluations and usability testing of websites, interactive voice-response systems, satellite TV systems and telephones. Prototyped redesigns and tested them against the originals; the redesigns proved both more usable and more satisfying.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="3" data-phase="foundations" data-minor="true">
+                <div class="wt-date"><b>2002</b><i>3 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d3">
+                    <span class="wt-company">Space &amp; Naval Warfare Systems Command</span>
+                    <span class="wt-title">Naval Research Intern</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d3" role="tooltip">
+                    <p>Usability testing of the Multi-Modal Watchstation, a system for controlling battleship ordnance. Combined free play with structured usability methods, which made data collection both faster and more revealing.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="27" data-phase="research" data-phase-note="Part 1 of 2.">
+                <div class="wt-date"><b>2003 &ndash; 05</b><i>2 yr 3 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d4">
+                    <span class="wt-company">CHI Systems</span>
+                    <span class="wt-title">Human-Systems Engineer</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d4" role="tooltip">
+                    <p>Interfaces for proposed military training and decision-support systems, the largest of them supporting collaboration between instructors running distributed exercises. Cognitive task analyses of military specialists, and co-led projects on the training value of videogames.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="27" data-phase="enterprise"
+                  data-phase-note="A diversion between the research roles.">
+                <div class="wt-date"><b>2005 &ndash; 08</b><i>2 yr 3 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d5">
+                    <span class="wt-company">Oracle</span>
+                    <span class="wt-title">Senior Usability Engineer</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d5" role="tooltip">
+                    <p>A step out of research and into enterprise UX. Monthly iterative usability testing on enterprise software, task analyses with subject-matter experts, and interaction widgets of my own design — two patented, one adopted across the organization.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="87" data-phase="research"
+                  data-phase-note="Part 2 of 2. Decision support in complex, dynamic environments.">
+                <div class="wt-date"><b>2008 &ndash; 15</b><i>7 yr 3 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d6">
+                    <span class="wt-company">SINTEF ICT</span>
+                    <span class="wt-title">HCI Researcher &middot; Oslo</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d6" role="tooltip">
+                    <p>Established a new research area — decision support in complex environments. Brought in two EU-funded projects on crisis management and led the UI design effort for one, and won SINTEF's role in the EU's SESAR next-generation air-traffic-management programme.</p>
+                    <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="15" data-phase="innovation"
+                  data-phase-note="Experimentation, early-stage concepts, digital transformation.">
+                <div class="wt-date"><b>2015 &ndash; 16</b><i>1 yr 3 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d7">
+                    <span class="wt-company">Nordea</span>
+                    <span class="wt-title">Innovation Experimentation Lead &middot; Oslo</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d7" role="tooltip">
+                    <p>Designed fast, frugal experiments to test the market potential of new product concepts before they were built. Worked with product owners to sharpen both the questions and the success criteria, and connected the bank to the Nordic startup ecosystem.</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="37" data-phase="innovation">
+                <div class="wt-date"><b>2016 &ndash; 19</b><i>3 yr 1 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d8">
+                    <span class="wt-company">Yara International</span>
+                    <span class="wt-title">Experience Designer &middot; Oslo</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d8" role="tooltip">
+                    <p>Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web and chatbots. Pushed for an experience-design strategy that aligned user needs with business goals and set observable metrics for everything we did.</p>
+                    <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
+                    <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
+                  </div>
+                </div>
+              </li>
+
+              <!-- DNV sits in two phases: the Innovation band ends and the
+                   Industrial band begins partway down this role. data-split-at
+                   is the fraction of the role where that happens — a judgment
+                   call, kept adjustable. -->
+              <li class="wt-role" data-months="45" data-phase="innovation"
+                  data-phase-to="industrial" data-split-at="0.5"
+                  data-phase-to-note="Overlaps the phase above — DNV sits in both.">
+                <div class="wt-date"><b>2019 &ndash; 23</b><i>3 yr 9 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d9">
+                    <span class="wt-company">DNV</span>
+                    <span class="wt-title">UX Lead &middot; H&oslash;vik</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d9" role="tooltip">
+                    <p>Several roles at once inside a company going through digital transformation: evangelising UX, shaping the company-wide innovation process, and becoming its resource for presenting complex data — dashboards, infographics and visuals built on cognitive psychology and visualization practice.</p>
+                    <a class="cs" href="national-security.html">National Security &#8594;</a>
+                    <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
+                  </div>
+                </div>
+              </li>
+
+              <li class="wt-role" data-months="31" data-phase="industrial">
+                <div class="wt-date"><b>2023 &ndash; 25</b><i>2 yr 7 mo</i></div>
+                <div class="wt-bar" aria-hidden="true"></div>
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d10">
+                    <span class="wt-company">4Subsea</span>
+                    <span class="wt-title">UX Lead and Product Designer &middot; Asker</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d10" role="tooltip">
+                    <p>Sole UX practitioner for a digital solutions platform serving offshore energy. Adopted and refined the company's first design system, led a platform-wide redesign around usability, and expanded user research across the product teams.</p>
+                    <a class="cs" href="foursubsea.html">4Subsea case study &#8594;</a>
+                  </div>
+                </div>
+              </li>
+            </ol>
           </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">DNV</span><span class="wg-detail-dates">2019–2023</span></div>
-            <div class="wg-detail-role">UX Lead · Høvik, Norway</div>
-            <p>Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, cognitive-psychology-based data visualization, and research and design across teams and products.</p>
-            <a class="cs" href="national-security.html">National Security &#8594;</a>
-            <a class="cs" href="maritime-refueling.html">Maritime Refueling &#8594;</a>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">Yara International</span><span class="wg-detail-dates">2016–2019</span></div>
-            <div class="wg-detail-role">Experience Designer · Oslo, Norway</div>
-            <p>Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</p>
-            <a class="cs" href="coffee-ecosystem.html">Coffee Ecosystem &#8594;</a>
-            <a class="cs" href="sewer-corrosion.html">Sewer Corrosion &#8594;</a>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">Nordea</span><span class="wg-detail-dates">2015–2016</span></div>
-            <div class="wg-detail-role">Innovation Experimentation Lead · Oslo, Norway</div>
-            <p>Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</p>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">Threadbare Games</span><span class="wg-detail-dates">2012–2013</span></div>
-            <div class="wg-detail-role">UX Consultant · San Francisco · alongside SINTEF</div>
-            <p>Ran alongside the SINTEF years. UX for mobile and iPad games in an agile studio — wireframes, mockups, and applied research on what makes games fun.</p>
-            <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">SINTEF ICT</span><span class="wg-detail-dates">2008–2015</span></div>
-            <div class="wg-detail-role">HCI Researcher · Oslo, Norway</div>
-            <p>Established a "decision support in complex environments" research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</p>
-            <a class="cs" href="search-rescue.html">Search and Rescue &#8594;</a>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">Oracle</span><span class="wg-detail-dates">2005–2008</span></div>
-            <div class="wg-detail-role">Senior Usability Engineer</div>
-            <p>A step out of research and into enterprise UX. Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</p>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">CHI Systems</span><span class="wg-detail-dates">2003–2005</span></div>
-            <div class="wg-detail-role">Human-Systems Engineer</div>
-            <p>Military training and decision-support systems. Cognitive task analyses of military specialists.</p>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">Internships</span><span class="wg-detail-dates">1998 · 2000 · 2002</span></div>
-            <div class="wg-detail-role">Human factors</div>
-            <p>Air Force Office of Scientific Research (1998) · SBC Laboratories (2000) · Space and Naval Warfare Systems Command (2002).</p>
-          </div>
-          <div class="wg-detail">
-            <div class="wg-detail-head"><span class="wg-detail-emp">Texas A&amp;M University</span><span class="wg-detail-dates">1998–2003</span></div>
-            <div class="wg-detail-role">Ph.D., Cognitive Psychology</div>
-            <p>The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since.</p>
+
+          <p class="wt-foot">
+            <span class="wt-swatch" aria-hidden="true"></span>
+            Hatched segments run 3&ndash;8 months and are drawn at a minimum readable height — not to scale. All other segments are strictly proportional. Gaps between roles are not shown.
+          </p>
+
+          <!-- Two commitments that ran concurrently with the roles above, so
+               they cannot be segments of a single stacked scale. -->
+          <div class="wt-aside">
+            <div class="wt-aside-label">Alongside</div>
+            <ul class="wt-aside-list">
+              <li class="wt-role wt-side" data-phase="foundations">
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d11">
+                    <span class="wt-company">Texas A&amp;M University</span>
+                    <span class="wt-title">Ph.D., Cognitive Psychology &middot; 1998&ndash;2003</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d11" role="tooltip">
+                    <p>The study of human mental capabilities and limitations, with a focus on human learning and decision making — the foundation for everything since. M.S. from the University of Oregon, B.A. from Purdue before it.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="wt-role wt-side" data-phase="research">
+                <div class="wt-body">
+                  <button class="wt-head" type="button" aria-describedby="wt-d12">
+                    <span class="wt-company">Threadbare Games</span>
+                    <span class="wt-title">UX Consultant &middot; 2012&ndash;2013 &middot; alongside SINTEF</span>
+                  </button>
+                  <div class="wt-desc" id="wt-d12" role="tooltip">
+                    <p>Ran alongside the SINTEF years, from San Francisco. UX for mobile and iPad games in an agile studio — wireframes, mockups, hard-won compromises with developers, and applied research on what makes a game fun.</p>
+                    <a class="cs" href="mobile-games.html">Mobile Games &#8594;</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-
         <div class="cv-cols">
           <div class="cv-col">
             <h3>Honors</h3>

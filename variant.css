@@ -145,302 +145,323 @@ body.variant { padding-top: var(--topbar-h); }
 .summary-grid.cols-4 { grid-template-columns: repeat(4, 1fr); margin-top: 48px; }
 
 /* ---------------------------------------------------------------
-   4. Work history — one line per phase
-   A label column on the left; on the right, each phase is a single
-   bar positioned on the 1998–2026 axis and divided into the
-   employers inside it. So one line carries both the length of the
-   phase and the shape of the years within it.
-   Three lanes make up a row: annotations above the line (things
-   that are not segments of it), the line itself, and a callout lane
-   beneath for names too long to sit inside their own segment.
-   --------------------------------------------------------------- */
-:root { --wg-label: 208px; --wg-note: 32px; --wg-line: 34px; }
+   4. Work history — proportional vertical timeline
+   Recreated from the "Work History Timeline" design handoff, in the
+   site's own type and palette. Four columns on a shared vertical
+   scale: phase rail, dates, bars, labels. Every top and height is
+   computed by variant.js from the durations in the markup — this
+   file only says what things look like, never how tall they are.
 
-.wg { margin: 0 0 44px; }
-.wg-caption {
+   One hue per phase, all at the same lightness so no phase shouts
+   over another; the site accent carries the innovation years.
+   --------------------------------------------------------------- */
+:root {
+  --wt-rail:   206px;   /* phase rail */
+  --wt-date:    84px;   /* year + duration */
+  --wt-bar:     24px;   /* the bar itself */
+  --wt-gap:     18px;   /* column gap */
+  --wt-bar-gap:  2px;   /* hairline between consecutive bars */
+
+  --wt-foundations:    #688aac;
+  --wt-foundations-lt: #a4bad2;   /* second tone of the internship hatch */
+  --wt-research:       #609284;
+  --wt-enterprise:     #91865e;
+  --wt-innovation:     var(--accent);
+  --wt-industrial:     #9d75a6;
+
+  --wt-rule-dash: rgba(33, 29, 25, .3);
+}
+
+/* The figure is drawn at the handoff's measure; wider than this and the
+   label column becomes a field of empty paper. */
+.wt { max-width: 940px; margin: 0 0 44px; }
+
+/* ---- Caption and the figure's meta line ---- */
+.wt-meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+}
+.wt-caption {
   font: 400 14px/1.5 var(--serif);
   color: var(--sub);
-  margin-bottom: 26px;
-  max-width: 660px;
-}
-
-/* Balloons hang below their segment, so nothing is clipped at full
-   width. Only when the chart is wider than the screen does this box
-   start scrolling — see the narrow-screen rules at the end of the file. */
-.wg-scroll { overflow: visible; }
-.wg-hint { display: none; font: 400 13px/1.5 var(--serif); color: var(--sub); margin: 14px 0 0; }
-
-.wg-chart { position: relative; min-width: 760px; }
-
-.wg-row, .wg-axis { display: flex; align-items: stretch; }
-.wg-label, .wg-alabel {
-  width: var(--wg-label);
-  flex: none;
-  padding-right: 18px;
-  box-sizing: border-box;
-}
-.wg-track { flex: 1; min-width: 0; position: relative; }
-
-/* Five-year gridlines, drawn once behind every row. Inset by the label
-   column so they share the tracks' coordinate space. */
-.wg-grid {
-  position: absolute;
-  left: var(--wg-label);
-  right: 0;
-  top: 0;
-  bottom: 26px;
-  pointer-events: none;
-}
-.wg-grid i { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(33, 29, 25, .08); }
-
-/* ---- Row ---- */
-.wg-row { padding-bottom: 14px; }
-/* The note lane and the line are always there; room for the callout lanes
-   is added only on rows that use them (variant.js sets the classes) */
-.wg-track { min-height: calc(var(--wg-note) + var(--wg-line) + 8px); }
-.wg-row.has-out .wg-track { min-height: calc(var(--wg-note) + var(--wg-line) + 40px); }
-.wg-row.has-lane2 .wg-track { min-height: calc(var(--wg-note) + var(--wg-line) + 72px); }
-.wg-label { padding-top: calc(var(--wg-note) + 5px); }
-.wg-phase-name { display: block; font: 600 14px/1.25 var(--sans); color: var(--ink); }
-.wg-phase-span {
-  display: block;
-  font: 400 11px/1.4 var(--sans);
-  letter-spacing: .04em;
-  color: var(--sub);
-  margin-top: 3px;
-}
-
-/* ---- The line: one bar per phase, split into its employers ---- */
-.wg-line {
-  position: absolute;
-  top: var(--wg-note);
-  height: var(--wg-line);
-  display: flex;
-  align-items: stretch;
-}
-.wg-p1 .wg-line { background: #ebd2c0; }
-.wg-p2 .wg-line { background: #deaf90; }
-.wg-p3 .wg-line { background: #d1885c; }
-.wg-p4 .wg-line { background: var(--accent); }
-
-/* A segment's flex weight is its duration in years, so the divisions
-   land on the same scale as the axis */
-.wg-seg { position: relative; flex: 1; min-width: 0; }
-/* Hairline where one employer hands off to the next */
-.wg-seg + .wg-seg::before {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0; left: 0;
-  width: 1px;
-  background: rgba(247, 244, 238, .65);
-  z-index: 2;
-}
-
-.wg-item {
-  display: block;
-  width: 100%;
-  height: 100%;
   margin: 0;
-  padding: 0 9px;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  overflow: hidden;
+  max-width: 620px;
+  text-wrap: pretty;
 }
-.wg-seg:hover { background: rgba(33, 29, 25, .09); }
-
-.wg-emp { display: block; font: 600 11.5px/1.2 var(--sans); white-space: nowrap; }
-.wg-dates {
-  display: block;
-  font: 400 10px/1.3 var(--sans);
-  letter-spacing: .04em;
-  white-space: nowrap;
-  opacity: .78;
-  margin-top: 1px;
-}
-/* Ink on the pale end of the ramp, page colour on the dark end */
-.wg-p1 .wg-seg, .wg-p2 .wg-seg { color: var(--ink); }
-.wg-p3 .wg-seg, .wg-p4 .wg-seg { color: var(--page); }
-
-/* Names that do not fit inside their segment drop into the lane below,
-   joined to the line by a leader. variant.js sets .out and picks the
-   lane; the markup ships with the known-narrow ones already marked, so
-   the chart is still readable with no script. */
-.wg-seg.out > .wg-item {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: max-content;
-  height: auto;
-  padding: 9px 0 0 7px;
-  color: var(--sub);
-}
-.wg-seg.out.lane2 > .wg-item { padding-top: 41px; }
-.wg-seg.out > .wg-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 7px;
-  background: rgba(33, 29, 25, .3);
-}
-.wg-seg.out.lane2 > .wg-item::before { height: 39px; }
-/* A callout at the end of the axis has no room to the right of its
-   segment, so it hangs from the segment's other edge instead */
-.wg-seg.out.out-end > .wg-item { left: auto; right: 0; padding-left: 0; padding-right: 7px; text-align: right; }
-.wg-seg.out.out-end > .wg-item::before { left: auto; right: 0; }
-.wg-seg.out .wg-emp { color: var(--ink); }
-.wg-seg.out .wg-dates { opacity: 1; color: var(--sub); }
-.wg-seg.out:hover .wg-emp { color: var(--accent); }
-
-/* ---- Annotations above the line ----
-   A named stretch of the phase, and a role that ran alongside another:
-   neither is a segment of the line, so both sit above it. */
-.wg-note { position: absolute; top: 0; height: var(--wg-note); }
-/* Names here are wider than the stretch they annotate, so they must be
-   free to overhang it */
-.wg-note .wg-item { padding: 0 0 10px; overflow: visible; }
-.wg-note-name { display: block; font: 600 10.5px/1.2 var(--sans); color: var(--ink); white-space: nowrap; }
-.wg-note-dates {
-  display: block;
-  font: 400 9.5px/1.3 var(--sans);
-  letter-spacing: .04em;
-  color: var(--sub);
-  white-space: nowrap;
-}
-.wg-alongside .wg-note-name { font-style: italic; }
-/* The bar the annotation refers to, pinned to the bottom of its lane */
-.wg-note-mark {
-  position: absolute;
-  left: 0; right: 0;
-  bottom: 0;
-  height: 7px;
-  border: 1px solid var(--accent);
-  border-bottom: none;
-  background: var(--page);
-}
-.wg-marks .wg-note-mark { border: none; border-top: 1px dashed rgba(33, 29, 25, .35); }
-.wg-marks .wg-note-mark i {
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, -50%);
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--page);
-  border: 2px solid var(--accent);
-}
-.wg-marks .wg-note-mark i:nth-child(1) { left: 0; }
-.wg-marks .wg-note-mark i:nth-child(2) { left: 50%; }
-.wg-marks .wg-note-mark i:nth-child(3) { left: 100%; }
-
-.wg-bracket {
-  border-bottom: 1px dashed var(--accent);
-  border-left: 1px dashed var(--accent);
-  border-right: 1px dashed var(--accent);
-  /* Sits low enough in the lane that its label stays inside the row */
-  top: 15px;
-  height: calc(var(--wg-note) - 15px);
-}
-.wg-bracket span {
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 2px);
-  white-space: nowrap;
-  font: 400 10px/1.3 var(--sans);
-  letter-spacing: .04em;
-  color: var(--sub);
-}
-
-.wg-unit .wg-item:hover .wg-note-name,
-.wg-unit .wg-item:focus-visible .wg-note-name { color: var(--accent); }
-
-/* ---- Balloon ---- */
-.wg-balloon {
-  position: absolute;
-  left: 0;
-  top: calc(100% + 10px);
-  z-index: 30;
-  width: 340px;
-  padding: 14px 16px;
-  background: var(--page);
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .12s ease;
-  pointer-events: none;
-}
-.wg-note .wg-balloon { top: calc(100% + 4px); }
-/* Segments late in the timeline open their balloon to the left, and the
-   bottom rows open theirs upward, so neither leaves the chart.
-   variant.js re-checks both at hover time. */
-.wg-balloon.flip-x { left: auto; right: 0; }
-.wg-balloon.flip-y { top: auto; bottom: calc(100% + 10px); }
-
-.wg-unit:hover > .wg-balloon,
-.wg-item:focus-visible + .wg-balloon,
-.wg-unit.pinned > .wg-balloon {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.wg-balloon .t { font: 600 15px/1.3 var(--serif); color: var(--ink); }
-.wg-balloon .m {
-  font: 500 10.5px/1.4 var(--sans);
-  letter-spacing: .05em;
-  color: var(--accent);
-  margin-top: 4px;
-}
-.wg-balloon .n { font: 400 14px/1.55 var(--serif); color: var(--sub); margin-top: 8px; text-wrap: pretty; }
-.wg-balloon .cs,
-.wg-detail .cs {
-  display: inline-block;
-  margin-top: 10px;
-  margin-right: 14px;
-  font: 500 11px/1 var(--sans);
-  color: var(--accent);
-  text-decoration: none;
-}
-.wg-balloon .cs:hover, .wg-detail .cs:hover { color: var(--ink); }
-
-/* ---- Year axis ---- */
-.wg-axis { padding-top: 8px; border-top: 1px solid var(--line); height: 26px; }
-.wg-alabel {
-  font: 500 10.5px/1 var(--sans);
+.wt-range {
+  font: 500 10.5px/1.7 var(--sans);
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--sub);
+  text-align: right;
+  white-space: nowrap;
+  flex: none;
 }
-.wg-axis .wg-track { min-height: 0; }
-.wg-axis .wg-track span {
+.wt-range span { display: block; }
+
+/* ---- The figure: rail + roles, sharing one computed height ----
+   Nothing here has a height until variant.js gives it one, so the figure
+   starts as a plain, readable list and only becomes a diagram once the
+   script adds .is-live. With JS off it stays a list — dates, roles and
+   descriptions, all present. */
+.wt-figure {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: var(--wt-gap);
+  padding-top: 20px;
+}
+.wt-rail { display: none; }
+.wt.is-live .wt-figure { grid-template-columns: var(--wt-rail) 1fr; }
+.wt.is-live .wt-rail { display: block; }
+.wt-rail, .wt-roles { position: relative; }
+.wt-roles { list-style: none; margin: 0; padding: 0; }
+
+/* ---- Phase rail ----
+   One band per run of consecutive roles in the same phase. A phase
+   that returns later gets a dashed rule, to read as a continuation
+   rather than a new beginning. */
+.wt-band {
   position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  font: 500 10.5px/1 var(--sans);
-  letter-spacing: .08em;
-  color: var(--sub);
+  left: 0;
+  right: 0;
+  padding: 8px 10px 0 0;
+  border-top: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.wt-band.continues { border-top-style: dashed; border-top-color: var(--wt-rule-dash); }
+.wt-band-name { display: flex; align-items: center; gap: 8px; }
+.wt-chip { flex: none; width: 8px; height: 8px; }
+.wt-band-name span {
+  flex: 1;
+  min-width: 0;
+  font: 600 10.5px/1.3 var(--sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.wt-band-note { font: 400 13px/1.4 var(--serif); color: var(--sub); text-wrap: pretty; }
+
+/* ---- A role ----
+   Absolutely positioned by the script; its own three columns line up
+   with the rail beside it. */
+.wt-role {
+  position: relative;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: var(--wt-date) var(--wt-bar) 1fr;
+  column-gap: var(--wt-gap);
 }
 
-/* ---- Flat detail list (the "Show all details" toggle) ---- */
-.wg-details {
+/* Dates. Fixed column, right-aligned, never shrink-wrapped. */
+/* Only the roles on the timeline itself are positioned; the concurrent
+   ones at the foot are not on the scale and stay in flow. */
+.wt.is-live .wt-roles > .wt-role {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+}
+
+.wt-date {
+  font: 400 10.5px/1.5 var(--sans);
+  letter-spacing: .04em;
+  color: var(--sub);
+  text-align: right;
+  white-space: nowrap;
+}
+.wt-date b { display: block; font-weight: 500; }
+.wt-date i { display: block; font-style: normal; color: rgba(110, 103, 94, .72); }
+
+/* The bar. Its height is the whole point, so it is set by the script;
+   colour comes from the phase. */
+.wt-bar { width: var(--wt-bar); min-height: 40px; }
+.wt.is-live .wt-bar { min-height: 0; }
+.wt-role[data-phase="foundations"] .wt-bar { background: var(--wt-foundations); }
+.wt-role[data-phase="research"]    .wt-bar { background: var(--wt-research); }
+.wt-role[data-phase="enterprise"]  .wt-bar { background: var(--wt-enterprise); }
+.wt-role[data-phase="innovation"]  .wt-bar { background: var(--wt-innovation); }
+.wt-role[data-phase="industrial"]  .wt-bar { background: var(--wt-industrial); }
+
+/* Too short to draw to scale — hatched, and explained in the footnote */
+.wt-role[data-minor="true"] .wt-bar {
+  background: repeating-linear-gradient(135deg,
+    var(--wt-foundations) 0 4px, var(--wt-foundations-lt) 4px 8px);
+}
+
+/* A role that hands over from one phase to the next mid-way */
+.wt-role[data-phase-to="industrial"] .wt-bar {
+  background: linear-gradient(180deg,
+    var(--wt-innovation) 0%, var(--wt-innovation) 12%,
+    var(--wt-industrial) 88%, var(--wt-industrial) 100%);
+}
+
+/* ---- Label column ----
+   Solid rule where a phase begins, hairline between roles inside one. */
+/* Only as tall as its own contents, so a hover balloon opens beside the
+   company name rather than at the foot of a seven-year segment. */
+.wt-body { position: relative; align-self: start; border-top: 1px solid var(--ink); padding-top: 7px; }
+.wt-role[data-continues="true"] .wt-body { border-top-color: var(--line); }
+
+.wt-head {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 4px;
+  background: none;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.wt-company {
+  display: block;
+  font: 600 17px/1.25 var(--serif);
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.wt-title {
+  display: block;
+  font: 400 10.5px/1.4 var(--sans);
+  letter-spacing: .06em;
+  color: var(--sub);
+  margin-top: 3px;
+}
+.wt-role[data-minor="true"] .wt-body { padding-top: 5px; }
+.wt-role[data-minor="true"] .wt-company { font-size: 14px; }
+.wt-role[data-minor="true"] .wt-title { margin-top: 1px; }
+
+.wt-head:hover .wt-company,
+.wt-head:focus-visible .wt-company { color: var(--accent); }
+
+/* ---- Description ----
+   The same element twice over: a balloon on hover while the diagram is
+   collapsed, and plain prose in place once it is expanded. */
+.wt-desc {
+  max-width: 560px;
+  margin-top: 2px;
+}
+.wt-desc p {
+  margin: 0;
+  font: 400 14.5px/1.55 var(--serif);
+  color: var(--sub);
+  text-wrap: pretty;
+}
+
+.wt.is-live:not(.is-expanded) .wt-desc {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% - 2px);
+  left: -14px;
+  width: 400px;
+  max-width: calc(100vw - 48px);
+  padding: 14px 16px 15px;
+  background: var(--page);
+  border: 1px solid var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .12s ease;
+}
+.wt.is-live:not(.is-expanded) .wt-desc.flip-y { top: auto; bottom: calc(100% - 2px); }
+.wt.is-live:not(.is-expanded) .wt-desc.flip-x { left: auto; right: -14px; }
+.wt-role:hover > .wt-body > .wt-desc,
+.wt-head:focus-visible + .wt-desc,
+.wt-role.pinned > .wt-body > .wt-desc { opacity: 1; visibility: visible; }
+
+.wt-desc .cs {
+  display: inline-block;
+  margin: 10px 14px 0 0;
+  font: 500 11px/1 var(--sans);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+.wt-desc .cs:hover { color: var(--ink); text-decoration: underline; }
+
+/* Expanded: the balloons come to rest inside the diagram, and the script
+   re-scales the figure so the bars stay proportional around them. */
+.wt.is-expanded .wt-desc p { font-size: 14px; }
+
+/* ---- The mid-role phase handover ---- */
+.wt-overlap {
+  position: absolute;
+  left: calc(var(--wt-date) + var(--wt-bar) + var(--wt-gap) * 2);
+  right: 0;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+.wt-overlap i { flex: 1; border-top: 1px dashed var(--wt-rule-dash); }
+/* Both of these belong to the narrow layout, where the rail is gone */
+.wt-inline-band, .wt-overlap-to { display: none; }
+.wt-overlap-to { margin-left: 6px; }
+.wt-overlap span {
+  flex: none;
+  font: 500 9.5px/1 var(--sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--sub);
+  white-space: nowrap;
+}
+
+/* ---- Footnote ---- */
+.wt-foot {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-top: 1px solid var(--ink);
+  margin-top: 20px;
+  padding-top: 10px;
+  font: 400 10.5px/1.5 var(--sans);
+  letter-spacing: .04em;
+  color: var(--sub);
+  text-wrap: pretty;
+}
+.wt-swatch {
+  flex: none;
+  width: 22px;
+  height: 11px;
+  margin-top: 2px;
+  background: repeating-linear-gradient(135deg,
+    var(--wt-foundations) 0 4px, var(--wt-foundations-lt) 4px 8px);
+}
+
+/* ---- Concurrent commitments, which no single stacked scale can hold ---- */
+.wt-aside {
+  display: grid;
+  grid-template-columns: var(--wt-rail) 1fr;
+  column-gap: var(--wt-gap);
+  margin-top: 26px;
+}
+.wt-aside-label {
+  font: 600 10.5px/1.3 var(--sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--sub);
+  padding-top: 8px;
+}
+.wt-aside-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px 40px;
-  margin: 8px 0 44px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
+  gap: 0 var(--wt-gap);
 }
-.wg-details[hidden] { display: none; }
-.wg-detail-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.wg-detail-emp { font: 600 16px/1.3 var(--serif); }
-.wg-detail-dates { font: 500 10.5px/1.3 var(--sans); letter-spacing: .05em; color: var(--sub); }
-.wg-detail-role { font: 500 12px/1.4 var(--sans); color: var(--accent); margin-top: 3px; }
-.wg-detail p { font: 400 14.5px/1.55 var(--serif); color: var(--sub); margin-top: 8px; text-wrap: pretty; }
+.wt-side { position: relative; display: block; }
+.wt-side .wt-body { border-top: 1px dashed var(--wt-rule-dash); }
+.wt-side .wt-company { font-size: 15px; }
+.wt.is-expanded .wt-side .wt-desc { max-width: none; padding-bottom: 4px; }
 
 /* ---------------------------------------------------------------
    5. Section widths at this wider measure
@@ -462,25 +483,59 @@ body.variant { padding-top: var(--topbar-h); }
   .hero-copy .lede { font-size: 21px; }
 }
 
-/* Below this the chart is wider than the screen: scroll it inside its own
-   box, since the page itself must never scroll sideways. The bottom
-   padding keeps the balloons inside the clipping box; the negative margin
-   gives that empty space back to the page. */
-@media (max-width: 880px) {
-  .wg-hint { display: block; }
-  /* The phase names stay put while the years scroll past them */
-  .wg-label, .wg-alabel {
-    position: sticky;
-    left: 0;
-    z-index: 6;
-    background: var(--page);
+/* Below this the four columns no longer fit. The phase rail folds away and
+   its bands become inline headers on the roles that start them; the dates
+   move above the company name. The bar column stays — it is the diagram.
+   variant.js also stretches the vertical scale here, so the taller rows
+   have somewhere to go. */
+@media (max-width: 800px) {
+  .wt-meta { display: block; }
+  .wt-range { text-align: left; margin-top: 12px; }
+  .wt-range span { display: inline; }
+  .wt-range span + span::before { content: " \00b7  "; }
+
+  .wt.is-live .wt-figure { grid-template-columns: 1fr; }
+  .wt.is-live .wt-rail { display: none; }
+
+  /* The bar leaves the grid here: spanning both rows, its computed height
+     would stretch the date and label rows along with it. */
+  .wt-role {
+    grid-template-columns: var(--wt-bar) 1fr;
+    grid-template-areas: ".  date" ".  body";
+    align-content: start;
+    column-gap: 14px;
   }
-  .wg-scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 200px;
-    margin-bottom: -186px;
+  .wt-bar { position: absolute; left: 0; top: 0; }
+  .wt-date {
+    grid-area: date;
+    align-self: start;
+    text-align: left;
+    border-top: 1px solid var(--ink);
+    padding-top: 6px;
   }
+  .wt-role[data-continues="true"] .wt-date { border-top-color: var(--line); }
+  .wt-date b, .wt-date i { display: inline; }
+  .wt-date i::before { content: " \00b7  "; }
+  .wt-body { grid-area: body; border-top: none; padding-top: 2px; }
+  .wt-role[data-minor="true"] .wt-body { padding-top: 2px; }
+
+  /* The rail's bands, reduced to a header on the role that starts each */
+  .wt-inline-band { display: flex; align-items: center; gap: 7px; margin: 5px 0 7px; }
+  .wt-inline-band span {
+    font: 600 10px/1.3 var(--sans);
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  /* Only the incoming phase is worth the width here */
+  .wt-overlap { left: calc(var(--wt-bar) + 14px); }
+  .wt-overlap-main { display: none; }
+  .wt-overlap-to { display: inline; margin-left: 0; }
+
+  .wt-desc { left: 0; width: 340px; }
+
+  .wt-aside { grid-template-columns: 1fr; }
+  .wt-aside-label { padding-top: 0; margin-bottom: 10px; }
 }
 
 @media (max-width: 860px) {
@@ -522,8 +577,7 @@ body.variant { padding-top: var(--topbar-h); }
 
   .hero { grid-template-columns: 1fr; gap: 28px; }
   .hero-photo { max-width: 260px; }
-  .wg-details { grid-template-columns: 1fr; }
-  :root { --wg-label: 176px; }
+  .wt-aside-list { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
@@ -535,7 +589,7 @@ body.variant { padding-top: var(--topbar-h); }
   .topbar-nav { padding: 20px 22px 24px; }
   .hero-name { font-size: 31px; }
   .hero-copy .lede { font-size: 19px; }
-  :root { --wg-label: 150px; }
-  .wg-balloon { width: 280px; }
-  .wg-emp { font-size: 13px; }
+  .wt-desc { width: 100%; }
+  .wt-company { font-size: 15.5px; }
+  .wt-role[data-minor="true"] .wt-company { font-size: 13.5px; }
 }
