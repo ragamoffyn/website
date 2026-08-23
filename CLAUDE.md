@@ -13,28 +13,18 @@ Open `index.html` directly in a browser to preview, or run
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
   work-history diagram's pinning and details toggle.
 
-## ⚠ Parked content — remind Michael about this
+## Resolved: the parked CV blocks
 
-One block in `index.html` is **hidden but deliberately not deleted**,
-carrying the `parked` class (`.parked { display: none }` in
-`style.css`). Michael asked to hide it while he decides, and asked to
-be **reminded that it is still there**.
+Both blocks that used to be hidden behind a `parked` class are settled,
+and the class and its rule are gone from `style.css`:
 
-**Bring it back by deleting the `parked` class. Do not delete the markup
-without asking him first.**
-
-The old text timeline that used to sit below the diagram was **deleted**
-(along with its `.timeline` / `.tl-*` rules) once its two unique
-phrases — DNV's design-system work and Yara's evangelism and measurable
-criteria — were folded into the diagram's balloons.
-
-| Block | Where | Why it was parked |
-|---|---|---|
-| `.cv-summary` | top of `#cv` | The three lead-in summaries (Research & UX / Innovation / Across domains). |
-
-If a conversation touches the CV section or that part of the page,
-mention that this is still parked and ask whether he wants it restored
-or removed for good.
+- The three `.cv-summary` lead-ins at the top of `#cv` are **live
+  again** — they sit between the section head and the work-history
+  diagram.
+- The original text timeline below the diagram was **deleted**, along
+  with its `.timeline` / `.tl-*` rules, once its two unique phrases —
+  DNV's design-system work, and Yara's evangelism and measurable
+  criteria — were folded into the diagram's balloons.
 
 ## Other open items
 

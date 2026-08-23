@@ -864,14 +864,3 @@ ul { padding: 0; list-style: none; }
   .wh-balloon { width: auto; left: -92px; right: 0; padding: 12px 14px; }
   .wh-head { gap: 14px; }
 }
-
-/* ---------------------------------------------------------------
-   13. Parked content
-   Kept in the markup, deliberately not rendered, while we decide
-   whether to bring it back or remove it for good. Currently parked:
-   the CV lead-in summaries.
-   Last in the file and !important so it beats the layout rules for
-   whatever it is applied to, regardless of their source order.
-   See CLAUDE.md before deleting anything carrying this class.
-   --------------------------------------------------------------- */
-.parked { display: none !important; }
