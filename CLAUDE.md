@@ -15,22 +15,26 @@ Open `index.html` directly in a browser to preview, or run
 
 ## ⚠ Parked content — remind Michael about this
 
-Two blocks in `index.html` are **hidden but deliberately not deleted**,
-both carrying the `parked` class (`.parked { display: none }` in
-`style.css`). Michael asked to hide them while he decides, and asked to
-be **reminded that they are still there**.
+One block in `index.html` is **hidden but deliberately not deleted**,
+carrying the `parked` class (`.parked { display: none }` in
+`style.css`). Michael asked to hide it while he decides, and asked to
+be **reminded that it is still there**.
 
-**Bring either back by deleting its `parked` class. Do not delete the
-markup without asking him first.**
+**Bring it back by deleting the `parked` class. Do not delete the markup
+without asking him first.**
+
+The old text timeline that used to sit below the diagram was **deleted**
+(along with its `.timeline` / `.tl-*` rules) once its two unique
+phrases — DNV's design-system work and Yara's evangelism and measurable
+criteria — were folded into the diagram's balloons.
 
 | Block | Where | Why it was parked |
 |---|---|---|
 | `.cv-summary` | top of `#cv` | The three lead-in summaries (Research & UX / Innovation / Across domains). |
-| `.timeline` | `#cv`, below the diagram | The original text timeline. The work-history phase diagram now covers the same ground, and its "Show all details" panel carries the same prose. |
 
-If a conversation touches the CV section, the timeline, or that part of
-the page, mention that these are still parked and ask whether he wants
-them restored or removed for good.
+If a conversation touches the CV section or that part of the page,
+mention that this is still parked and ask whether he wants it restored
+or removed for good.
 
 ## Other open items
 
