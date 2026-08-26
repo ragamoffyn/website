@@ -179,7 +179,12 @@
        normal flow, since an absolutely positioned row reports the height we
        gave it rather than the one it needs. */
     function measure () {
-      roles.forEach(function (r) { r.style.position = 'static'; r.style.height = 'auto'; });
+      roles.forEach(function (r) {
+        r.style.position = 'static';
+        r.style.height = 'auto';
+        var bar = r.querySelector('.wt-bar');
+        if (bar) { bar.style.height = ''; }   // clear the previous layout's bar height, or it leaks into this measurement
+      });
       var heights = roles.map(function (r) { return r.offsetHeight; });
       roles.forEach(function (r) { r.style.position = ''; r.style.height = ''; });
       return heights;
