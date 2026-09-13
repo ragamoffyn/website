@@ -696,17 +696,33 @@ ul { padding: 0; list-style: none; }
 .case-hero {
   width: 100%;
   aspect-ratio: 16 / 7;
+  max-width: 100%;
   margin-bottom: 48px;
   border: 1px solid var(--line);
   background: linear-gradient(135deg, #efeae0 0%, #e6e0d4 100%);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #b3a99a;
+  gap: 14px;
+  padding: 24px 20px;
+  text-align: center;
+}
+.case-hero-note {
+  margin: 0;
+  color: #a19686;
   font: 500 10px/1.4 var(--sans);
   letter-spacing: .16em;
   text-transform: uppercase;
 }
+.case-hero-ask {
+  font: 500 13px/1.3 var(--sans);
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.case-hero-ask:hover,
+.case-hero-ask:focus-visible { border-bottom-color: var(--accent); }
 
 .case-body section { margin-bottom: 40px; }
 .case-body h2 {
@@ -749,19 +765,37 @@ ul { padding: 0; list-style: none; }
 
 .case-tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 28px;
   padding-top: 24px;
   border-top: 1px solid var(--line);
 }
-.case-tags span {
+.tag-group {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  align-items: baseline;
+  gap: 6px 14px;
+}
+.tag-kind {
+  font: 500 10px/1.6 var(--sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+.tag-group .tag {
   font: 500 11px/1 var(--sans);
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--accent);
   border: 1px solid var(--line);
   padding: 7px 11px;
+  margin: 0 6px 6px 0;
+  display: inline-block;
+}
+.tag-group .tag ~ .tag { margin-left: 0; }
+@media (max-width: 560px) {
+  .tag-group { grid-template-columns: 1fr; gap: 4px; }
 }
 
 .case-nav {
@@ -914,3 +948,132 @@ ul { padding: 0; list-style: none; }
    See CLAUDE.md before deleting anything carrying this class.
    --------------------------------------------------------------- */
 .parked { display: none !important; }
+
+
+/* ---------------------------------------------------------------
+   14. index-v3 additions — phase thesis, project filter, PoV links
+   --------------------------------------------------------------- */
+
+/* Phase thesis: one line of argument under each phase label.
+   Hidden on narrow rails where the label column is too tight. */
+.wh-phase-thesis {
+  display: block;
+  font: 400 11.5px/1.45 var(--serif);
+  color: var(--sub);
+  margin-top: 6px;
+  text-wrap: pretty;
+}
+
+/* Project filter */
+.pf {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 32px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.pf-row {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  align-items: baseline;
+  gap: 6px 14px;
+}
+.pf-label {
+  font: 500 10px/1.6 var(--sans);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+.pf-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.pf-btn {
+  font: 500 11px/1 var(--sans);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--sub);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 7px 11px;
+  cursor: pointer;
+  transition: color .12s, border-color .12s;
+}
+.pf-btn:hover { color: var(--accent); border-color: var(--accent); }
+.pf-btn[aria-pressed="true"] {
+  color: var(--page);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.pf-btn .pf-n { opacity: .6; margin-left: 5px; }
+.pf-count {
+  font: 400 13px/1.4 var(--sans);
+  color: var(--sub);
+  grid-column: 2;
+}
+.pf-count b { color: var(--ink); font-weight: 600; }
+.project-card[hidden] { display: none; }
+.pf-empty {
+  font: 400 17px/1.6 var(--serif);
+  color: var(--sub);
+  padding: 28px 0;
+}
+@media (max-width: 560px) {
+  .pf-row { grid-template-columns: 1fr; gap: 4px; }
+  .pf-count { grid-column: 1; }
+}
+
+/* Point-of-view cards linking to the case study that earned them */
+.pov-link {
+  display: inline-block;
+  margin-top: 10px;
+  font: 500 12px/1.3 var(--sans);
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.pov-link:hover,
+.pov-link:focus-visible { border-bottom-color: var(--accent); }
+
+/* Phase theses: the argument behind each phase of the work history.
+   Deliberately kept OUT of .wh-phase-label — that column is 148px on a
+   fixed-height chart with min-height:0 phases, so prose there would wrap
+   long and overflow the time scale. */
+.wh-thesis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.wh-thesis-item { display: flex; flex-direction: column; gap: 6px; }
+.wh-thesis-key {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 11.5px/1.25 var(--sans);
+  color: var(--ink);
+}
+.wh-thesis-key::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  flex: none;
+  background: var(--swatch, var(--accent));
+}
+.wh-thesis-item[data-phase="1"] { --swatch: #ebd2c0; }
+.wh-thesis-item[data-phase="2"] { --swatch: #deaf90; }
+.wh-thesis-item[data-phase="3"] { --swatch: #d1885c; }
+.wh-thesis-item[data-phase="4"] { --swatch: var(--accent); }
+.wh-thesis-span {
+  font: 400 10.5px/1.4 var(--sans);
+  letter-spacing: .04em;
+  color: var(--sub);
+}
+.wh-thesis-item p {
+  margin: 0;
+  font: 400 14.5px/1.55 var(--serif);
+  color: var(--intro);
+  text-wrap: pretty;
+}
+@media (max-width: 900px) { .wh-thesis { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
+@media (max-width: 560px) { .wh-thesis { grid-template-columns: 1fr; gap: 20px; } }
