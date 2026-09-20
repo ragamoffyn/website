@@ -575,6 +575,7 @@ ul { padding: 0; list-style: none; }
   grid-template-columns: minmax(0, 430px) 5px minmax(0, 250px);
   column-gap: 20px;
   align-items: stretch;
+  position: relative;
 }
 .wh-era > .wh-era-text { grid-column: 1; grid-row: 1; padding-bottom: 36px; }
 .wh-eras .wh-bar { grid-column: 2; grid-row: 1; width: auto; }
@@ -622,10 +623,29 @@ ul { padding: 0; list-style: none; }
   float: right;
   width: 176px;
   margin: 3px 0 14px 20px;
-  border: 1px solid var(--accent);
   padding: 11px 13px 13px;
 }
 .wh-aside .wh-era-note { font-size: 13.5px; }
+
+/* The drawn enclosure that replaces separate borders on .wh-aside and
+   its .wh-row.aside (Oracle) — one continuous outline, wide around the
+   aside and narrow around the row, traced in the HTML. Sits behind both
+   (z-index below the era's own stacking context, since plain
+   position:relative on .wh-era doesn't start one of its own) and is
+   positioned from the era's own top-left corner, which stays put even
+   though .wh-era itself is wider than the path's own bounding box. */
+.wh-aside-enclosure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: visible;
+}
+.wh-aside-enclosure path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
 
 /* The spine. Same colour ramp as 6b — pale at the start, full accent
    at the present — so the eras stay legible as a progression. */
@@ -675,15 +695,12 @@ ul { padding: 0; list-style: none; }
 .wh-eras .wh-role { display: inline; }
 .wh-eras .wh-role::before { content: " · "; }
 
-/* The employer of the side journey, boxed to match its prose block. The
-   2px right margin keeps the border off the chart's own right edge —
-   in the expanded view and the stacked layout the rows column runs
-   flush to it, with no column gutter of its own to fall back on. */
-.wh-eras .wh-row.aside {
-  border: 1px solid var(--accent);
-  padding: 9px 11px 10px;
-  margin: 4px 2px 4px 0;
-}
+/* The employer of the side journey. No border here by default — the
+   drawn enclosure covers it — only the padding that keeps its text off
+   where that outline runs. The stacked layout and the expanded detail
+   view restore an individual border below, since there the row is no
+   longer beside .wh-aside for a single enclosure to make sense of. */
+.wh-eras .wh-row.aside { padding: 9px 11px 10px; margin: 4px 2px 4px 0; }
 
 /* The rows sit against the right edge of the content column, so the
    balloon opens leftward over the prose instead of off the page. */
@@ -709,9 +726,21 @@ ul { padding: 0; list-style: none; }
 .wh-eras.detail .wh-era-main { max-width: 620px; }
 /* No room to wrap text around a float once every balloon is inline and
    the column is this wide — stack the aside as its own full-width block
-   instead. */
-.wh-eras.detail .wh-aside { float: none; width: auto; margin: 10px 0 16px; }
-.wh-eras.detail .wh-row.aside { margin-left: 0; }
+   instead. Enterprise UX and Oracle are no longer beside each other
+   here (the era's own prose and its employers stack in one column, see
+   above), so the single drawn enclosure no longer applies to either —
+   hide it and give each its own border back, as before. */
+.wh-eras.detail .wh-aside-enclosure { display: none; }
+.wh-eras.detail .wh-aside {
+  float: none;
+  width: auto;
+  margin: 10px 0 16px;
+  border: 1px solid var(--accent);
+}
+.wh-eras.detail .wh-row.aside {
+  margin-left: 0;
+  border: 1px solid var(--accent);
+}
 
 @media (max-width: 860px) {
   .wh-eras .wh-era {
@@ -729,8 +758,17 @@ ul { padding: 0; list-style: none; }
   }
   .wh-eras .wh-era-main { max-width: 620px; }
   /* Same reasoning as the detail-view override: no room to wrap around a
-     float in a narrow stacked column, so it stacks as a block instead. */
-  .wh-eras .wh-aside { float: none; width: auto; margin: 10px 0 16px; }
+     float in a narrow stacked column, so it stacks as a block instead.
+     Enterprise UX and Oracle are no longer side by side either, so the
+     single drawn enclosure is hidden and each gets its own border back. */
+  .wh-eras .wh-aside-enclosure { display: none; }
+  .wh-eras .wh-aside {
+    float: none;
+    width: auto;
+    margin: 10px 0 16px;
+    border: 1px solid var(--accent);
+  }
+  .wh-eras .wh-row.aside { border: 1px solid var(--accent); }
   /* Full-width rows here, so the balloon can align with its label again */
   .wh-eras .wh-balloon { left: 0; right: auto; width: min(380px, 100%); }
   /* The spine now runs down the outer edge; indent it so the opening dot
