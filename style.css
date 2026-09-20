@@ -294,9 +294,11 @@ ul { padding: 0; list-style: none; }
 .cv-col p  { font: 400 14.5px/1.7 var(--serif); color: var(--sub); }
 
 /* ---------------------------------------------------------------
-   6b. Work-history phase diagram
+   6b. Work-history phase diagram  (index-variant1.html)
    Vertical proportional spine: every row's height is flex-weighted
    by its duration in years, so 1 year is the same distance anywhere.
+   The home page now uses the era diagram in 6c instead; the shared
+   .wh-item / .wh-balloon / toggle styling below serves both.
    --------------------------------------------------------------- */
 .wh { margin: 0 0 48px; }
 
@@ -545,6 +547,189 @@ ul { padding: 0; list-style: none; }
   pointer-events: auto;
 }
 .wh.detail .wh-balloon .m { margin-top: 0; }
+
+/* ---------------------------------------------------------------
+   6c. Work-history era diagram  (index.html)
+   Four eras. Each is one grid row: the era's prose on the left, the
+   spine in the middle, that era's employers on the right. Height is
+   set by the prose, so the strict time scale of 6b is gone — the
+   dates carry it instead.
+   Everything is keyed off the `wh-eras` class on the wrapper so this
+   and the proportional diagram (6b, still used by
+   index-variant1.html) can share one stylesheet and one script: the
+   row, item and balloon classes are common to both, and only the
+   rules that genuinely differ are restated here. Those overrides
+   carry one extra class of specificity, which is also what lets them
+   beat the 6b entries inside the media queries further down.
+   --------------------------------------------------------------- */
+.wh-eras .wh-chart { display: block; height: auto; max-width: 940px; }
+
+/* The prose column is a fixed track, not 1fr: an era without a side
+   journey must leave the same gap before the spine as one with, or the
+   spine would sit at a different place in each era. */
+.wh-era {
+  display: grid;
+  grid-template-columns: minmax(0, 560px) 5px minmax(0, 250px);
+  column-gap: 26px;
+  align-items: stretch;
+}
+.wh-era > .wh-era-text { grid-column: 1; grid-row: 1; padding-bottom: 36px; }
+.wh-eras .wh-bar { grid-column: 2; grid-row: 1; width: auto; }
+.wh-eras .wh-rows {
+  grid-column: 3;
+  grid-row: 1;
+  flex: none;
+  margin-left: 0;
+  padding-bottom: 36px;
+  justify-content: flex-start;
+  gap: 20px;
+}
+/* The spine closes just under the last era rather than an era-gap below it */
+.wh-eras .wh-era:last-child > .wh-era-text,
+.wh-eras .wh-era:last-child > .wh-rows { padding-bottom: 16px; }
+
+/* Era prose. One measure for every era, so the side journey below can
+   sit in the leftover width without the columns moving era to era. */
+.wh-era-text { display: flex; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+.wh-era-main { flex: 1 1 300px; max-width: 392px; }
+.wh-era-name { display: block; font: 600 13.5px/1.3 var(--sans); color: var(--ink); }
+.wh-era-span {
+  display: block;
+  font: 400 11px/1.4 var(--sans);
+  letter-spacing: .05em;
+  color: var(--sub);
+  margin-top: 3px;
+}
+.wh-era-note {
+  font: 400 14.5px/1.6 var(--serif);
+  color: var(--sub);
+  margin: 9px 0 0;
+  text-wrap: pretty;
+}
+/* A stretch that ran inside an era but away from it. Set beside the
+   era's own prose, behind its own rule, so it reads as a detour
+   rather than the next step in the sequence. */
+.wh-aside {
+  flex: 0 1 180px;
+  border-left: 1px solid var(--accent);
+  padding-left: 15px;
+  margin-top: 26px;
+}
+.wh-aside .wh-era-note { font-size: 13.5px; }
+
+/* The spine. Same colour ramp as 6b — pale at the start, full accent
+   at the present — so the eras stay legible as a progression. */
+.wh-e1 .wh-seg { background: #e3c8b2; }
+.wh-e2 .wh-seg { background: #deaf90; }
+.wh-e3 .wh-seg { background: #d1885c; }
+.wh-e4 .wh-seg { background: var(--accent); }
+
+/* Direction of travel: a dot opens the spine, an arrowhead closes it.
+   Both absolutely positioned — as ordinary pseudo-elements they would
+   become flex items of the bar and steal height from the segment. */
+.wh-eras .wh-era:first-child .wh-bar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
+  margin-bottom: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--page);
+  border: 2px solid var(--accent);
+}
+.wh-eras .wh-era:last-child .wh-bar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  margin-top: 5px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid var(--accent);
+}
+
+/* Employer rows. The column is narrow, so the label stacks instead of
+   running on one line the way it does in 6b. */
+.wh-eras .wh-row { flex: none; min-height: 0; }
+.wh-eras .wh-item { display: block; white-space: normal; max-width: 100%; }
+.wh-eras .wh-emp { display: inline; }
+.wh-eras .wh-info { align-self: auto; vertical-align: 1px; margin-left: 5px; }
+.wh-eras .wh-meta { display: block; margin-top: 3px; }
+.wh-eras .wh-dates,
+.wh-eras .wh-role { display: inline; }
+.wh-eras .wh-role::before { content: " · "; }
+
+/* The employer of the side journey, marked to match its prose block */
+.wh-eras .wh-row.aside {
+  border-left: 1px solid var(--accent);
+  padding-left: 11px;
+  margin-left: -12px;
+}
+
+/* The rows sit against the right edge of the content column, so the
+   balloon opens leftward over the prose instead of off the page. */
+.wh-eras .wh-balloon { left: auto; right: 0; width: 380px; }
+
+/* ---- Stacked layout ----
+   Used below 860px and by the expanded view at any width: the spine
+   moves to the left edge and the era's prose and employers stack in
+   one column beside it, which is the only way the inline balloons of
+   the expanded view get a readable measure. */
+.wh-eras.detail .wh-era {
+  grid-template-columns: 5px minmax(0, 1fr);
+  column-gap: 22px;
+}
+.wh-eras.detail .wh-bar { grid-column: 1; grid-row: 1 / span 2; }
+.wh-eras.detail .wh-era > .wh-era-text { grid-column: 2; grid-row: 1; padding-bottom: 18px; }
+.wh-eras.detail .wh-rows {
+  grid-column: 2;
+  grid-row: 2;
+  justify-content: flex-start;
+  padding-bottom: 34px;
+}
+.wh-eras.detail .wh-era-main { max-width: 620px; }
+.wh-eras.detail .wh-aside { flex-basis: 100%; margin-top: 6px; }
+.wh-eras.detail .wh-row.aside { margin-left: 0; }
+
+@media (max-width: 860px) {
+  .wh-eras .wh-era {
+    grid-template-columns: 5px minmax(0, 1fr);
+    column-gap: 20px;
+  }
+  .wh-eras .wh-bar { grid-column: 1; grid-row: 1 / span 2; }
+  .wh-eras .wh-era > .wh-era-text { grid-column: 2; grid-row: 1; padding-bottom: 18px; }
+  .wh-eras .wh-rows {
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: flex-start;
+    padding-bottom: 38px;
+    gap: 16px;
+  }
+  .wh-eras .wh-era-main { max-width: 620px; }
+  .wh-eras .wh-aside { flex-basis: 100%; margin-top: 6px; }
+  /* Full-width rows here, so the balloon can align with its label again */
+  .wh-eras .wh-balloon { left: 0; right: auto; width: min(380px, 100%); }
+  /* The spine now runs down the outer edge; indent it so the opening dot
+     and the closing arrowhead, both wider than the bar, stay off the
+     page gutter. */
+  .wh-eras .wh-chart { padding-left: 7px; }
+}
+
+@media (max-width: 560px) {
+  /* 6b hides .wh-role on phones and lets the balloon carry it; there is
+     room for it in the stacked layout, so it stays and the balloon's
+     own heading stays suppressed. */
+  .wh-eras .wh-role { display: inline; }
+  .wh-eras .wh-balloon .t { display: none; }
+  .wh-eras .wh-balloon { padding: 12px 14px; }
+  .wh-eras .wh-era-note { font-size: 14px; }
+}
 
 /* ---------------------------------------------------------------
    7. Projects
