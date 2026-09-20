@@ -607,22 +607,20 @@ ul { padding: 0; list-style: none; }
   margin: 9px 0 0;
   text-wrap: pretty;
 }
-/* The second half of a note split around a floated .wh-aside (see
-   Applied research) — butts against the first half instead of repeating
-   the paragraph gap, so the two read as one sentence rather than two. */
-.wh-era-note.wh-era-note-cont { margin-top: 0; }
-/* A stretch that ran inside an era but away from it. Floated at the left
-   of the era's own note — inside .wh-era-main, ahead of the note
+/* A stretch that ran inside an era but away from it. Floated to the
+   right of the era's own note — inside .wh-era-main, ahead of the note
    paragraph in source order — so the note's text wraps around it on the
-   right rather than running in a column beside it. era-main is a plain
-   block (not a flex/grid item) so the float and the wrap both work; the
-   grid item above it (.wh-era-text) gets an implicit block formatting
-   context, which is what makes the era's row grow to the float's full
-   height instead of clipping it. */
+   left rather than running in a column beside it. Right, not left, so
+   it stays off the edge every era heading and note share; floated left
+   it sat flush against that edge and read as an era heading of its
+   own. era-main is a plain block (not a flex/grid item) so the float
+   and the wrap both work; the grid item above it (.wh-era-text) gets an
+   implicit block formatting context, which is what makes the era's row
+   grow to the float's full height instead of clipping it. */
 .wh-aside {
-  float: left;
+  float: right;
   width: 168px;
-  margin: 3px 20px 14px 0;
+  margin: 3px 0 14px 20px;
   border-left: 1px solid var(--accent);
   padding-left: 14px;
 }
