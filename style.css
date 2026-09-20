@@ -566,11 +566,14 @@ ul { padding: 0; list-style: none; }
 
 /* The prose column is a fixed track, not 1fr: an era without a side
    journey must leave the same gap before the spine as one with, or the
-   spine would sit at a different place in each era. */
+   spine would sit at a different place in each era. Narrower than the
+   prose needs on its own, so the spine and the employers sit toward the
+   left of the chart rather than the right; the note wraps more tightly
+   as the tradeoff. */
 .wh-era {
   display: grid;
-  grid-template-columns: minmax(0, 560px) 5px minmax(0, 250px);
-  column-gap: 26px;
+  grid-template-columns: minmax(0, 430px) 5px minmax(0, 250px);
+  column-gap: 20px;
   align-items: stretch;
 }
 .wh-era > .wh-era-text { grid-column: 1; grid-row: 1; padding-bottom: 36px; }
@@ -588,10 +591,8 @@ ul { padding: 0; list-style: none; }
 .wh-eras .wh-era:last-child > .wh-era-text,
 .wh-eras .wh-era:last-child > .wh-rows { padding-bottom: 16px; }
 
-/* Era prose. One measure for every era, so the side journey below can
-   sit in the leftover width without the columns moving era to era. */
-.wh-era-text { display: flex; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
-.wh-era-main { flex: 1 1 300px; max-width: 392px; }
+/* Era prose. One measure for every era. */
+.wh-era-main { max-width: 430px; }
 .wh-era-name { display: block; font: 600 13.5px/1.3 var(--sans); color: var(--ink); }
 .wh-era-span {
   display: block;
@@ -606,14 +607,20 @@ ul { padding: 0; list-style: none; }
   margin: 9px 0 0;
   text-wrap: pretty;
 }
-/* A stretch that ran inside an era but away from it. Set beside the
-   era's own prose, behind its own rule, so it reads as a detour
-   rather than the next step in the sequence. */
+/* A stretch that ran inside an era but away from it. Floated at the left
+   of the era's own note — inside .wh-era-main, ahead of the note
+   paragraph in source order — so the note's text wraps around it on the
+   right rather than running in a column beside it. era-main is a plain
+   block (not a flex/grid item) so the float and the wrap both work; the
+   grid item above it (.wh-era-text) gets an implicit block formatting
+   context, which is what makes the era's row grow to the float's full
+   height instead of clipping it. */
 .wh-aside {
-  flex: 0 1 180px;
+  float: left;
+  width: 168px;
+  margin: 3px 20px 14px 0;
   border-left: 1px solid var(--accent);
-  padding-left: 15px;
-  margin-top: 26px;
+  padding-left: 14px;
 }
 .wh-aside .wh-era-note { font-size: 13.5px; }
 
@@ -694,7 +701,10 @@ ul { padding: 0; list-style: none; }
   padding-bottom: 34px;
 }
 .wh-eras.detail .wh-era-main { max-width: 620px; }
-.wh-eras.detail .wh-aside { flex-basis: 100%; margin-top: 6px; }
+/* No room to wrap text around a float once every balloon is inline and
+   the column is this wide — stack the aside as its own full-width block
+   instead. */
+.wh-eras.detail .wh-aside { float: none; width: auto; margin: 10px 0 16px; }
 .wh-eras.detail .wh-row.aside { margin-left: 0; }
 
 @media (max-width: 860px) {
@@ -712,7 +722,9 @@ ul { padding: 0; list-style: none; }
     gap: 16px;
   }
   .wh-eras .wh-era-main { max-width: 620px; }
-  .wh-eras .wh-aside { flex-basis: 100%; margin-top: 6px; }
+  /* Same reasoning as the detail-view override: no room to wrap around a
+     float in a narrow stacked column, so it stacks as a block instead. */
+  .wh-eras .wh-aside { float: none; width: auto; margin: 10px 0 16px; }
   /* Full-width rows here, so the balloon can align with its label again */
   .wh-eras .wh-balloon { left: 0; right: auto; width: min(380px, 100%); }
   /* The spine now runs down the outer edge; indent it so the opening dot
