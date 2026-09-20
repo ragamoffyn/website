@@ -607,6 +607,10 @@ ul { padding: 0; list-style: none; }
   margin: 9px 0 0;
   text-wrap: pretty;
 }
+/* The second half of a note split around a floated .wh-aside (see
+   Applied research) — butts against the first half instead of repeating
+   the paragraph gap, so the two read as one sentence rather than two. */
+.wh-era-note.wh-era-note-cont { margin-top: 0; }
 /* A stretch that ran inside an era but away from it. Floated at the left
    of the era's own note — inside .wh-era-main, ahead of the note
    paragraph in source order — so the note's text wraps around it on the
