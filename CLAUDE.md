@@ -18,27 +18,18 @@ Open `index.html` directly in a browser to preview, or run
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
   work-history diagram's pinning and details toggle.
 
-## ⚠ Parked content — remind Michael about this
+## Parked content — settled
 
-Two blocks in `index.html` are **hidden but deliberately not deleted**,
-both carrying the `parked` class (`.parked { display: none }` in
-`style.css`). Michael asked to hide them while he decides, and asked to
-be **reminded that they are still there**.
+`index.html` used to carry two hidden blocks with the `parked` class: the
+three CV lead-in summaries (`.cv-summary`) and the original text timeline
+(`.timeline`). On 2026-09-20 Michael asked for both to be **deleted from
+`index.html`**, so they are gone from that page. Nothing is parked there
+any more, and there is nothing left to remind him about.
 
-**Bring either back by deleting its `parked` class. Do not delete the
-markup without asking him first.**
-
-| Block | Where | Why it was parked |
-|---|---|---|
-| `.cv-summary` | top of `#cv` | The three lead-in summaries (Research & UX / Innovation / Across domains). |
-| `.timeline` | `#cv`, below the diagram | The original text timeline. The work-history diagram now covers the same ground, and its "Show all details" panel carries the same prose. |
-
-Both blocks are parked in `index-variant1.html` too, since that page is a
-copy of `index.html`.
-
-If a conversation touches the CV section, the timeline, or that part of
-the page, mention that these are still parked and ask whether he wants
-them restored or removed for good.
+Both still exist in `index-variant1.html`, because that page is a
+snapshot of the home page as it stood before the diagram was rebuilt —
+leave them alone there. `.parked { display: none }` stays in `style.css`
+for that reason.
 
 ## Other open items
 
@@ -52,9 +43,12 @@ them restored or removed for good.
   transcribed from the reference image Michael supplied on 2026-09-20.
   "Digital transformation" replaces what the old diagram called
   "Innovation skunkworks".
-- Threadbare Games (2012–2013) is not in that reference image. It was
-  kept in the Applied research era, marked as running alongside SINTEF,
-  rather than dropped — Michael has not confirmed either way.
+- Threadbare Games (2012–2013) is not in that reference image, and on
+  2026-09-20 Michael asked for it to be removed from `index.html`. Its
+  case study, `mobile-games.html`, is still reachable from the Projects
+  grid and from `search-rescue.html`, so nothing is orphaned. The row is
+  still in `index-variant1.html`, along with the `.wh-row.concurrent`
+  styling it needs.
 - The case-study links inside the work-history diagram's balloons were
   **inferred** from dates and domain (Yara → Coffee Ecosystem and Sewer
   Corrosion; DNV → National Security and Maritime Refueling; SINTEF →
