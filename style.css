@@ -618,11 +618,12 @@ ul { padding: 0; list-style: none; }
    implicit block formatting context, which is what makes the era's row
    grow to the float's full height instead of clipping it. */
 .wh-aside {
+  box-sizing: border-box;
   float: right;
-  width: 168px;
+  width: 176px;
   margin: 3px 0 14px 20px;
-  border-left: 1px solid var(--accent);
-  padding-left: 14px;
+  border: 1px solid var(--accent);
+  padding: 11px 13px 13px;
 }
 .wh-aside .wh-era-note { font-size: 13.5px; }
 
@@ -674,11 +675,14 @@ ul { padding: 0; list-style: none; }
 .wh-eras .wh-role { display: inline; }
 .wh-eras .wh-role::before { content: " · "; }
 
-/* The employer of the side journey, marked to match its prose block */
+/* The employer of the side journey, boxed to match its prose block. The
+   2px right margin keeps the border off the chart's own right edge —
+   in the expanded view and the stacked layout the rows column runs
+   flush to it, with no column gutter of its own to fall back on. */
 .wh-eras .wh-row.aside {
-  border-left: 1px solid var(--accent);
-  padding-left: 11px;
-  margin-left: -12px;
+  border: 1px solid var(--accent);
+  padding: 9px 11px 10px;
+  margin: 4px 2px 4px 0;
 }
 
 /* The rows sit against the right edge of the content column, so the
