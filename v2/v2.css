@@ -1,0 +1,751 @@
+/* =================================================================
+   Michael Stiso — Portfolio v2 (dashboard)
+   Three pages laid out from "CV site.pptx": index.html (home),
+   work-history.html and projects.html. Each page is a grid of panels
+   that fills the viewport at 1100px and up, with long panels scrolling
+   inside themselves. Below that the panels restack and the page scrolls.
+   Independent of ../style.css — nothing here touches the current site.
+   ================================================================= */
+
+/* ---------------------------------------------------------------
+   0. Tokens — shadcn names, this site's palette.
+   The orange is the darkened #b4541c the palette critique recommended
+   (4.53:1 on cream) and #d56421 on the dark panel (4.52:1).
+   --------------------------------------------------------------- */
+:root {
+  --background:         #f7f4ee;
+  --foreground:         #211d19;
+  --card:               #fcfaf6;
+  --muted:              #efe9df;
+  --muted-foreground:   #6e675e;
+  --primary:            #b4541c;
+  --primary-soft:       rgba(180, 84, 28, .10);
+  --border:             rgba(33, 29, 25, .14);
+  --border-strong:      rgba(33, 29, 25, .32);
+
+  --sidebar:            #211d19;
+  --sidebar-foreground: #f2ede4;
+  --sidebar-muted:      #a89f92;
+  --sidebar-primary:    #d56421;
+  --sidebar-border:     rgba(242, 237, 228, .16);
+
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:  'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --gap: 20px;
+  --pad: 22px;
+  --menu-h: 52px;
+}
+
+/* ---------------------------------------------------------------
+   1. Base
+   --------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--primary); text-underline-offset: 2px; text-decoration-color: rgba(180, 84, 28, .4); }
+a:hover { color: var(--foreground); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; }
+p { margin: 0; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------
+   2. Dashboard frame and panels
+   --------------------------------------------------------------- */
+.dash {
+  display: grid;
+  gap: var(--gap);
+  padding: var(--gap);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: var(--pad);
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.panel-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.panel-label .aside {
+  color: var(--muted-foreground);
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: none;
+  font-size: 12px;
+}
+/* A panel whose body scrolls on its own when the dashboard is pinned
+   to the viewport. */
+.panel-scroll { overflow: auto; overscroll-behavior: contain; }
+
+.panel.dark {
+  background: var(--sidebar);
+  border-color: var(--sidebar);
+  color: var(--sidebar-foreground);
+}
+.panel.dark .panel-label { color: var(--sidebar-primary); }
+.panel.dark a { color: var(--sidebar-foreground); text-decoration-color: var(--sidebar-border); }
+.panel.dark a:hover { color: var(--sidebar-primary); }
+
+/* ---------- Menu bar ---------- */
+.menu {
+  grid-area: menu;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 var(--pad) 0 8px;
+  min-height: var(--menu-h);
+}
+.menu-links { display: flex; align-items: stretch; align-self: stretch; }
+.menu-links a {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+.menu-links a:hover { color: var(--foreground); }
+.menu-links a[aria-current="page"] {
+  color: var(--foreground);
+  border-bottom-color: var(--primary);
+}
+.menu-meta {
+  display: flex;
+  gap: 18px;
+  font-family: var(--sans);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.menu-meta a { text-decoration: none; }
+.menu-meta a:hover { text-decoration: underline; }
+
+/* ---------- Name block (work history, projects) ---------- */
+.brand {
+  grid-area: brand;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 0 var(--pad) 0 10px;
+  min-height: var(--menu-h);
+  text-decoration: none;
+  color: var(--foreground);
+}
+.brand:hover { color: var(--foreground); border-color: var(--border-strong); }
+.brand-mark {
+  flex: none;
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  background: var(--sidebar);
+  color: var(--sidebar-foreground);
+  font-family: var(--serif);
+  font-size: 15px;
+}
+.brand-name { font-size: 17px; line-height: 1.15; }
+.brand-title {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* ---------------------------------------------------------------
+   3. Home
+   Slide 1: portrait, blurb and contact down the left; menu, intro and
+   summary on the right. The portrait's bottom lines up with the
+   intro's, and the blurb's top with the summary's, as on the slide.
+   --------------------------------------------------------------- */
+.dash-home {
+  grid-template-columns: minmax(250px, 22fr) 72fr;
+  grid-template-rows: auto 1fr 1fr .62fr;
+  grid-template-areas:
+    "img     menu"
+    "img     intro"
+    "blurb   summary"
+    "contact summary";
+}
+.home-img {
+  grid-area: img;
+  padding: 0;
+  overflow: hidden;
+}
+.portrait-placeholder {
+  flex: 1;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(242, 237, 228, .035) 14px 15px),
+    var(--sidebar);
+  color: var(--sidebar-foreground);
+  font-family: var(--serif);
+  font-size: 64px;
+  font-weight: 300;
+  letter-spacing: .02em;
+}
+.portrait { flex: 1; width: 100%; height: 100%; object-fit: cover; }
+
+.home-blurb { grid-area: blurb; overflow: auto; }
+.home-blurb h1 { font-size: 26px; line-height: 1.15; }
+.home-blurb .role {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 8px 0 14px;
+}
+.home-blurb p { color: var(--muted-foreground); font-size: 16px; line-height: 1.5; }
+
+.home-contact { grid-area: contact; justify-content: space-between; }
+.contact-list { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 14px; }
+.contact-list li + li { margin-top: 6px; }
+.contact-list .loc { color: var(--sidebar-muted); }
+
+.home-intro { grid-area: intro; justify-content: space-between; overflow: auto; }
+.home-intro .lede {
+  font-size: clamp(20px, 1.75vw, 26px);
+  line-height: 1.32;
+  max-width: 54ch;
+  text-wrap: pretty;
+}
+.home-intro .lede em { font-style: italic; color: var(--primary); }
+.intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 18px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+}
+.intro-links a { text-decoration: none; }
+.intro-links a:hover { text-decoration: underline; }
+
+.home-summary { grid-area: summary; }
+
+/* Summary tabs: "Approach" (the four summary cells) and "AI & UX". */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
+.tab {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0 2px 10px;
+  margin-right: 18px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.tab:hover { color: var(--foreground); }
+.tab[aria-selected="true"] { color: var(--primary); border-bottom-color: var(--primary); }
+.tabpanel { flex: 1; min-height: 0; overflow: auto; }
+.tabpanel[hidden] { display: none; }
+.tabpanel-intro { color: var(--muted-foreground); font-size: 15px; max-width: 80ch; margin-bottom: 16px; }
+
+.cells {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.cells.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cell { background: var(--card); padding: 18px 20px; }
+.cell .num {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: .08em;
+  display: block;
+  margin-bottom: 6px;
+}
+.cell h3 { font-size: 19px; line-height: 1.2; margin-bottom: 6px; }
+.cell p { font-size: 15px; line-height: 1.5; color: var(--muted-foreground); }
+
+/* ---------------------------------------------------------------
+   4. Work history
+   Slide 2: name and menu across the top (at a different split from the
+   panels below), the horizontal graphic on the left and the scrolling
+   description on the right.
+   --------------------------------------------------------------- */
+.dash-wh {
+  grid-template-columns: 31fr 29fr 36fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "brand menu  menu"
+    "graph graph text";
+}
+.wh-graph { grid-area: graph; }
+.wh-text { grid-area: text; }
+
+/* ---------- The Gantt ----------
+   Years run left to right across the track, 1998 to 2026. Every
+   left/width is a percentage of that 28-year span, set inline:
+   left = (start − 1998) / 28, width = (end − start) / 28. */
+.gantt {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(150px, 30%) 1fr;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 16px;
+}
+.g-head, .g-track-area, .g-axis { grid-column: 2; position: relative; }
+.g-rows { grid-column: 1 / -1; grid-row: 2; position: relative; z-index: 1; display: flex; flex-direction: column; }
+
+/* Era header: one cell per era, same percentages as the bands. */
+.g-head { grid-row: 1; height: 64px; }
+.g-era-label {
+  position: absolute;
+  top: 0; bottom: 0;
+  padding: 0 6px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-left: 1px solid var(--border-strong);
+  background: none;
+  border-top: 0; border-right: 0; border-bottom: 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--sans);
+  color: var(--foreground);
+  text-decoration: none;
+}
+.g-era-label b { font-size: 12px; font-weight: 600; line-height: 1.2; }
+.g-era-label span { font-size: 11px; color: var(--muted-foreground); white-space: nowrap; }
+.g-era-label:hover b { color: var(--primary); }
+
+/* Era bands sit behind the rows, in the track column only: they share
+   grid row 2 with .g-rows, which is drawn on top. */
+.g-bands { grid-column: 2; grid-row: 2; position: relative; pointer-events: none; }
+.g-band { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--border-strong); }
+.g-band.alt { background: var(--muted); }
+.g-band.side {
+  border-left: 1px dashed var(--border-strong);
+  border-right: 1px dashed var(--border-strong);
+  background: repeating-linear-gradient(135deg, transparent 0 6px, rgba(180, 84, 28, .07) 6px 7px);
+}
+.g-band-note {
+  position: absolute;
+  bottom: 6px; left: 5px; right: 2px;
+  font-family: var(--sans);
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.g-row {
+  flex: 1;
+  min-height: 46px;
+  display: grid;
+  grid-template-columns: minmax(150px, 30%) 1fr;
+  column-gap: 16px;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  cursor: pointer;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.g-row:last-child { border-bottom: 1px solid var(--border); }
+.g-label { padding: 6px 0; min-width: 0; }
+.g-emp { display: block; font-family: var(--sans); font-size: 14px; font-weight: 600; line-height: 1.25; }
+.g-role { display: block; font-size: 14px; line-height: 1.3; color: var(--muted-foreground); }
+.g-track { position: relative; height: 100%; min-height: 20px; }
+.g-bar {
+  position: absolute;
+  top: 50%;
+  height: 12px;
+  transform: translateY(-50%);
+  background: var(--primary);
+}
+.g-bar.ongoing { background: linear-gradient(90deg, var(--primary) 70%, rgba(180, 84, 28, .35)); }
+.g-bar.dot { width: 10px; height: 10px; border-radius: 50%; margin-left: -5px; }
+.g-dates {
+  position: absolute;
+  top: calc(50% + 9px);
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+.g-dates.end { transform: translateX(-100%); }
+
+.g-row:hover .g-emp { color: var(--primary); }
+.g-row[aria-current="true"] { background: var(--primary-soft); }
+.g-row[aria-current="true"] .g-emp { color: var(--primary); }
+.g-row[aria-current="true"] .g-bar { background: var(--foreground); }
+.g-row[aria-current="true"] .g-bar.ongoing { background: linear-gradient(90deg, var(--foreground) 70%, rgba(33, 29, 25, .35)); }
+
+.g-axis { grid-row: 3; height: 26px; }
+.g-tick {
+  position: absolute;
+  top: 0;
+  padding-top: 6px;
+  transform: translateX(-50%);
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+.g-tick::before { content: ""; position: absolute; top: 0; left: 50%; height: 4px; border-left: 1px solid var(--border-strong); }
+.g-tick.first { transform: none; }
+.g-tick.first::before { left: 0; }
+.g-tick.last { transform: translateX(-100%); }
+.g-tick.last::before { left: auto; right: 0; }
+
+.g-foot {
+  margin-top: 14px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+/* ---------- Description column ---------- */
+.wh-text .era + .era { margin-top: 34px; }
+.era-head { padding-bottom: 12px; border-bottom: 1px solid var(--border-strong); margin-bottom: 4px; }
+.era-head h2 { font-size: 24px; line-height: 1.15; }
+.era-span {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--primary);
+  display: block;
+  margin: 2px 0 8px;
+}
+.era-head p { color: var(--muted-foreground); font-size: 16px; }
+.era-head .side-note {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-left: 2px solid var(--primary);
+  background: var(--primary-soft);
+  font-size: 15px;
+  color: var(--foreground);
+}
+.job {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 8px;
+}
+.job:last-child { border-bottom: 0; }
+.job h3 { font-family: var(--sans); font-size: 16px; font-weight: 600; }
+.job-meta {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--muted-foreground);
+  margin: 2px 0 8px;
+}
+.job p { font-size: 16px; line-height: 1.5; }
+.job .cs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+.job .cs a { text-decoration: none; }
+.job .cs a:hover { text-decoration: underline; }
+.job.is-active h3 { color: var(--primary); }
+.extras { margin-top: 34px; display: grid; gap: 18px; }
+.extras h2 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+.extras ul { margin: 0; padding-left: 18px; }
+.extras li { font-size: 15px; }
+
+/* ---------------------------------------------------------------
+   5. Projects
+   Slide 3: project tiles down the left, the selected project's full
+   description on the right.
+   --------------------------------------------------------------- */
+.dash-projects {
+  grid-template-columns: minmax(250px, 22fr) 72fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "brand menu"
+    "list  detail";
+}
+.proj-nav { grid-area: list; min-width: 0; min-height: 0; display: flex; }
+.proj-list {
+  flex: 1;
+  min-width: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  overflow: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+.proj-tile {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  text-decoration: none;
+}
+.proj-tile:hover { border-color: var(--border-strong); color: var(--foreground); }
+.proj-tile[aria-current="true"] { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
+.proj-thumb {
+  aspect-ratio: 16 / 7;
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(135deg, var(--muted) 0 10px, #e9e2d6 10px 11px);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.proj-tile-text { display: block; padding: 12px 14px 14px; }
+.proj-tile-meta {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  display: block;
+}
+.proj-tile-title { display: block; font-size: 18px; line-height: 1.2; margin-top: 3px; }
+
+.proj-detail { grid-area: detail; }
+.proj { max-width: 880px; }
+.proj + .proj { margin-top: 60px; }
+.js .proj + .proj { margin-top: 0; }
+.js .proj:not(.is-shown) { display: none; }
+.proj-meta {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.proj-title { font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin: 6px 0 8px; }
+.proj-subtitle { font-size: 19px; color: var(--muted-foreground); max-width: 60ch; }
+
+/* Project at a glance: the Deliverable / Topic / Goal / Strategy
+   summary from the current site's project cards, as stat tiles. */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 22px 0;
+}
+.fact { background: var(--background); padding: 12px 14px; }
+.fact dt {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 4px;
+}
+.fact dd { margin: 0; font-size: 15px; line-height: 1.4; }
+.proj-hero {
+  aspect-ratio: 16 / 4.5;
+  display: grid;
+  place-items: center;
+  margin: 22px 0 8px;
+  padding: 0 16px;
+  text-align: center;
+  background: repeating-linear-gradient(135deg, var(--muted) 0 10px, #e9e2d6 10px 11px);
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.proj-body section { margin-top: 26px; }
+.proj-body h2 {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.proj-body h3 { font-size: 19px; margin: 14px 0 6px; }
+.proj-body p { font-size: 17px; line-height: 1.6; }
+.proj-body p + p { margin-top: 12px; }
+.proj-body ul, .proj-body ol { padding-left: 20px; font-size: 17px; line-height: 1.55; }
+.proj-body li + li { margin-top: 6px; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 28px; }
+.proj-tags span {
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 3px 9px;
+  border: 1px solid var(--border-strong);
+  color: var(--muted-foreground);
+}
+.proj-worklink {
+  margin-top: 18px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+.proj-worklink a { text-decoration: none; }
+.proj-worklink a:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------------
+   6. Pinned to the viewport (1100px and up)
+   The whole dashboard is one screen; long panels scroll inside.
+   --------------------------------------------------------------- */
+@media (min-width: 1100px) and (min-height: 640px) {
+  .dash { height: 100vh; height: 100dvh; }
+  .home-summary, .wh-text, .proj-detail { overflow: auto; overscroll-behavior: contain; }
+  .wh-text, .proj-detail { padding-right: calc(var(--pad) + 6px); }
+}
+
+/* ---------------------------------------------------------------
+   7. Tablet (below 1100px): panels restack, page scrolls.
+   --------------------------------------------------------------- */
+@media (max-width: 1099.98px), (max-height: 639.98px) {
+  .dash-home {
+    grid-template-columns: minmax(200px, 1fr) 2fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "menu    menu"
+      "img     blurb"
+      "img     contact"
+      "intro   intro"
+      "summary summary";
+  }
+  .home-img { min-height: 260px; }
+  .dash-wh {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "brand menu" "graph graph" "text text";
+  }
+  .dash-projects {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "brand menu" "list list" "detail detail";
+  }
+  .brand { min-height: 0; padding: 10px var(--pad) 10px 10px; }
+  .menu-meta a[href^="mailto:"] { display: none; }
+  .wh-graph { min-height: 560px; }
+
+  /* The project tiles become a sideways strip above the detail. */
+  .proj-list {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 6px;
+  }
+  .proj-list li { flex: 0 0 220px; scroll-snap-align: start; }
+  .proj-tile { height: 100%; }
+  .proj-thumb { aspect-ratio: 16 / 7; }
+}
+
+/* ---------------------------------------------------------------
+   8. Phone (below 700px)
+   --------------------------------------------------------------- */
+@media (max-width: 699.98px) {
+  :root { --gap: 12px; --pad: 16px; }
+  .dash-home {
+    grid-template-columns: 1fr;
+    grid-template-areas: "menu" "img" "blurb" "intro" "summary" "contact";
+  }
+  .home-img { min-height: 0; }
+  .portrait-placeholder { min-height: 150px; font-size: 48px; }
+
+  .menu { flex-wrap: wrap; padding: 0 var(--pad) 0 4px; }
+  .menu-links a { padding: 0 10px; font-size: 14px; min-height: 48px; }
+  .menu-meta { display: none; }
+
+  .cells, .cells.three { grid-template-columns: 1fr; }
+  .dash-wh, .dash-projects { grid-template-columns: 1fr; }
+  .dash-wh { grid-template-areas: "brand" "menu" "graph" "text"; }
+  .dash-projects { grid-template-areas: "brand" "menu" "list" "detail"; }
+
+  /* Gantt: the label sits above its bar instead of beside it. */
+  .wh-graph { min-height: 0; }
+  .gantt { grid-template-columns: 0 1fr; column-gap: 0; }
+  .g-row { grid-template-columns: 1fr; min-height: 0; padding: 8px 0 4px; }
+  .g-label { padding: 0 0 2px; position: relative; z-index: 1; }
+  .g-emp, .g-role { display: inline; font-size: 13.5px; }
+  .g-role::before { content: " · "; }
+  .g-track { height: 34px; }
+  /* Era names are wider than their bands here, so they alternate
+     between two lines and the last one hangs from the right edge. The
+     axis carries the years. */
+  .g-head { height: 44px; }
+  .g-era-label { width: auto !important; padding: 0 4px; white-space: nowrap; }
+  .g-era-label:nth-child(odd) { top: 0; bottom: 20px; justify-content: flex-start; }
+  .g-era-label:nth-child(even) { top: 20px; bottom: 0; justify-content: flex-end; padding-bottom: 5px; }
+  .g-era-label:last-child { left: auto !important; right: 0; border-left: 0; border-right: 1px solid var(--border-strong); text-align: right; }
+  .g-era-label b { font-size: 11px; }
+  .g-era-label span { display: none; }
+  .g-band-note { font-size: 9px; }
+  .g-tick { font-size: 10px; }
+  .g-tick.mid-optional { display: none; }
+
+  .proj-list li { flex-basis: 180px; }
+  .proj-subtitle { font-size: 17px; }
+  .proj-body p, .proj-body ul, .proj-body ol { font-size: 16px; }
+}

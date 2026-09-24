@@ -15,6 +15,12 @@ Open `index.html` directly in a browser to preview, or run
 - `foursubsea.html`, `national-security.html`, `maritime-refueling.html`,
   `coffee-ecosystem.html`, `sewer-corrosion.html`, `search-rescue.html`,
   `mobile-games.html` — one case-study page per project.
+- `v2/` — a dashboard-style multi-page version, built from Michael's
+  "CV site.pptx" layout (2026-09-24): `index.html` (home),
+  `work-history.html`, `projects.html`, with its own `v2.css` and
+  `v2.js`. Independent of the root pages and `style.css`. Its project
+  articles are copied from the root case-study pages, so edits to a
+  case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
   work-history diagram's pinning and details toggle.
 
