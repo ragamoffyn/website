@@ -889,7 +889,7 @@ p { margin: 0; }
    spread further apart as the screen grows:
      step n = base × ratio^n, interpolated between the two ends.
    The grid uses the same ratio: columns split 4 : 3, and the page's
-   width is capped at 1440px. There is no image on this page.
+   width is capped at 1440px.
    The golden-spiral home (section 9) is kept as index-spiral.html.
    --------------------------------------------------------------- */
 .ms-page {
@@ -901,7 +901,6 @@ p { margin: 0; }
   --step-3:  clamp(1.7280rem, 1.3664rem + 1.6070vw, 2.8127rem);
   --step-4:  clamp(2.0736rem, 1.5150rem + 2.4826vw, 3.7493rem);
   --step-5:  clamp(2.4883rem, 1.6518rem + 3.7178vw, 4.9979rem);
-  --step-6:  clamp(2.9860rem, 1.7606rem + 5.4462vw, 6.6622rem);
   --ratio-a: 4fr;   /* the larger side of 4 : 3 */
   --ratio-b: 3fr;
   font-size: var(--step-0);
@@ -926,12 +925,12 @@ p { margin: 0; }
   color: var(--primary);
 }
 
-/* Main: identity and summaries side by side, 3 : 4. */
-.ms-main {
+/* Hero: text and portrait split 4 : 3. */
+.ms-hero {
   display: grid;
-  grid-template-columns: var(--ratio-b) var(--ratio-a);
-  gap: var(--step-6);
-  align-items: start;
+  grid-template-columns: var(--ratio-a) var(--ratio-b);
+  gap: var(--step-4);
+  align-items: end;
   padding: var(--step-5) 0 var(--step-4);
   border-bottom: 1px solid var(--border-strong);
 }
@@ -941,31 +940,36 @@ p { margin: 0; }
   letter-spacing: -.015em;
   font-weight: 400;
 }
-/* The title, two steps below the name. */
-.ms-title {
-  margin-top: var(--step-0);
-  font-size: var(--step-3);
-  line-height: 1.15;
-  font-style: italic;
-  color: var(--primary);
-}
 .ms-lede {
-  margin-top: var(--step-3);
-  padding-top: var(--step-2);
-  border-top: 1px solid var(--border);
+  margin-top: var(--step-2);
   font-size: var(--step-1);
-  line-height: 1.45;
+  line-height: 1.4;
+  max-width: 34em;
   text-wrap: pretty;
 }
 .ms-lede em { color: var(--primary); }
+/* The portrait is square. Its height follows the text beside it (the
+   row stretches to the text, and the width follows from 1 : 1), so the
+   text never has to leave empty space above or below itself. */
+.ms-portrait {
+  align-self: stretch;
+  justify-self: end;
+  aspect-ratio: 1;
+  max-width: 100%;
+  min-height: 0;
+  position: relative;
+}
+/* Taken out of flow so the photo's own size can't make the row taller. */
+.ms-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 
-/* Summaries: 2 × 2 in the wider column, one column when it narrows. */
+/* Summary: four equal columns, then 2 × 2, then one. */
 .ms-summary {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: var(--step-3);
-  row-gap: var(--step-4);
-  padding-top: var(--step-m1);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--step-2);
+  row-gap: var(--step-3);
+  padding: var(--step-4) 0;
+  border-bottom: 1px solid var(--border-strong);
 }
 .ms-cell h2 { font-size: var(--step-1); line-height: 1.2; margin-bottom: var(--step-m1); }
 .ms-cell p { font-size: var(--step-0); line-height: 1.5; color: var(--muted-foreground); }
@@ -974,7 +978,7 @@ p { margin: 0; }
 .ms-contact {
   display: grid;
   grid-template-columns: var(--ratio-b) var(--ratio-a);
-  gap: var(--step-6);   /* same as .ms-main, so the links line up with the summaries */
+  gap: var(--step-4);
   align-items: baseline;
   padding-top: var(--step-3);
 }
@@ -991,9 +995,12 @@ p { margin: 0; }
 .ms-contact-links span { color: var(--muted-foreground); }
 
 @media (max-width: 1099.98px) {
-  .ms-summary { grid-template-columns: 1fr; row-gap: var(--step-3); }
+  .ms-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 699.98px) {
-  .ms-main { grid-template-columns: 1fr; gap: var(--step-4); padding-top: var(--step-3); }
+  .ms-hero { grid-template-columns: 1fr; padding-top: var(--step-3); }
+  .ms-portrait { order: -1; align-self: start; justify-self: start; width: 60%; }
+  .ms-portrait img { position: static; }
+  .ms-summary { grid-template-columns: 1fr; }
   .ms-contact { grid-template-columns: 1fr; gap: var(--step-0); }
 }
