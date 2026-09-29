@@ -888,8 +888,8 @@ p { margin: 0; }
    base with ratio 1.333 (perfect fourth) at 1440px, so headings
    spread further apart as the screen grows:
      step n = base × ratio^n, interpolated between the two ends.
-   The grid uses the same ratio: columns split 4 : 3 (and 3 : 4 for
-   the portrait), and the page's width is capped at 1440px.
+   The grid uses the same ratio: columns split 4 : 3, and the page's
+   width is capped at 1440px. There is no image on this page.
    The golden-spiral home (section 9) is kept as index-spiral.html.
    --------------------------------------------------------------- */
 .ms-page {
@@ -925,12 +925,12 @@ p { margin: 0; }
   color: var(--primary);
 }
 
-/* Hero: text and portrait split 4 : 3. */
+/* Hero: name and title split 4 : 3 with the intro. */
 .ms-hero {
   display: grid;
   grid-template-columns: var(--ratio-a) var(--ratio-b);
   gap: var(--step-4);
-  align-items: end;
+  align-items: start;
   padding: var(--step-5) 0 var(--step-4);
   border-bottom: 1px solid var(--border-strong);
 }
@@ -940,25 +940,22 @@ p { margin: 0; }
   letter-spacing: -.015em;
   font-weight: 400;
 }
+/* The title, two steps below the name. */
+.ms-title {
+  margin-top: var(--step-0);
+  font-size: var(--step-3);
+  line-height: 1.15;
+  font-style: italic;
+  color: var(--primary);
+}
+/* The intro starts level with the name's first line. */
 .ms-lede {
-  margin-top: var(--step-2);
+  padding-top: var(--step-m1);
   font-size: var(--step-1);
-  line-height: 1.4;
-  max-width: 34em;
+  line-height: 1.45;
   text-wrap: pretty;
 }
 .ms-lede em { color: var(--primary); }
-/* The portrait is 3 : 4, the same ratio turned upright. */
-.ms-portrait {
-  aspect-ratio: 3 / 4;
-  display: flex;
-  background: var(--sidebar);
-  justify-self: end;
-  /* Never taller than 70% of the screen, and still 3 : 4. */
-  width: min(100%, calc(70vh * .75));
-}
-.ms-portrait .portrait-placeholder { min-height: 0; font-size: var(--step-4); }
-.ms-portrait .portrait { object-fit: cover; }
 
 /* Summary: four equal columns, then 2 × 2, then one. */
 .ms-summary {
@@ -1005,8 +1002,8 @@ p { margin: 0; }
   .ms-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 699.98px) {
-  .ms-hero { grid-template-columns: 1fr; padding-top: var(--step-3); }
-  .ms-portrait { order: -1; width: 50%; justify-self: start; }
+  .ms-hero { grid-template-columns: 1fr; gap: var(--step-2); padding-top: var(--step-3); }
+  .ms-lede { padding-top: 0; }
   .ms-summary { grid-template-columns: 1fr; }
   .ms-contact { grid-template-columns: 1fr; gap: var(--step-0); }
 }
