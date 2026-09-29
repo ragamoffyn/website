@@ -925,11 +925,11 @@ p { margin: 0; }
   color: var(--primary);
 }
 
-/* Hero: name and title split 4 : 3 with the intro. */
-.ms-hero {
+/* Main: identity and summaries side by side, 3 : 4. */
+.ms-main {
   display: grid;
-  grid-template-columns: var(--ratio-a) var(--ratio-b);
-  gap: var(--step-4);
+  grid-template-columns: var(--ratio-b) var(--ratio-a);
+  gap: var(--step-5);
   align-items: start;
   padding: var(--step-5) 0 var(--step-4);
   border-bottom: 1px solid var(--border-strong);
@@ -948,23 +948,23 @@ p { margin: 0; }
   font-style: italic;
   color: var(--primary);
 }
-/* The intro starts level with the name's first line. */
 .ms-lede {
-  padding-top: var(--step-m1);
+  margin-top: var(--step-3);
+  padding-top: var(--step-2);
+  border-top: 1px solid var(--border);
   font-size: var(--step-1);
   line-height: 1.45;
   text-wrap: pretty;
 }
 .ms-lede em { color: var(--primary); }
 
-/* Summary: four equal columns, then 2 × 2, then one. */
+/* Summaries: 2 × 2 in the wider column, one column when it narrows. */
 .ms-summary {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: var(--step-2);
-  row-gap: var(--step-3);
-  padding: var(--step-4) 0;
-  border-bottom: 1px solid var(--border-strong);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--step-3);
+  row-gap: var(--step-4);
+  padding-top: var(--step-m1);
 }
 .ms-num {
   display: block;
@@ -982,7 +982,7 @@ p { margin: 0; }
 .ms-contact {
   display: grid;
   grid-template-columns: var(--ratio-b) var(--ratio-a);
-  gap: var(--step-4);
+  gap: var(--step-5);   /* same as .ms-main, so the links line up with the summaries */
   align-items: baseline;
   padding-top: var(--step-3);
 }
@@ -999,11 +999,9 @@ p { margin: 0; }
 .ms-contact-links span { color: var(--muted-foreground); }
 
 @media (max-width: 1099.98px) {
-  .ms-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ms-summary { grid-template-columns: 1fr; row-gap: var(--step-3); }
 }
 @media (max-width: 699.98px) {
-  .ms-hero { grid-template-columns: 1fr; gap: var(--step-2); padding-top: var(--step-3); }
-  .ms-lede { padding-top: 0; }
-  .ms-summary { grid-template-columns: 1fr; }
+  .ms-main { grid-template-columns: 1fr; gap: var(--step-4); padding-top: var(--step-3); }
   .ms-contact { grid-template-columns: 1fr; gap: var(--step-0); }
 }
