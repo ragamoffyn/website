@@ -23,7 +23,13 @@ Open `index.html` directly in a browser to preview, or run
   `v2/index-spiral.html`, CSS section 9), then the same day for a fluid
   modular type scale on a 4 : 3 ratio grid, which is the current
   `v2/index.html` (CSS section 10; one scale sets type and spacing).
-  The dashboard home is kept as `v2/index-dashboard.html`. Independent of the root pages and `style.css`. Its project
+  The dashboard home is kept as `v2/index-dashboard.html`.
+  On 2026-09-29 the work history page moved to the same scale and grid
+  (CSS section 11): the text sidebar is gone, and one full-width graphic
+  shows the four v1 eras (prose, spine, employers), each employer opening
+  a tooltip with the job description. The Gantt dashboard version is
+  kept as `v2/work-history-dashboard.html`; `v2/projects.html` is still
+  dashboard-style. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
