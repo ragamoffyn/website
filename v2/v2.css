@@ -1008,7 +1008,7 @@ p { margin: 0; }
 /* ---------------------------------------------------------------
    11. Work history — modular scale + ratio grid (work-history.html)
    Uses section 10's scale and 4 : 3 split. One full-width graphic
-   of four eras, oldest first: each era is a row with its prose on
+   of four eras, newest first: each era is a row with its prose on
    the larger side, the spine in the middle and its employers on the
    smaller side. Row height is set by the content, not by duration;
    the dates carry the time scale. Each employer is a button that
@@ -1093,8 +1093,8 @@ p { margin: 0; }
 .mw-era.has-enclosure .mw-aside,
 .mw-era.has-enclosure .mw-job.aside { border-color: transparent; }
 
-/* The spine: one line through every era, a square marker where each
-   era begins, and an arrowhead after the last pointing on to now. */
+/* The spine: one line through every era, a square marker level with
+   each era's name, and an arrowhead at the top pointing to now. */
 .mw-spine { position: relative; }
 .mw-spine::before {
   content: '';
@@ -1114,15 +1114,15 @@ p { margin: 0; }
   margin-left: -6.5px;
   background: var(--primary);
 }
-.mw-era:first-child .mw-spine::before { top: calc(var(--step-3) + var(--step-3) * .55); }
-.mw-era.last .mw-spine::before { bottom: 12px; }
+.mw-era:first-child .mw-spine::before { top: calc(var(--step-m1) + 10px); }
+.mw-era.last .mw-spine::before { bottom: var(--step-3); }
 .mw-arrow {
   position: absolute;
-  bottom: 0; left: 50%;
+  top: var(--step-m1); left: 50%;
   margin-left: -8px;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 13px solid var(--foreground);
+  border-bottom: 13px solid var(--foreground);
 }
 
 /* Employers */

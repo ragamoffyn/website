@@ -26,7 +26,7 @@ Open `index.html` directly in a browser to preview, or run
   The dashboard home is kept as `v2/index-dashboard.html`.
   On 2026-09-29 the work history page moved to the same scale and grid
   (CSS section 11): the text sidebar is gone, and one full-width graphic
-  shows the four v1 eras (prose, spine, employers), each employer opening
+  shows the four v1 eras newest first (prose, spine, employers), each employer opening
   a tooltip with the job description. The Gantt dashboard version is
   kept as `v2/work-history-dashboard.html`; `v2/projects.html` is still
   dashboard-style. Independent of the root pages and `style.css`. Its project
