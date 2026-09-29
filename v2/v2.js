@@ -110,8 +110,8 @@
   }
 
   /* ---------- Work history (modular): Enterprise UX outline ----------
-     One rounded outline around the Enterprise UX aside and the Oracle
-     row, joined across the spine where the two overlap vertically.
+     The Enterprise UX aside is centred on the Oracle row, and one
+     rounded outline goes around both, joined across the spine where the two overlap vertically.
      Drawn from their current boxes, so it follows any reflow. On
      phones, or if they don't overlap, each keeps its own border. */
   var encl = document.querySelector('.mw-enclosure');
@@ -150,6 +150,13 @@
     };
 
     var draw = function () {
+      // Centre the aside on the Oracle row while the two sit side by side.
+      aside.style.marginTop = '';
+      if (getComputedStyle(aside.parentNode).display === 'grid') {
+        var a0 = aside.getBoundingClientRect(), b0 = row.getBoundingClientRect();
+        var shift = (b0.top + b0.bottom) / 2 - (a0.top + a0.bottom) / 2;
+        aside.style.marginTop = Math.round(shift) + 'px';
+      }
       var o = era.getBoundingClientRect();
       var A = aside.getBoundingClientRect(), B = row.getBoundingClientRect();
       var box = function (r) {
