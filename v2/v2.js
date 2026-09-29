@@ -109,6 +109,68 @@
     });
   }
 
+  /* ---------- Work history (modular): Enterprise UX outline ----------
+     One rounded outline around the Enterprise UX aside and the Oracle
+     row, joined across the spine where the two overlap vertically.
+     Drawn from their current boxes, so it follows any reflow. On
+     phones, or if they don't overlap, each keeps its own border. */
+  var encl = document.querySelector('.mw-enclosure');
+  if (encl) {
+    var era = encl.parentNode;
+    var aside = era.querySelector('.mw-aside');
+    var row = era.querySelector('.mw-job.aside');
+    var path = encl.querySelector('path');
+    var R = 12;
+
+    // Round each corner of a closed polygon with a quadratic curve.
+    var rounded = function (pts) {
+      var n = pts.length, d = '';
+      for (var i = 0; i < n; i++) {
+        var p = pts[i], a = pts[(i + n - 1) % n], b = pts[(i + 1) % n];
+        var la = Math.hypot(p[0] - a[0], p[1] - a[1]);
+        var lb = Math.hypot(b[0] - p[0], b[1] - p[1]);
+        var r = Math.min(R, la / 2, lb / 2);
+        var s = [p[0] + (a[0] - p[0]) * r / la, p[1] + (a[1] - p[1]) * r / la];
+        var e = [p[0] + (b[0] - p[0]) * r / lb, p[1] + (b[1] - p[1]) * r / lb];
+        d += (i ? ' L ' : 'M ') + s.join(' ') + ' Q ' + p.join(' ') + ' ' + e.join(' ');
+      }
+      return d + ' Z';
+    };
+    // Drop repeated points and points in the middle of a straight run.
+    var clean = function (pts) {
+      var out = pts.filter(function (p, i) {
+        var q = pts[(i + pts.length - 1) % pts.length];
+        return Math.abs(p[0] - q[0]) > .5 || Math.abs(p[1] - q[1]) > .5;
+      });
+      return out.filter(function (p, i) {
+        var a = out[(i + out.length - 1) % out.length], b = out[(i + 1) % out.length];
+        return !((Math.abs(a[0] - p[0]) < .5 && Math.abs(p[0] - b[0]) < .5) ||
+                 (Math.abs(a[1] - p[1]) < .5 && Math.abs(p[1] - b[1]) < .5));
+      });
+    };
+
+    var draw = function () {
+      var o = era.getBoundingClientRect();
+      var A = aside.getBoundingClientRect(), B = row.getBoundingClientRect();
+      var box = function (r) {
+        return { l: r.left - o.left, r: r.right - o.left, t: r.top - o.top, b: r.bottom - o.top };
+      };
+      A = box(A); B = box(B);
+      var top = Math.max(A.t, B.t), bot = Math.min(A.b, B.b);
+      var ok = getComputedStyle(aside.parentNode).display === 'grid' && B.l > A.r && bot - top > 2 * R;
+      era.classList.toggle('has-enclosure', ok);
+      if (!ok) return;
+      path.setAttribute('d', rounded(clean([
+        [A.l, A.t], [A.r, A.t], [A.r, top], [B.l, top], [B.l, B.t], [B.r, B.t],
+        [B.r, B.b], [B.l, B.b], [B.l, bot], [A.r, bot], [A.r, A.b], [A.l, A.b]
+      ])));
+    };
+    draw();
+    if (window.ResizeObserver) new ResizeObserver(draw).observe(era);
+    else window.addEventListener('resize', draw);
+    if (document.fonts) document.fonts.ready.then(draw);
+  }
+
   /* ---------- Projects: one article at a time ---------- */
   var detail = document.getElementById('proj-detail');
   if (detail) {
