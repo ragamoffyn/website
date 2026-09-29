@@ -749,3 +749,196 @@ p { margin: 0; }
   .proj-subtitle { font-size: 17px; }
   .proj-body p, .proj-body ul, .proj-body ol { font-size: 16px; }
 }
+
+/* ---------------------------------------------------------------
+   9. Home — golden spiral (index.html)
+   One golden rectangle, width : height = φ : 1 (φ ≈ 1.618), cut into
+   squares that each shrink by 1/φ and turn clockwise. Every left/top
+   is a percentage of the rectangle's width/height:
+     sq1  left square        0      0       61.803 × 100
+     sq2  top right          61.803 0       38.197 × 61.803
+     sq3  bottom right       76.393 61.803  23.607 × 38.197
+     sq4  bottom             61.803 76.393  14.590 × 23.607
+     sq5  left               61.803 61.803   9.017 × 14.590
+     sq6  top                70.820 61.803   5.573 ×  9.017
+     sq7  right              72.949 70.820   3.444 ×  5.573
+     eye  what's left        70.820 70.820   2.129 ×  5.573
+   Below 1200px the squares get too small for their text, so they
+   stack in spiral order instead.
+   --------------------------------------------------------------- */
+.spiral-page { min-height: 100vh; }
+.spiral-nav {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 24px 0;
+  display: flex;
+}
+.spiral-nav .menu-links a { min-height: 44px; padding: 0 12px; }
+.spiral-nav .menu-links a:first-child { padding-left: 0; }
+
+.spiral {
+  position: relative;
+  max-width: 1440px;
+  margin: 12px auto 40px;
+  padding: 0 24px;
+}
+.spiral-arc { display: none; }
+
+.eyebrow-s {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 12px;
+}
+
+.sq { border: 1px solid var(--border-strong); min-width: 0; }
+
+/* 1 */
+.sq1 { padding: clamp(24px, 3.4vw, 48px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+.sq1 h1 { font-size: clamp(36px, 3.9vw, 58px); line-height: 1.02; letter-spacing: -.01em; }
+.sq1 .lede { font-size: clamp(18px, 1.55vw, 23px); line-height: 1.38; margin-top: 18px; max-width: 40em; text-wrap: pretty; }
+.sq1 .lede em { color: var(--primary); }
+.sq1-cells {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border-strong);
+}
+.sq1-cells .cell { background: none; padding: 16px 22px 0 0; }
+.sq1-cells .cell:nth-child(even) { padding: 16px 0 0 22px; border-left: 1px solid var(--border); }
+.sq1-cells .cell:nth-child(n+3) { border-top: 1px solid var(--border); margin-top: 16px; }
+.sq1-cells h2 { font-size: 18px; line-height: 1.2; margin-bottom: 5px; }
+.sq1-cells p { font-size: 14.5px; line-height: 1.5; color: var(--muted-foreground); }
+
+/* 2 */
+.sq2 { padding: clamp(20px, 2.4vw, 34px); display: flex; flex-direction: column; }
+.sq2-intro { font-size: 15.5px; line-height: 1.5; color: var(--muted-foreground); }
+.ai-list { list-style: none; margin: auto 0 0; padding: 18px 0 0; }
+.ai-list li { border-top: 1px solid var(--border); }
+.ai-list li:last-child { border-bottom: 1px solid var(--border); }
+.ai-list button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--foreground);
+}
+.ai-list button span { font-family: var(--sans); font-size: 18px; color: var(--primary); }
+.ai-list button:hover { color: var(--primary); }
+
+.ai-pop {
+  max-width: min(560px, calc(100vw - 32px));
+  padding: 28px 30px 24px;
+  border: 1px solid var(--foreground);
+  background: var(--card);
+  color: var(--foreground);
+}
+.ai-pop::backdrop { background: rgba(33, 29, 25, .45); }
+.ai-pop h3 { font-size: 24px; margin-bottom: 10px; }
+.ai-pop p { font-size: 17px; line-height: 1.6; }
+.ai-pop button {
+  margin-top: 18px;
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.ai-pop button:hover { border-color: var(--primary); color: var(--primary); }
+
+/* 3 */
+.sq3 { display: flex; background: var(--sidebar); border-color: var(--sidebar); }
+.sq3 .portrait-placeholder { min-height: 0; font-size: clamp(40px, 4.4vw, 64px); }
+
+/* 4 */
+.sq4 {
+  padding: clamp(12px, 1.3vw, 18px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  font-family: var(--sans);
+  font-size: 14px;
+}
+.sq4 .eyebrow-s { margin: 0 0 auto; }
+.sq4 a { text-decoration: none; font-weight: 500; }
+.sq4 a:hover { text-decoration: underline; }
+
+/* 5 and the eye */
+.sq5 {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--muted-foreground);
+}
+.sq6 { background: var(--muted); }
+.sq7 { background: var(--primary); border-color: var(--primary); }
+.sq-eye { background: var(--foreground); border-color: var(--foreground); }
+
+/* The spiral proper: only where the squares are big enough. */
+@media (min-width: 1200px) {
+  .spiral::before { content: ""; display: block; padding-top: 61.8034%; }
+  .spiral > .sq, .spiral-arc {
+    position: absolute;
+    margin: -.5px;           /* neighbouring borders overlap into one line */
+  }
+  /* Everything is placed inside the 24px side padding. */
+  .spiral > .sq, .spiral-arc { --w: calc(100% - 48px); }
+  .sq1   { left: 24px;                              top: 0;        width: calc(var(--w) * .618034); height: 100%; }
+  .sq2   { left: calc(24px + var(--w) * .618034);  top: 0;        width: calc(var(--w) * .381966); height: 61.8034%; }
+  .sq3   { left: calc(24px + var(--w) * .763932);  top: 61.8034%; width: calc(var(--w) * .236068); height: 38.1966%; }
+  .sq4   { left: calc(24px + var(--w) * .618034);  top: 76.3932%; width: calc(var(--w) * .145898); height: 23.6068%; }
+  .sq5   { left: calc(24px + var(--w) * .618034);  top: 61.8034%; width: calc(var(--w) * .090170); height: 14.5898%; }
+  .sq6   { left: calc(24px + var(--w) * .708204);  top: 61.8034%; width: calc(var(--w) * .055728); height:  9.0170%; }
+  .sq7   { left: calc(24px + var(--w) * .729490);  top: 70.8204%; width: calc(var(--w) * .034442); height:  5.5728%; }
+  .sq-eye{ left: calc(24px + var(--w) * .708204);  top: 70.8204%; width: calc(var(--w) * .021286); height:  5.5728%; }
+
+  /* The arc is drawn over the squares, faintly, and never takes clicks. */
+  .spiral-arc {
+    display: block;
+    left: 24px; top: 0;
+    width: var(--w); height: 100%;
+    margin: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .spiral-arc path {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 1.25px;
+    vector-effect: non-scaling-stroke;
+    opacity: .45;
+  }
+}
+
+/* Stacked, in spiral order. */
+@media (max-width: 1199.98px) {
+  .spiral { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .sq1, .sq2 { grid-column: 1 / -1; }
+  .sq3 { aspect-ratio: 1; }
+  .sq6, .sq7, .sq-eye { display: none; }
+}
+@media (max-width: 699.98px) {
+  .spiral-nav { padding: 6px 12px 0; }
+  .spiral { padding: 0 12px; gap: 10px; margin-top: 8px; }
+  .sq1-cells { grid-template-columns: 1fr; }
+  .sq1-cells .cell, .sq1-cells .cell:nth-child(even) { padding: 14px 0 0; border-left: 0; }
+  .sq1-cells .cell + .cell { border-top: 1px solid var(--border); margin-top: 14px; }
+  .spiral { grid-template-columns: 1fr 1fr; }
+  .sq3 { grid-column: 1; grid-row: span 2; aspect-ratio: auto; min-height: 150px; }
+}
