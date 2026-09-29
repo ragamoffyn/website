@@ -901,6 +901,7 @@ p { margin: 0; }
   --step-3:  clamp(1.7280rem, 1.3664rem + 1.6070vw, 2.8127rem);
   --step-4:  clamp(2.0736rem, 1.5150rem + 2.4826vw, 3.7493rem);
   --step-5:  clamp(2.4883rem, 1.6518rem + 3.7178vw, 4.9979rem);
+  --step-6:  clamp(2.9860rem, 1.7606rem + 5.4462vw, 6.6622rem);
   --ratio-a: 4fr;   /* the larger side of 4 : 3 */
   --ratio-b: 3fr;
   font-size: var(--step-0);
@@ -929,7 +930,7 @@ p { margin: 0; }
 .ms-main {
   display: grid;
   grid-template-columns: var(--ratio-b) var(--ratio-a);
-  gap: var(--step-5);
+  gap: var(--step-6);
   align-items: start;
   padding: var(--step-5) 0 var(--step-4);
   border-bottom: 1px solid var(--border-strong);
@@ -966,15 +967,6 @@ p { margin: 0; }
   row-gap: var(--step-4);
   padding-top: var(--step-m1);
 }
-.ms-num {
-  display: block;
-  font-family: var(--sans);
-  font-size: var(--step-m2);
-  font-weight: 600;
-  letter-spacing: .08em;
-  color: var(--primary);
-  margin-bottom: var(--step-m1);
-}
 .ms-cell h2 { font-size: var(--step-1); line-height: 1.2; margin-bottom: var(--step-m1); }
 .ms-cell p { font-size: var(--step-0); line-height: 1.5; color: var(--muted-foreground); }
 
@@ -982,7 +974,7 @@ p { margin: 0; }
 .ms-contact {
   display: grid;
   grid-template-columns: var(--ratio-b) var(--ratio-a);
-  gap: var(--step-5);   /* same as .ms-main, so the links line up with the summaries */
+  gap: var(--step-6);   /* same as .ms-main, so the links line up with the summaries */
   align-items: baseline;
   padding-top: var(--step-3);
 }
