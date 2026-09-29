@@ -880,3 +880,133 @@ p { margin: 0; }
   .spiral { grid-template-columns: 1fr 1fr; }
   .sq-portrait { grid-column: 1; grid-row: span 2; aspect-ratio: auto; min-height: 150px; }
 }
+
+/* ---------------------------------------------------------------
+   10. Home — modular scale + fluid ratio grid (index.html)
+   One scale sets both type and space. It runs fluidly from a 16px
+   base with ratio 1.2 (minor third) at a 360px viewport to a 19px
+   base with ratio 1.333 (perfect fourth) at 1440px, so headings
+   spread further apart as the screen grows:
+     step n = base × ratio^n, interpolated between the two ends.
+   The grid uses the same ratio: columns split 4 : 3 (and 3 : 4 for
+   the portrait), and the page's width is capped at 1440px.
+   The golden-spiral home (section 9) is kept as index-spiral.html.
+   --------------------------------------------------------------- */
+.ms-page {
+  --step-m2: .7rem;
+  --step-m1: clamp(0.8333rem, 0.8142rem + 0.0852vw, 0.8908rem);
+  --step-0:  clamp(1.0000rem, 0.9375rem + 0.2778vw, 1.1875rem);
+  --step-1:  clamp(1.2000rem, 1.0724rem + 0.5673vw, 1.5829rem);
+  --step-2:  clamp(1.4400rem, 1.2166rem + 0.9927vw, 2.1101rem);
+  --step-3:  clamp(1.7280rem, 1.3664rem + 1.6070vw, 2.8127rem);
+  --step-4:  clamp(2.0736rem, 1.5150rem + 2.4826vw, 3.7493rem);
+  --step-5:  clamp(2.4883rem, 1.6518rem + 3.7178vw, 4.9979rem);
+  --ratio-a: 4fr;   /* the larger side of 4 : 3 */
+  --ratio-b: 3fr;
+  font-size: var(--step-0);
+}
+.ms-wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--step-2) var(--step-5);
+}
+
+.ms-nav { padding-top: var(--step-m1); }
+.ms-nav .menu-links a { min-height: 44px; padding: 0 var(--step-m1); font-size: var(--step-m1); }
+.ms-nav .menu-links a:first-child { padding-left: 0; }
+
+.ms-eyebrow {
+  margin: 0 0 var(--step-0);
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* Hero: text and portrait split 4 : 3. */
+.ms-hero {
+  display: grid;
+  grid-template-columns: var(--ratio-a) var(--ratio-b);
+  gap: var(--step-4);
+  align-items: end;
+  padding: var(--step-5) 0 var(--step-4);
+  border-bottom: 1px solid var(--border-strong);
+}
+.ms-name {
+  font-size: var(--step-5);
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  font-weight: 400;
+}
+.ms-lede {
+  margin-top: var(--step-2);
+  font-size: var(--step-1);
+  line-height: 1.4;
+  max-width: 34em;
+  text-wrap: pretty;
+}
+.ms-lede em { color: var(--primary); }
+/* The portrait is 3 : 4, the same ratio turned upright. */
+.ms-portrait {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  background: var(--sidebar);
+  justify-self: end;
+  /* Never taller than 70% of the screen, and still 3 : 4. */
+  width: min(100%, calc(70vh * .75));
+}
+.ms-portrait .portrait-placeholder { min-height: 0; font-size: var(--step-4); }
+.ms-portrait .portrait { object-fit: cover; }
+
+/* Summary: four equal columns, then 2 × 2, then one. */
+.ms-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--step-2);
+  row-gap: var(--step-3);
+  padding: var(--step-4) 0;
+  border-bottom: 1px solid var(--border-strong);
+}
+.ms-num {
+  display: block;
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--primary);
+  margin-bottom: var(--step-m1);
+}
+.ms-cell h2 { font-size: var(--step-1); line-height: 1.2; margin-bottom: var(--step-m1); }
+.ms-cell p { font-size: var(--step-0); line-height: 1.5; color: var(--muted-foreground); }
+
+/* Contact: label and links split 3 : 4, mirroring the hero. */
+.ms-contact {
+  display: grid;
+  grid-template-columns: var(--ratio-b) var(--ratio-a);
+  gap: var(--step-4);
+  align-items: baseline;
+  padding-top: var(--step-3);
+}
+.ms-contact .ms-eyebrow { margin: 0; }
+.ms-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--step-m1) var(--step-2);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+}
+.ms-contact-links a { text-decoration: none; font-weight: 500; }
+.ms-contact-links a:hover { text-decoration: underline; }
+.ms-contact-links span { color: var(--muted-foreground); }
+
+@media (max-width: 1099.98px) {
+  .ms-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 699.98px) {
+  .ms-hero { grid-template-columns: 1fr; padding-top: var(--step-3); }
+  .ms-portrait { order: -1; width: 50%; justify-self: start; }
+  .ms-summary { grid-template-columns: 1fr; }
+  .ms-contact { grid-template-columns: 1fr; gap: var(--step-0); }
+}

@@ -19,9 +19,11 @@ Open `index.html` directly in a browser to preview, or run
   "CV site.pptx" layout (2026-09-24): `index.html` (home),
   `work-history.html`, `projects.html`, with its own `v2.css` and
   `v2.js`. On 2026-09-29 Michael dropped the dashboard look for the home
-  page: `v2/index.html` is now a golden-spiral layout of squares, with no drawn spiral line (CSS section 9;
-  squares placed by percentage, spiral only at 1200px and up, stacked
-  below), and the dashboard home is kept as `v2/index-dashboard.html`. Independent of the root pages and `style.css`. Its project
+  page, first for a golden-spiral layout of squares (now kept as
+  `v2/index-spiral.html`, CSS section 9), then the same day for a fluid
+  modular type scale on a 4 : 3 ratio grid, which is the current
+  `v2/index.html` (CSS section 10; one scale sets type and spacing).
+  The dashboard home is kept as `v2/index-dashboard.html`. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
