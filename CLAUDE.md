@@ -28,7 +28,9 @@ Open `index.html` directly in a browser to preview, or run
   (CSS section 11): the text sidebar is gone, and one full-width graphic
   shows the four v1 eras newest first (prose, spine, employers), each employer opening
   a tooltip with the job description. The Gantt dashboard version is
-  kept as `v2/work-history-dashboard.html`; `v2/projects.html` is still
+  kept as `v2/work-history-dashboard.html`, and a horizontal variant (eras
+  as columns on a left-to-right spine, CSS section 12) as
+  `v2/work-history-horizontal.html`; `v2/projects.html` is still
   dashboard-style. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.

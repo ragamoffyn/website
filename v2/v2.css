@@ -1228,3 +1228,96 @@ p { margin: 0; }
   .mw-jobs { grid-column: 2; padding-top: 0; }
   .mw-era + .mw-era .mw-jobs { border-top: 0; }
 }
+
+/* ---------------------------------------------------------------
+   12. Work history, horizontal (work-history-horizontal.html)
+   The same content and scale as section 11, turned on its side: the
+   four eras stand as columns, oldest on the left, with one spine
+   running left to right through the middle. Each era's prose sits
+   above the line and its employers below. The columns share rows
+   through subgrid, so the spine lines up across all four whatever
+   the length of each era's prose. Employer rows and tooltips reuse
+   section 11's rules. Below 1000px the columns don't fit, so it falls
+   back to the vertical layout with the spine on the left edge.
+   --------------------------------------------------------------- */
+.mh-chart {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: auto auto auto;
+  padding-bottom: var(--step-3);
+}
+.mh-era {
+  grid-row: 1 / span 3;
+  display: grid;
+  grid-template-rows: subgrid;
+  min-width: 0;
+}
+.mh-era + .mh-era .mh-era-text,
+.mh-era + .mh-era .mh-jobs { border-left: 1px solid var(--border); }
+.mh-era-text, .mh-jobs { padding: var(--step-2) var(--step-1); min-width: 0; }
+.mh-era:first-child .mh-era-text,
+.mh-era:first-child .mh-jobs { padding-left: 0; }
+.mh-era:last-child .mh-era-text,
+.mh-era:last-child .mh-jobs { padding-right: 0; }
+.mh-era-text { padding-top: var(--step-3); }
+.mh-era-note { font-size: var(--step-0); line-height: 1.5; text-wrap: pretty; }
+.mh-era-text .mw-era-name { font-size: var(--step-2); }
+.mh-era-text .mw-aside { margin-top: var(--step-1); }
+.mh-jobs { list-style: none; margin: 0; }
+
+/* The spine: a line across every column, a square marker at the start
+   of each era (level with the text's left edge) and an arrowhead at
+   the right end pointing to now. */
+.mh-spine { position: relative; height: 13px; }
+.mh-spine::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--foreground);
+}
+.mh-spine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--step-1);
+  width: 13px; height: 13px;
+  background: var(--primary);
+}
+.mh-era:first-child .mh-spine::after { left: 0; }
+.mh-era:last-child .mh-spine::before { right: 12px; }
+.mh-arrow {
+  position: absolute;
+  right: 0; top: 50%;
+  margin-top: -8px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid var(--foreground);
+}
+
+@media (max-width: 999.98px) {
+  .mh-chart { display: block; }
+  .mh-era {
+    display: grid;
+    grid-template-columns: var(--step-1) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: var(--step-0);
+  }
+  .mh-era-text, .mh-jobs { grid-column: 2; padding: var(--step-2) 0 0; border-left: 0 !important; }
+  .mh-jobs { padding-top: var(--step-0); }
+  .mh-era + .mh-era .mh-era-text { border-top: 1px solid var(--border); }
+  .mh-spine { grid-column: 1; grid-row: 1 / span 2; height: auto; }
+  .mh-spine::before { left: 50%; right: auto; top: 0; bottom: 0; width: 3px; height: auto; margin: 0 0 0 -1.5px; }
+  .mh-spine::after, .mh-era:first-child .mh-spine::after { left: 50%; margin-left: -6.5px; top: calc(var(--step-2) + var(--step-2) * .55 - 6.5px); }
+  .mh-era:first-child .mh-spine::before { top: calc(var(--step-2) + var(--step-2) * .55); }
+  .mh-era:last-child .mh-spine::before { right: auto; bottom: 12px; }
+  .mh-arrow {
+    top: auto; right: auto; bottom: 0; left: 50%;
+    margin: 0 0 0 -8px;
+    border: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 13px solid var(--foreground);
+  }
+}
