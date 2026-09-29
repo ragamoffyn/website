@@ -1019,12 +1019,16 @@ p { margin: 0; }
   padding: var(--step-5) 0 var(--step-3);
   border-bottom: 1px solid var(--border-strong);
 }
-.mw-caption {
-  margin-top: var(--step-0);
-  font-family: var(--sans);
-  font-size: var(--step-m1);
-  color: var(--muted-foreground);
+/* The name sits in the top right corner, level with the menu. */
+.ms-nav:has(.mw-owner) { display: flex; justify-content: space-between; align-items: center; gap: var(--step-0); }
+.mw-owner {
+  color: var(--foreground);
+  font-family: var(--serif);
+  font-size: var(--step-0);
+  text-decoration: none;
+  white-space: nowrap;
 }
+.mw-owner:hover { color: var(--primary); }
 
 .mw-chart { padding-bottom: var(--step-3); }
 .mw-era {
@@ -1171,11 +1175,8 @@ p { margin: 0; }
 .mw-tip-cs a { color: var(--primary); font-weight: 600; text-decoration: none; }
 .mw-tip-cs a:hover { text-decoration: underline; }
 
-/* Honors and patents: split 4 : 3 below the graphic. */
+/* Honors, below the graphic. */
 .mw-extras {
-  display: grid;
-  grid-template-columns: var(--ratio-a) var(--ratio-b);
-  gap: var(--step-2) var(--step-4);
   padding-top: var(--step-3);
   border-top: 1px solid var(--border-strong);
 }
@@ -1191,5 +1192,4 @@ p { margin: 0; }
   .mw-era-text { grid-column: 2; padding-bottom: var(--step-0); }
   .mw-jobs { grid-column: 2; padding-top: 0; }
   .mw-era + .mw-era .mw-jobs { border-top: 0; }
-  .mw-extras { grid-template-columns: 1fr; }
 }
