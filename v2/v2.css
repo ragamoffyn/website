@@ -783,7 +783,6 @@ p { margin: 0; }
   margin: 12px auto 40px;
   padding: 0 24px;
 }
-.spiral-arc { display: none; }
 
 .eyebrow-s {
   font-family: var(--sans);
@@ -849,12 +848,12 @@ p { margin: 0; }
 /* The spiral proper: only where the squares are big enough. */
 @media (min-width: 1200px) {
   .spiral::before { content: ""; display: block; padding-top: 61.8034%; }
-  .spiral > .sq, .spiral-arc {
+  .spiral > .sq {
     position: absolute;
     margin: -.5px;           /* neighbouring borders overlap into one line */
   }
   /* Everything is placed inside the 24px side padding. */
-  .spiral > .sq, .spiral-arc { --w: calc(100% - 48px); }
+  .spiral > .sq { --w: calc(100% - 48px); }
   .sq1   { left: 24px;                              top: 0;        width: calc(var(--w) * .618034); height: 100%; }
   .sq2   { left: calc(24px + var(--w) * .618034);  top: 0;        width: calc(var(--w) * .381966); height: 61.8034%; }
   .sq3   { left: calc(24px + var(--w) * .763932);  top: 61.8034%; width: calc(var(--w) * .236068); height: 38.1966%; }
@@ -863,24 +862,6 @@ p { margin: 0; }
   .sq6   { left: calc(24px + var(--w) * .708204);  top: 61.8034%; width: calc(var(--w) * .055728); height:  9.0170%; }
   .sq7   { left: calc(24px + var(--w) * .729490);  top: 70.8204%; width: calc(var(--w) * .034442); height:  5.5728%; }
   .sq-eye{ left: calc(24px + var(--w) * .708204);  top: 70.8204%; width: calc(var(--w) * .021286); height:  5.5728%; }
-
-  /* The arc is drawn over the squares, faintly, and never takes clicks. */
-  .spiral-arc {
-    display: block;
-    left: 24px; top: 0;
-    width: var(--w); height: 100%;
-    margin: 0;
-    z-index: 2;
-    pointer-events: none;
-    overflow: visible;
-  }
-  .spiral-arc path {
-    fill: none;
-    stroke: var(--primary);
-    stroke-width: 1.25px;
-    vector-effect: non-scaling-stroke;
-    opacity: .45;
-  }
 }
 
 /* Stacked, in spiral order. */
