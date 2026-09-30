@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work history (horizontal) — Michael E. Stiso</title>
+  <title>Experience — Michael E. Stiso</title>
   <meta name="description" content="Michael Stiso's work history: 1998 to now, from a cognitive psychology Ph.D. through applied research and digital transformation to industrial UX." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,17 +21,20 @@
     <nav class="ms-nav" aria-label="Site">
       <div class="menu-links">
         <a href="index.html">Home</a>
-        <a href="work-history-horizontal.html" aria-current="page">Work history</a>
+        <a href="work-history-horizontal.html" aria-current="page">Experience</a>
         <a href="projects.html">Projects</a>
       </div>
       <a class="mw-owner" href="index.html">Michael E. Stiso</a>
     </nav>
 
-    <header class="mw-head">
-      <h1 class="ms-name">Work history</h1>
+    <header class="mw-head mh-head">
+      <h1 class="ms-name">Experience</h1>
+      <!-- Shows every job's description in place of the tooltips.
+           Works only with v2.js; hidden until the script marks the page. -->
+      <button class="mh-toggle" type="button" aria-pressed="false" aria-controls="mh-chart" hidden>Show all descriptions</button>
     </header>
 
-    <div class="mh-chart">
+    <div class="mh-chart" id="mh-chart">
         <section class="mh-era" id="era-foundations" aria-labelledby="era-foundations-name">
           <div class="mh-era-text">
             <h2 class="mw-era-name" id="era-foundations-name">Foundations</h2>
@@ -84,7 +87,7 @@
                  its one employer so it sits in the flow of the job list
                  rather than adding height above the spine. -->
             <li class="mh-side">
-              <p class="mh-side-head">Enterprise UX <span>2005–2008</span></p>
+              <p class="mh-side-head">Enterprise UX</p>
               <p class="mh-side-note">A side journey to explore commercial research and design.</p>
               <ul class="mh-side-jobs">
                 <li class="mw-job" id="job-oracle">

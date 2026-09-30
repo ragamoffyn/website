@@ -109,6 +109,20 @@
     });
   }
 
+  /* ---------- Work history (horizontal): show all descriptions ---------- */
+  var toggle = document.querySelector('.mh-toggle');
+  if (toggle) {
+    var chart = document.getElementById(toggle.getAttribute('aria-controls'));
+    toggle.hidden = false;
+    toggle.addEventListener('click', function () {
+      var on = toggle.getAttribute('aria-pressed') !== 'true';
+      toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+      toggle.textContent = on ? 'Hide descriptions' : 'Show all descriptions';
+      chart.classList.toggle('show-all', on);
+      if (on) items.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    });
+  }
+
   /* ---------- Work history (modular): Enterprise UX outline ----------
      The Enterprise UX aside is centred on the Oracle row, and one
      rounded outline goes around both, joined across the spine where the two overlap vertically.

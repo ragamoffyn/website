@@ -1265,6 +1265,55 @@ p { margin: 0; }
 .mh-era-note { font-size: var(--step-m1); line-height: 1.55; text-wrap: pretty; }
 .mh-era-text .mw-era-name { font-size: var(--step-1); }
 .mh-jobs { list-style: none; margin: 0; }
+/* Heading with the show-all toggle on the right. */
+.mh-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--step-0) var(--step-2);
+}
+.mh-toggle {
+  padding: var(--step-m2) var(--step-0);
+  border: 1px solid var(--border-strong);
+  background: none;
+  color: var(--foreground);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 500;
+  cursor: pointer;
+}
+.mh-toggle:hover { border-color: var(--primary); color: var(--primary); }
+.mh-toggle[aria-pressed="true"] { background: var(--foreground); border-color: var(--foreground); color: var(--background); }
+.mh-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* Tooltips fade and drop in briefly as they appear. */
+@keyframes mh-tip-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+.mh-chart .mw-tip { animation: mh-tip-in .16s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .mh-chart .mw-tip { animation: none; }
+}
+
+/* Show all: every description sits open under its job, in the flow,
+   and the rows stop acting as tooltip buttons. */
+.mh-chart.show-all .mw-tip {
+  display: block;
+  position: static;
+  padding: var(--step-m2) 0 var(--step-m1);
+  border: 0;
+  background: none;
+  font-size: var(--step-m1);
+  animation: none;
+}
+/* The row above already gives role and dates. */
+.mh-chart.show-all .mw-tip-meta { display: none; }
+.mh-chart.show-all .mw-item { cursor: default; }
+.mh-chart.show-all .mw-item::after { display: none; }
+.mh-chart.show-all .mw-item:hover .mw-emp { color: inherit; }
+
 .mh-side {
   margin: var(--step-m2) 0;
   padding: var(--step-m1) var(--step-m1) 0;
@@ -1278,7 +1327,6 @@ p { margin: 0; }
   text-transform: uppercase;
   color: var(--primary);
 }
-.mh-side-head span { margin-left: .5em; color: var(--foreground); }
 .mh-side-note {
   margin-top: 2px;
   font-size: var(--step-m1);
