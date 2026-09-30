@@ -1240,7 +1240,7 @@ p { margin: 0; }
    section 11's rules. Enterprise UX sits in Applied research's job
    list, as a labelled frame around Oracle, so it adds no height above
    the spine. Below 1000px the columns don't fit, so it falls back to
-   the vertical layout with the spine on the left edge.
+   the vertical layout with the spine on the left edge, newest first.
    --------------------------------------------------------------- */
 .mh-chart {
   display: grid;
@@ -1320,7 +1320,10 @@ p { margin: 0; }
 }
 
 @media (max-width: 999.98px) {
-  .mh-chart { display: block; }
+  /* Stacked, it reads newest first like work-history.html: the eras
+     and each era's jobs are reversed on screen (the HTML stays oldest
+     first for the columns above), so the arrowhead moves to the top. */
+  .mh-chart { display: flex; flex-direction: column-reverse; }
   .mh-era {
     display: grid;
     grid-template-columns: var(--step-1) minmax(0, 1fr);
@@ -1328,20 +1331,24 @@ p { margin: 0; }
     column-gap: var(--step-0);
   }
   .mh-era-text, .mh-jobs { grid-column: 2; padding: var(--step-2) 0 0; border-left: 0 !important; }
-  .mh-jobs { padding-top: var(--step-0); }
-  .mh-era + .mh-era .mh-era-text { border-top: 1px solid var(--border); }
+  .mh-jobs { display: flex; flex-direction: column-reverse; padding-top: var(--step-0); }
+  .mh-era:not(:last-child) .mh-era-text { border-top: 1px solid var(--border); }
+  /* Separators and spacing follow the on-screen order. */
+  .mh-jobs > .mw-job + .mw-job { border-top: 0; border-bottom: 1px solid var(--border); }
+  .mh-jobs > .mw-job:first-child .mw-item { padding-top: var(--step-m1); }
+  .mh-jobs > .mw-job:last-child .mw-item { padding-top: 0; }
   .mh-spine { grid-column: 1; grid-row: 1 / span 2; height: auto; }
   .mh-spine::before { left: 50%; right: auto; top: 0; bottom: 0; width: 3px; height: auto; margin: 0 0 0 -1.5px; }
-  .mh-spine::after, .mh-era:first-child .mh-spine::after { left: 50%; margin-left: -6.5px; top: calc(var(--step-2) + var(--step-2) * .55 - 6.5px); }
-  .mh-era:first-child .mh-spine::before { top: calc(var(--step-2) + var(--step-2) * .55); }
-  .mh-era:last-child .mh-spine::before { right: auto; bottom: 12px; }
+  .mh-spine::after, .mh-era:first-child .mh-spine::after { left: 50%; margin-left: -6.5px; top: calc(var(--step-2) + var(--step-1) * .55 - 6.5px); }
+  .mh-era:first-child .mh-spine::before { bottom: var(--step-2); }
+  .mh-era:last-child .mh-spine::before { right: auto; top: calc(var(--step-m1) + 10px); }
   .mh-arrow {
-    top: auto; right: auto; bottom: 0; left: 50%;
+    top: var(--step-m1); right: auto; bottom: auto; left: 50%;
     margin: 0 0 0 -8px;
     border: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-top: 13px solid var(--foreground);
+    border-bottom: 13px solid var(--foreground);
   }
 }
 
