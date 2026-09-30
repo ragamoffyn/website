@@ -1321,3 +1321,178 @@ p { margin: 0; }
     border-top: 13px solid var(--foreground);
   }
 }
+
+/* ---------------------------------------------------------------
+   13. Work history, Gantt with eras (work-history-gantt.html)
+   The dashboard page's timeline chart on section 10's scale, with
+   the four eras built in: they head the chart and shade it in
+   alternating bands behind the bars, and their prose sits below.
+   Enterprise UX is a hatched band over Oracle's years. Years run
+   left to right; each row is a button that opens section 11's
+   tooltip, placed at the start of the row's bar (--s).
+   --------------------------------------------------------------- */
+.gx-chart {
+  --label: clamp(11rem, 24%, 17rem);
+  display: grid;
+  grid-template-columns: var(--label) minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: var(--step-0);
+  padding-top: var(--step-3);
+}
+.gx-head, .gx-bands, .gx-axis { grid-column: 2; position: relative; }
+
+/* Era names alternate between two tiers, so a name wider than its
+   era (Industrial UX is the narrowest) can run past its edge without
+   meeting its neighbour's. The last one is right-aligned and runs left. */
+.gx-head { grid-row: 1; height: calc((var(--step-1) * 1.2 + var(--step-m1) * 1.4) * 2 + var(--step-0)); }
+.gx-era-label {
+  position: absolute;
+  top: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 var(--step-m2) var(--step-m1);
+  border-left: 1px solid var(--border-strong);
+  text-decoration: none;
+  color: inherit;
+}
+.gx-era-label:nth-child(even) { justify-content: flex-end; }
+.gx-era-label b { font-family: var(--serif); font-size: var(--step-1); font-weight: 400; line-height: 1.2; white-space: nowrap; }
+.gx-era-label span { font-family: var(--sans); font-size: var(--step-m1); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); white-space: nowrap; }
+.gx-era-label:last-child { align-items: flex-end; text-align: right; padding-right: 0; }
+/* Where a name runs over an era's edge, it masks the line. */
+.gx-era-label b, .gx-era-label span { position: relative; z-index: 1; background: var(--background); }
+.gx-era-label:hover b { color: var(--primary); }
+
+.gx-bands { grid-row: 2; pointer-events: none; }
+.gx-band { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--border-strong); }
+.gx-band.alt { background: var(--muted); }
+.gx-band.side {
+  border: 1px dashed var(--primary);
+  background: repeating-linear-gradient(135deg, var(--primary-soft) 0 6px, transparent 6px 12px);
+}
+.gx-band-note {
+  position: absolute;
+  bottom: var(--step-m2); left: var(--step-m2);
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.gx-rows { grid-column: 1 / -1; grid-row: 2; list-style: none; margin: 0; padding: 0; position: relative; z-index: 1; }
+.gx-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--label) minmax(0, 1fr);
+  column-gap: var(--step-0);
+  border-top: 1px solid var(--border);
+}
+.gx-row:last-child { border-bottom: 1px solid var(--border); }
+.gx-item {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  width: 100%;
+  padding: var(--step-m1) 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.gx-label { min-width: 0; }
+.gx-emp { display: block; font-family: var(--serif); font-size: var(--step-1); line-height: 1.2; }
+.gx-meta { display: block; font-family: var(--sans); font-size: var(--step-m1); color: var(--muted-foreground); }
+.gx-track { position: relative; align-self: stretch; min-height: 14px; }
+.gx-bar {
+  position: absolute;
+  top: 50%;
+  height: 14px;
+  margin-top: -7px;
+  background: var(--primary);
+}
+.gx-bar.ongoing { background: linear-gradient(90deg, var(--primary) 70%, rgba(180, 84, 28, .3)); }
+.gx-bar.dot { width: 12px; height: 12px; margin: -6px 0 0; }
+.gx-bar.dot:first-child { margin-left: 0; }
+.gx-bar.dot:not(:first-child) { margin-left: -6px; }
+.gx-item:hover .gx-emp, .gx-item[aria-expanded="true"] .gx-emp { color: var(--primary); }
+.gx-item:hover .gx-bar, .gx-item[aria-expanded="true"] .gx-bar { background: var(--foreground); }
+.gx-item:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* The tooltip starts under the row's bar, kept inside the chart. */
+.gx-tipbox { grid-column: 2; position: relative; height: 0; }
+.gx-row .mw-tip {
+  top: calc(-1 * var(--step-m2));
+  left: clamp(0px, var(--s), calc(100% - min(30em, 100%)));
+  right: auto;
+  width: min(30em, 100%);
+}
+.gx-row:hover .mw-tip,
+.gx-item[aria-expanded="true"] + .gx-tipbox .mw-tip,
+.gx-item:focus-visible + .gx-tipbox .mw-tip,
+.gx-row .mw-tip:focus-within { display: block; }
+
+.gx-axis { grid-row: 3; height: calc(var(--step-m1) * 2); }
+.gx-tick {
+  position: absolute;
+  top: 6px;
+  transform: translateX(-50%);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  color: var(--muted-foreground);
+}
+.gx-tick::before { content: ''; position: absolute; top: -6px; left: 50%; height: 4px; border-left: 1px solid var(--border-strong); }
+.gx-tick.first { transform: none; }
+.gx-tick.first::before { left: 0; }
+.gx-tick.last { transform: translateX(-100%); }
+.gx-tick.last::before { left: auto; right: 0; }
+
+/* The eras' prose, in date order below the chart. */
+.gx-eras {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--step-3) var(--step-2);
+  padding: var(--step-4) 0 var(--step-3);
+}
+.gx-era { border-top: 3px solid var(--foreground); padding-top: var(--step-0); }
+.gx-era-name { font-size: var(--step-2); line-height: 1.15; font-weight: 400; }
+.gx-era .mw-era-span { margin: var(--step-m2) 0 var(--step-0); }
+.gx-era-note { font-size: var(--step-0); line-height: 1.5; text-wrap: pretty; }
+.gx-aside {
+  margin-top: var(--step-0);
+  padding: var(--step-m1) var(--step-0);
+  border: 1px dashed var(--primary);
+  background: repeating-linear-gradient(135deg, var(--primary-soft) 0 6px, transparent 6px 12px);
+  font-size: var(--step-m1);
+  line-height: 1.5;
+}
+.gx-aside b { font-weight: 600; }
+.gx-aside span { font-family: var(--sans); color: var(--primary); font-weight: 600; margin-right: .2em; }
+
+@media (max-width: 1099.98px) {
+  .gx-eras { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 699.98px) {
+  /* One column: each row's label sits above its bar, which spans the
+     full width; the era names stagger on two lines to fit. */
+  .gx-chart, .gx-row { grid-template-columns: 0 minmax(0, 1fr); column-gap: 0; }
+  .gx-item { grid-template-columns: 1fr; grid-column: 2; row-gap: var(--step-m2); }
+  .gx-track { height: 14px; }
+  .gx-emp { display: inline; font-size: var(--step-0); }
+  .gx-meta { display: inline; }
+  .gx-meta::before { content: ' · '; }
+  .gx-head { height: 3.4em; }
+  .gx-era-label { padding: 0 3px 4px; }
+  .gx-era-label b { font-family: var(--sans); font-size: var(--step-m2); font-weight: 600; }
+  .gx-era-label span { display: none; }
+  .gx-era-label:last-child { border-left: 0; border-right: 1px solid var(--border-strong); }
+  .gx-band-note { display: none; }
+  .gx-tick.minor { display: none; }
+  .gx-eras { grid-template-columns: 1fr; }
+}

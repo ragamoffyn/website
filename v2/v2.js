@@ -85,11 +85,11 @@
     }
   }
 
-  /* ---------- Work history (modular): employer tooltips ----------
+  /* ---------- Work history (modular and Gantt): employer tooltips ----------
      Hover and keyboard focus open a tooltip in CSS alone; a click or
      tap pins it open until another employer, Escape or a click
      elsewhere closes it. */
-  var items = Array.prototype.slice.call(document.querySelectorAll('.mw-item'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('.mw-item, .gx-item'));
   if (items.length) {
     var closeAll = function (except) {
       items.forEach(function (b) { if (b !== except) b.setAttribute('aria-expanded', 'false'); });
@@ -102,7 +102,7 @@
       });
     });
     document.addEventListener('click', function (e) {
-      if (!e.target.closest('.mw-job')) closeAll();
+      if (!e.target.closest('.mw-job, .gx-row')) closeAll();
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeAll();
