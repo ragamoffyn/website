@@ -1237,8 +1237,10 @@ p { margin: 0; }
    above the line and its employers below. The columns share rows
    through subgrid, so the spine lines up across all four whatever
    the length of each era's prose. Employer rows and tooltips reuse
-   section 11's rules. Below 1000px the columns don't fit, so it falls
-   back to the vertical layout with the spine on the left edge.
+   section 11's rules. Enterprise UX sits in Applied research's job
+   list, as a labelled frame around Oracle, so it adds no height above
+   the spine. Below 1000px the columns don't fit, so it falls back to
+   the vertical layout with the spine on the left edge.
    --------------------------------------------------------------- */
 .mh-chart {
   display: grid;
@@ -1262,9 +1264,29 @@ p { margin: 0; }
 .mh-era-text { padding-top: var(--step-3); }
 .mh-era-note { font-size: var(--step-m1); line-height: 1.55; text-wrap: pretty; }
 .mh-era-text .mw-era-name { font-size: var(--step-1); }
-.mh-era-text .mw-aside { margin-top: var(--step-1); font-size: var(--step-m1); }
-.mh-era-text .mw-aside-name { font-size: var(--step-0); }
 .mh-jobs { list-style: none; margin: 0; }
+.mh-side {
+  margin: var(--step-m2) 0;
+  padding: var(--step-m1) var(--step-m1) 0;
+  border: 1.5px solid var(--primary);
+}
+.mh-side-head {
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.mh-side-head span { margin-left: .5em; color: var(--foreground); }
+.mh-side-note {
+  margin-top: 2px;
+  font-size: var(--step-m1);
+  line-height: 1.45;
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.mh-side-jobs { list-style: none; margin: var(--step-m1) 0 0; padding: 0; }
 
 /* The spine: a line across every column, a square marker at the start
    of each era (level with the text's left edge) and an arrowhead at
