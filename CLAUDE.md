@@ -24,14 +24,17 @@ Open `index.html` directly in a browser to preview, or run
   modular type scale on a 4 : 3 ratio grid, which is the current
   `v2/index.html` (CSS section 10; one scale sets type and spacing).
   The dashboard home is kept as `v2/index-dashboard.html`.
-  On 2026-09-29 the work history page moved to the same scale and grid
-  (CSS section 11): the text sidebar is gone, and one full-width graphic
-  shows the four v1 eras newest first (prose, spine, employers), each employer opening
-  a tooltip with the job description. The Gantt dashboard version is
-  kept as `v2/work-history-dashboard.html`, and a horizontal variant (eras
-  as columns on a left-to-right spine, CSS section 12) as
-  `v2/work-history-horizontal.html`, and the Gantt chart with the eras
-  built in (CSS section 13) as `v2/work-history-gantt.html`; `v2/projects.html` is still
+  The menu's "Experience" link goes to `v2/work-history.html`, which since
+  2026-09-30 is the horizontal layout (CSS section 12): the four eras as
+  columns on a left-to-right spine, oldest left, employers below with
+  tooltips and a "Show all descriptions" toggle; below 1000px it stacks
+  newest first. It used to live at `v2/work-history-horizontal.html`,
+  which is now only a redirect. Alternates, each linking to itself in its
+  own menu: `v2/work-history-vertical.html` (the 2026-09-29 vertical
+  era diagram on the modular scale, CSS section 11, newest first),
+  `v2/work-history-gantt.html` (Gantt with the eras built in, CSS
+  section 13) and `v2/work-history-dashboard.html` (the original Gantt
+  dashboard); `v2/projects.html` is still
   dashboard-style. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
