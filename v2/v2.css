@@ -1260,9 +1260,10 @@ p { margin: 0; }
 .mh-era:last-child .mh-era-text,
 .mh-era:last-child .mh-jobs { padding-right: 0; }
 .mh-era-text { padding-top: var(--step-3); }
-.mh-era-note { font-size: var(--step-0); line-height: 1.5; text-wrap: pretty; }
-.mh-era-text .mw-era-name { font-size: var(--step-2); }
-.mh-era-text .mw-aside { margin-top: var(--step-1); }
+.mh-era-note { font-size: var(--step-m1); line-height: 1.55; text-wrap: pretty; }
+.mh-era-text .mw-era-name { font-size: var(--step-1); }
+.mh-era-text .mw-aside { margin-top: var(--step-1); font-size: var(--step-m1); }
+.mh-era-text .mw-aside-name { font-size: var(--step-0); }
 .mh-jobs { list-style: none; margin: 0; }
 
 /* The spine: a line across every column, a square marker at the start
