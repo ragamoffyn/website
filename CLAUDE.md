@@ -39,7 +39,7 @@ Open `index.html` directly in a browser to preview, or run
   sticky, and the chosen case study on the larger side (kept as
   `v2/projects-longform.html`); the dashboard version is kept as
   `v2/projects-dashboard.html`. Later on 2026-10-01 `v2/projects.html`
-  became a compact list (title and year per row) beside a bordered panel
+  became a compact list (title, year and topics per row; Mobile Games dropped) beside a bordered panel
   (CSS section 15) that leads with four key points per project, Problem,
   Role, Approach and Outcome, set large for scanning, with the full case
   study folded into a "Read the full case study" `<details>`. Below
