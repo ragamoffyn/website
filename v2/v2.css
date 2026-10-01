@@ -1739,7 +1739,9 @@ p { margin: 0; }
    --------------------------------------------------------------- */
 .mc-layout {
   display: grid;
-  grid-template-columns: var(--ratio-b) var(--ratio-a);
+  /* The list is narrower than the 4 : 3 split: 3 : 7, so the panel
+     gets the room (Michael asked for the list a quarter narrower). */
+  grid-template-columns: 3fr 7fr;
   column-gap: var(--step-3);
   align-items: start;
   padding-top: var(--step-3);
