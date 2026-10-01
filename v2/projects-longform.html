@@ -11,23 +11,22 @@
   <link rel="stylesheet" href="v2.css" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="ms-page mp-page mc-page">
+<body class="ms-page mp-page">
 
-  <!-- Projects on the modular scale and 4 : 3 grid (sections 10 and 15
-       of v2.css). A compact list of projects on the smaller side; the
-       chosen project opens in a panel on the larger side, leading with
-       four key points (problem, role, approach, outcome) for scanning,
-       with the full case study folded away below them. Below 1000px
-       v2.js opens the panel under its row instead, like an accordion.
-       Without the script every project shows, one after another.
-       Earlier versions: projects-longform.html, projects-dashboard.html. -->
+  <!-- Projects on the modular scale and 4 : 3 grid (sections 10 and 14
+       of v2.css). The project index sits on the smaller side and stays
+       in view; the chosen case study fills the larger side. v2.js shows
+       one article at a time (article id "p-" + slug); without the script
+       every article shows, one after another. The dashboard version is
+       kept as projects-dashboard.html. This long-form version was the
+       Projects page on 1 October 2026 before the compact list replaced it. -->
   <div class="ms-wrap">
 
     <nav class="ms-nav" aria-label="Site">
       <div class="menu-links">
         <a href="index.html">Home</a>
         <a href="work-history.html">Experience</a>
-        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="projects-longform.html" aria-current="page">Projects</a>
       </div>
       <a class="mw-owner" href="index.html">Michael E. Stiso</a>
     </nav>
@@ -36,36 +35,43 @@
       <h1 class="ms-name">Projects</h1>
     </header>
 
-    <div class="mc-layout">
-    <nav class="proj-nav mc-index" aria-label="Projects">
+    <div class="mp-layout">
+    <nav class="proj-nav mp-index" aria-label="Projects">
       <ul class="proj-list">
         <li><a class="proj-tile" href="#foursubsea" data-proj="foursubsea">
-          <span class="mc-title">4Subsea</span>
-          <span class="mc-year">2023 — now</span>
+          <span class="mp-year">2023 — now</span>
+          <span class="mp-title">4Subsea</span>
+          <span class="mp-topics">Design Systems · Platform UX</span>
         </a></li>
         <li><a class="proj-tile" href="#national-security" data-proj="national-security">
-          <span class="mc-title">National Security</span>
-          <span class="mc-year">2022</span>
+          <span class="mp-year">2022</span>
+          <span class="mp-title">National Security</span>
+          <span class="mp-topics">Data Visualization · Decision Support</span>
         </a></li>
         <li><a class="proj-tile" href="#maritime-refueling" data-proj="maritime-refueling">
-          <span class="mc-title">Maritime Refueling</span>
-          <span class="mc-year">2020</span>
+          <span class="mp-year">2020</span>
+          <span class="mp-title">Maritime Refueling</span>
+          <span class="mp-topics">UX Research · Interaction Design</span>
         </a></li>
         <li><a class="proj-tile" href="#coffee-ecosystem" data-proj="coffee-ecosystem">
-          <span class="mc-title">The Coffee Ecosystem</span>
-          <span class="mc-year">2019</span>
+          <span class="mp-year">2019</span>
+          <span class="mp-title">The Coffee Ecosystem</span>
+          <span class="mp-topics">User Research · Service Design</span>
         </a></li>
         <li><a class="proj-tile" href="#sewer-corrosion" data-proj="sewer-corrosion">
-          <span class="mc-title">Sewer Corrosion</span>
-          <span class="mc-year">2017</span>
+          <span class="mp-year">2017</span>
+          <span class="mp-title">Sewer Corrosion</span>
+          <span class="mp-topics">Interaction Design · Data Visualization</span>
         </a></li>
         <li><a class="proj-tile" href="#search-rescue" data-proj="search-rescue">
-          <span class="mc-title">Search and Rescue</span>
-          <span class="mc-year">2015</span>
+          <span class="mp-year">2015</span>
+          <span class="mp-title">Search and Rescue</span>
+          <span class="mp-topics">Decision Support · Human Factors</span>
         </a></li>
         <li><a class="proj-tile" href="#mobile-games" data-proj="mobile-games">
-          <span class="mc-title">Mobile Games</span>
-          <span class="mc-year">2012 — 2013</span>
+          <span class="mp-year">2012 — 2013</span>
+          <span class="mp-title">Mobile Games</span>
+          <span class="mp-topics">Mobile UX · Game Design</span>
         </a></li>
       </ul>
     </nav>
@@ -74,20 +80,11 @@
          pages in the repo root (../foursubsea.html and the rest), and the
          Deliverable / Topic / Goal / Strategy facts from the project cards
          on ../index.html. -->
-    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project">
+    <section class="proj-detail mp-detail" id="proj-detail" aria-label="Selected project">
         <article class="proj" id="p-foursubsea" data-proj="foursubsea" aria-labelledby="foursubsea-title">
           <div class="proj-meta">2023 — now · Design Systems · Platform UX</div>
           <h2 class="proj-title" id="foursubsea-title">4Subsea — Digital Solutions Platform</h2>
           <p class="proj-subtitle">Platform UX and a first design system for offshore wind and oil-and-gas operations.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> The platform had grown product by product, with inconsistent patterns, terms and navigation.</li>
-            <li><span class="mc-key">Role</span> Sole UX practitioner, from single components to the structure of the whole platform.</li>
-            <li><span class="mc-key">Approach</span> Adopted and refined the company's first design system and led a platform-level usability redesign.</li>
-            <li><span class="mc-key">Outcome</span> More consistency across products, and user research shared across product teams.</li>
-          </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-4subsea">4Subsea &#8594;</a></p>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <div class="proj-hero" aria-hidden="true">Case study visuals available on request</div>
           <div class="proj-body">
             <section>
@@ -128,21 +125,12 @@
             <span>Figma</span>
 
           </div>
-          </details>
+          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-4subsea">4Subsea &#8594;</a></p>
         </article>
         <article class="proj" id="p-national-security" data-proj="national-security" aria-labelledby="national-security-title">
           <div class="proj-meta">2022 · Data Visualization · Decision Support</div>
           <h2 class="proj-title" id="national-security-title">National Security</h2>
           <p class="proj-subtitle">Highlighting patterns in heterogeneous risk data for analysts performing work critical to national security.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> Risk analysts had no interface tying together large volumes of unconnected data.</li>
-            <li><span class="mc-key">Role</span> UX lead and sole UX practitioner on a cross-company team: research, interaction design and prototyping.</li>
-            <li><span class="mc-key">Approach</span> Reframed the work as a proof of concept and scoped it to one incident scenario, within about 100 hours over five weeks.</li>
-            <li><span class="mc-key">Outcome</span> A Figma prototype that satisfied both the client and the funding agency.</li>
-          </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-dnv">DNV &#8594;</a></p>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <dl class="facts">
             <div class="fact"><dt>Deliverable</dt><dd>Proof of concept</dd></div>
             <div class="fact"><dt>Topic</dt><dd>Risk analysts looking for patterns in large amounts of unconnected information</dd></div>
@@ -199,21 +187,12 @@
             <span>User Research</span>
 
           </div>
-          </details>
+          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-dnv">DNV &#8594;</a></p>
         </article>
         <article class="proj" id="p-maritime-refueling" data-proj="maritime-refueling" aria-labelledby="maritime-refueling-title">
           <div class="proj-meta">2020 · UX Research · Interaction Design</div>
           <h2 class="proj-title" id="maritime-refueling-title">Maritime Refueling</h2>
           <p class="proj-subtitle">Enabling better coordination for ad hoc ship refueling negotiations at sea.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> Ships negotiating unplanned fuel purchases at sea had no dedicated tools.</li>
-            <li><span class="mc-key">Role</span> Led UX research and design, from definition to prototype testing.</li>
-            <li><span class="mc-key">Approach</span> Interviews showed scheduling was the real pain, so I proposed narrowing the tool to it, then tested an interactive Axure prototype.</li>
-            <li><span class="mc-key">Outcome</span> The designs became the foundation of the product that was eventually released.</li>
-          </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-dnv">DNV &#8594;</a></p>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <dl class="facts">
             <div class="fact"><dt>Deliverable</dt><dd>Proof of concept</dd></div>
             <div class="fact"><dt>Topic</dt><dd>Ships at sea negotiating unplanned fuel purchases with nearby suppliers</dd></div>
@@ -264,21 +243,12 @@
             <span>Concept Testing</span>
 
           </div>
-          </details>
+          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-dnv">DNV &#8594;</a></p>
         </article>
         <article class="proj" id="p-coffee-ecosystem" data-proj="coffee-ecosystem" aria-labelledby="coffee-ecosystem-title">
           <div class="proj-meta">2019 · User Research · Service Design</div>
           <h2 class="proj-title" id="coffee-ecosystem-title">The Coffee Ecosystem</h2>
           <p class="proj-subtitle">Mapping the field-to-cup coffee journey to identify opportunities for a new digital service.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> A planned matchmaking service for small coffee farms had no clear place in the coffee ecosystem.</li>
-            <li><span class="mc-key">Role</span> Led the research, mapping the field-to-cup journey and the actors along it.</li>
-            <li><span class="mc-key">Approach</span> Two rounds of interviews and task analysis: first coffee buyers, then roasters once buyers proved well served.</li>
-            <li><span class="mc-key">Outcome</span> An ecosystem map and several opportunities among roasters, which fed the team's ideation.</li>
-          </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-yara">Yara International &#8594;</a></p>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <dl class="facts">
             <div class="fact"><dt>Deliverable</dt><dd>Ecosystem map</dd></div>
             <div class="fact"><dt>Topic</dt><dd>Coffee bean purchasing</dd></div>
@@ -323,21 +293,12 @@
             <span>Opportunity Mapping</span>
 
           </div>
-          </details>
+          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-yara">Yara International &#8594;</a></p>
         </article>
         <article class="proj" id="p-sewer-corrosion" data-proj="sewer-corrosion" aria-labelledby="sewer-corrosion-title">
           <div class="proj-meta">2017 · Interaction Design · Data Visualization</div>
           <h2 class="proj-title" id="sewer-corrosion-title">Sewer Corrosion</h2>
           <p class="proj-subtitle">Redesigning a corrosion estimation tool to support better decision-making by sewer maintenance managers.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> An Excel tool for estimating sewer corrosion needed heavy input and gave results even experts found hard to read.</li>
-            <li><span class="mc-key">Role</span> Redesigned it as an application for mobile and desktop, in Sketch.</li>
-            <li><span class="mc-key">Approach</span> Data entry in small steps, selection controls instead of typing, and a clear view of current state, remaining life, options and deadlines.</li>
-            <li><span class="mc-key">Outcome</span> Iterated designs at mobile and desktop sizes, with the company's style guide rebuilt for the web.</li>
-          </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-yara">Yara International &#8594;</a></p>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <dl class="facts">
             <div class="fact"><dt>Deliverable</dt><dd>Ecosystem map</dd></div>
             <div class="fact"><dt>Topic</dt><dd>Estimating corrosion within a sewer system and what the options are for dealing with it</dd></div>
@@ -388,21 +349,12 @@
             <span>Decision Support</span>
 
           </div>
-          </details>
+          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-yara">Yara International &#8594;</a></p>
         </article>
         <article class="proj" id="p-search-rescue" data-proj="search-rescue" aria-labelledby="search-rescue-title">
           <div class="proj-meta">2015 · Decision Support · Human Factors</div>
           <h2 class="proj-title" id="search-rescue-title">Search and Rescue</h2>
           <p class="proj-subtitle">Designing a drone command interface to give search-and-rescue field commanders direct situational awareness.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> Search-and-rescue commanders could not see where drones were or what they recorded; it reached them by radio.</li>
-            <li><span class="mc-key">Role</span> Led UX and UI design: needs, requirements, human factors, wireframes and evaluation.</li>
-            <li><span class="mc-key">Approach</span> A multi-year user-centred process: domain analysis and workshops, then design iterations tested with users.</li>
-            <li><span class="mc-key">Outcome</span> Working prototypes built with front-end developers, across about a dozen European partners.</li>
-          </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-sintef">SINTEF ICT &#8594;</a></p>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <div class="proj-hero" aria-hidden="true">Case study visuals available on request</div>
           <div class="proj-body">
             <section>
@@ -450,20 +402,12 @@
             <span>Usability Testing</span>
 
           </div>
-          </details>
+          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-sintef">SINTEF ICT &#8594;</a></p>
         </article>
         <article class="proj" id="p-mobile-games" data-proj="mobile-games" aria-labelledby="mobile-games-title">
           <div class="proj-meta">2012 — 2013 · Mobile UX · Game Design</div>
           <h2 class="proj-title" id="mobile-games-title">Mobile Games</h2>
           <p class="proj-subtitle">UX consulting for a San Francisco startup developing turn-based strategy tablet games.</p>
-          <ul class="mc-points" aria-label="Key points">
-            <li><span class="mc-key">Problem</span> A thinly funded San Francisco startup needed tablet strategy games that were learnable, fun and worth paying for.</li>
-            <li><span class="mc-key">Role</span> UX consultant representing the player experience, working remotely from Norway.</li>
-            <li><span class="mc-key">Approach</span> Game design principles drawn from research, then UI kept a sprint ahead of development, with prototypes and remote usability tests.</li>
-            <li><span class="mc-key">Outcome</span> One game released to favourable player reviews before the studio shut down.</li>
-          </ul>
-          <details class="mc-more">
-            <summary>Read the full case study</summary>
           <div class="proj-hero" aria-hidden="true">Case study visuals available on request</div>
           <div class="proj-body">
             <section>
@@ -519,7 +463,6 @@
             <span>Interaction Design</span>
 
           </div>
-          </details>
         </article>
     </section>
     </div>

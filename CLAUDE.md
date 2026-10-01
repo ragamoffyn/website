@@ -36,8 +36,16 @@ Open `index.html` directly in a browser to preview, or run
   section 13) and `v2/work-history-dashboard.html` (the original Gantt
   dashboard). Since 2026-10-01 `v2/projects.html` is on the same scale
   and grid too (CSS section 14): the project index on the smaller side,
-  sticky, and the chosen case study on the larger side; the dashboard
-  version is kept as `v2/projects-dashboard.html`. Independent of the root pages and `style.css`. Its project
+  sticky, and the chosen case study on the larger side (kept as
+  `v2/projects-longform.html`); the dashboard version is kept as
+  `v2/projects-dashboard.html`. Later on 2026-10-01 `v2/projects.html`
+  became a compact list (title and year per row) beside a bordered panel
+  (CSS section 15) that leads with four key points per project, Problem,
+  Role, Approach and Outcome, set large for scanning, with the full case
+  study folded into a "Read the full case study" `<details>`. Below
+  1000px the panel opens under its row like an accordion. The key points
+  were condensed from the case-study text by Claude, not written by
+  Michael, so they are not in the root case-study pages. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the

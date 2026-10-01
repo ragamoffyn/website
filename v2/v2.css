@@ -1726,3 +1726,118 @@ p { margin: 0; }
   .mp-page .proj-tile { grid-template-columns: minmax(0, 1fr); padding-left: var(--step-m1); }
   .mp-year, .mp-topics { grid-row: auto; grid-column: 1; }
 }
+
+/* ---------------------------------------------------------------
+   15. Projects — compact list + project panel (projects.html)
+   Builds on section 14 (the page also carries .mp-page) and
+   overrides its layout. A compact list on the smaller side; the
+   chosen project in a bordered panel on the larger side, leading
+   with four key points set large for scanning. The full case study
+   is folded into a <details> under them. Below 1000px v2.js moves
+   the panel under its row, accordion style.
+   The long-form page is kept as projects-longform.html.
+   --------------------------------------------------------------- */
+.mc-layout {
+  display: grid;
+  grid-template-columns: var(--ratio-b) var(--ratio-a);
+  column-gap: var(--step-3);
+  align-items: start;
+  padding-top: var(--step-3);
+}
+.mc-page .proj-tile {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--step-0);
+  padding: var(--step-m1) var(--step-0) var(--step-m1) var(--step-m1);
+}
+.mc-title { font-family: var(--serif); font-size: var(--step-0); line-height: 1.3; }
+.mc-year {
+  flex: none;
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.mc-page .proj-tile:hover .mc-title { color: var(--primary); }
+.mc-page .proj-tile[aria-current="true"] .mc-title { color: var(--foreground); }
+
+/* The panel: a dedicated, bordered space for the chosen project. */
+.mc-page .proj-detail {
+  padding: var(--step-2) var(--step-3) var(--step-3);
+  background: var(--card);
+  border: 1px solid var(--border-strong);
+  border-top: 3px solid var(--primary);
+}
+.mc-page .proj { max-width: none; }
+.mc-page .proj + .proj { margin-top: var(--step-4); }
+.js .mc-page .proj + .proj { margin-top: 0; }
+.mc-page .proj-title { font-size: var(--step-3); }
+.mc-page .proj-subtitle { font-size: var(--step-0); }
+
+/* Key points: the part people scan, so it carries the weight. */
+.mc-points {
+  list-style: none;
+  margin: var(--step-2) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+.mc-points li {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  column-gap: var(--step-0);
+  align-items: baseline;
+  padding: var(--step-0) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--step-1);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+.mc-key {
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.mc-page .proj-worklink { margin-top: var(--step-0); }
+
+/* The full case study, folded. */
+.mc-more { margin-top: var(--step-2); }
+.mc-more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  min-height: 44px;
+  padding: 0 var(--step-0);
+  border: 1px solid var(--border-strong);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.mc-more > summary::-webkit-details-marker { display: none; }
+.mc-more > summary::after { content: '+'; font-size: 1.3em; line-height: 1; color: var(--primary); }
+.mc-more[open] > summary::after { content: '\2212'; }
+.mc-more > summary:hover { border-color: var(--primary); color: var(--primary); }
+.mc-more > summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.mc-more[open] > summary { margin-bottom: var(--step-0); }
+.mc-page .facts { background: var(--border); }
+.mc-page .fact { background: var(--card); }
+
+/* Below 1000px: one column; the panel opens under its row. */
+@media (max-width: 999.98px) {
+  .mc-layout { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-3); }
+  .mc-page .proj-list { display: block; }
+  .mc-page .proj-list .proj-detail { margin: 0 0 var(--step-0); padding: var(--step-0) var(--step-0) var(--step-2); }
+  .js .mc-page .mc-layout > .proj-detail { display: none; }
+}
+@media (max-width: 639.98px) {
+  .mc-page .proj-tile { display: flex; padding-left: var(--step-m1); }
+  .mc-points li { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-m2); font-size: var(--step-0); }
+  .mc-page .facts { grid-template-columns: minmax(0, 1fr); }
+}

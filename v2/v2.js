@@ -194,7 +194,7 @@
 
   /* ---------- Projects: one article at a time ---------- */
   var detail = document.getElementById('proj-detail');
-  if (detail) {
+  if (detail && !document.body.classList.contains('mc-page')) {
     var arts = Array.prototype.slice.call(detail.querySelectorAll('.proj'));
     var tiles = Array.prototype.slice.call(document.querySelectorAll('.proj-tile'));
     var list = document.querySelector('.proj-list');
@@ -234,5 +234,60 @@
     });
     window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
     show(location.hash.slice(1));
+  }
+
+  /* ---------- Projects (compact list): one project in the panel ----------
+     Wide: the panel sits beside the list and always shows a project.
+     Below 1000px it moves under the chosen row, like an accordion, and
+     a second tap on that row closes it. */
+  var panel = document.querySelector('.mc-page #proj-detail');
+  if (panel) {
+    var home = panel.parentNode;
+    var parts = Array.prototype.slice.call(panel.querySelectorAll('.proj'));
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.proj-tile'));
+    var narrow = window.matchMedia('(max-width: 999.98px)');
+    var current = null;
+
+    var place = function () {
+      var row = current && rows.filter(function (r) { return r.dataset.proj === current; })[0];
+      if (narrow.matches && row) row.parentNode.appendChild(panel);
+      else if (panel.parentNode !== home) home.appendChild(panel);
+    };
+
+    var open = function (id, fromClick) {
+      var art = document.getElementById('p-' + id);
+      if (!art || parts.indexOf(art) < 0) art = narrow.matches ? null : parts[0];
+      current = art ? art.dataset.proj : null;
+      parts.forEach(function (a) { a.classList.toggle('is-shown', a === art); });
+      rows.forEach(function (r) {
+        if (r.dataset.proj === current) r.setAttribute('aria-current', 'true');
+        else r.removeAttribute('aria-current');
+        r.setAttribute('aria-expanded', r.dataset.proj === current ? 'true' : 'false');
+      });
+      place();
+      if (!fromClick || !art) return;
+      // Keep the chosen row (narrow) or the panel's top (wide) in view.
+      var target = narrow.matches ? rows.filter(function (r) { return r.dataset.proj === current; })[0] : panel;
+      var top = target.getBoundingClientRect().top;
+      if (top < 0 || top > window.innerHeight * .6) {
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      }
+    };
+
+    rows.forEach(function (r) {
+      r.setAttribute('aria-controls', 'proj-detail');
+      r.addEventListener('click', function (e) {
+        e.preventDefault();
+        var id = r.dataset.proj;
+        if (narrow.matches && id === current) id = '';
+        history.replaceState(null, '', id ? '#' + id : location.pathname);
+        open(id, true);
+      });
+    });
+    var onChange = function () { if (!current && !narrow.matches) open(''); else place(); };
+    if (narrow.addEventListener) narrow.addEventListener('change', onChange);
+    else narrow.addListener(onChange);
+    window.addEventListener('hashchange', function () { open(location.hash.slice(1)); });
+    open(location.hash.slice(1));
   }
 })();
