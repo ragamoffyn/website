@@ -1870,3 +1870,22 @@ p { margin: 0; }
   .js .mc-page .proj.is-shown .mc-points li,
   .mc-more[open] > :not(summary) { animation: none; }
 }
+
+/* Section 15, continued: project images. A lead image floats in the
+   panel's top right beside the heading; figures sit full width in the
+   case study with a small caption. */
+.mc-page .proj-lead-img {
+  float: right;
+  width: clamp(7rem, 24%, 254px);
+  height: auto;
+  margin: 0 0 var(--step-0) var(--step-1);
+}
+.mc-page .mc-points { clear: both; }
+.mc-page .proj-fig { margin: var(--step-1) 0 0; }
+.mc-page .proj-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.mc-page .proj-fig figcaption {
+  margin-top: var(--step-m2);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  color: var(--muted-foreground);
+}
