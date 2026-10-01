@@ -1586,3 +1586,143 @@ p { margin: 0; }
   .gx-tick.minor { display: none; }
   .gx-eras { grid-template-columns: 1fr; }
 }
+
+/* ---------------------------------------------------------------
+   14. Projects — modular scale + ratio grid (projects.html)
+   Uses section 10's scale and 4 : 3 split, and section 11's header.
+   The project index sits on the smaller side (3) and stays in view
+   while the chosen case study fills the larger side (4). Every rule
+   is scoped to .mp-page so it beats section 5's dashboard rules,
+   which projects-dashboard.html still uses, at every width.
+   --------------------------------------------------------------- */
+.mp-layout {
+  display: grid;
+  grid-template-columns: var(--ratio-b) var(--ratio-a);
+  column-gap: var(--step-4);
+  align-items: start;
+  padding-top: var(--step-3);
+}
+.mp-page .proj-nav { grid-area: auto; display: block; position: sticky; top: var(--step-2); }
+.mp-page .proj-list {
+  display: block;
+  overflow: visible;
+  gap: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+.mp-page .proj-list li { border-bottom: 1px solid var(--border); }
+.mp-page .proj-tile {
+  display: grid;
+  grid-template-columns: 5.75em minmax(0, 1fr);
+  column-gap: var(--step-0);
+  align-items: baseline;
+  height: auto;
+  padding: var(--step-m1) 0 var(--step-m1) var(--step-0);
+  background: none;
+  border: 0;
+  border-left: 3px solid transparent;
+  box-shadow: none;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.mp-year {
+  grid-row: 1 / span 2;
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.mp-title { font-family: var(--serif); font-size: var(--step-1); line-height: 1.2; }
+.mp-topics {
+  grid-column: 2;
+  margin-top: .2em;
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  color: var(--muted-foreground);
+}
+.mp-page .proj-tile:hover .mp-title { color: var(--primary); }
+.mp-page .proj-tile[aria-current="true"] { border-left-color: var(--primary); background: var(--card); }
+.mp-page .proj-tile:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* The case study. */
+.mp-page .proj-detail {
+  grid-area: auto;
+  min-width: 0;
+  overflow: visible;
+  padding: 0;
+  background: none;
+  border: 0;
+  scroll-margin-top: var(--step-2);
+}
+.mp-page .proj { max-width: 40em; }
+.mp-page .proj + .proj { margin-top: var(--step-5); }
+.js .mp-page .proj + .proj { margin-top: 0; }
+.mp-page .proj-meta {
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.mp-page .proj-title {
+  margin: var(--step-m2) 0 var(--step-0);
+  font-size: var(--step-3);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.mp-page .proj-subtitle {
+  max-width: none;
+  font-size: var(--step-1);
+  line-height: 1.4;
+  color: var(--muted-foreground);
+  text-wrap: pretty;
+}
+.mp-page .facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: var(--step-2) 0;
+}
+.mp-page .fact { padding: var(--step-m1) var(--step-0); }
+.mp-page .fact dt { font-size: var(--step-m2); margin-bottom: var(--step-m2); }
+.mp-page .fact dd { font-size: var(--step-m1); line-height: 1.45; }
+.mp-page .proj-hero {
+  margin: var(--step-2) 0 0;
+  font-size: var(--step-m2);
+}
+.mp-page .proj-body section { margin-top: var(--step-2); }
+.mp-page .proj-body h3 {
+  margin: 0 0 var(--step-m1);
+  padding-top: var(--step-m1);
+  border-top: 1px solid var(--border);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.mp-page .proj-body p,
+.mp-page .proj-body ul,
+.mp-page .proj-body ol { font-size: var(--step-0); line-height: 1.6; }
+.mp-page .proj-body p + p { margin-top: var(--step-m1); }
+.mp-page .proj-body ul, .mp-page .proj-body ol { padding-left: 1.2em; }
+.mp-page .proj-body li + li { margin-top: var(--step-m2); }
+.mp-page .proj-tags { gap: var(--step-m2); margin-top: var(--step-3); }
+.mp-page .proj-tags span { padding: .2em .7em; font-size: var(--step-m1); }
+.mp-page .proj-worklink { margin-top: var(--step-1); font-size: var(--step-m1); font-weight: 600; }
+
+/* Below 1000px the index sits above the case study, two columns wide
+   until phones, where it is one. */
+@media (max-width: 999.98px) {
+  .mp-layout { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-4); }
+  .mp-page .proj-nav { position: static; }
+  .mp-page .proj-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--step-2); }
+}
+@media (max-width: 639.98px) {
+  .mp-page .proj-list { grid-template-columns: minmax(0, 1fr); }
+  .mp-page .facts { grid-template-columns: minmax(0, 1fr); }
+  .mp-page .proj-tile { grid-template-columns: minmax(0, 1fr); padding-left: var(--step-m1); }
+  .mp-year, .mp-topics { grid-row: auto; grid-column: 1; }
+}

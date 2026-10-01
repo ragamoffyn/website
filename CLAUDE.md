@@ -34,8 +34,10 @@ Open `index.html` directly in a browser to preview, or run
   era diagram on the modular scale, CSS section 11, newest first),
   `v2/work-history-gantt.html` (Gantt with the eras built in, CSS
   section 13) and `v2/work-history-dashboard.html` (the original Gantt
-  dashboard); `v2/projects.html` is still
-  dashboard-style. Independent of the root pages and `style.css`. Its project
+  dashboard). Since 2026-10-01 `v2/projects.html` is on the same scale
+  and grid too (CSS section 14): the project index on the smaller side,
+  sticky, and the chosen case study on the larger side; the dashboard
+  version is kept as `v2/projects-dashboard.html`. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
