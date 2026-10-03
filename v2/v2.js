@@ -245,7 +245,7 @@
     var home = panel.parentNode;
     var parts = Array.prototype.slice.call(panel.querySelectorAll('.proj'));
     var rows = Array.prototype.slice.call(document.querySelectorAll('.proj-tile'));
-    // The tiles page (projects-tiles.html) only falls back to the
+    // The tiles page (projects.html) only falls back to the
     // accordion on phones, so it names its own breakpoint.
     var narrow = window.matchMedia(panel.dataset.narrow || '(max-width: 999.98px)');
     var current = null;

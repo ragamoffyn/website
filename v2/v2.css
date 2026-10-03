@@ -1740,7 +1740,8 @@ p { margin: 0; }
 }
 
 /* ---------------------------------------------------------------
-   15. Projects — compact list + project panel (projects.html)
+   15. Projects — compact list + project panel (projects-list.html;
+   projects.html builds on it, section 16)
    Builds on section 14 (the page also carries .mp-page) and
    overrides its layout. A compact list on the smaller side; the
    chosen project in a bordered panel on the larger side, leading
@@ -1911,7 +1912,7 @@ p { margin: 0; }
 .mc-page .proj-fig + .proj-fig { margin-top: var(--step-0); }
 
 /* ---------------------------------------------------------------
-   16. Projects with tiles (projects-tiles.html, a preview)
+   16. Projects with tiles (projects.html)
    Builds on section 15 (the page also carries .mp-page and
    .mc-page). The six projects sit in a row of tiles across the top;
    the chosen project spreads across the full width below them,

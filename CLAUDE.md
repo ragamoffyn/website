@@ -45,7 +45,13 @@ Open `index.html` directly in a browser to preview, or run
   study folded into a "Read the full case study" `<details>`. Below
   1000px the panel opens under its row like an accordion. The key points
   were condensed from the case-study text by Claude, not written by
-  Michael, so they are not in the root case-study pages. Independent of the root pages and `style.css`. Its project
+  Michael, so they are not in the root case-study pages. On 2026-10-03
+  that list-beside-panel version moved to `v2/projects-list.html` and
+  `v2/projects.html` became tiles (CSS section 16, building on 15): the
+  six projects in a row of tiles across the top (3 x 2 on tablets), the
+  chosen project full width below with its key points in a 2 x 2 grid,
+  and previous/next links added by `v2.js`; below 640px it is still the
+  accordion list. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the

@@ -11,16 +11,17 @@
   <link rel="stylesheet" href="v2.css" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="ms-page mp-page mc-page">
+<body class="ms-page mp-page mc-page mt-page">
 
-  <!-- Projects on the modular scale and 4 : 3 grid (sections 10 and 15
-       of v2.css). A compact list of projects on the smaller side; the
-       chosen project opens in a panel on the larger side, leading with
-       four key points (problem, role, approach, outcome) for scanning,
-       with the full case study folded away below them. Below 1000px
-       v2.js opens the panel under its row instead, like an accordion.
-       Without the script every project shows, one after another.
-       Earlier versions: projects-longform.html, projects-dashboard.html. -->
+  <!-- Projects with tiles (sections 10, 15 and 16 of v2.css). The
+       six projects as a row of tiles across the top, and the chosen
+       project spread across the full width below them, its four key
+       points in a 2 x 2 grid, with previous and next links at the foot
+       (added by v2.js). Tablets get the tiles 3 x 2; below 640px it
+       falls back to the accordion list. Without the script every
+       project shows, one after another.
+       Earlier versions: projects-list.html (compact list beside a
+       panel), projects-longform.html, projects-dashboard.html. -->
   <div class="ms-wrap">
 
     <nav class="ms-nav" aria-label="Site">
@@ -42,39 +43,39 @@
         <li><a class="proj-tile" href="#foursubsea" data-proj="foursubsea">
           <span class="mc-title">4Subsea</span>
           <span class="mc-year">2023 — now</span>
-          <span class="mc-topics">Design Systems · Platform UX</span>
+          <span class="mc-topics">Design&nbsp;Systems&nbsp;· Platform&nbsp;UX</span>
         </a></li>
         <li><a class="proj-tile" href="#national-security" data-proj="national-security">
           <span class="mc-title">National Security</span>
           <span class="mc-year">2022</span>
-          <span class="mc-topics">Data Visualization · Decision Support</span>
+          <span class="mc-topics">Data&nbsp;Visualization&nbsp;· Decision&nbsp;Support</span>
         </a></li>
         <li><a class="proj-tile" href="#maritime-refueling" data-proj="maritime-refueling">
           <span class="mc-title">Maritime Refueling</span>
           <span class="mc-year">2020</span>
-          <span class="mc-topics">UX Research · Interaction Design</span>
+          <span class="mc-topics">UX&nbsp;Research&nbsp;· Interaction&nbsp;Design</span>
         </a></li>
         <li><a class="proj-tile" href="#coffee-ecosystem" data-proj="coffee-ecosystem">
           <span class="mc-title">The Coffee Ecosystem</span>
           <span class="mc-year">2019</span>
-          <span class="mc-topics">User Research · Service Design</span>
+          <span class="mc-topics">User&nbsp;Research&nbsp;· Service&nbsp;Design</span>
         </a></li>
         <li><a class="proj-tile" href="#sewer-corrosion" data-proj="sewer-corrosion">
           <span class="mc-title">Sewer Corrosion</span>
           <span class="mc-year">2017</span>
-          <span class="mc-topics">Interaction Design · Data Visualization</span>
+          <span class="mc-topics">Interaction&nbsp;Design&nbsp;· Data&nbsp;Visualization</span>
         </a></li>
         <li><a class="proj-tile" href="#search-rescue" data-proj="search-rescue">
           <span class="mc-title">Search and Rescue</span>
           <span class="mc-year">2015</span>
-          <span class="mc-topics">Decision Support · Human Factors</span>
+          <span class="mc-topics">Decision&nbsp;Support&nbsp;· Human&nbsp;Factors</span>
         </a></li>
       </ul>
     </nav>
 
     <!-- The case-study text below is copied from the seven case-study
          pages in the repo root (../foursubsea.html and the rest). -->
-    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project">
+    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project" data-narrow="(max-width: 639.98px)" data-steps>
         <article class="proj" id="p-foursubsea" data-proj="foursubsea" aria-labelledby="foursubsea-title">
           <div class="proj-meta">2023 — now · Design Systems · Platform UX</div>
           <h2 class="proj-title" id="foursubsea-title">4Subsea — Digital Solutions Platform</h2>
