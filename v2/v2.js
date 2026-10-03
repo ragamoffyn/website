@@ -245,8 +245,33 @@
     var home = panel.parentNode;
     var parts = Array.prototype.slice.call(panel.querySelectorAll('.proj'));
     var rows = Array.prototype.slice.call(document.querySelectorAll('.proj-tile'));
-    var narrow = window.matchMedia('(max-width: 999.98px)');
+    // The tiles page (projects-tiles.html) only falls back to the
+    // accordion on phones, so it names its own breakpoint.
+    var narrow = window.matchMedia(panel.dataset.narrow || '(max-width: 999.98px)');
     var current = null;
+
+    // Tiles page: previous and next links at the foot of each project,
+    // so a reader deep in a case study needn't scroll back to the tiles.
+    if ('steps' in panel.dataset) {
+      var label = function (i) { return rows[i].querySelector('.mc-title').textContent; };
+      parts.forEach(function (a, i) {
+        var nav = document.createElement('nav');
+        nav.className = 'mt-steps';
+        nav.setAttribute('aria-label', 'More projects');
+        var link = function (j, cls, text) {
+          if (j < 0 || j >= rows.length) { nav.appendChild(document.createElement('span')); return; }
+          var el = document.createElement('a');
+          el.className = cls;
+          el.href = '#' + rows[j].dataset.proj;
+          el.dataset.proj = rows[j].dataset.proj;
+          el.innerHTML = text.replace('%', label(j));
+          nav.appendChild(el);
+        };
+        link(i - 1, 'mt-prev', '<span>Previous</span>&#8592; %');
+        link(i + 1, 'mt-next', '<span>Next</span>% &#8594;');
+        a.appendChild(nav);
+      });
+    }
 
     var place = function () {
       var row = current && rows.filter(function (r) { return r.dataset.proj === current; })[0];
@@ -287,6 +312,13 @@
     var onChange = function () { if (!current && !narrow.matches) open(''); else place(); };
     if (narrow.addEventListener) narrow.addEventListener('change', onChange);
     else narrow.addListener(onChange);
+    panel.addEventListener('click', function (e) {
+      var step = e.target.closest && e.target.closest('.mt-steps a');
+      if (!step) return;
+      e.preventDefault();
+      history.replaceState(null, '', '#' + step.dataset.proj);
+      open(step.dataset.proj, true);
+    });
     window.addEventListener('hashchange', function () { open(location.hash.slice(1)); });
     open(location.hash.slice(1));
   }

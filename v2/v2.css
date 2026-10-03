@@ -1909,3 +1909,112 @@ p { margin: 0; }
   max-width: 34rem;
 }
 .mc-page .proj-fig + .proj-fig { margin-top: var(--step-0); }
+
+/* ---------------------------------------------------------------
+   16. Projects with tiles (projects-tiles.html, a preview)
+   Builds on section 15 (the page also carries .mp-page and
+   .mc-page). The six projects sit in a row of tiles across the top;
+   the chosen project spreads across the full width below them,
+   unboxed, its key points in a 2 x 2 grid. Long text keeps a
+   readable measure. Tablets get the tiles 3 x 2; below 640px v2.js
+   falls back to section 15's accordion list.
+   --------------------------------------------------------------- */
+.mt-page .mc-layout { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-3); }
+.mt-page .proj-nav { position: static; }
+
+@media (min-width: 640px) {
+  .mt-page .proj-list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--step-m1);
+    border-top: 0;
+  }
+  .mt-page .proj-list li { border-bottom: 0; }
+  .mt-page .proj-tile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--step-m1) var(--step-0) var(--step-0);
+    border: 0;
+    border-top: 1px solid var(--border-strong);
+    background: none;
+  }
+  .mt-page .proj-tile .mc-year { order: -1; margin-bottom: var(--step-m2); }
+  .mt-page .proj-tile .mc-title { font-size: var(--step-1); line-height: 1.2; }
+  .mt-page .proj-tile .mc-topics { margin-top: var(--step-m2); }
+  .mt-page .proj-tile:hover { border-top-color: var(--primary); }
+  .mt-page .proj-tile[aria-current="true"] {
+    border-top: 3px solid var(--primary);
+    padding-top: calc(var(--step-m1) - 2px);
+    background: var(--card);
+  }
+  /* Tablets keep the panel below the tiles, not in the list. */
+  .js .mt-page .mc-layout > .proj-detail { display: block; }
+}
+@media (min-width: 640px) and (max-width: 999.98px) {
+  .mt-page .proj-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* The project: unboxed, full width. */
+@media (min-width: 640px) {
+  .mt-page .proj-detail { padding: 0; background: none; border: 0; }
+}
+.mt-page .proj-title { font-size: var(--step-4); line-height: 1.1; text-wrap: balance; }
+.mt-page .proj-subtitle { max-width: 40rem; margin-top: var(--step-m1); }
+.mt-page .proj-lead-img { width: clamp(8rem, 26%, 254px); margin-left: var(--step-3); }
+
+/* Key points: 2 x 2, the label above its text. */
+@media (min-width: 640px) {
+  .mt-page .mc-points {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--step-3);
+    margin-top: var(--step-3);
+    border-top: 0;
+  }
+  .mt-page .mc-points li {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    row-gap: var(--step-m2);
+    padding: var(--step-0) 0 var(--step-1);
+    border-top: 1px solid var(--border-strong);
+    border-bottom: 0;
+  }
+}
+
+/* The full case study keeps a readable line length. */
+.mt-page .mc-more > :not(summary) { max-width: 46rem; }
+
+/* Previous and next projects, at the foot of each one. */
+.mt-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--step-2);
+  margin-top: var(--step-3);
+  padding-top: var(--step-0);
+  border-top: 1px solid var(--border-strong);
+}
+.mt-steps a {
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  line-height: 1.25;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.mt-steps a span {
+  display: block;
+  margin-bottom: var(--step-m2);
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.mt-steps a:hover { color: var(--primary); }
+.mt-steps a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.mt-steps .mt-next { grid-column: 2; text-align: right; }
+@media (max-width: 639.98px) {
+  .mt-page .proj-title { font-size: var(--step-3); }
+  .mt-steps a { font-size: var(--step-0); }
+}
