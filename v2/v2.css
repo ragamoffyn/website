@@ -1897,12 +1897,3 @@ p { margin: 0; }
   max-width: 34rem;
 }
 .mc-page .proj-fig + .proj-fig { margin-top: var(--step-0); }
-
-/* Section 12, continued: the Internships tooltip holds one short entry
-   per placement. With all descriptions shown, those entries replace
-   the plain list of placements under the row. */
-.mh-intern + .mh-intern { margin-top: var(--step-0); }
-.mh-intern-head { font-family: var(--sans); font-size: var(--step-m1); font-weight: 600; color: var(--foreground); }
-.mh-intern-meta { margin-bottom: var(--step-m2); font-family: var(--sans); font-size: var(--step-m1); color: var(--muted-foreground); }
-.mh-chart.show-all .mh-subjobs { display: none; }
-.mh-chart.show-all .mh-intern { padding-left: var(--step-0); border-left: 1px solid var(--border-strong); }
