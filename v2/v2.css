@@ -974,21 +974,34 @@ p { margin: 0; }
 .ms-cell h2 { font-size: var(--step-1); line-height: 1.2; margin-bottom: var(--step-m1); }
 .ms-cell p { font-size: var(--step-0); line-height: 1.5; color: var(--muted-foreground); }
 
-/* Contact: label and links split 3 : 4, mirroring the hero. */
-.ms-contact {
-  display: grid;
-  grid-template-columns: var(--ratio-b) var(--ratio-a);
-  gap: var(--step-4);
+/* Footer: the contact line, on every page on this scale. */
+.ms-wrap:has(.ms-footer) { padding-bottom: 0; }
+/* The footer's rule replaces the summary's, so there is only one line. */
+.ms-summary:has(+ .ms-footer) { border-bottom: 0; padding-bottom: 0; }
+.ms-footer {
+  display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  padding-top: var(--step-3);
+  gap: var(--step-m1) var(--step-2);
+  margin-top: var(--step-4);
+  padding: var(--step-1) 0 var(--step-2);
+  border-top: 1px solid var(--border-strong);
 }
-.ms-contact .ms-eyebrow { margin: 0; }
+.ms-footer-label {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
 .ms-contact-links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--step-m1) var(--step-2);
   font-family: var(--sans);
-  font-size: var(--step-0);
+  font-size: var(--step-m1);
 }
 .ms-contact-links a { text-decoration: none; font-weight: 500; }
 .ms-contact-links a:hover { text-decoration: underline; }
@@ -1002,7 +1015,6 @@ p { margin: 0; }
   .ms-portrait { order: -1; align-self: start; justify-self: start; width: 60%; }
   .ms-portrait img { position: static; }
   .ms-summary { grid-template-columns: 1fr; }
-  .ms-contact { grid-template-columns: 1fr; gap: var(--step-0); }
 }
 
 /* ---------------------------------------------------------------
