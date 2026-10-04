@@ -1912,7 +1912,8 @@ p { margin: 0; }
 .mc-page .proj-fig + .proj-fig { margin-top: var(--step-0); }
 
 /* ---------------------------------------------------------------
-   16. Projects with tiles (projects.html)
+   16. Projects with tiles (projects-grid.html; projects.html builds
+   on it, section 17)
    Builds on section 15 (the page also carries .mp-page and
    .mc-page). The six projects sit in a row of tiles across the top;
    the chosen project spreads across the full width below them,
@@ -2021,11 +2022,12 @@ p { margin: 0; }
 }
 
 /* ---------------------------------------------------------------
-   17. Projects, key points in one column (projects-column.html, a
-   preview). Builds on section 16. The heading runs full width; below
-   it the four key points run down one column on the larger side of
-   the 4 : 3 grid, with the intro image to their right on the smaller
-   side. Below 640px it is section 16's phone layout unchanged.
+   17. Projects, key points in one column (projects.html). Builds
+   on section 16. The heading runs full width; below it the four key
+   points run down one column, with the intro image to their right in
+   a narrower column (7 : 3) so the text stays dominant. A tighter top
+   than section 16, so the first points show on a laptop screen.
+   Below 640px it is section 16's phone layout unchanged.
    --------------------------------------------------------------- */
 @media (min-width: 640px) {
   .mk-page .proj {

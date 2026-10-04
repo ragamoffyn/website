@@ -51,7 +51,12 @@ Open `index.html` directly in a browser to preview, or run
   six projects in a row of tiles across the top (3 x 2 on tablets), the
   chosen project full width below with its key points in a 2 x 2 grid,
   and previous/next links added by `v2.js`; below 640px it is still the
-  accordion list. Independent of the root pages and `style.css`. Its project
+  accordion list. On 2026-10-04 that 2 x 2 version moved to
+  `v2/projects-grid.html` and `v2/projects.html` now puts the key points
+  in one column with the intro image to their right (CSS section 17),
+  under a tighter heading and shorter tiles so the first points show on
+  a laptop screen; a project without an image (4Subsea) lets its points
+  run wider. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
