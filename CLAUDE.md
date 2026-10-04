@@ -56,7 +56,14 @@ Open `index.html` directly in a browser to preview, or run
   in one column with the intro image to their right (CSS section 17),
   under a tighter heading and shorter tiles so the first points show on
   a laptop screen; a project without an image (4Subsea) lets its points
-  run wider. Independent of the root pages and `style.css`. Its project
+  run wider. Later on 2026-10-04 that version moved to
+  `v2/projects-column.html` and `v2/projects.html` made the full case
+  study two columns on wide screens (CSS section 18): section headings
+  in a label column, text beside them, and each section's figures,
+  grouped at the end of the section in `.proj-figs`, on the right. The
+  4Subsea project is titled "Data Platform" there (its id is still
+  `foursubsea`), with striped "Image to come" placeholders (`.proj-ph`)
+  until Michael sends its images. Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the

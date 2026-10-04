@@ -2022,7 +2022,8 @@ p { margin: 0; }
 }
 
 /* ---------------------------------------------------------------
-   17. Projects, key points in one column (projects.html). Builds
+   17. Projects, key points in one column (projects-column.html;
+   projects.html builds on it, section 18). Builds
    on section 16. The heading runs full width; below it the four key
    points run down one column, with the intro image to their right in
    a narrower column (7 : 3) so the text stays dominant. A tighter top
@@ -2038,7 +2039,7 @@ p { margin: 0; }
     align-items: start;
   }
   .mk-page .proj > * { grid-column: 1 / -1; }
-  /* No photo (4Subsea): the points take a wider measure instead. */
+  /* No photo: the points take a wider measure instead. */
   .mk-page .proj:not(:has(.proj-lead-img)) > .mc-points { grid-column: 1 / -1; max-width: 56rem; }
   .mk-page .proj-meta { grid-row: 1; }
   .mk-page .proj-title { grid-row: 2; }
@@ -2087,8 +2088,7 @@ p { margin: 0; }
 }
 
 /* ---------------------------------------------------------------
-   18. Projects, two-column case study (projects-sections.html, a
-   preview). Builds on section 17. From 1000px the full case study
+   18. Projects, two-column case study (projects.html). Builds on section 17. From 1000px the full case study
    uses the same 7 : 3 split as the key points and intro image above:
    each section's heading sits in a label column, its text beside it, and its figures (grouped in
    .proj-figs) on the right, under the intro image. One reading
@@ -2128,4 +2128,23 @@ p { margin: 0; }
   .ks-page .proj-figs .proj-fig-pair { max-width: none; }
   .ks-page .proj-hero,
   .ks-page .proj-tags { margin-left: calc(10rem + var(--step-1)); }
+}
+
+/* Image placeholders, until real images arrive (Data Platform). */
+.proj-ph {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: 0 var(--step-0);
+  text-align: center;
+  background: repeating-linear-gradient(135deg, var(--muted) 0 10px, #e9e2d6 10px 11px);
+  font-family: var(--sans);
+  font-size: var(--step-m2);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.mc-page .proj-fig .proj-ph { max-width: 34rem; }
+@media (min-width: 640px) {
+  .mk-page .proj > .proj-lead-img.proj-ph { width: 100%; }
 }
