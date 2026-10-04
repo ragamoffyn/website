@@ -312,6 +312,27 @@
     var onChange = function () { if (!current && !narrow.matches) open(''); else place(); };
     if (narrow.addEventListener) narrow.addEventListener('change', onChange);
     else narrow.addListener(onChange);
+    // Projects page: the button that unfolds the full case study sits
+    // in the photo column, so it is a separate button driving the
+    // <details>; the <summary> stays for when the script doesn't run.
+    if ('sideToggle' in panel.dataset) {
+      parts.forEach(function (a) {
+        var more = a.querySelector('.mc-more');
+        if (!more) return;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'mc-toggle';
+        btn.textContent = more.querySelector('summary').textContent;
+        more.id = more.id || 'more-' + a.dataset.proj;
+        btn.setAttribute('aria-controls', more.id);
+        var sync = function () { btn.setAttribute('aria-expanded', more.open ? 'true' : 'false'); };
+        btn.addEventListener('click', function () { more.open = !more.open; });
+        more.addEventListener('toggle', sync);
+        sync();
+        a.insertBefore(btn, more);
+      });
+    }
+
     panel.addEventListener('click', function (e) {
       var step = e.target.closest && e.target.closest('.mt-steps a');
       if (!step) return;

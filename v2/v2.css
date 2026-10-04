@@ -2148,3 +2148,49 @@ p { margin: 0; }
 @media (min-width: 640px) {
   .mk-page .proj > .proj-lead-img.proj-ph { width: 100%; }
 }
+
+/* Section 18, continued: the employer link and the case-study button
+   move into the photo column. The link sits opposite the project's
+   summary; the button (made by v2.js, replacing the <summary>) sits
+   at the foot of the column, level with the end of the key points. */
+.js .ks-page .mc-more > summary { display: none; }
+.js .ks-page .mc-more[open] { margin-top: var(--step-2); }
+.mc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  min-height: 44px;
+  margin-top: var(--step-1);
+  padding: 0 var(--step-0);
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  background: none;
+  color: var(--foreground);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 500;
+  cursor: pointer;
+}
+.mc-toggle::after { content: '+'; font-size: 1.3em; line-height: 1; color: var(--primary); }
+.mc-toggle[aria-expanded="true"]::after { content: '\2212'; }
+.mc-toggle:hover { border-color: var(--primary); color: var(--primary); }
+.mc-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+@media (min-width: 640px) {
+  .ks-page .proj > .proj-meta,
+  .ks-page .proj > .proj-title,
+  .ks-page .proj > .proj-subtitle { grid-column: 1; }
+  .ks-page .proj > .proj-worklink {
+    grid-row: 3;
+    grid-column: 2;
+    align-self: end;
+    margin: 0;
+  }
+  .ks-page .proj > .mc-toggle {
+    grid-row: 4;
+    grid-column: 2;
+    align-self: end;
+    justify-self: start;
+    margin: 0;
+  }
+  .js .ks-page .proj > .mc-more:not([open]) { display: none; }
+}
