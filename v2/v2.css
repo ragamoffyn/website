@@ -2201,3 +2201,11 @@ p { margin: 0; }
    only the outer two. */
 .mk-page .mc-points li { border-bottom: 0; }
 .mk-page .mc-points li:last-child { border-bottom: 1px solid var(--border-strong); }
+
+/* Section 18, continued: more air between the row of tiles and the
+   project, and between the project and the previous/next section. */
+.ks-page .mc-layout { row-gap: var(--step-4); padding-top: var(--step-2); }
+.ks-page .mt-steps { margin-top: var(--step-5); padding-top: var(--step-1); }
+@media (max-width: 639.98px) {
+  .ks-page .mt-steps { margin-top: var(--step-4); }
+}
