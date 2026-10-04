@@ -2019,3 +2019,49 @@ p { margin: 0; }
   .mt-page .proj-title { font-size: var(--step-3); }
   .mt-steps a { font-size: var(--step-0); }
 }
+
+/* ---------------------------------------------------------------
+   17. Projects, key points in one column (projects-column.html, a
+   preview). Builds on section 16. The heading runs full width; below
+   it the four key points run down one column on the larger side of
+   the 4 : 3 grid, with the intro image to their right on the smaller
+   side. Below 640px it is section 16's phone layout unchanged.
+   --------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .mk-page .proj {
+    display: grid;
+    grid-template-columns: var(--ratio-a) var(--ratio-b);
+    column-gap: var(--step-3);
+    align-items: start;
+  }
+  .mk-page .proj > * { grid-column: 1 / -1; }
+  .mk-page .proj-meta { grid-row: 1; }
+  .mk-page .proj-title { grid-row: 2; }
+  .mk-page .proj-subtitle { grid-row: 3; }
+  .mk-page .proj > .mc-points { grid-row: 4; grid-column: 1; }
+  .mk-page .proj > .proj-lead-img {
+    grid-row: 4;
+    grid-column: 2;
+    float: none;
+    width: auto;
+    max-width: 100%;
+    margin: var(--step-3) 0 0;
+  }
+  .mk-page .proj-worklink { grid-row: 5; }
+  .mk-page .mc-more { grid-row: 6; }
+  .mk-page .mt-steps { grid-row: 7; }
+
+  .mk-page .mc-points { display: block; border-top: 0; }
+  .mk-page .mc-points li {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    align-items: baseline;
+    padding: var(--step-0) 0;
+    border-top: 1px solid var(--border-strong);
+  }
+  .mk-page .mc-points li:last-child { border-bottom: 1px solid var(--border-strong); }
+  .mk-page .proj-title { margin-bottom: 0; }
+}
+/* Tablets: the column is narrow, so each label sits above its text. */
+@media (min-width: 640px) and (max-width: 999.98px) {
+  .mk-page .mc-points li { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-m2); }
+}
