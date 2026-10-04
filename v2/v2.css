@@ -2085,3 +2085,47 @@ p { margin: 0; }
 @media (min-width: 640px) and (max-width: 999.98px) {
   .mk-page .mc-points li { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-m2); }
 }
+
+/* ---------------------------------------------------------------
+   18. Projects, two-column case study (projects-sections.html, a
+   preview). Builds on section 17. From 1000px the full case study
+   uses the same 7 : 3 split as the key points and intro image above:
+   each section's heading sits in a label column, its text beside it, and its figures (grouped in
+   .proj-figs) on the right, under the intro image. One reading
+   order, top to bottom. Narrower screens keep section 17's layout.
+   --------------------------------------------------------------- */
+@media (min-width: 1000px) {
+  .ks-page .mc-more > :not(summary) { max-width: none; }
+  .ks-page .proj-body section {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    column-gap: var(--step-3);
+    align-items: start;
+    padding-top: var(--step-0);
+    border-top: 1px solid var(--border-strong);
+  }
+  /* Section headings are longer than the key-point labels, so the
+     label column is wider here and they wrap within it. */
+  .ks-page .proj-body section > * { grid-column: 1; padding-left: calc(10rem + var(--step-1)); }
+  .ks-page .proj-body section > ul,
+  .ks-page .proj-body section > ol { padding-left: calc(10rem + var(--step-1) + 1.2em); }
+  .ks-page .proj-body section > h3 {
+    grid-row: 1;
+    width: 10rem;
+    padding: .35em 0 0;
+    margin: 0;
+    border-top: 0;
+    line-height: 1.45;
+    text-wrap: balance;
+  }
+  .ks-page .proj-body section > h3 + * { grid-row: 1; }
+  .ks-page .proj-body section > .proj-figs {
+    grid-column: 2;
+    grid-row: 1 / span 30;
+    padding-left: 0;
+  }
+  .ks-page .proj-figs .proj-fig:first-child { margin-top: 0; }
+  .ks-page .proj-figs .proj-fig-pair { max-width: none; }
+  .ks-page .proj-hero,
+  .ks-page .proj-tags { margin-left: calc(10rem + var(--step-1)); }
+}
