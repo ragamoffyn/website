@@ -2062,8 +2062,10 @@ p { margin: 0; }
     grid-template-columns: 6.5rem minmax(0, 1fr);
     align-items: baseline;
     padding: var(--step-0) 0;
-    border-top: 1px solid var(--border-strong);
+    border-top: 0;
   }
+  /* Only the outer lines: one above the first point, one under the last. */
+  .mk-page .mc-points { border-top: 1px solid var(--border-strong); }
   .mk-page .mc-points li:last-child { border-bottom: 1px solid var(--border-strong); }
   .mk-page .proj-title { margin-bottom: 0; }
 }
@@ -2194,3 +2196,8 @@ p { margin: 0; }
   }
   .js .ks-page .proj > .mc-more:not([open]) { display: none; }
 }
+
+/* Section 17, continued: no lines between the key points at any width,
+   only the outer two. */
+.mk-page .mc-points li { border-bottom: 0; }
+.mk-page .mc-points li:last-child { border-bottom: 1px solid var(--border-strong); }
