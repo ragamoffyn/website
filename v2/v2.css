@@ -2345,3 +2345,15 @@ p { margin: 0; }
   cursor: pointer;
 }
 .zoom-close:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+
+/* Section 18, continued: no topic line above the title (the selected tile
+   already shows it); the link to the job sits under the summary; the
+   case-study toggle is a little larger and bolder so it reads as the next
+   step. */
+.ks-page .proj > .proj-meta { display: none; }
+.ks-page .mc-toggle { font-size: var(--step-0); font-weight: 600; gap: .4em; }
+@media (min-width: 640px) {
+  .ks-page .proj > .proj-title { grid-row: 1; }
+  .ks-page .proj > .proj-subtitle { grid-row: 2; }
+  .ks-page .proj > .proj-worklink { grid-row: 3; grid-column: 1; align-self: start; margin: var(--step-m1) 0 0; }
+}
