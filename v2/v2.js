@@ -346,3 +346,47 @@
     open(location.hash.slice(1));
   }
 })();
+
+/* Projects page: clicking a case-study image opens a larger copy in a
+   dialog. Click, Escape or the close button dismisses it. */
+(function () {
+  if (!document.body.classList.contains('ks-page') || typeof HTMLDialogElement === 'undefined') return;
+  var imgs = document.querySelectorAll('.proj img.proj-lead-img, .proj .proj-fig img');
+  if (!imgs.length) return;
+
+  var dlg = document.createElement('dialog');
+  dlg.className = 'zoom';
+  dlg.setAttribute('aria-label', 'Enlarged image');
+  var big = document.createElement('img');
+  var cap = document.createElement('p');
+  var close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'zoom-close';
+  close.setAttribute('aria-label', 'Close');
+  close.innerHTML = '&times;';
+  dlg.appendChild(close);
+  dlg.appendChild(big);
+  dlg.appendChild(cap);
+  document.body.appendChild(dlg);
+
+  var show = function (img) {
+    var fig = img.closest('figure');
+    var text = fig && fig.querySelector('figcaption');
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt;
+    cap.textContent = text ? text.textContent : '';
+    cap.hidden = !cap.textContent;
+    dlg.showModal();
+  };
+  imgs.forEach(function (img) {
+    img.classList.add('zoomable');
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', (img.alt ? img.alt + '. ' : '') + 'Enlarge image');
+    img.addEventListener('click', function () { show(img); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(img); }
+    });
+  });
+  dlg.addEventListener('click', function () { dlg.close(); });
+})();

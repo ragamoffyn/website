@@ -2304,3 +2304,44 @@ p { margin: 0; }
   .ks-page .proj-detail > .proj { flex: 1 0 auto; grid-template-rows: repeat(8, auto) minmax(0, 1fr); }
   .ks-page .proj > .mt-steps { align-self: end; }
 }
+
+/* Section 18, continued: case-study images open larger in a dialog. */
+.ks-page img.zoomable { cursor: zoom-in; }
+.ks-page img.zoomable:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.zoom {
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: var(--step-2);
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: zoom-out;
+}
+.zoom[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--step-0); }
+.zoom::backdrop { background: rgba(33, 29, 25, .88); }
+.zoom img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 7rem);
+  width: auto;
+  height: auto;
+  background: #fff;
+}
+.zoom p { margin: 0; max-width: 40rem; text-align: center; font-family: var(--sans); font-size: .85rem; }
+.zoom-close {
+  position: absolute;
+  top: var(--step-0);
+  right: var(--step-1);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.zoom-close:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
