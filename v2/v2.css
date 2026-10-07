@@ -2357,3 +2357,7 @@ p { margin: 0; }
   .ks-page .proj > .proj-subtitle { grid-row: 2; }
   .ks-page .proj > .proj-worklink { grid-row: 3; grid-column: 1; align-self: start; margin: var(--step-m1) 0 0; }
 }
+/* The job link sits on the title's line, in the image column. */
+@media (min-width: 640px) {
+  .ks-page .proj > .proj-worklink { grid-row: 1; grid-column: 2; align-self: center; margin: 0; }
+}
