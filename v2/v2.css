@@ -2377,3 +2377,11 @@ p { margin: 0; }
   .ks-page .proj-tile { padding-bottom: var(--step-m1); }
   .ks-page .proj-tile .mc-topics { margin-top: var(--step-m2); }
 }
+
+/* Experience: the page heading matches the Projects heading in size and
+   in its distance from the menu. */
+.mh-head { padding-top: var(--step-2); }
+.mh-head .ms-name { font-size: var(--step-3); }
+
+/* Projects: the project title is a step smaller than the page heading. */
+.ks-page .proj > .proj-title { font-size: var(--step-2); }
