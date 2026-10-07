@@ -2221,3 +2221,22 @@ p { margin: 0; }
 @media (max-width: 639.98px) {
   .ks-page .mt-steps { margin-top: var(--step-4); }
 }
+
+/* Section 18, continued: a stronger highlight for the selected project.
+   The tile takes a tinted background and its title the accent colour;
+   on wide screens the top bar doubles in weight, on phones the left
+   bar does. */
+.ks-page .proj-tile[aria-current="true"] { background: var(--primary-soft); }
+.ks-page .proj-tile[aria-current="true"] .mc-title { color: var(--primary); }
+@media (min-width: 640px) {
+  .ks-page .proj-tile[aria-current="true"] {
+    border-top: 6px solid var(--primary);
+    padding-top: calc(var(--step-m1) - 5px);
+  }
+}
+@media (max-width: 639.98px) {
+  .ks-page .proj-tile[aria-current="true"] {
+    border-left-width: 6px;
+    padding-left: calc(var(--step-m1) - 3px);
+  }
+}
