@@ -2266,14 +2266,15 @@ p { margin: 0; }
 .ks-page .mc-toggle {
   display: flex;
   min-height: 36px;
-  margin: var(--step-0) 0 0 auto;
-  padding: 0 .2em;
+  margin: var(--step-0) 0 0;
+  padding: 0;
   border: 0;
   background: none;
   font-size: .8rem;
   color: var(--primary);
 }
-.ks-page .mc-toggle:hover { border: 0; text-decoration: underline; text-underline-offset: 3px; }
+.ks-page .mc-toggle:hover { border: 0; }
+.ks-page .mc-toggle:hover span { text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 640px) {
   .ks-page .proj::before,
   .ks-page .proj::after {
@@ -2286,7 +2287,7 @@ p { margin: 0; }
   .ks-page .proj > .mc-points { grid-row: 5; grid-column: 1; margin-top: 0; border-top: 0; }
   .ks-page .mc-points li:last-child { border-bottom: 0; }
   .ks-page .proj > .proj-lead-img { grid-row: 5; grid-column: 2; margin-top: var(--step-0); }
-  .ks-page .proj > .mc-toggle { grid-row: 7; grid-column: 1 / -1; justify-self: end; align-self: start; margin: var(--step-0) 0 0; }
+  .ks-page .proj > .mc-toggle { grid-row: 7; grid-column: 1 / -1; justify-self: start; align-self: start; margin: var(--step-0) 0 0; }
   .ks-page .proj > .mc-more { grid-row: 8; }
   .ks-page .proj > .mt-steps { grid-row: 9; }
 }

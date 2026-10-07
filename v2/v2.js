@@ -322,7 +322,9 @@
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'mc-toggle';
-        btn.textContent = more.querySelector('summary').textContent;
+        var lbl = document.createElement('span');
+        lbl.textContent = more.querySelector('summary').textContent;
+        btn.appendChild(lbl);
         more.id = more.id || 'more-' + a.dataset.proj;
         btn.setAttribute('aria-controls', more.id);
         var sync = function () { btn.setAttribute('aria-expanded', more.open ? 'true' : 'false'); };
