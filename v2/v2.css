@@ -2250,3 +2250,9 @@ p { margin: 0; }
   .ks-page .proj-body section { border-top: 0; padding-top: 0; }
   .ks-page .proj-body section > h3 { padding-top: .35em; }
 }
+
+/* Section 18, continued: the project's entrance on this page is one
+   even fade of the whole project at once. No rise, and the key points
+   no longer follow one after another, so nothing moves while it runs. */
+.js .ks-page .proj.is-shown { animation: mc-fade .3s ease-out both; }
+.js .ks-page .proj.is-shown .mc-points li { animation: none; }
