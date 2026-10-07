@@ -2256,3 +2256,37 @@ p { margin: 0; }
    no longer follow one after another, so nothing moves while it runs. */
 .js .ks-page .proj.is-shown { animation: mc-fade .3s ease-out both; }
 .js .ks-page .proj.is-shown .mc-points li { animation: none; }
+
+/* Section 18, continued: the key points sit between two rules that run
+   the full width of the page; the intro image starts just under the top
+   one. The case-study toggle is a small borderless link at the right,
+   below the lower rule and above the case study, which has no rule of
+   its own. */
+.ks-page .proj-body { border-top: 0; }
+.ks-page .mc-toggle {
+  display: flex;
+  min-height: 36px;
+  margin: var(--step-0) 0 0 auto;
+  padding: 0 .2em;
+  border: 0;
+  background: none;
+  font-size: .8rem;
+  color: var(--primary);
+}
+.ks-page .mc-toggle:hover { border: 0; text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 640px) {
+  .ks-page .proj::before,
+  .ks-page .proj::after {
+    content: '';
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border-strong);
+  }
+  .ks-page .proj::before { grid-row: 4; margin-top: var(--step-1); }
+  .ks-page .proj::after { grid-row: 6; }
+  .ks-page .proj > .mc-points { grid-row: 5; grid-column: 1; margin-top: 0; border-top: 0; }
+  .ks-page .mc-points li:last-child { border-bottom: 0; }
+  .ks-page .proj > .proj-lead-img { grid-row: 5; grid-column: 2; margin-top: var(--step-0); }
+  .ks-page .proj > .mc-toggle { grid-row: 7; grid-column: 1 / -1; justify-self: end; align-self: start; margin: var(--step-0) 0 0; }
+  .ks-page .proj > .mc-more { grid-row: 8; }
+  .ks-page .proj > .mt-steps { grid-row: 9; }
+}
