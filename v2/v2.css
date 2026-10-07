@@ -2240,3 +2240,13 @@ p { margin: 0; }
     padding-left: calc(var(--step-m1) - 3px);
   }
 }
+
+/* Section 18, continued: no lines between the case study's sections;
+   one rule above the first, and the tags at the foot are gone. */
+.ks-page .proj-body { border-top: 1px solid var(--border-strong); }
+.ks-page .proj-body h3 { border-top: 0; padding-top: 0; }
+.ks-page .proj-body section { margin-top: var(--step-3); }
+@media (min-width: 1000px) {
+  .ks-page .proj-body section { border-top: 0; padding-top: 0; }
+  .ks-page .proj-body section > h3 { padding-top: .35em; }
+}
