@@ -2361,3 +2361,7 @@ p { margin: 0; }
 @media (min-width: 640px) {
   .ks-page .proj > .proj-worklink { grid-row: 1; grid-column: 2; align-self: center; margin: 0; }
 }
+
+/* Section 18, continued: the job link closes the summary under the title. */
+.ks-page .proj-joblink { color: var(--primary); text-decoration: none; white-space: nowrap; }
+.ks-page .proj-joblink:hover { text-decoration: underline; text-underline-offset: 3px; }
