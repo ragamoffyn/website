@@ -2365,3 +2365,15 @@ p { margin: 0; }
 /* Section 18, continued: the job link closes the summary under the title. */
 .ks-page .proj-joblink { color: var(--primary); text-decoration: none; white-space: nowrap; }
 .ks-page .proj-joblink:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Section 18, continued: less above the project, so more of it shows on
+   a laptop screen: a smaller page heading set closer to the menu, tiles
+   with one topic each, and a shorter gap between the tiles and the
+   project. */
+.ks-page .mw-head { padding-top: var(--step-2); }
+.ks-page .ms-name { font-size: var(--step-3); }
+.ks-page .mc-layout { padding-top: var(--step-0); row-gap: var(--step-3); }
+@media (min-width: 640px) {
+  .ks-page .proj-tile { padding-bottom: var(--step-m1); }
+  .ks-page .proj-tile .mc-topics { margin-top: var(--step-m2); }
+}
