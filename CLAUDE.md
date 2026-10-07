@@ -63,7 +63,11 @@ Open `index.html` directly in a browser to preview, or run
   grouped at the end of the section in `.proj-figs`, on the right. The
   4Subsea project is titled "Data Platform" there (its id is still
   `foursubsea`), with striped "Image to come" placeholders (`.proj-ph`)
-  until Michael sends its images. Independent of the root pages and `style.css`. Its project
+  until Michael sends its images. On 2026-10-07 the shared footer
+  (`.ms-footer`, CSS section 10) became a sticky footer with no script:
+  on a page shorter than the window it sits at the bottom of the window,
+  and once the page scrolls it keeps a fixed gap below the content.
+  Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
 - `style.css` — all styles. `script.js` — sidebar nav, scroll-spy, and the
