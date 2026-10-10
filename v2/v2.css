@@ -2565,3 +2565,5 @@ p { margin: 0; }
   .ms-namerow { flex-wrap: nowrap; contain: inline-size; }
   .ms-namerow > * { flex: none; white-space: nowrap; }
 }
+/* The role beside the name is in the accent colour. */
+.ms-role { color: var(--primary); }
