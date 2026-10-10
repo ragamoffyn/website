@@ -2543,3 +2543,25 @@ p { margin: 0; }
   .mh-chart .mw-tip,
   .mh-chart.show-all .mw-tip { animation: none; }
 }
+
+/* Home: the role sits beside the name, on its baseline, in plain muted
+   type; when the line runs out of room it drops underneath. */
+.ms-namerow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--step-1);
+  row-gap: var(--step-m1);
+}
+.ms-role {
+  margin: 0;
+  font-size: var(--step-1);
+  color: var(--muted-foreground);
+}
+/* On wide screens the pair stays on one line, running into the gap
+   before the portrait rather than wrapping inside the text column. */
+@media (min-width: 1100px) {
+  /* contain keeps the long line from widening the text column. */
+  .ms-namerow { flex-wrap: nowrap; contain: inline-size; }
+  .ms-namerow > * { flex: none; white-space: nowrap; }
+}
