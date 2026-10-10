@@ -357,7 +357,8 @@
   var dlg = document.createElement('dialog');
   dlg.className = 'zoom';
   dlg.setAttribute('aria-label', 'Enlarged image');
-  var big = document.createElement('img');
+  var shown = document.createElement('div');
+  shown.className = 'zoom-imgs';
   var cap = document.createElement('p');
   var close = document.createElement('button');
   close.type = 'button';
@@ -365,15 +366,23 @@
   close.setAttribute('aria-label', 'Close');
   close.innerHTML = '&times;';
   dlg.appendChild(close);
-  dlg.appendChild(big);
+  dlg.appendChild(shown);
   dlg.appendChild(cap);
   document.body.appendChild(dlg);
 
   var show = function (img) {
     var fig = img.closest('figure');
     var text = fig && fig.querySelector('figcaption');
-    big.src = img.currentSrc || img.src;
-    big.alt = img.alt;
+    // A grouped figure enlarges as a whole: every image in it, side by side.
+    var group = fig && fig.classList.contains('proj-fig-group') ? fig.querySelectorAll('img') : [img];
+    shown.textContent = '';
+    shown.style.setProperty('--n', group.length);
+    Array.prototype.forEach.call(group, function (g) {
+      var big = document.createElement('img');
+      big.src = g.currentSrc || g.src;
+      big.alt = g.alt;
+      shown.appendChild(big);
+    });
     cap.textContent = text ? text.textContent : '';
     cap.hidden = !cap.textContent;
     dlg.showModal();
@@ -389,4 +398,32 @@
     });
   });
   dlg.addEventListener('click', function () { dlg.close(); });
+})();
+
+/* Projects page: grouped figures (data-fit) make their images as tall as
+   the text beside them when the case study is in two columns. */
+(function () {
+  if (!document.body.classList.contains('ks-page')) return;
+  var figs = document.querySelectorAll('.proj-fig[data-fit]');
+  if (!figs.length) return;
+  var fit = function () {
+    figs.forEach(function (fig) {
+      fig.style.removeProperty('--fit-h');
+      var sec = fig.closest('section');
+      var figsBox = fig.closest('.proj-figs');
+      var text = Array.prototype.filter.call(sec.children, function (c) { return !c.matches('h3, .proj-figs'); });
+      if (!text.length || !figsBox) return;
+      var first = text[0].getBoundingClientRect();
+      var last = text[text.length - 1].getBoundingClientRect();
+      // Only when the figures sit beside the text, not under it.
+      if (!first.height || figsBox.getBoundingClientRect().left < first.right) return;
+      // The images span the text; the caption hangs below.
+      fig.style.setProperty('--fit-h', Math.max(160, Math.round(last.bottom - first.top)) + 'px');
+    });
+  };
+  window.addEventListener('resize', fit);
+  document.querySelectorAll('.mc-more').forEach(function (d) { d.addEventListener('toggle', fit); });
+  window.addEventListener('hashchange', function () { requestAnimationFrame(fit); });
+  window.addEventListener('load', fit);
+  fit();
 })();

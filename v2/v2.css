@@ -2411,3 +2411,44 @@ p { margin: 0; }
     background: var(--card);
   }
 }
+
+/* Section 18, continued: grouped figures enlarge as a whole. Two images
+   that belong together either overlap (the larger at top left, the
+   smaller over its lower right corner, ringed in the page colour) or sit
+   side by side. With two columns, v2.js sets --fit-h so the images take
+   the height of the text beside them. */
+.ks-page .proj-fig-group .proj-fig-imgs { position: relative; }
+.ks-page .proj-figs { min-width: 0; }
+.ks-page .proj-fig-stack .proj-fig-imgs { width: 100%; aspect-ratio: 4 / 3; }
+.ks-page .proj-fig-stack[style*="--fit-h"] .proj-fig-imgs { aspect-ratio: auto; height: var(--fit-h); }
+.ks-page .proj-fig-stack .proj-fig-imgs img {
+  position: absolute;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+}
+.ks-page .proj-fig-stack .proj-fig-imgs img:first-child { left: 0; top: 0; height: 74%; max-width: 86%; object-position: left top; }
+.ks-page .proj-fig-stack .proj-fig-imgs img:last-child {
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  max-width: 62%;
+  object-position: right bottom;
+  outline: 5px solid var(--background);
+}
+.ks-page .proj-fig-pair { display: block; max-width: none; }
+.ks-page .proj-fig-pair .proj-fig-imgs { display: flex; gap: var(--step-0); height: var(--fit-h, auto); }
+.ks-page .proj-fig-pair .proj-fig-imgs img { min-width: 0; height: 100%; width: auto; max-width: calc(50% - var(--step-0) / 2); object-fit: contain; }
+.ks-page .proj-fig-pair:not([style*="--fit-h"]) .proj-fig-imgs img { height: auto; }
+.ks-page .proj-fig-group figcaption { margin-top: var(--step-m1); }
+
+.zoom-imgs { display: flex; justify-content: center; gap: var(--step-1); max-width: 100%; }
+.zoom-imgs img {
+  display: block;
+  min-width: 0;
+  max-width: calc((100vw - 4 * var(--step-2)) / var(--n, 1));
+  max-height: calc(100dvh - 9rem);
+  width: auto;
+  height: auto;
+  background: #fff;
+}
