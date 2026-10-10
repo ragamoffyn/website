@@ -2565,14 +2565,11 @@ p { margin: 0; }
   .ms-namerow { flex-wrap: nowrap; contain: inline-size; }
   .ms-namerow > * { flex: none; white-space: nowrap; }
 }
-/* The role beside the name is in the accent colour. */
-.ms-role { color: var(--primary); }
 
 /* Orange means "you can click this" or "you are here", nothing else.
    Static labels (footer and section labels, era dates, Enterprise UX,
    key-point labels, case-study headings, tile years) are in ink; links
-   in running text are underlined as well as orange. The role beside the
-   name on Home is the one deliberate exception. */
+   in running text are underlined as well as orange. */
 body.ms-page .ms-footer-label,
 body.ms-page .ms-eyebrow,
 body.ms-page .mw-era-span,
