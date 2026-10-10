@@ -74,7 +74,7 @@ Open `index.html` directly in a browser to preview, or run
   Since 2026-10-10 the three main v2 pages carry a favicon
   (`v2/favicon.svg`), canonical and Open Graph tags pointing at
   `https://ragamoffyn.github.io/website/` with `v2/og-image.png` (1200 x
-  630, built from the portrait), and a "CV (PDF)" footer link to
+  630, built from the portrait, set in Inter), and a "CV (PDF)" footer link to
   `v2/Michael-Stiso-CV-2026.pdf`; every alternate v2 page is
   `noindex`. A new alternate needs the noindex tag too.
   Since 2026-10-10 (later) the three main v2 pages are set in Inter:
