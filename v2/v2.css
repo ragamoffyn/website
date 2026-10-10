@@ -2512,3 +2512,12 @@ p { margin: 0; }
 .mw-item:hover::after, .mw-item[aria-expanded="true"]::after {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Ccircle cx='6.55' cy='3.1' r='1' fill='%23fff'/%3E%3Cpath d='M5.75 5h1.25l-.85 4.9H4.9z' fill='%23fff'/%3E%3C/svg%3E") center / 100% 100% no-repeat, var(--primary);
 }
+
+/* The info glyph is Tabler's "info-square" icon (MIT, tabler.io/icons),
+   its "i" only: the box is this rule's own squared border. */
+.mw-item::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3.5 18 18' fill='none' stroke='%236e675e' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 9h.01'/%3E%3Cpath d='M11 12h1v4h1'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.mw-item:hover::after, .mw-item[aria-expanded="true"]::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3.5 18 18' fill='none' stroke='%23fff' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 9h.01'/%3E%3Cpath d='M11 12h1v4h1'/%3E%3C/svg%3E") center / 100% 100% no-repeat, var(--primary);
+}
