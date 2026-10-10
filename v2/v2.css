@@ -2522,14 +2522,14 @@ p { margin: 0; }
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3.5 18 18' fill='none' stroke='%23fff' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 9h.01'/%3E%3Cpath d='M11 12h1v4h1'/%3E%3C/svg%3E") center / 100% 100% no-repeat, var(--primary);
 }
 
-/* A plainer, heavier "i" (a dot over a solid bar) reads better at this
-   size than the thin icon stroke did. The box sits level with the
+/* A plain "i" (a dot over a bar) reads better at this size than the
+   icon stroke did. The box sits level with the
    employer name, the first line of the row. */
 .mw-item::after {
   grid-row: 1;
   align-self: center;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='5.6' r='1.75' fill='%236e675e'/%3E%3Crect x='8.5' y='8.6' width='3' height='7.4' fill='%236e675e'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='5.9' r='1.2' fill='%236e675e'/%3E%3Crect x='9.25' y='8.6' width='1.5' height='7.2' fill='%236e675e'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 .mw-item:hover::after, .mw-item[aria-expanded="true"]::after {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='5.6' r='1.75' fill='%23fff'/%3E%3Crect x='8.5' y='8.6' width='3' height='7.4' fill='%23fff'/%3E%3C/svg%3E") center / 100% 100% no-repeat, var(--primary);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='5.9' r='1.2' fill='%23fff'/%3E%3Crect x='9.25' y='8.6' width='1.5' height='7.2' fill='%23fff'/%3E%3C/svg%3E") center / 100% 100% no-repeat, var(--primary);
 }
