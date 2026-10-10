@@ -5,8 +5,12 @@ Pages from the `gh-pages` branch (which is the repo's default branch).
 Open `index.html` directly in a browser to preview, or run
 `python3 -m http.server` from the repo root.
 
-- `index.html` — the single-page site: sidebar rail + Introduction, CV,
-  Projects, AI & UX, Contact.
+- `index.html` — since 2026-10-10 only a redirect to `v2/`, the live
+  site (it carries the link-preview tags, since link scrapers don't follow
+  the redirect). The old single-page site (sidebar rail + Introduction,
+  CV, Projects, AI & UX, Contact) is now `index-v1.html`, marked noindex;
+  wherever these notes say `index.html` for the v1 home, read
+  `index-v1.html`.
 - `index-variant1.html` — a snapshot of `index.html` taken before the
   work-history diagram was rebuilt, kept so the two can be compared. It
   is the only page still using the proportional diagram. It shares
@@ -67,6 +71,12 @@ Open `index.html` directly in a browser to preview, or run
   (`.ms-footer`, CSS section 10) became a sticky footer with no script:
   on a page shorter than the window it sits at the bottom of the window,
   and once the page scrolls it keeps a fixed gap below the content.
+  Since 2026-10-10 the three main v2 pages carry a favicon
+  (`v2/favicon.svg`), canonical and Open Graph tags pointing at
+  `https://ragamoffyn.github.io/website/` with `v2/og-image.png` (1200 x
+  630, built from the portrait), and a "CV (PDF)" footer link to
+  `v2/Michael-Stiso-CV-2026.pdf`; every alternate v2 page is
+  `noindex`. A new alternate needs the noindex tag too.
   Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
