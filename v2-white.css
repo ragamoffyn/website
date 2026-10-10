@@ -1,0 +1,9 @@
+/* Near-white page (default since 2026-10-10): Home, Experience and
+   Projects load this after v2-inter.css. The *-cream.html copies leave it
+   out and keep the original cream page. The tile panel goes neutral
+   grey, with the selected tile lifted in white. */
+:root {
+  --background: #fcfcfb;
+  --card:       #ffffff;
+  --muted:      #f3f2f0;
+}

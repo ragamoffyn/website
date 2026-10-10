@@ -91,6 +91,11 @@ Open `index.html` directly in a browser to preview, or run
   `v2/work-history-newsreader.html` and `v2/projects-newsreader.html`
   (menus link to each other); the `*-inter.html` trial URLs now forward
   to the main pages. Other alternates stay in Newsreader.
+  Also since 2026-10-10 the three main pages load `v2-white.css` after
+  `v2-inter.css`: a near-white page (`--background: #fcfcfb`, white
+  cards, neutral grey `--muted`). The cream versions (Inter, original
+  colours) are kept as `index-cream.html`, `work-history-cream.html`
+  and `projects-cream.html`, noindex, menus linking to each other.
   Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
@@ -171,7 +176,7 @@ height from the phases, silently breaking the scale.
 
 - Fonts: Inter everywhere on the three main v2 pages; Newsreader (serif,
   body and headings) and Archivo (sans, eyebrows, labels, meta) on v1
-  and the v2 alternates. Accent `#c05a1e`, page `#f7f4ee`, ink
+  and the v2 alternates. Accent `#c05a1e`, page `#fcfcfb` on the main pages (`#f7f4ee` cream elsewhere), ink
   `#211d19`. Squared-off — no rounded cards, no drop shadows.
 - Phase labels sit 2px lower than their boxes so their baselines line up
   with the employer rows beside them, which are set in a larger face.
