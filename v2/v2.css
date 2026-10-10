@@ -2583,3 +2583,25 @@ body.ms-page .proj-tile .mc-year { color: var(--foreground); }
 body.ms-page .mh-side { border-color: var(--foreground); }
 body.ms-page .proj-joblink { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 body.ms-page .proj-joblink:hover { text-decoration-thickness: 2px; }
+
+/* Orange means clickable, and only that. Unselected menu links and
+   project tiles are orange; the page or project you are on turns ink,
+   marked by an ink bar (under the menu link, above the lifted tile, or
+   beside the row on phones). Hover underlines instead of recolouring. */
+body.ms-page .ms-nav .menu-links a { color: var(--primary); }
+body.ms-page .ms-nav .menu-links a:hover { color: var(--primary); border-bottom-color: currentColor; }
+body.ms-page .ms-nav .menu-links a[aria-current="page"],
+body.ms-page .ms-nav .menu-links a[aria-current="page"]:hover {
+  color: var(--foreground);
+  border-bottom-color: var(--foreground);
+}
+.ks-page .proj-tile .mc-title { color: var(--primary); }
+.ks-page .proj-tile:hover .mc-title { color: var(--primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ks-page .proj-tile[aria-current="true"] .mc-title,
+.ks-page .proj-tile[aria-current="true"]:hover .mc-title { color: var(--foreground); text-decoration: none; }
+.ks-page .proj-tile[aria-current="true"] { background: var(--card); border-color: var(--foreground); }
+@media (min-width: 640px) {
+  .ks-page .proj-tile[aria-current="true"],
+  .ks-page .proj-tile[aria-current="true"]:hover { border-top-color: var(--foreground); }
+}
+.ks-page .proj-detail { border-top-color: var(--foreground); }
