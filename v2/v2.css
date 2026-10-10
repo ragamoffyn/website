@@ -2452,3 +2452,7 @@ p { margin: 0; }
   height: auto;
   background: #fff;
 }
+
+/* Images narrower than their column sit in its centre. */
+.ks-page .proj-fig > img { margin-left: auto; margin-right: auto; }
+.ks-page .proj-fig-pair .proj-fig-imgs { justify-content: center; }
