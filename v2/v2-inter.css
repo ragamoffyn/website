@@ -1,0 +1,14 @@
+/* Inter trial (2026-10-10): the *-inter.html copies of Home, Experience
+   and Projects set everything in Inter instead of Newsreader + Archivo,
+   so the two can be compared. Loaded after v2.css; nothing else changes. */
+:root {
+  --serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+body { font-feature-settings: 'cv11', 'ss01'; }
+/* Inter's tall lowercase reads a size larger than Newsreader's at the
+   same font-size; pinning the x-height keeps the scale's line lengths. */
+body { font-size-adjust: .5; }
+/* Large type tightens, as display sans usually does. */
+.ms-name, .ms-hero h1, h1 { letter-spacing: -.025em; }
+h2, .proj-title { letter-spacing: -.015em; }

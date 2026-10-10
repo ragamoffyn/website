@@ -77,6 +77,11 @@ Open `index.html` directly in a browser to preview, or run
   630, built from the portrait), and a "CV (PDF)" footer link to
   `v2/Michael-Stiso-CV-2026.pdf`; every alternate v2 page is
   `noindex`. A new alternate needs the noindex tag too.
+  `v2/index-inter.html`, `v2/work-history-inter.html` and
+  `v2/projects-inter.html` (2026-10-10) are an Inter-only trial of the
+  three main pages: copies that load `v2-inter.css` after `v2.css`,
+  which sets both font variables to Inter and pins the x-height
+  (`font-size-adjust`). Their menus link to each other.
   Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
