@@ -5,12 +5,19 @@ Pages from the `gh-pages` branch (which is the repo's default branch).
 Open `index.html` directly in a browser to preview, or run
 `python3 -m http.server` from the repo root.
 
-- `index.html` — since 2026-10-10 only a redirect to `v2/`, the live
-  site (it carries the link-preview tags, since link scrapers don't follow
-  the redirect). The old single-page site (sidebar rail + Introduction,
-  CV, Projects, AI & UX, Contact) is now `index-v1.html`, marked noindex;
-  wherever these notes say `index.html` for the v1 home, read
-  `index-v1.html`.
+- **Layout since 2026-10-10 (later).** What was built as "v2" is the
+  live site and sits at the repo root: `index.html` (home),
+  `work-history.html`, `projects.html`, their alternates, `v2.css`,
+  `v2-inter.css`, `v2.js`, `img/`, `portrait.png`, `favicon.svg`,
+  `og-image.png` and the CV PDF. The `v2/` folder now holds only
+  noindex redirect stubs, one per old page, forwarding `v2/X.html` (and
+  its #hash) to `../X.html`. The old v1 site lives in `v1/`, all
+  noindex: `v1/index.html` (the old single-page home, formerly
+  `index-v1.html`), `v1/index-variant1.html`, the seven v1 case-study
+  pages, `v1/style.css` and `v1/script.js`. In the notes below, read
+  `v2/X` as the root `X`, and the v1 files (`index.html` for the v1
+  home, `index-variant1.html`, case-study pages, `style.css`,
+  `script.js`) as living in `v1/`.
 - `index-variant1.html` — a snapshot of `index.html` taken before the
   work-history diagram was rebuilt, kept so the two can be compared. It
   is the only page still using the proportional diagram. It shares
@@ -73,7 +80,7 @@ Open `index.html` directly in a browser to preview, or run
   and once the page scrolls it keeps a fixed gap below the content.
   Since 2026-10-10 the three main v2 pages carry a favicon
   (`v2/favicon.svg`), canonical and Open Graph tags pointing at
-  `https://ragamoffyn.github.io/website/` with `v2/og-image.png` (1200 x
+  `https://ragamoffyn.github.io/website/` with `og-image.png` (1200 x
   630, built from the portrait, set in Inter), and a "CV (PDF)" footer link to
   `v2/Michael-Stiso-CV-2026.pdf`; every alternate v2 page is
   `noindex`. A new alternate needs the noindex tag too.
