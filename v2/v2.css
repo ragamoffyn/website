@@ -2385,3 +2385,29 @@ p { margin: 0; }
 
 /* Projects: the project title is a step smaller than the page heading. */
 .ks-page .proj > .proj-title { font-size: var(--step-2); }
+
+/* Section 18, continued: the row of project tiles sits in its own panel,
+   a light fill inside a border, so it reads apart from the project below.
+   Tiles lose their own top rules; the selected tile is lifted out of the
+   fill (the lighter card colour) with an orange bar along its top. */
+@media (min-width: 640px) {
+  .ks-page .proj-list {
+    padding: var(--step-m1);
+    gap: var(--step-m2);
+    background: var(--muted);
+    border: 1px solid var(--border-strong);
+  }
+  .ks-page .proj-tile,
+  .ks-page .proj-tile[aria-current="true"] {
+    padding: var(--step-m1) var(--step-0);
+    border: 0;
+    border-top: 3px solid transparent;
+    background: none;
+  }
+  .ks-page .proj-tile:hover { border-top-color: var(--border-strong); background: rgba(255, 255, 255, .35); }
+  .ks-page .proj-tile[aria-current="true"],
+  .ks-page .proj-tile[aria-current="true"]:hover {
+    border-top-color: var(--primary);
+    background: var(--card);
+  }
+}
