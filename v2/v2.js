@@ -347,11 +347,11 @@
   }
 })();
 
-/* Projects page: clicking a case-study image opens a larger copy in a
+/* Projects page: clicking an image inside a case study opens a larger copy in a
    dialog. Click, Escape or the close button dismisses it. */
 (function () {
   if (!document.body.classList.contains('ks-page') || typeof HTMLDialogElement === 'undefined') return;
-  var imgs = document.querySelectorAll('.proj img.proj-lead-img, .proj .proj-fig img');
+  var imgs = document.querySelectorAll('.proj .proj-fig img');
   if (!imgs.length) return;
 
   var dlg = document.createElement('dialog');
