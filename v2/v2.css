@@ -2602,3 +2602,11 @@ body.ms-page .ms-nav .menu-links a[aria-current="page"]:hover {
   .ks-page .proj-tile[aria-current="true"]:hover { border-top-color: var(--foreground); }
 }
 .ks-page .proj-detail { border-top-color: var(--foreground); }
+
+/* Menu underlines run exactly the width of their word: the space between
+   links is a gap, not padding inside them. */
+body.ms-page .ms-nav .menu-links { gap: calc(var(--step-m1) * 2); }
+body.ms-page .ms-nav .menu-links a { padding: 0; }
+/* Exceptions to "orange means clickable": the Enterprise UX frame and the
+   timeline's era markers stay orange. */
+body.ms-page .mh-side { border-color: var(--primary); }

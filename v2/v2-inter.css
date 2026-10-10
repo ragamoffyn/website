@@ -1,6 +1,7 @@
-/* Inter trial (2026-10-10): the *-inter.html copies of Home, Experience
-   and Projects set everything in Inter instead of Newsreader + Archivo,
-   so the two can be compared. Loaded after v2.css; nothing else changes. */
+/* Inter (default since 2026-10-10): Home, Experience and Projects load
+   this after v2.css, setting everything in Inter instead of Newsreader +
+   Archivo. The *-newsreader.html copies leave it out for comparison;
+   the alternates never load it. */
 :root {
   --serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;

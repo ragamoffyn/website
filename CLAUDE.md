@@ -77,11 +77,13 @@ Open `index.html` directly in a browser to preview, or run
   630, built from the portrait), and a "CV (PDF)" footer link to
   `v2/Michael-Stiso-CV-2026.pdf`; every alternate v2 page is
   `noindex`. A new alternate needs the noindex tag too.
-  `v2/index-inter.html`, `v2/work-history-inter.html` and
-  `v2/projects-inter.html` (2026-10-10) are an Inter-only trial of the
-  three main pages: copies that load `v2-inter.css` after `v2.css`,
-  which sets both font variables to Inter and pins the x-height
-  (`font-size-adjust`). Their menus link to each other.
+  Since 2026-10-10 (later) the three main v2 pages are set in Inter:
+  they load `v2-inter.css` after `v2.css`, which sets both font
+  variables to Inter and pins the x-height (`font-size-adjust`). The
+  Newsreader + Archivo versions are kept as `v2/index-newsreader.html`,
+  `v2/work-history-newsreader.html` and `v2/projects-newsreader.html`
+  (menus link to each other); the `*-inter.html` trial URLs now forward
+  to the main pages. Other alternates stay in Newsreader.
   Independent of the root pages and `style.css`. Its project
   articles are copied from the root case-study pages, so edits to a
   case study need making in both places.
@@ -160,8 +162,9 @@ height from the phases, silently breaking the scale.
 
 ## Conventions
 
-- Fonts: Newsreader (serif, body and headings) and Archivo (sans,
-  eyebrows, labels, meta). Accent `#c05a1e`, page `#f7f4ee`, ink
+- Fonts: Inter everywhere on the three main v2 pages; Newsreader (serif,
+  body and headings) and Archivo (sans, eyebrows, labels, meta) on v1
+  and the v2 alternates. Accent `#c05a1e`, page `#f7f4ee`, ink
   `#211d19`. Squared-off — no rounded cards, no drop shadows.
 - Phase labels sit 2px lower than their boxes so their baselines line up
   with the employer rows beside them, which are set in a larger face.
