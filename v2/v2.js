@@ -117,7 +117,6 @@
     toggle.addEventListener('click', function () {
       var on = toggle.getAttribute('aria-pressed') !== 'true';
       toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-      toggle.textContent = on ? 'Hide descriptions' : 'Show all descriptions';
       chart.classList.toggle('show-all', on);
       if (on) items.forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
     });

@@ -2456,3 +2456,49 @@ p { margin: 0; }
 /* Images narrower than their column sit in its centre. */
 .ks-page .proj-fig > img { margin-left: auto; margin-right: auto; }
 .ks-page .proj-fig-pair .proj-fig-imgs { justify-content: center; }
+
+/* Experience: "Show all job descriptions" is a switch, a squared track
+   whose knob slides right and fills orange when on. The label stays the
+   same either way. */
+.mh-toggle,
+.mh-toggle:hover,
+.mh-toggle[aria-pressed="true"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--step-m1);
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--foreground);
+}
+.mh-toggle::after {
+  content: '';
+  flex: none;
+  width: 2.6em;
+  height: 1.4em;
+  border: 1px solid var(--border-strong);
+  background:
+    linear-gradient(var(--muted-foreground), var(--muted-foreground)) left 3px center / calc(1.4em - 8px) calc(1.4em - 8px) no-repeat,
+    var(--card);
+  transition: background-position .15s ease-out;
+}
+.mh-toggle:hover::after { border-color: var(--primary); }
+.mh-toggle[aria-pressed="true"]::after {
+  border-color: var(--primary);
+  background:
+    linear-gradient(#fff, #fff) right 3px center / calc(1.4em - 8px) calc(1.4em - 8px) no-repeat,
+    var(--primary);
+}
+@media (prefers-reduced-motion: reduce) { .mh-toggle::after { transition: none; } }
+
+/* The "i" in the job rows' info boxes sits in the middle of its box. */
+.mw-item::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  line-height: 1;
+  padding-right: .08em;
+}
