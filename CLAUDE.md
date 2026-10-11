@@ -81,7 +81,10 @@ Open `index.html` directly in a browser to preview, or run
   grouped at the end of the section in `.proj-figs`, on the right. The
   4Subsea project is titled "Data Platform" there (its id is still
   `foursubsea`), with striped "Image to come" placeholders (`.proj-ph`)
-  until Michael sends its images. On 2026-10-07 the shared footer
+  until Michael sends its images. Since 2026-10-11 every full case study on `projects.html` uses Data
+  Platform's five sections: Context, Challenge, Constraints, What I Did,
+  What I Learned (the old headings' paragraphs rearranged into them,
+  with only a few joining words changed). On 2026-10-07 the shared footer
   (`.ms-footer`, CSS section 10) became a sticky footer with no script:
   on a page shorter than the window it sits at the bottom of the window,
   and once the page scrolls it keeps a fixed gap below the content.
