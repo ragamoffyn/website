@@ -6,7 +6,7 @@ Open `index.html` directly in a browser to preview, or run
 `python3 -m http.server` from the repo root.
 
 - **Layout since 2026-10-11.** The repo root holds only the live site:
-  `index.html` (home), `work-history.html` (Experience), `projects.html`,
+  `index.html` (home), `experiences.html` (Experience; renamed from `work-history.html` on 2026-10-11, which is now a noindex redirect that keeps the #hash), `projects.html`,
   `v2.css`, `v2-inter.css`, `v2-white.css`, `v2.js`, `img/`,
   `portrait.png`, `favicon.svg`, `og-image.png` and the CV PDF. Every
   alternate and unused version is in `alternates/`, all noindex: the
@@ -21,7 +21,8 @@ Open `index.html` directly in a browser to preview, or run
   paths and the noindex tag. `v2/` holds only noindex redirect stubs, one
   per page that once lived there, forwarding old links (and their #hash)
   to the page's current home. In the notes below, read `v2/X` as the
-  root `X` for the three main pages and `alternates/X` for the rest, and
+  root `X` for the three main pages (`work-history.html` there means
+  `experiences.html`) and `alternates/X` for the rest, and
   the v1 files (`index.html` for the v1 home, `index-variant1.html`,
   case-study pages, `style.css`, `script.js`) as living in
   `alternates/v1/`.

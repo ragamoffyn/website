@@ -1,7 +1,7 @@
 /* =================================================================
    Michael Stiso — Portfolio v2 (dashboard)
    Three pages laid out from "CV site.pptx": index.html (home),
-   work-history.html and projects.html. Each page is a grid of panels
+   experiences.html and projects.html. Each page is a grid of panels
    that fills the viewport at 1100px and up, with long panels scrolling
    inside themselves. Below that the panels restack and the page scrolls.
    Independent of ../style.css — nothing here touches the current site.
@@ -1030,7 +1030,7 @@ p { margin: 0; }
 }
 
 /* ---------------------------------------------------------------
-   11. Work history — modular scale + ratio grid (work-history.html)
+   11. Work history — modular scale + ratio grid (experiences.html)
    Uses section 10's scale and 4 : 3 split. One full-width graphic
    of four eras, newest first: each era is a row with its prose on
    the larger side, the spine in the middle and its employers on the
@@ -1404,7 +1404,7 @@ p { margin: 0; }
 }
 
 @media (max-width: 999.98px) {
-  /* Stacked, it reads newest first like work-history.html: the eras
+  /* Stacked, it reads newest first like experiences.html: the eras
      and each era's jobs are reversed on screen (the HTML stays oldest
      first for the columns above), so the arrowhead moves to the top. */
   .mh-chart { display: flex; flex-direction: column-reverse; }
