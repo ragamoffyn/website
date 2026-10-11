@@ -9,30 +9,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,400..600&family=Archivo:wght@400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v2.css" />
+  <link rel="stylesheet" href="../v2.css" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="ms-page mp-page mc-page mt-page">
+<body class="ms-page mp-page mc-page">
 
-  <!-- Projects with tiles (sections 10, 15 and 16 of v2.css). The
-       six projects as a row of tiles across the top, and the chosen
-       project spread across the full width below them, its four key
-       points in a 2 x 2 grid, with previous and next links at the foot
-       (added by v2.js). Tablets get the tiles 3 x 2; below 640px it
-       falls back to the accordion list. Without the script every
-       project shows, one after another.
-       Kept as an alternate since projects.html moved the key points
-       into one column beside the photo (2026-10-04). Earlier versions:
-       projects-list.html, projects-longform.html, projects-dashboard.html. -->
+  <!-- Projects on the modular scale and 4 : 3 grid (sections 10 and 15
+       of v2.css). A compact list of projects on the smaller side; the
+       chosen project opens in a panel on the larger side, leading with
+       four key points (problem, role, approach, outcome) for scanning,
+       with the full case study folded away below them. Below 1000px
+       v2.js opens the panel under its row instead, like an accordion.
+       Without the script every project shows, one after another.
+       Kept as an alternate since projects.html moved to tiles
+       (2026-10-03). Earlier versions: projects-longform.html,
+       projects-dashboard.html. -->
   <div class="ms-wrap">
 
     <nav class="ms-nav" aria-label="Site">
       <div class="menu-links">
-        <a href="index.html">Home</a>
-        <a href="work-history.html">Experience</a>
-        <a href="projects-grid.html" aria-current="page">Projects</a>
+        <a href="../index.html">Home</a>
+        <a href="../work-history.html">Experience</a>
+        <a href="projects-list.html" aria-current="page">Projects</a>
       </div>
-      <a class="mw-owner" href="index.html">Michael E. Stiso</a>
+      <a class="mw-owner" href="../index.html">Michael E. Stiso</a>
     </nav>
 
     <header class="mw-head">
@@ -45,39 +45,39 @@
         <li><a class="proj-tile" href="#foursubsea" data-proj="foursubsea">
           <span class="mc-title">4Subsea</span>
           <span class="mc-year">2023 — now</span>
-          <span class="mc-topics">Design&nbsp;Systems&nbsp;· Platform&nbsp;UX</span>
+          <span class="mc-topics">Design Systems · Platform UX</span>
         </a></li>
         <li><a class="proj-tile" href="#national-security" data-proj="national-security">
           <span class="mc-title">National Security</span>
           <span class="mc-year">2022</span>
-          <span class="mc-topics">Data&nbsp;Visualization&nbsp;· Decision&nbsp;Support</span>
+          <span class="mc-topics">Data Visualization · Decision Support</span>
         </a></li>
         <li><a class="proj-tile" href="#maritime-refueling" data-proj="maritime-refueling">
           <span class="mc-title">Maritime Refueling</span>
           <span class="mc-year">2020</span>
-          <span class="mc-topics">UX&nbsp;Research&nbsp;· Interaction&nbsp;Design</span>
+          <span class="mc-topics">UX Research · Interaction Design</span>
         </a></li>
         <li><a class="proj-tile" href="#coffee-ecosystem" data-proj="coffee-ecosystem">
           <span class="mc-title">The Coffee Ecosystem</span>
           <span class="mc-year">2019</span>
-          <span class="mc-topics">User&nbsp;Research&nbsp;· Service&nbsp;Design</span>
+          <span class="mc-topics">User Research · Service Design</span>
         </a></li>
         <li><a class="proj-tile" href="#sewer-corrosion" data-proj="sewer-corrosion">
           <span class="mc-title">Sewer Corrosion</span>
           <span class="mc-year">2017</span>
-          <span class="mc-topics">Interaction&nbsp;Design&nbsp;· Data&nbsp;Visualization</span>
+          <span class="mc-topics">Interaction Design · Data Visualization</span>
         </a></li>
         <li><a class="proj-tile" href="#search-rescue" data-proj="search-rescue">
           <span class="mc-title">Search and Rescue</span>
           <span class="mc-year">2015</span>
-          <span class="mc-topics">Decision&nbsp;Support&nbsp;· Human&nbsp;Factors</span>
+          <span class="mc-topics">Decision Support · Human Factors</span>
         </a></li>
       </ul>
     </nav>
 
     <!-- The case-study text below is copied from the seven case-study
          pages in the repo root (../foursubsea.html and the rest). -->
-    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project" data-narrow="(max-width: 639.98px)" data-steps>
+    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project">
         <article class="proj" id="p-foursubsea" data-proj="foursubsea" aria-labelledby="foursubsea-title">
           <div class="proj-meta">2023 — now · Design Systems · Platform UX</div>
           <h2 class="proj-title" id="foursubsea-title">4Subsea — Digital Solutions Platform</h2>
@@ -88,7 +88,7 @@
             <li><span class="mc-key">Approach</span> Adopted and refined the company's first design system and led a platform-level usability redesign.</li>
             <li><span class="mc-key">Outcome</span> More consistency across products, and user research shared across product teams.</li>
           </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-4subsea">4Subsea &#8594;</a></p>
+          <p class="proj-worklink">Part of my time at <a href="../work-history.html#job-4subsea">4Subsea &#8594;</a></p>
           <details class="mc-more">
             <summary>Read the full case study</summary>
           <div class="proj-hero" aria-hidden="true">Case study visuals available on request</div>
@@ -134,7 +134,7 @@
           </details>
         </article>
         <article class="proj" id="p-national-security" data-proj="national-security" aria-labelledby="national-security-title">
-          <img class="proj-lead-img" src="img/national-security-risk.webp" width="254" height="198" alt="A man drawing a diagram that links Identify, Assess and Understand to Risk" />
+          <img class="proj-lead-img" src="../img/national-security-risk.webp" width="254" height="198" alt="A man drawing a diagram that links Identify, Assess and Understand to Risk" />
           <div class="proj-meta">2022 · Data Visualization · Decision Support</div>
           <h2 class="proj-title" id="national-security-title">National Security</h2>
           <p class="proj-subtitle">Highlighting patterns in heterogeneous risk data for analysts performing work critical to national security.</p>
@@ -144,7 +144,7 @@
             <li><span class="mc-key">Approach</span> Reframed the work as a proof of concept and scoped it to one incident scenario, within about 100 hours over five weeks.</li>
             <li><span class="mc-key">Outcome</span> A Figma prototype that satisfied both the client and the funding agency.</li>
           </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-dnv">DNV &#8594;</a></p>
+          <p class="proj-worklink">Part of my time at <a href="../work-history.html#job-dnv">DNV &#8594;</a></p>
           <details class="mc-more">
             <summary>Read the full case study</summary>
           <div class="proj-body">
@@ -176,7 +176,7 @@
               <p>The second step was tight scoping. Working with both the client and my own team, I defined a very specific scenario: a single incident, a sequence of activities the analyst would perform in response to it, and a clear endpoint. This level of specificity was essential given the time constraints. It meant I could focus my research on only those user actions, decisions, and needs that fell within that scenario. It meant I could design only the portions of the interface that scenario would actually encounter. And it meant I could add only as much interactivity as was needed to support a scripted demonstration — no more.</p>
               <p>For the prototype itself, I used Figma and worked from a design template that had sufficient interactive capabilities for the scripted walkthrough, which allowed me to save time that would otherwise have gone to building foundational components from scratch.</p>
               <figure class="proj-fig">
-                <img src="img/national-security-approach.webp" width="750" height="651" alt="Blurred process map and prototype storyboard from the project" loading="lazy" />
+                <img src="../img/national-security-approach.webp" width="750" height="651" alt="Blurred process map and prototype storyboard from the project" loading="lazy" />
                 <figcaption>Blurred because of NDA</figcaption>
               </figure>
             </section>
@@ -185,7 +185,7 @@
               <h3>Results</h3>
               <p>Despite the limited hours available for user interviews and a very compressed design window, the prototype met the client's stated needs and was well received. The actual design work is confidential and cannot be shared publicly, but the outcome of the process was a successful demonstration that satisfied both the client and the funding agency. The project delivered what it needed to deliver within both the time and budget constraints.</p>
               <figure class="proj-fig">
-                <img src="img/national-security-results.webp" width="750" height="500" alt="Blurred screenshot of the finished risk dashboard prototype" loading="lazy" />
+                <img src="../img/national-security-results.webp" width="750" height="500" alt="Blurred screenshot of the finished risk dashboard prototype" loading="lazy" />
                 <figcaption>Blurred because of NDA</figcaption>
               </figure>
             </section>
@@ -207,7 +207,7 @@
           </details>
         </article>
         <article class="proj" id="p-maritime-refueling" data-proj="maritime-refueling" aria-labelledby="maritime-refueling-title">
-          <img class="proj-lead-img" src="img/maritime-refueling-ships.webp" width="900" height="506" alt="An LNG bunker vessel refuelling a container ship at sea" />
+          <img class="proj-lead-img" src="../img/maritime-refueling-ships.webp" width="900" height="506" alt="An LNG bunker vessel refuelling a container ship at sea" />
           <div class="proj-meta">2020 · UX Research · Interaction Design</div>
           <h2 class="proj-title" id="maritime-refueling-title">Maritime Refueling</h2>
           <p class="proj-subtitle">Enabling better coordination for ad hoc ship refueling negotiations at sea.</p>
@@ -217,7 +217,7 @@
             <li><span class="mc-key">Approach</span> Interviews showed scheduling was the real pain, so I proposed narrowing the tool to it, then tested an interactive Axure prototype.</li>
             <li><span class="mc-key">Outcome</span> The designs became the foundation of the product that was eventually released.</li>
           </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-dnv">DNV &#8594;</a></p>
+          <p class="proj-worklink">Part of my time at <a href="../work-history.html#job-dnv">DNV &#8594;</a></p>
           <details class="mc-more">
             <summary>Read the full case study</summary>
           <div class="proj-body">
@@ -242,7 +242,7 @@
               <p>The same interviews that ruled out the broader scope also pointed toward something more tractable. Scheduling — a specific part of the negotiation process involving the coordination of times and locations across multiple parties and communication channels — was a source of disproportionate hassle. The back-and-forth it required, spread across a number of different channels and involving a number of different stakeholders, was consistently identified as a point of friction.</p>
               <p>I proposed that the team focus specifically on supporting that activity rather than attempting to cover the full negotiation process. The research provided a clear rationale for the pivot, and the team accepted it.</p>
               <figure class="proj-fig">
-                <img src="img/maritime-refueling-pivot.webp" width="750" height="696" alt="Bunker Schedules prototype: a list of upcoming refuelling nominations with an Edit nomination dialog" loading="lazy" />
+                <img src="../img/maritime-refueling-pivot.webp" width="750" height="696" alt="Bunker Schedules prototype: a list of upcoming refuelling nominations with an Edit nomination dialog" loading="lazy" />
               </figure>
             </section>
 
@@ -251,7 +251,7 @@
               <p>Multi-party remote scheduling is a dynamic, time-sensitive activity that is difficult to convey through static mockups. To communicate the concept effectively, I built a visually simple but highly interactive prototype in Axure — one that demonstrated the essential mechanics of how the scheduling interaction would work. The prototype was shown first to the project team and then to the users who had participated in the earlier interviews.</p>
               <p>The response was positive. Although I moved to another project at that point, the team continued in the direction the research and prototype had established. The designs produced during this engagement served as the foundation for the product that was eventually released.</p>
               <figure class="proj-fig">
-                <img src="img/maritime-refueling-testing.webp" width="750" height="298" alt="The released FuelBoss app on a tablet, scheduling a bunkering event" loading="lazy" />
+                <img src="../img/maritime-refueling-testing.webp" width="750" height="298" alt="The released FuelBoss app on a tablet, scheduling a bunkering event" loading="lazy" />
               </figure>
             </section>
 
@@ -272,7 +272,7 @@
           </details>
         </article>
         <article class="proj" id="p-coffee-ecosystem" data-proj="coffee-ecosystem" aria-labelledby="coffee-ecosystem-title">
-          <img class="proj-lead-img" src="img/coffee-ecosystem-beans.webp" width="750" height="500" alt="Roasted coffee beans in a burlap sack" />
+          <img class="proj-lead-img" src="../img/coffee-ecosystem-beans.webp" width="750" height="500" alt="Roasted coffee beans in a burlap sack" />
           <div class="proj-meta">2019 · User Research · Service Design</div>
           <h2 class="proj-title" id="coffee-ecosystem-title">The Coffee Ecosystem</h2>
           <p class="proj-subtitle">Mapping the field-to-cup coffee journey to identify opportunities for a new digital service.</p>
@@ -282,7 +282,7 @@
             <li><span class="mc-key">Approach</span> Two rounds of interviews and task analysis: first coffee buyers, then roasters once buyers proved well served.</li>
             <li><span class="mc-key">Outcome</span> An ecosystem map and several opportunities among roasters, which fed the team's ideation.</li>
           </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-yara">Yara International &#8594;</a></p>
+          <p class="proj-worklink">Part of my time at <a href="../work-history.html#job-yara">Yara International &#8594;</a></p>
           <details class="mc-more">
             <summary>Read the full case study</summary>
           <div class="proj-body">
@@ -301,7 +301,7 @@
               <p>Through a combination of company sales contacts and my own networking, I identified and interviewed a number of people responsible for purchasing decisions at local coffee buyers. The method was semi-structured interviews combined with task analysis. The interviews produced a detailed picture of the field-to-cup journey and the actors involved at each stage, the pain points distributed across it, the key purchasing decisions buyers faced and the variables that shaped those decisions, and some early feedback on the feasibility of the team's concept.</p>
               <p>The findings from this first round, however, did not reveal the kinds of clear opportunities for supporting coffee buyers that the team had hoped to find. The buyers had existing tools and processes that served their needs adequately, and the space for a new matchmaking service was not as open as the team had assumed.</p>
               <figure class="proj-fig">
-                <img src="img/coffee-ecosystem-map.png" width="3034" height="1572" alt="Ecosystem map of the field-to-cup journey: farmers, cooperatives, exporters, importers, roasters and consumers, with importing roasters, café chains and big roasters shown buying directly" loading="lazy" />
+                <img src="../img/coffee-ecosystem-map.png" width="3034" height="1572" alt="Ecosystem map of the field-to-cup journey: farmers, cooperatives, exporters, importers, roasters and consumers, with importing roasters, café chains and big roasters shown buying directly" loading="lazy" />
               </figure>
             </section>
 
@@ -310,7 +310,7 @@
               <p>While the first round of research did not confirm the team's original direction, it pointed clearly toward a different actor in the ecosystem: coffee roasters. The interviews with buyers had surfaced enough information about the roaster side of the relationship to suggest that the purchasing dynamics there might be more receptive to the kind of support the team had envisioned.</p>
               <p>I conducted a second round of interviews focused specifically on purchasing activity within local roasters. This round identified a number of potential areas that might benefit from the kind of matchmaking and transparency the team had in mind. The team then entered an ideation phase, using the research findings as the foundation for generating and evaluating product concepts.</p>
               <figure class="proj-fig">
-                <img src="img/coffee-ecosystem-roasters.webp" width="1500" height="698" alt="Blurred table of the roasters’ purchasing journey, from research and planning to selling" loading="lazy" />
+                <img src="../img/coffee-ecosystem-roasters.webp" width="1500" height="698" alt="Blurred table of the roasters’ purchasing journey, from research and planning to selling" loading="lazy" />
                 <figcaption>Blurred because of NDA</figcaption>
               </figure>
             </section>
@@ -332,7 +332,7 @@
           </details>
         </article>
         <article class="proj" id="p-sewer-corrosion" data-proj="sewer-corrosion" aria-labelledby="sewer-corrosion-title">
-          <img class="proj-lead-img" src="img/sewer-corrosion-tunnel.webp" width="750" height="532" alt="A sewer worker in a hard hat and high-visibility vest walking through a corroded concrete tunnel" />
+          <img class="proj-lead-img" src="../img/sewer-corrosion-tunnel.webp" width="750" height="532" alt="A sewer worker in a hard hat and high-visibility vest walking through a corroded concrete tunnel" />
           <div class="proj-meta">2017 · Interaction Design · Data Visualization</div>
           <h2 class="proj-title" id="sewer-corrosion-title">Sewer Corrosion</h2>
           <p class="proj-subtitle">Redesigning a corrosion estimation tool to support better decision-making by sewer maintenance managers.</p>
@@ -342,7 +342,7 @@
             <li><span class="mc-key">Approach</span> Data entry in small steps, selection controls instead of typing, and a clear view of current state, remaining life, options and deadlines.</li>
             <li><span class="mc-key">Outcome</span> Iterated designs at mobile and desktop sizes, with the company's style guide rebuilt for the web.</li>
           </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-yara">Yara International &#8594;</a></p>
+          <p class="proj-worklink">Part of my time at <a href="../work-history.html#job-yara">Yara International &#8594;</a></p>
           <details class="mc-more">
             <summary>Read the full case study</summary>
           <div class="proj-body">
@@ -356,10 +356,10 @@
               <p>Sewers corrode over time and eventually fail. The people responsible for managing them need to make a set of interconnected decisions: how severe is the current corrosion, whether the present moment is a good time to invest in repairs, whether pipe replacement might be a better long-term investment than repair, and how long they can realistically delay a decision without incurring greater costs later. The company also wanted to surface a fifth option — the use of its own chemical treatments to extend pipe lifespan — as part of the comparison.</p>
               <p>An existing Excel-based tool covered all of the above, but it required a substantial amount of user input and produced results that were difficult to interpret even for subject-matter experts. The goal was to redesign it as an actual application — one that would be both more efficient to use and more legible to a wider range of users.</p>
               <figure class="proj-fig">
-                <img src="img/sewer-corrosion-estimator.webp" width="1000" height="750" alt="Early H2S corrosion cost estimator: system integrity, remedy costs and a chart of integrity over time for chemical treatment, repair and replacement" loading="lazy" />
+                <img src="../img/sewer-corrosion-estimator.webp" width="1000" height="750" alt="Early H2S corrosion cost estimator: system integrity, remedy costs and a chart of integrity over time for chemical treatment, repair and replacement" loading="lazy" />
               </figure>
               <figure class="proj-fig">
-                <img src="img/sewer-corrosion-lifespan.webp" width="482" height="362" alt="Early concept chart of sewer system lifespan against H2S exposure, with and without treatment" loading="lazy" />
+                <img src="../img/sewer-corrosion-lifespan.webp" width="482" height="362" alt="Early concept chart of sewer system lifespan against H2S exposure, with and without treatment" loading="lazy" />
               </figure>
             </section>
 
@@ -379,8 +379,8 @@
               <p>The designs were produced in Sketch and went through a number of iterations before reaching a final state. The final deliverable covered both mobile and desktop breakpoints, as the company had a preference for optimizing the experience for mobile use — reflecting where and how the target users would most often be accessing the tool.</p>
               <p>The project also required applying the company's existing branding and style guide, which I rebuilt in Sketch and adapted as needed for the conventions of a web application context, where the original guide had not been designed with that environment in mind.</p>
               <figure class="proj-fig proj-fig-pair">
-                <img src="img/sewer-corrosion-status.webp" width="300" height="819" alt="Mobile design: corrosion assessment showing level and speed of corrosion, remaining lifespan and deadline for repair" loading="lazy" />
-                <img src="img/sewer-corrosion-options.webp" width="300" height="819" alt="Mobile design: treatment options comparing the cost and resulting lifespan of replacing, repairing or doing nothing" loading="lazy" />
+                <img src="../img/sewer-corrosion-status.webp" width="300" height="819" alt="Mobile design: corrosion assessment showing level and speed of corrosion, remaining lifespan and deadline for repair" loading="lazy" />
+                <img src="../img/sewer-corrosion-options.webp" width="300" height="819" alt="Mobile design: treatment options comparing the cost and resulting lifespan of replacing, repairing or doing nothing" loading="lazy" />
               </figure>
             </section>
 
@@ -401,7 +401,7 @@
           </details>
         </article>
         <article class="proj" id="p-search-rescue" data-proj="search-rescue" aria-labelledby="search-rescue-title">
-          <img class="proj-lead-img" src="img/search-rescue-drone.webp" width="826" height="561" alt="A field team in high-visibility vests flying a drone beside a river valley" />
+          <img class="proj-lead-img" src="../img/search-rescue-drone.webp" width="826" height="561" alt="A field team in high-visibility vests flying a drone beside a river valley" />
           <div class="proj-meta">2015 · Decision Support · Human Factors</div>
           <h2 class="proj-title" id="search-rescue-title">Search and Rescue</h2>
           <p class="proj-subtitle">Designing a drone command interface to give search-and-rescue field commanders direct situational awareness.</p>
@@ -411,7 +411,7 @@
             <li><span class="mc-key">Approach</span> A multi-year user-centred process: domain analysis and workshops, then design iterations tested with users.</li>
             <li><span class="mc-key">Outcome</span> Working prototypes built with front-end developers, across about a dozen European partners.</li>
           </ul>
-          <p class="proj-worklink">Part of my time at <a href="work-history.html#job-sintef">SINTEF ICT &#8594;</a></p>
+          <p class="proj-worklink">Part of my time at <a href="../work-history.html#job-sintef">SINTEF ICT &#8594;</a></p>
           <details class="mc-more">
             <summary>Read the full case study</summary>
           <div class="proj-body">
@@ -424,7 +424,7 @@
               <h3>The Idea</h3>
               <p>The goal was to provide first responders in search-and-rescue operations with a system through which they could locate the drones operating on scene, direct their movements, and monitor their feeds — giving field commanders a direct, real-time picture of the aerial assets under their coordination rather than a secondhand account of what those assets were observing.</p>
               <figure class="proj-fig">
-                <img src="img/search-rescue-concept.webp" width="826" height="619" alt="DARIUS concept diagram: a deployable search-and-rescue chain linking first responders, ground station and command post to unmanned ground, sea and air vehicles" loading="lazy" />
+                <img src="../img/search-rescue-concept.webp" width="826" height="619" alt="DARIUS concept diagram: a deployable search-and-rescue chain linking first responders, ground station and command post to unmanned ground, sea and air vehicles" loading="lazy" />
               </figure>
             </section>
 
@@ -447,7 +447,7 @@
               <h3>Design Stage</h3>
               <p>The design stage proceeded over a number of iterations, each separated by workshops and evaluation sessions with users. The deliverables included usage scenarios — developed to focus and bound the design effort — wireframes, mockups, storyboards, paper prototypes, and working prototypes built by front-end developers on the team. Wireframes were created in PowerPoint, which made it straightforward to collaborate with team members working remotely and to transfer the documents into Word for formal delivery.</p>
               <figure class="proj-fig">
-                <img src="img/search-rescue-process.webp" width="750" height="680" alt="The design process as a rising arrow: requirements, wireframes, storyboards, mockups and prototypes" loading="lazy" />
+                <img src="../img/search-rescue-process.webp" width="750" height="680" alt="The design process as a rising arrow: requirements, wireframes, storyboards, mockups and prototypes" loading="lazy" />
               </figure>
             </section>
 
@@ -483,6 +483,6 @@
     </footer>
   </div>
 
-  <script src="v2.js"></script>
+  <script src="../v2.js"></script>
 </body>
 </html>

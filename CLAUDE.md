@@ -5,19 +5,26 @@ Pages from the `gh-pages` branch (which is the repo's default branch).
 Open `index.html` directly in a browser to preview, or run
 `python3 -m http.server` from the repo root.
 
-- **Layout since 2026-10-10 (later).** What was built as "v2" is the
-  live site and sits at the repo root: `index.html` (home),
-  `work-history.html`, `projects.html`, their alternates, `v2.css`,
-  `v2-inter.css`, `v2.js`, `img/`, `portrait.png`, `favicon.svg`,
-  `og-image.png` and the CV PDF. The `v2/` folder now holds only
-  noindex redirect stubs, one per old page, forwarding `v2/X.html` (and
-  its #hash) to `../X.html`. The old v1 site lives in `v1/`, all
-  noindex: `v1/index.html` (the old single-page home, formerly
-  `index-v1.html`), `v1/index-variant1.html`, the seven v1 case-study
-  pages, `v1/style.css` and `v1/script.js`. In the notes below, read
-  `v2/X` as the root `X`, and the v1 files (`index.html` for the v1
-  home, `index-variant1.html`, case-study pages, `style.css`,
-  `script.js`) as living in `v1/`.
+- **Layout since 2026-10-11.** The repo root holds only the live site:
+  `index.html` (home), `work-history.html` (Experience), `projects.html`,
+  `v2.css`, `v2-inter.css`, `v2-white.css`, `v2.js`, `img/`,
+  `portrait.png`, `favicon.svg`, `og-image.png` and the CV PDF. Every
+  alternate and unused version is in `alternates/`, all noindex: the
+  v2 alternates (`alternates/index-cream.html`, `-newsreader`,
+  `-dashboard`, `-spiral`; `projects-cream`, `-newsreader`, `-column`,
+  `-grid`, `-list`, `-longform`, `-dashboard`; `work-history-cream`,
+  `-newsreader`, `-vertical`, `-gantt`, `-dashboard`), whose links to
+  shared assets and the main pages start with `../`, and the old v1 site
+  in `alternates/v1/` (`index.html` is the old single-page home,
+  `index-variant1.html`, the seven v1 case-study pages, `style.css`,
+  `script.js`). A new alternate goes in `alternates/` with `../` asset
+  paths and the noindex tag. `v2/` holds only noindex redirect stubs, one
+  per page that once lived there, forwarding old links (and their #hash)
+  to the page's current home. In the notes below, read `v2/X` as the
+  root `X` for the three main pages and `alternates/X` for the rest, and
+  the v1 files (`index.html` for the v1 home, `index-variant1.html`,
+  case-study pages, `style.css`, `script.js`) as living in
+  `alternates/v1/`.
 - `index-variant1.html` — a snapshot of `index.html` taken before the
   work-history diagram was rebuilt, kept so the two can be compared. It
   is the only page still using the proportional diagram. It shares
