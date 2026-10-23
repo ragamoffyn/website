@@ -80,7 +80,7 @@ Open `index.html` directly in a browser to preview, or run
   study two columns on wide screens (CSS section 18): section headings
   in a label column, text beside them, and each section's figures,
   grouped at the end of the section in `.proj-figs`, on the right. The
-  4Subsea project is titled "Data Platform" there (its id is still
+  4Subsea project is titled "Decision support platform" there (formerly "Data Platform") (its id is still
   `foursubsea`), with striped "Image to come" placeholders (`.proj-ph`)
   until Michael sends its images. Since 2026-10-11 every full case study on `projects.html` uses Data
   Platform's five sections: Context, Challenge, Constraints, What I Did,

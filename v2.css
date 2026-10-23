@@ -2610,3 +2610,12 @@ body.ms-page .ms-nav .menu-links a { padding: 0; }
 /* Exceptions to "orange means clickable": the Enterprise UX frame and the
    timeline's era markers stay orange. */
 body.ms-page .mh-side { border-color: var(--primary); }
+
+/* Case study subsections (Decision support platform, What I Did). */
+.ks-page .proj-body h4 {
+  font-size: var(--step-0);
+  font-weight: 600;
+  margin: var(--step-1) 0 var(--step-m2);
+}
+.ks-page .proj-body h4 + p { margin-top: 0; }
+.ks-page .proj-body h3 + h4 { margin-top: 0; }
