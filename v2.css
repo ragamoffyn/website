@@ -2620,3 +2620,25 @@ body.ms-page .mh-side { border-color: var(--primary); }
 }
 .ks-page .proj-body h4 + p { margin-top: 0; }
 .ks-page .proj-body h3 + h4 { margin-top: 0; }
+
+/* A cluster of small screenshots that each enlarge on click: four wide
+   pages in a 2 x 2 block, then two taller ones spanning two rows. Row
+   height follows the column width so the crops stay in proportion. */
+.ks-page .proj-fig-cluster .proj-fig-imgs {
+  --gap: var(--step-m1);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: calc((100cqw - var(--gap)) / 2 / 1.6);
+  gap: var(--gap);
+}
+.ks-page .proj-fig-cluster { container-type: inline-size; }
+.ks-page .proj-fig-cluster .proj-fig-imgs img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: top left;
+  margin: 0;
+}
+.ks-page .proj-fig-cluster .proj-fig-imgs img:nth-child(n+5) { grid-row: span 2; }
