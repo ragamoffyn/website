@@ -12,7 +12,7 @@ Open `index.html` directly in a browser to preview, or run
   alternate and unused version is in `alternates/`, all noindex: the
   v2 alternates (`alternates/index-cream.html`, `-newsreader`,
   `-dashboard`, `-spiral`; `projects-cream`, `-newsreader`, `-column`,
-  `-grid`, `-list`, `-longform`, `-dashboard`; `work-history-cream`,
+  `-grid`, `-grid-nophoto` (2026-10-23: no summary images, key points 2 x 2, CSS section 19), `-list`, `-longform`, `-dashboard`; `work-history-cream`,
   `-newsreader`, `-vertical`, `-gantt`, `-dashboard`), whose links to
   shared assets and the main pages start with `../`, and the old v1 site
   in `alternates/v1/` (`index.html` is the old single-page home,

@@ -2642,3 +2642,27 @@ body.ms-page .mh-side { border-color: var(--primary); }
   margin: 0;
 }
 .ks-page .proj-fig-cluster .proj-fig-imgs img:nth-child(n+5) { grid-row: span 2; }
+
+/* ---------------------------------------------------------------
+   19. Projects, key points in a 2 x 2 grid with no summary image
+   (alternates/projects-grid-nophoto.html, body class kg-page). Builds
+   on sections 17 and 18. From 640px the four points sit in two columns,
+   each label above its text, between the same two full-width rules;
+   below that it is the phone layout unchanged.
+   --------------------------------------------------------------- */
+@media (min-width: 640px) {
+  /* Doubled class: beats section 17's 56rem cap on a project without a photo. */
+  .kg-page .proj > .mc-points.mc-points {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--step-4);
+    grid-column: 1 / -1;
+    max-width: none;
+  }
+  .kg-page .mc-points li {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--step-m2);
+    align-items: start;
+    padding: var(--step-1) 0;
+  }
+}
