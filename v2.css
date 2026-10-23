@@ -2644,13 +2644,28 @@ body.ms-page .mh-side { border-color: var(--primary); }
 .ks-page .proj-fig-cluster .proj-fig-imgs img:nth-child(n+5) { grid-row: span 2; }
 
 /* ---------------------------------------------------------------
-   19. Projects, key points in a 2 x 2 grid with no summary image
-   (alternates/projects-grid-nophoto.html, body class kg-page). Builds
-   on sections 17 and 18. From 640px the four points sit in two columns,
-   each label above its text, between the same two full-width rules;
-   below that it is the phone layout unchanged.
+   19. Projects, key points in a 2 x 2 grid (projects.html, body class
+   kg-page; the one-column version is alternates/projects-photo-column.html).
+   Builds on sections 17 and 18. The summary image shrinks and moves to
+   the right of the title block, above the grid. From 640px the four
+   points sit in two columns, each label above its text, between the
+   same two full-width rules; below that it is the phone layout unchanged.
    --------------------------------------------------------------- */
 @media (min-width: 640px) {
+  .kg-page .proj > .proj-meta,
+  .kg-page .proj > .proj-title,
+  .kg-page .proj > .proj-subtitle { grid-column: 1; }
+  .kg-page .proj > .proj-lead-img {
+    grid-row: 1 / 4;
+    grid-column: 2;
+    align-self: end;
+    justify-self: end;
+    width: clamp(10rem, 20vw, 15rem);
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin: var(--step-1) 0 0;
+  }
   /* Doubled class: beats section 17's 56rem cap on a project without a photo. */
   .kg-page .proj > .mc-points.mc-points {
     display: grid;
@@ -2665,30 +2680,4 @@ body.ms-page .mh-side { border-color: var(--primary); }
     align-items: start;
     padding: var(--step-1) 0;
   }
-}
-
-/* ---------------------------------------------------------------
-   20. Projects, 2 x 2 key points under an image strip
-   (alternates/projects-grid-strip.html, kg-page + kgs-page). Builds on
-   section 19. The summary image becomes a wide, short band between the
-   title block and the points, cropped from the middle. Rows move down
-   by one to make room for it. Phones keep the image to the side of the
-   accordion as before.
-   --------------------------------------------------------------- */
-@media (min-width: 640px) {
-  .kgs-page .proj > .proj-lead-img {
-    grid-row: 4;
-    grid-column: 1 / -1;
-    width: 100%;
-    height: clamp(8rem, 15vw, 12rem);
-    object-fit: cover;
-    object-position: center 45%;
-    margin: var(--step-1) 0 0;
-  }
-  .kgs-page .proj::before { grid-row: 5; }
-  .kgs-page .proj > .mc-points.mc-points { grid-row: 6; }
-  .kgs-page .proj::after { grid-row: 7; }
-  .kgs-page .proj > .mc-toggle { grid-row: 8; }
-  .kgs-page .proj > .mc-more { grid-row: 9; }
-  .kgs-page .proj > .mt-steps { grid-row: 10; }
 }

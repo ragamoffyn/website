@@ -12,7 +12,7 @@ Open `index.html` directly in a browser to preview, or run
   alternate and unused version is in `alternates/`, all noindex: the
   v2 alternates (`alternates/index-cream.html`, `-newsreader`,
   `-dashboard`, `-spiral`; `projects-cream`, `-newsreader`, `-column`,
-  `-grid`, `-grid-nophoto` (2026-10-23: no summary images, key points 2 x 2, CSS section 19), `-grid-strip` (the same grid under a wide image strip, CSS section 20), `-list`, `-longform`, `-dashboard`; `work-history-cream`,
+  `-grid`, `-photo-column` (the 2026-10-23 default before the 2 x 2 grid: points down one column, image to their right), `-list`, `-longform`, `-dashboard`; `work-history-cream`,
   `-newsreader`, `-vertical`, `-gantt`, `-dashboard`), whose links to
   shared assets and the main pages start with `../`, and the old v1 site
   in `alternates/v1/` (`index.html` is the old single-page home,
@@ -82,7 +82,7 @@ Open `index.html` directly in a browser to preview, or run
   grouped at the end of the section in `.proj-figs`, on the right. The
   4Subsea project is titled "Insight Platform" there (formerly "Data Platform", then "Decision support platform") (its id is still
   `foursubsea`), with striped "Image to come" placeholders (`.proj-ph`)
-  until Michael sends its images. Since 2026-10-11 every full case study on `projects.html` uses Data
+  until Michael sends its images. Since 2026-10-23 `projects.html` has its four key points in a 2 x 2 grid (CSS section 19, body class `kg-page`) with the summary image small at the right of the title block. Since 2026-10-11 every full case study on `projects.html` uses Data
   Platform's five sections: Context, Challenge, Constraints, What I Did,
   What I Learned (the old headings' paragraphs rearranged into them,
   with only a few joining words changed). On 2026-10-07 the shared footer

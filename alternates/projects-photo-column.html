@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects (key points grid) — Michael E. Stiso</title>
+  <title>Projects (points in a column) — Michael E. Stiso</title>
   <meta name="description" content="Case studies from Michael Stiso's UX research and design work: offshore energy, national security, maritime refueling, agriculture, and search and rescue." />
   <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
   <meta name="robots" content="noindex" />
@@ -15,12 +15,12 @@
   <link rel="stylesheet" href="../v2-white.css" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="ms-page mp-page mc-page mt-page mk-page ks-page kg-page">
+<body class="ms-page mp-page mc-page mt-page mk-page ks-page">
 
-  <!-- Alternate of projects.html (section 19 of v2.css): the summary
-       images are gone and the four key points sit in a 2 x 2 grid, each
-       label above its text. Everything else is projects.html as it stood
-       on 2026-10-23. Noindex; not in the menu. -->
+  <!-- Alternate of projects.html as it stood on 2026-10-23, before the
+       key points went into a 2 x 2 grid: the four points down one column
+       with the summary image to their right (sections 17 and 18 of
+       v2.css). Noindex; not in the menu. -->
 
   <!-- Projects (sections 10 and 15 to 18 of v2.css). Six project
        tiles across the top; below them the chosen project's title and
@@ -41,7 +41,7 @@
       <div class="menu-links">
         <a href="../index.html">Home</a>
         <a href="../experiences.html">Experience</a>
-        <a href="projects-grid-nophoto.html" aria-current="page">Projects</a>
+        <a href="projects-photo-column.html" aria-current="page">Projects</a>
       </div>
       <a class="mw-owner" href="../index.html">Michael E. Stiso</a>
     </nav>
@@ -90,6 +90,7 @@
          pages in the repo root (../foursubsea.html and the rest). -->
     <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project" data-narrow="(max-width: 639.98px)" data-steps data-side-toggle>
         <article class="proj" id="p-foursubsea" data-proj="foursubsea" aria-labelledby="foursubsea-title">
+          <img class="proj-lead-img" src="../img/foursubsea-lead.webp" width="474" height="266" alt="Illustration of offshore oil and gas and wind installations with subsea cables and a data display" />
           <div class="proj-meta">2023 — now · Design Systems · Platform UX</div>
           <h2 class="proj-title" id="foursubsea-title">Insight Platform</h2>
           <p class="proj-subtitle">Platform UX and a first design system for offshore wind and oil-and-gas operations. Part of my time at <a class="proj-joblink" href="../experiences.html#job-4subsea">4Subsea</a>.</p>
@@ -157,6 +158,7 @@
           </details>
         </article>
         <article class="proj" id="p-national-security" data-proj="national-security" aria-labelledby="national-security-title">
+          <img class="proj-lead-img" src="../img/national-security-assessment.webp" width="474" height="316" alt="A printed risk assessment matrix, severity against probability, beside a keyboard" />
           <div class="proj-meta">2022 · Data Visualization · Decision Support</div>
           <h2 class="proj-title" id="national-security-title">National Security</h2>
           <p class="proj-subtitle">Highlighting patterns in heterogeneous risk data for analysts performing work critical to national security. Part of my time at <a class="proj-joblink" href="../experiences.html#job-dnv">DNV</a>.</p>
@@ -214,6 +216,7 @@
           </details>
         </article>
         <article class="proj" id="p-maritime-refueling" data-proj="maritime-refueling" aria-labelledby="maritime-refueling-title">
+          <img class="proj-lead-img" src="../img/maritime-refueling-ships.webp" width="900" height="506" alt="An LNG bunker vessel refuelling a container ship at sea" />
           <div class="proj-meta">2020 · UX Research · Concept Development</div>
           <h2 class="proj-title" id="maritime-refueling-title">Maritime Refueling</h2>
           <p class="proj-subtitle">Enabling better coordination for ad hoc ship refueling negotiations at sea. Part of my time at <a class="proj-joblink" href="../experiences.html#job-dnv">DNV</a>.</p>
@@ -270,6 +273,7 @@
           </details>
         </article>
         <article class="proj" id="p-coffee-ecosystem" data-proj="coffee-ecosystem" aria-labelledby="coffee-ecosystem-title">
+          <img class="proj-lead-img" src="../img/coffee-ecosystem-beans.webp" width="750" height="500" alt="Roasted coffee beans in a burlap sack" />
           <div class="proj-meta">2019 · User Research · Service Design</div>
           <h2 class="proj-title" id="coffee-ecosystem-title">Coffee Ecosystem</h2>
           <p class="proj-subtitle">Mapping the field-to-cup coffee journey to identify opportunities for a new digital service. Part of my time at <a class="proj-joblink" href="../experiences.html#job-yara">Yara International</a>.</p>
@@ -324,6 +328,7 @@
           </details>
         </article>
         <article class="proj" id="p-sewer-corrosion" data-proj="sewer-corrosion" aria-labelledby="sewer-corrosion-title">
+          <img class="proj-lead-img" src="../img/sewer-corrosion-tunnel.webp" width="750" height="532" alt="A sewer worker in a hard hat and high-visibility vest walking through a corroded concrete tunnel" />
           <div class="proj-meta">2017 · Interaction Design · Data Visualization</div>
           <h2 class="proj-title" id="sewer-corrosion-title">Sewer Corrosion</h2>
           <p class="proj-subtitle">Redesigning a corrosion estimation tool to support better decision-making by sewer maintenance managers. Part of my time at <a class="proj-joblink" href="../experiences.html#job-yara">Yara International</a>.</p>
@@ -390,6 +395,7 @@
           </details>
         </article>
         <article class="proj" id="p-search-rescue" data-proj="search-rescue" aria-labelledby="search-rescue-title">
+          <img class="proj-lead-img" src="../img/search-rescue-drone.webp" width="826" height="561" alt="A field team in high-visibility vests flying a drone beside a river valley" />
           <div class="proj-meta">2015 · Decision Support · Human Factors</div>
           <h2 class="proj-title" id="search-rescue-title">Drone command</h2>
           <p class="proj-subtitle">Designing a drone command interface to give search-and-rescue field commanders direct situational awareness. Part of my time at <a class="proj-joblink" href="../experiences.html#job-sintef">SINTEF ICT</a>.</p>
