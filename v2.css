@@ -2666,3 +2666,29 @@ body.ms-page .mh-side { border-color: var(--primary); }
     padding: var(--step-1) 0;
   }
 }
+
+/* ---------------------------------------------------------------
+   20. Projects, 2 x 2 key points under an image strip
+   (alternates/projects-grid-strip.html, kg-page + kgs-page). Builds on
+   section 19. The summary image becomes a wide, short band between the
+   title block and the points, cropped from the middle. Rows move down
+   by one to make room for it. Phones keep the image to the side of the
+   accordion as before.
+   --------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .kgs-page .proj > .proj-lead-img {
+    grid-row: 4;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: clamp(8rem, 15vw, 12rem);
+    object-fit: cover;
+    object-position: center 45%;
+    margin: var(--step-1) 0 0;
+  }
+  .kgs-page .proj::before { grid-row: 5; }
+  .kgs-page .proj > .mc-points.mc-points { grid-row: 6; }
+  .kgs-page .proj::after { grid-row: 7; }
+  .kgs-page .proj > .mc-toggle { grid-row: 8; }
+  .kgs-page .proj > .mc-more { grid-row: 9; }
+  .kgs-page .proj > .mt-steps { grid-row: 10; }
+}
