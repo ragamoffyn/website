@@ -2749,3 +2749,15 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .vc-page .proj-hero,
   .vc-page .proj-tags { margin-left: 0; }
 }
+
+/* ---------------------------------------------------------------
+   21. Home (index.html, body class hm-page): more air between the intro
+   and the four summaries, a full step more above and below the rule.
+   On a window taller than the page the content sits at the bottom, just
+   above the footer, instead of leaving a gap there (the slack goes under
+   the menu); on a page that fills the window nothing changes.
+   --------------------------------------------------------------- */
+.hm-page .ms-hero { padding-bottom: var(--step-5); }
+.hm-page .ms-summary { padding-top: var(--step-5); }
+.hm-page .ms-hero { margin-top: auto; }
+.hm-page .ms-footer { margin-top: 0; }
