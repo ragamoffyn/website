@@ -2756,7 +2756,7 @@ body.ms-page .mh-side { border-color: var(--primary); }
    On a window taller than the page the content sits at the bottom, just
    above the footer, instead of leaving a gap there (the slack goes under
    the menu); on a page that fills the window nothing changes. Behind the
-   hero, a faint graph-paper grid; the portrait is an oval.
+   hero, a faint graph-paper grid.
    --------------------------------------------------------------- */
 .hm-page .ms-hero { padding-bottom: var(--step-5); }
 .hm-page .ms-summary { padding-top: var(--step-5); }
@@ -2783,16 +2783,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
   pointer-events: none;
 }
 .hm-page .ms-footer { margin-top: 0; }
-/* The portrait (shirt removed) is an oval on the page colour, so it sits
-   clear of the grid. */
-.hm-page .ms-portrait { aspect-ratio: 5 / 6; }
-.hm-page .ms-portrait img {
-  object-fit: cover;
-  object-position: 50% 35%;
-  border-radius: 50%;
-  border: 1px solid var(--border-strong);
-  background: var(--background);
-}
 
 /* ---------------------------------------------------------------
    22. Page-to-page links (index.html, experiences.html, projects.html):
