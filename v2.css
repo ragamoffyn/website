@@ -2755,9 +2755,74 @@ body.ms-page .mh-side { border-color: var(--primary); }
    and the four summaries, a full step more above and below the rule.
    On a window taller than the page the content sits at the bottom, just
    above the footer, instead of leaving a gap there (the slack goes under
-   the menu); on a page that fills the window nothing changes.
+   the menu); on a page that fills the window nothing changes. Behind the
+   hero, a faint graph-paper grid; the portrait is an oval.
    --------------------------------------------------------------- */
 .hm-page .ms-hero { padding-bottom: var(--step-5); }
 .hm-page .ms-summary { padding-top: var(--step-5); }
-.hm-page .ms-hero { margin-top: auto; }
+/* The hero takes up the slack itself (its content sits at its foot), so the
+   graph-paper grid behind it runs from under the menu down to the rule,
+   fading in at the top. */
+.hm-page .ms-hero {
+  flex: 1 0 auto;
+  align-content: end;
+  position: relative;
+  isolation: isolate;
+}
+.hm-page .ms-hero::before {
+  content: "";
+  position: absolute;
+  inset: var(--step-1) 0 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, #e8e5e0 1px, transparent 1px),
+    linear-gradient(to bottom, #e8e5e0 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%);
+  pointer-events: none;
+}
 .hm-page .ms-footer { margin-top: 0; }
+/* The portrait (shirt removed) is an oval on the page colour, so it sits
+   clear of the grid. */
+.hm-page .ms-portrait { aspect-ratio: 5 / 6; }
+.hm-page .ms-portrait img {
+  object-fit: cover;
+  object-position: 50% 35%;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--background);
+}
+
+/* ---------------------------------------------------------------
+   22. Page-to-page links (index.html, experiences.html, projects.html):
+   above the footer, the previous page on the left and the next on the
+   right, in site order Home, Experience, Projects.
+   --------------------------------------------------------------- */
+.pg-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--step-2);
+  margin-top: var(--step-3);
+}
+/* Only one rule between the summaries and the footer. */
+.ms-summary:has(+ .pg-steps) { border-bottom: 0; padding-bottom: 0; }
+.pg-steps a {
+  font-size: var(--step-1);
+  line-height: 1.25;
+  color: var(--primary);
+  text-decoration: none;
+}
+.pg-steps a span {
+  display: block;
+  margin-bottom: var(--step-m2);
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.pg-steps a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.pg-steps a:hover span { text-decoration: none; }
+.pg-steps a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.pg-steps .pg-next { grid-column: 2; text-align: right; }

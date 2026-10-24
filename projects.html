@@ -31,8 +31,7 @@
        chosen project fills the right: its title and summary, then its
        four key points in a 2 x 2 grid with a small intro image, then the
        full case study (two columns: each section's heading in a label
-       column with its text beside it, its figures on the right). Previous
-       and next links at the foot (added by v2.js). Tablets get the tiles
+       column with its text beside it, its figures on the right). Tablets get the tiles
        3 x 2 with the project below; below 640px it falls back to the
        accordion list. Without the script every project shows, one after
        another.
@@ -93,7 +92,7 @@
 
     <!-- The case-study text below is copied from the seven case-study
          pages in the repo root (../foursubsea.html and the rest). -->
-    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project" data-narrow="(max-width: 639.98px)" data-steps data-side-toggle>
+    <section class="proj-detail mc-panel" id="proj-detail" aria-label="Selected project" data-narrow="(max-width: 639.98px)" data-side-toggle>
         <article class="proj" id="p-foursubsea" data-proj="foursubsea" aria-labelledby="foursubsea-title">
           <img class="proj-lead-img" src="img/foursubsea-lead.webp" width="474" height="266" alt="Illustration of offshore oil and gas and wind installations with subsea cables and a data display" />
           <div class="proj-meta">2023 — now · Design Systems · Platform UX</div>
@@ -460,6 +459,11 @@
     </section>
     </div>
 
+
+    <!-- Page-to-page links, another way through the site besides the menu (section 22). -->
+    <nav class="pg-steps" aria-label="Pages">
+      <a class="pg-prev" href="experiences.html"><span>Previous page</span>&#8592; Experience</a>
+    </nav>
 
     <!-- Site footer: the same contact line on every page (section 10). -->
     <footer class="ms-footer">
