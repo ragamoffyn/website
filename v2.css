@@ -2965,3 +2965,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
    I Did steps) no bigger than the section heading: the same size, in
    sentence case instead of capitals. */
 .ks-page .proj-body h4 { font-size: var(--step-m1); letter-spacing: 0; margin-top: var(--step-1); }
+/* The thumbnails now sit between a section's h3 and its first h4, so the
+   h3 + h4 rule above no longer catches it: no gap above the first subheading. */
+.ks-page .proj-body h3 + .proj-figs + h4 { margin-top: 0; }
