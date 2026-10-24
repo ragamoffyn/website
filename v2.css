@@ -2868,3 +2868,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
 /* Projects: key points one step smaller (body size), now that Michael's
    longer wording would push Approach and Outcome below a laptop screen. */
 .kg-page .mc-points li { font-size: var(--step-0); line-height: 1.5; }
+/* Home: the portrait (img/portrait-bw.png, 1057 x 1539) is taller than
+   square; its box takes the photo's own ratio so it sits flush right. */
+.hm-page .ms-portrait { aspect-ratio: 1057 / 1539; }
