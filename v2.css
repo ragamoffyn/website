@@ -2880,3 +2880,54 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .hm-page .ms-hero-text { grid-column: 1 / 4; }
   .hm-page .ms-portrait { grid-column: 4; }
 }
+
+/* ---------------------------------------------------------------
+   23. Projects, case-study figures as thumbnails (projects.html,
+   vc-page). Michael, 24 Oct: no image column; the text takes the full
+   width (beside the section label from 1500px) and each section's
+   figures follow its text as a row of thumbnails. A click still opens
+   the full image. Phones keep the full-width figures.
+   --------------------------------------------------------------- */
+@media (min-width: 1000px) {
+  .vc-page .proj-body section { grid-template-columns: minmax(0, 1fr); }
+  .vc-page .proj-body section > .proj-figs {
+    grid-column: 1;
+    grid-row: auto;
+    padding-left: calc(10rem + var(--step-1));
+  }
+}
+@media (min-width: 1000px) and (max-width: 1499.98px) {
+  .vc-page .proj-body section > .proj-figs { padding-left: 0; }
+  .vc-page .proj-body section > p,
+  .vc-page .proj-body section > ul,
+  .vc-page .proj-body section > ol { max-width: none; }
+}
+@media (min-width: 640px) {
+  .vc-page .proj-body section > .proj-figs {
+    --thumb: 9.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--step-1) var(--step-2);
+    margin-top: var(--step-1);
+  }
+  .vc-page .proj-figs .proj-fig { margin: 0; max-width: 100%; }
+  /* Single images: a fixed height, width from the image; the caption
+     wraps to the thumbnail's width. */
+  .vc-page .proj-figs .proj-fig:not(.proj-fig-group):not(.proj-fig-cluster) { display: table; width: 1px; }
+  .vc-page .proj-figs .proj-fig:not(.proj-fig-group):not(.proj-fig-cluster) > img {
+    height: var(--thumb);
+    width: auto;
+    max-width: none;
+    margin: 0;
+  }
+  .vc-page .proj-figs .proj-fig:not(.proj-fig-group):not(.proj-fig-cluster) > figcaption { display: table-caption; caption-side: bottom; }
+  .vc-page .proj-figs .proj-fig-pair .proj-fig-imgs { height: var(--thumb); justify-content: flex-start; }
+  .vc-page .proj-figs .proj-fig-pair .proj-fig-imgs img { height: 100%; max-width: none; }
+  .vc-page .proj-figs .proj-fig-pair { display: table; width: 1px; }
+  .vc-page .proj-figs .proj-fig-pair > figcaption { display: table-caption; caption-side: bottom; }
+  .vc-page .proj-figs .proj-fig-stack { width: calc(var(--thumb) * 4 / 3); }
+  .vc-page .proj-figs .proj-fig-stack .proj-fig-imgs { height: var(--thumb); aspect-ratio: auto; }
+  .vc-page .proj-figs .proj-fig-cluster { width: calc(var(--thumb) * 2.4); max-width: 100%; }
+  .vc-page .proj-figs figcaption { font-size: var(--step-m1); }
+}
