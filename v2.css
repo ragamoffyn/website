@@ -2681,3 +2681,71 @@ body.ms-page .mh-side { border-color: var(--primary); }
     padding: var(--step-1) 0;
   }
 }
+
+/* ---------------------------------------------------------------
+   20. Projects, vertical cards (projects.html, body class vc-page; the
+   row of tiles is alternates/projects-tiles.html). Builds on 16 to 19.
+   From 1000px the six projects are cards listed down the left, newest
+   first, and stay in view as the page scrolls; the chosen project, its
+   key points and its case study fill the right. Narrower screens keep
+   the tiles (tablets) and the accordion (phones).
+   --------------------------------------------------------------- */
+@media (min-width: 1000px) {
+  .vc-page .mc-layout {
+    grid-template-columns: minmax(12rem, 3fr) minmax(0, 9fr);
+    grid-template-rows: auto;
+    column-gap: var(--step-3);
+    row-gap: 0;
+  }
+  .vc-page .proj-nav { position: sticky; top: var(--step-0); }
+  .vc-page .proj-list li { flex: none; }
+  .vc-page .proj-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--step-m2);
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+  .vc-page .proj-tile,
+  .vc-page .proj-tile:hover,
+  .vc-page .proj-tile[aria-current="true"],
+  .vc-page .proj-tile[aria-current="true"]:hover {
+    padding: var(--step-m1) var(--step-0) var(--step-m1) calc(var(--step-0) + 3px);
+    border: 0;
+    background: var(--muted);
+  }
+  .vc-page .proj-tile[aria-current="true"],
+  .vc-page .proj-tile[aria-current="true"]:hover {
+    background: var(--card);
+    box-shadow: inset 0 0 0 1px var(--border), inset 3px 0 0 var(--foreground);
+  }
+}
+
+/* In the narrower panel the case study is one column on laptop widths: the
+   section heading above its text, the figures under the text, side by side
+   when there is room. From 1500px the panel is wide enough for section
+   18's two columns again. */
+@media (min-width: 1000px) and (max-width: 1499.98px) {
+  .vc-page .proj-body section { display: block; }
+  .vc-page .proj-body section > * { padding-left: 0; }
+  .vc-page .proj-body section > ul,
+  .vc-page .proj-body section > ol { padding-left: 1.2em; }
+  .vc-page .proj-body section > h3 { width: auto; padding: 0; margin: 0 0 var(--step-m1); }
+  .vc-page .proj-body section > p,
+  .vc-page .proj-body section > ul,
+  .vc-page .proj-body section > ol { max-width: 46rem; }
+  .vc-page .proj-body section > .proj-figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: var(--step-1);
+    align-items: start;
+    margin-top: var(--step-1);
+  }
+  .vc-page .proj-figs .proj-fig { margin-top: 0; }
+  .vc-page .proj-fig-stack,
+  .vc-page .proj-fig-pair,
+  .vc-page .proj-fig-cluster { max-width: 30rem; }
+  .vc-page .proj-hero,
+  .vc-page .proj-tags { margin-left: 0; }
+}

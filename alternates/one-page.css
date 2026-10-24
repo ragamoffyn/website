@@ -32,6 +32,10 @@ html { scroll-behavior: smooth; }
    bottom is on screen while the next one slides up over it. */
 .op-section.is-pin { position: sticky; }
 .op-section:last-child { padding-bottom: 0; }
+/* Home is only as tall as its content, so Experience starts rising soon after. */
+#home.op-section { min-height: 0; padding-bottom: var(--step-2); }
+#home .ms-hero { padding: var(--step-3) 0 var(--step-3); gap: var(--step-3); }
+#home .ms-summary { padding: var(--step-3) 0 0; border-bottom: 0; }
 .op-head { padding: var(--step-2) 0 var(--step-3); }
 .op-head .ms-name { font-size: var(--step-3); }
 

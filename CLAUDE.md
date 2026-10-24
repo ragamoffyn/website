@@ -12,7 +12,7 @@ Open `index.html` directly in a browser to preview, or run
   alternate and unused version is in `alternates/`, all noindex: the
   v2 alternates (`alternates/index-cream.html`, `-newsreader`,
   `-dashboard`, `-spiral`; `projects-cream`, `-newsreader`, `-column`,
-  `-grid`, `-photo-column` (the 2026-10-23 default before the 2 x 2 grid: points down one column, image to their right), `-list`, `-longform`, `-dashboard`; `one-page.html` (2026-10-24: Home, Experience and Projects on one page, sticky menu jumping between them, scroll-linked fade and slide between sections; its Projects are cards listed vertically on the left, newest first and selected, with the summary and case study on the right; it has its own `one-page.css` and `one-page.js`, and still loads `../v2.js` for the Experience chart), `work-history-cream`,
+  `-grid`, `-tiles` (the 2026-10-24 default before the vertical cards: six tiles in a row across the top, CSS section 16), `-photo-column` (the 2026-10-23 default before the 2 x 2 grid: points down one column, image to their right), `-list`, `-longform`, `-dashboard`; `one-page.html` (2026-10-24: Home, Experience and Projects on one page, sticky menu jumping between them, scroll-linked fade and slide between sections; its Projects are cards listed vertically on the left, newest first and selected, with the summary and case study on the right; it has its own `one-page.css` and `one-page.js`, and still loads `../v2.js` for the Experience chart), `work-history-cream`,
   `-newsreader`, `-vertical`, `-gantt`, `-dashboard`), whose links to
   shared assets and the main pages start with `../`, and the old v1 site
   in `alternates/v1/` (`index.html` is the old single-page home,
@@ -82,7 +82,7 @@ Open `index.html` directly in a browser to preview, or run
   grouped at the end of the section in `.proj-figs`, on the right. The
   4Subsea project is titled "Insight Platform" there (formerly "Data Platform", then "Decision support platform") (its id is still
   `foursubsea`), with striped "Image to come" placeholders (`.proj-ph`)
-  until Michael sends its images. Since 2026-10-23 `projects.html` has its four key points in a 2 x 2 grid (CSS section 19, body class `kg-page`) with the summary image small at the right of the title block. Since 2026-10-11 every full case study on `projects.html` uses Data
+  until Michael sends its images. Since 2026-10-24 `projects.html` (body class `vc-page`, CSS section 20) lists the projects as vertical cards down the left from 1000px, newest first, with the chosen project on the right; tablets keep the tiles and phones the accordion, and between 1000 and 1500px the case study is one column (figures under the text) because the panel is narrower. Since 2026-10-23 `projects.html` has its four key points in a 2 x 2 grid (CSS section 19, body class `kg-page`) with the summary image small at the right of the title block. Since 2026-10-11 every full case study on `projects.html` uses Data
   Platform's five sections: Context, Challenge, Constraints, What I Did,
   What I Learned (the old headings' paragraphs rearranged into them,
   with only a few joining words changed). On 2026-10-07 the shared footer
