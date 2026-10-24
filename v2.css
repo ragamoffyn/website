@@ -2830,8 +2830,11 @@ body.ms-page .mh-side { border-color: var(--primary); }
 }
 
 /* Experience: the two graduate fellowships sit under Texas A&M. */
-.mh-honors { margin-top: var(--step-m1); }
+/* The label sits outside the indented list, flush with the employer
+   name, so it reads as a heading over the fellowships, not one of them. */
 .mh-sublabel {
+  margin: var(--step-m1) 0 var(--step-m2);
+  font-family: var(--sans);
   font-size: var(--step-m2);
   font-weight: 600;
   letter-spacing: .12em;
