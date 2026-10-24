@@ -2767,14 +2767,14 @@ body.ms-page .mh-side { border-color: var(--primary); }
    make room. */
 .hm-deco {
   flex: 1 0 auto;
-  min-height: var(--step-5);
+  min-height: calc(var(--step-5) * 1.5);
   margin-top: var(--step-1);
   background-image:
-    linear-gradient(to right, #e8e5e0 1px, transparent 1px),
-    linear-gradient(to bottom, #e8e5e0 1px, transparent 1px);
+    linear-gradient(to right, #dcd8d1 1px, transparent 1px),
+    linear-gradient(to bottom, #dcd8d1 1px, transparent 1px);
   background-size: 24px 24px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent);
-  mask-image: linear-gradient(to bottom, #000 15%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+  mask-image: linear-gradient(to bottom, #000 40%, transparent);
   position: relative;
 }
 .hm-deco svg { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -2818,3 +2818,47 @@ body.ms-page .mh-side { border-color: var(--primary); }
 .pg-steps a:hover span { text-decoration: none; }
 .pg-steps a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .pg-steps .pg-next { grid-column: 2; text-align: right; }
+
+/* Section 21, continued: a link from the intro straight to the work, and
+   no portrait once it would stack above the name (phones), so the text
+   comes first. */
+.hm-cta { margin-top: var(--step-1); font-size: var(--step-0); font-weight: 600; }
+.hm-cta a { text-decoration: none; }
+.hm-cta a:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 699.98px) {
+  .hm-page .ms-portrait { display: none; }
+}
+
+/* Experience: the two graduate fellowships sit under Texas A&M. */
+.mh-honors { margin-top: var(--step-m1); }
+.mh-sublabel {
+  font-size: var(--step-m2);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+/* Section 20, continued: shorter cards, and a selected card that stands
+   apart: an ink outline, a thicker ink bar and a bolder title. */
+@media (min-width: 1000px) {
+  .vc-page .proj-tile,
+  .vc-page .proj-tile:hover,
+  .vc-page .proj-tile[aria-current="true"],
+  .vc-page .proj-tile[aria-current="true"]:hover {
+    padding: var(--step-m2) var(--step-0) var(--step-m2) calc(var(--step-0) + 4px);
+  }
+  .vc-page .proj-tile .mc-year { margin-bottom: 2px; }
+  .vc-page .proj-tile .mc-title { font-size: var(--step-0); }
+  .vc-page .proj-tile .mc-topics { margin-top: 2px; }
+  .vc-page .proj-tile[aria-current="true"],
+  .vc-page .proj-tile[aria-current="true"]:hover {
+    box-shadow: inset 0 0 0 1px var(--foreground), inset 5px 0 0 var(--foreground);
+  }
+  .vc-page .proj-tile[aria-current="true"] .mc-title { font-weight: 600; }
+}
+/* The square portrait must not widen its column: at tablet widths its
+   aspect ratio pushed the text column narrower than 4 : 3, the text
+   wrapped longer than the row and spilled over the rule. */
+.hm-page .ms-hero { grid-template-columns: minmax(0, var(--ratio-a)) minmax(0, var(--ratio-b)); }
+@media (max-width: 699.98px) { .hm-page .ms-hero { grid-template-columns: 1fr; } }
