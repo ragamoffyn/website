@@ -2873,3 +2873,10 @@ body.ms-page .mh-side { border-color: var(--primary); }
 .hm-page .ms-portrait { aspect-ratio: 1057 / 1539; }
 /* Michael (24 Oct): the portrait centred in the space beside the text. */
 .hm-page .ms-portrait { justify-self: center; }
+/* Michael (24 Oct): where the summaries are four columns, the hero uses
+   the same four columns, so the portrait is centred over the fourth. */
+@media (min-width: 1100px) {
+  .hm-page .ms-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--step-2); }
+  .hm-page .ms-hero-text { grid-column: 1 / 4; }
+  .hm-page .ms-portrait { grid-column: 4; }
+}
