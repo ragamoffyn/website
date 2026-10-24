@@ -2968,3 +2968,25 @@ body.ms-page .mh-side { border-color: var(--primary); }
 /* The thumbnails now sit between a section's h3 and its first h4, so the
    h3 + h4 rule above no longer catches it: no gap above the first subheading. */
 .ks-page .proj-body h3 + .proj-figs + h4 { margin-top: 0; }
+
+/* ---------------------------------------------------------------
+   24. Experience: era cards (Michael, 24 Oct)
+   Each era's name, dates and note sit in a squared card in the
+   muted grey of the Projects cards. The rule under the page heading
+   and the dividers beside and between the era texts are gone; the
+   dividers between the job columns stay.
+   --------------------------------------------------------------- */
+.mh-head { border-bottom: 0; }
+.mh-chart .mh-era .mh-era-text {
+  border: 0 !important;
+  background: var(--muted);
+  padding: var(--step-1);
+  margin: 0 var(--step-1) var(--step-1) 0;
+}
+.mh-chart .mh-era + .mh-era .mh-era-text { margin-left: var(--step-1); }
+.mh-chart .mh-era:last-child .mh-era-text { margin-right: 0; }
+.mh-chart .mh-era-note { margin-bottom: 0; }
+@media (max-width: 999.98px) {
+  .mh-chart .mh-era .mh-era-text,
+  .mh-chart .mh-era + .mh-era .mh-era-text { margin: var(--step-2) 0 0; padding: var(--step-1); }
+}
