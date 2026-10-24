@@ -2755,33 +2755,30 @@ body.ms-page .mh-side { border-color: var(--primary); }
    and the four summaries, a full step more above and below the rule.
    On a window taller than the page the content sits at the bottom, just
    above the footer, instead of leaving a gap there (the slack goes under
-   the menu); on a page that fills the window nothing changes. Behind the
-   hero, a faint graph-paper grid.
+   the menu); on a page that fills the window nothing changes. Above the
+   hero, a band of faint graph paper with wireframe sketches.
    --------------------------------------------------------------- */
 .hm-page .ms-hero { padding-bottom: var(--step-5); }
 .hm-page .ms-summary { padding-top: var(--step-5); }
-/* The hero takes up the slack itself (its content sits at its foot), so the
-   graph-paper grid behind it runs from under the menu down to the rule,
-   fading in at the top. */
-.hm-page .ms-hero {
+/* Under the menu, a band of faint graph paper with a few wireframe boxes
+   and connectors, fading out toward the name. The band takes up the
+   slack on a tall window (so the content still sits at the foot) and is
+   at least a step high otherwise; the hero gives up some top padding to
+   make room. */
+.hm-deco {
   flex: 1 0 auto;
-  align-content: end;
-  position: relative;
-  isolation: isolate;
-}
-.hm-page .ms-hero::before {
-  content: "";
-  position: absolute;
-  inset: var(--step-1) 0 0;
-  z-index: -1;
+  min-height: var(--step-5);
+  margin-top: var(--step-1);
   background-image:
     linear-gradient(to right, #e8e5e0 1px, transparent 1px),
     linear-gradient(to bottom, #e8e5e0 1px, transparent 1px);
   background-size: 24px 24px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%);
-  mask-image: linear-gradient(to bottom, transparent, #000 30%);
-  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent);
+  mask-image: linear-gradient(to bottom, #000 15%, transparent);
+  position: relative;
 }
+.hm-deco svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hm-page .ms-hero { padding-top: var(--step-3); }
 .hm-page .ms-footer { margin-top: 0; }
 
 /* ---------------------------------------------------------------
