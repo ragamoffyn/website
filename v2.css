@@ -2931,3 +2931,33 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .vc-page .proj-figs .proj-fig-cluster { width: calc(var(--thumb) * 2.4); max-width: 100%; }
   .vc-page .proj-figs figcaption { font-size: var(--step-m1); }
 }
+/* Section 23, continued (Michael, 24 Oct): the thumbnails float right
+   at the top of their section and the text wraps around them. In the
+   markup each section's .proj-figs now comes right after its heading. */
+@media (min-width: 640px) {
+  .vc-page .proj-body section { display: flow-root; }
+  .vc-page .proj-body section > .proj-figs {
+    float: right;
+    max-width: 50%;
+    margin: .3em 0 var(--step-0) var(--step-2);
+    padding-left: 0;
+    justify-content: flex-end;
+  }
+  /* A very wide image (the sitemap) is set by width instead of height. */
+  .vc-page .proj-figs .proj-fig.proj-fig-wide:not(.proj-fig-group):not(.proj-fig-cluster) { display: block; width: 24rem; max-width: 100%; }
+  .vc-page .proj-figs .proj-fig.proj-fig-wide:not(.proj-fig-group):not(.proj-fig-cluster) > img { width: 100%; height: auto; max-width: 100%; }
+  .vc-page .proj-figs .proj-fig.proj-fig-wide:not(.proj-fig-group):not(.proj-fig-cluster) > figcaption { display: block; }
+}
+@media (min-width: 1500px) {
+  /* The heading keeps its label column; the section is a block now so
+     the float can wrap, and the heading sits in the left margin. */
+  .vc-page .proj-body section { position: relative; min-height: 3em; }
+  .vc-page .proj-body section > h3 { position: absolute; left: 0; top: 0; padding-top: 0; line-height: calc(var(--step-0) * 1.6); }
+  .vc-page .proj-body section > .proj-figs { margin-left: var(--step-2); }
+}
+/* Phones: the figures still follow the text, as before the markup moved
+   them up next to the heading. */
+@media (max-width: 639.98px) {
+  .vc-page .proj-body section { display: flex; flex-direction: column; }
+  .vc-page .proj-body section > .proj-figs { order: 1; }
+}
