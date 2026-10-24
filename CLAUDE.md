@@ -12,7 +12,7 @@ Open `index.html` directly in a browser to preview, or run
   alternate and unused version is in `alternates/`, all noindex: the
   v2 alternates (`alternates/index-cream.html`, `-newsreader`,
   `-dashboard`, `-spiral`; `projects-cream`, `-newsreader`, `-column`,
-  `-grid`, `-photo-column` (the 2026-10-23 default before the 2 x 2 grid: points down one column, image to their right), `-list`, `-longform`, `-dashboard`; `work-history-cream`,
+  `-grid`, `-photo-column` (the 2026-10-23 default before the 2 x 2 grid: points down one column, image to their right), `-list`, `-longform`, `-dashboard`; `one-page.html` (2026-10-24: Home, Experience and Projects on one page, sticky menu jumping between them, scroll-linked fade and slide between sections; its Projects are cards listed vertically on the left, newest first and selected, with the summary and case study on the right; it has its own `one-page.css` and `one-page.js`, and still loads `../v2.js` for the Experience chart), `work-history-cream`,
   `-newsreader`, `-vertical`, `-gantt`, `-dashboard`), whose links to
   shared assets and the main pages start with `../`, and the old v1 site
   in `alternates/v1/` (`index.html` is the old single-page home,

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michael E. Stiso — one page</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../v2.css" />
+  <link rel="stylesheet" href="../v2-inter.css" />
+  <link rel="stylesheet" href="../v2-white.css" />
+  <link rel="stylesheet" href="one-page.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="ms-page op-page">
+
+  <!-- One-page variant (alternates/one-page.*): Home, Experience and
+       Projects on one page. The menu is sticky and jumps to each section;
+       scrolling fades the current section as the next slides up and fades
+       in, more strongly the further down the page you are (one-page.js).
+       Projects are listed as cards down the left, newest first, with the
+       chosen project's summary and case study on the right. Content is
+       copied from index.html, experiences.html and projects.html as they
+       stood on 2026-10-24. Noindex; not in the menu. -->
+  <div class="ms-wrap">
+
+    <nav class="ms-nav op-nav" aria-label="Sections">
+      <div class="menu-links">
+        <a href="#home">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+      </div>
+      <a class="mw-owner" href="#home">Michael E. Stiso</a>
+    </nav>
+
+    <main class="op-main">
+
+      <section class="op-section" id="home" aria-label="Home">
+    <header class="ms-hero">
+      <div class="ms-hero-text">
+        <div class="ms-namerow">
+          <h1 class="ms-name">Michael E. Stiso</h1>
+          <p class="ms-role">UX and human factors</p>
+        </div>
+        <p class="ms-lede">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer. I tend to focus on decision-support tools for professionals working in complex, high-stakes environments, but I have worked on many kinds of products.</p>
+      </div>
+      <!-- Black line-art portrait on a transparent background, so it sits
+           straight on the page colour. -->
+      <div class="ms-portrait">
+        <img src="../portrait.png" alt="Portrait of Michael Stiso" width="1254" height="1254" />
+      </div>
+    </header>
+
+    <section class="ms-summary" aria-label="Summary">
+      <div class="ms-cell">
+        <h2>Cognitive psychology Ph.D.</h2>
+        <p>My graduate training was in human mental capabilities and limitations, with a focus on learning and decision making. It continues to shape how I approach both research and design.</p>
+      </div>
+      <div class="ms-cell">
+        <h2>Research + design</h2>
+        <p>My experience has been primarily in small teams, letting me perform both user research and interface design. Research shapes what gets designed; design raises new research questions.</p>
+      </div>
+      <div class="ms-cell">
+        <h2>Expert-user focus</h2>
+        <p>The thread connecting my work is a passion for building decision-support tools for professionals in dynamic environments where choices carry real consequences, and I have pursued both in research labs and in commercial settings.</p>
+      </div>
+      <div class="ms-cell">
+        <h2>Adaptable across domains</h2>
+        <p>Over 20 years working in areas such as crisis management, aviation, agriculture, banking, the military, energy, enterprise solutions, and telecommunications. While the domain changes, the underlying design problems are often the same.</p>
+      </div>
+    </section>
+      </section>
+
+      <section class="op-section" id="experience" aria-labelledby="experience-title">
+    <header class="mw-head mh-head">
+      <h2 class="ms-name" id="experience-title">Experience</h2>
+      <!-- Shows every job's description in place of the tooltips.
+           Works only with v2.js; hidden until the script marks the page. -->
+      <button class="mh-toggle" type="button" aria-pressed="false" aria-controls="mh-chart" hidden>Show all job descriptions</button>
+    </header>
+
+    <div class="mh-chart" id="mh-chart">
+        <section class="mh-era" id="era-foundations" aria-labelledby="era-foundations-name">
+          <div class="mh-era-text">
+            <h2 class="mw-era-name" id="era-foundations-name">Foundations</h2>
+            <p class="mw-era-span">1998–2003</p>
+            <p class="mh-era-note">Graduate training in how people learn and decide, alongside three human-factors placements. The grounding everything since has been built on.</p>
+          </div>
+          <div class="mh-spine" aria-hidden="true"></div>
+          <ul class="mw-jobs mh-jobs">
+            <li class="mw-job" id="job-tamu">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-tamu">
+                <span class="mw-emp">Texas A&amp;M University</span>
+                <span class="mw-meta"><span class="mw-dates">1998–2003</span> Ph.D., Cognitive Psychology</span>
+              </button>
+              <div class="mw-tip" id="tip-tamu" role="tooltip">
+                <p class="mw-tip-meta">Ph.D., Cognitive Psychology · 1998–2003</p>
+                <p>The study of human mental capabilities and limitations, with a focus on human learning and decision making.</p>
+              </div>
+            </li>
+            <li class="mw-job" id="job-intern">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-intern">
+                <span class="mw-emp">Internships</span>
+                <span class="mw-meta"><span class="mw-dates">1998 · 2000 · 2002</span> Human factors</span>
+              </button>
+              <div class="mw-tip" id="tip-intern" role="tooltip">
+                <p class="mw-tip-meta">Human factors · 1998 · 2000 · 2002</p>
+                <p>Usability testing and expert evaluations, from a battleship ordnance console to websites, phones, and voice-response systems, with prototyped redesigns that tested better than the originals. Also studied how crews planning unmanned aerial vehicle flights make decisions.</p>
+              </div>
+              <ul class="mh-subjobs" aria-label="Internships">
+                <li><span class="mw-dates">1998</span> Air Force Office of Scientific Research</li>
+                <li><span class="mw-dates">2000</span> SBC Laboratories</li>
+                <li><span class="mw-dates">2002</span> Space and Naval Warfare Systems Command</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section class="mh-era" id="era-applied" aria-labelledby="era-applied-name">
+          <div class="mh-era-text">
+            <h2 class="mw-era-name" id="era-applied-name">Applied research</h2>
+            <p class="mw-era-span">2003–2015</p>
+            <p class="mh-era-note">Twelve years testing that grounding in a variety of domains — military specialists, enterprise software, crisis management, air traffic control.</p>
+          </div>
+          <div class="mh-spine" aria-hidden="true"></div>
+          <ul class="mw-jobs mh-jobs">
+            <li class="mw-job" id="job-chi">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-chi">
+                <span class="mw-emp">CHI Systems</span>
+                <span class="mw-meta"><span class="mw-dates">2003–2005</span> Human-Systems Engineer</span>
+              </button>
+              <div class="mw-tip" id="tip-chi" role="tooltip">
+                <p class="mw-tip-meta">Human-Systems Engineer · 2003–2005</p>
+                <p>Military training and decision-support systems. Cognitive task analyses of military specialists. Investigation of the use of videogames in military training.</p>
+              </div>
+            </li>
+            <!-- Enterprise UX, a side journey inside this era, framed around
+                 its one employer so it sits in the flow of the job list
+                 rather than adding height above the spine. -->
+            <li class="mh-side">
+              <p class="mh-side-head">Enterprise UX</p>
+              <p class="mh-side-note">A side journey to explore commercial research and design.</p>
+              <ul class="mh-side-jobs">
+                <li class="mw-job" id="job-oracle">
+                  <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-oracle">
+                    <span class="mw-emp">Oracle</span>
+                    <span class="mw-meta"><span class="mw-dates">2005–2008</span> Senior Usability Engineer</span>
+                  </button>
+                  <div class="mw-tip" id="tip-oracle" role="tooltip">
+                    <p class="mw-tip-meta">Senior Usability Engineer · 2005–2008</p>
+                    <p>Iterative usability testing on enterprise software, and interaction widgets of my own design — two patented, one adopted organization-wide.</p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class="mw-job" id="job-sintef">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-sintef">
+                <span class="mw-emp">SINTEF ICT</span>
+                <span class="mw-meta"><span class="mw-dates">2008–2015</span> HCI Researcher</span>
+              </button>
+              <div class="mw-tip" id="tip-sintef" role="tooltip">
+                <p class="mw-tip-meta">HCI Researcher · 2008–2015 · Oslo, Norway</p>
+                <p>Established a “decision support in complex environments” research area. Led two EU-funded crisis-management projects and the successful bid for SINTEF's role in the EU SESAR air-traffic-management programme.</p>
+                <p class="mw-tip-cs"><a href="#projects" data-op-project="search-rescue">Drone command &#8594;</a></p>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="mh-era" id="era-digital" aria-labelledby="era-digital-name">
+          <div class="mh-era-text">
+            <h2 class="mw-era-name" id="era-digital-name">Digital transformation</h2>
+            <p class="mw-era-span">2015–2023</p>
+            <p class="mh-era-note">Three organizations trying to change what they built and how in the face of increasing digitalization.</p>
+          </div>
+          <div class="mh-spine" aria-hidden="true"></div>
+          <ul class="mw-jobs mh-jobs">
+            <li class="mw-job" id="job-nordea">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-nordea">
+                <span class="mw-emp">Nordea</span>
+                <span class="mw-meta"><span class="mw-dates">2015–2016</span> Innovation Experimentation Lead</span>
+              </button>
+              <div class="mw-tip" id="tip-nordea" role="tooltip">
+                <p class="mw-tip-meta">Innovation Experimentation Lead · 2015–2016 · Oslo, Norway</p>
+                <p>Designed fast-and-frugal experiments to assess new financial-product concepts. Qualitative and quantitative research, UX consulting, and engagement with the Scandinavian startup ecosystem.</p>
+              </div>
+            </li>
+            <li class="mw-job" id="job-yara">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-yara">
+                <span class="mw-emp">Yara International</span>
+                <span class="mw-meta"><span class="mw-dates">2016–2019</span> Experience Designer</span>
+              </button>
+              <div class="mw-tip" id="tip-yara" role="tooltip">
+                <p class="mw-tip-meta">Experience Designer · 2016–2019 · Oslo, Norway</p>
+                <p>Research and design for precision-farming tools across augmented reality (HoloLens), mobile, web, and chatbots. Helped develop an experience-design strategy aligning user needs with business goals.</p>
+                <p class="mw-tip-cs"><a href="#projects" data-op-project="coffee-ecosystem">Coffee Ecosystem &#8594;</a><a href="#projects" data-op-project="sewer-corrosion">Sewer Corrosion &#8594;</a></p>
+              </div>
+            </li>
+            <li class="mw-job" id="job-dnv">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-dnv">
+                <span class="mw-emp">DNV</span>
+                <span class="mw-meta"><span class="mw-dates">2019–2023</span> UX Lead</span>
+              </button>
+              <div class="mw-tip" id="tip-dnv" role="tooltip">
+                <p class="mw-tip-meta">UX Lead · 2019–2023 · Høvik, Norway</p>
+                <p>Multiple roles across a large professional-services organization undergoing digital transformation: UX evangelism, innovation strategy, information visualization, and research and design across teams and products.</p>
+                <p class="mw-tip-cs"><a href="#projects" data-op-project="national-security">National Security &#8594;</a><a href="#projects" data-op-project="maritime-refueling">Maritime Refueling &#8594;</a></p>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="mh-era" id="era-industrial" aria-labelledby="era-industrial-name">
+          <div class="mh-era-text">
+            <h2 class="mw-era-name" id="era-industrial-name">Industrial UX</h2>
+            <p class="mw-era-span">2023–now</p>
+            <p class="mh-era-note">Sole practitioner on a platform with many groups of specialist users. Less about proving concepts, more about consistency and usability across disparate products.</p>
+          </div>
+          <div class="mh-spine" aria-hidden="true"><span class="mh-arrow"></span></div>
+          <ul class="mw-jobs mh-jobs">
+            <li class="mw-job" id="job-4subsea">
+              <button class="mw-item" type="button" aria-expanded="false" aria-controls="tip-4subsea">
+                <span class="mw-emp">4Subsea</span>
+                <span class="mw-meta"><span class="mw-dates">2023–now</span> UX Lead &amp; Product Designer</span>
+              </button>
+              <div class="mw-tip" id="tip-4subsea" role="tooltip">
+                <p class="mw-tip-meta">UX Lead &amp; Product Designer · 2023–now · Asker, Norway</p>
+                <p>Sole UX practitioner for a digital solutions platform serving the offshore energy sector. Adopted and refined the company's first design system, led a platform-wide usability redesign, and expanded user research across product teams.</p>
+                <p class="mw-tip-cs"><a href="#projects" data-op-project="foursubsea">Insight Platform case study &#8594;</a></p>
+              </div>
+            </li>
+          </ul>
+        </section>
+    </div>
+
+    <section class="mw-extras" aria-label="Honors">
+      <div>
+        <h2 class="ms-eyebrow">Honors</h2>
+        <ul>
+          <li>NASA Graduate Student Researchers Program Fellowship</li>
+          <li>Air Force Office of Scientific Research Graduate Fellowship Program</li>
+        </ul>
+      </div>
+    </section>
+      </section>
+
+      <section class="op-section op-projects" id="projects" aria-labelledby="projects-title">
+    <header class="mw-head op-head">
+      <h2 class="ms-name" id="projects-title">Projects</h2>
+    </header>
+
+    <div class="op-layout">
+      <ul class="op-cards" aria-label="Projects, newest first">
+            <li><a class="op-card" href="#op-foursubsea" data-proj="foursubsea">
+              <span class="op-card-year">2023 — now</span>
+              <span class="op-card-title">Insight Platform</span>
+              <span class="op-card-topic">Platform&nbsp;UX</span>
+            </a></li>
+            <li><a class="op-card" href="#op-national-security" data-proj="national-security">
+              <span class="op-card-year">2022</span>
+              <span class="op-card-title">National Security</span>
+              <span class="op-card-topic">Decision&nbsp;Support</span>
+            </a></li>
+            <li><a class="op-card" href="#op-maritime-refueling" data-proj="maritime-refueling">
+              <span class="op-card-year">2020</span>
+              <span class="op-card-title">Maritime Refueling</span>
+              <span class="op-card-topic">Concept&nbsp;Development</span>
+            </a></li>
+            <li><a class="op-card" href="#op-coffee-ecosystem" data-proj="coffee-ecosystem">
+              <span class="op-card-year">2019</span>
+              <span class="op-card-title">Coffee Ecosystem</span>
+              <span class="op-card-topic">Service&nbsp;Design</span>
+            </a></li>
+            <li><a class="op-card" href="#op-sewer-corrosion" data-proj="sewer-corrosion">
+              <span class="op-card-year">2017</span>
+              <span class="op-card-title">Sewer Corrosion</span>
+              <span class="op-card-topic">Data&nbsp;Visualization</span>
+            </a></li>
+            <li><a class="op-card" href="#op-search-rescue" data-proj="search-rescue">
+              <span class="op-card-year">2015</span>
+              <span class="op-card-title">Drone command</span>
+              <span class="op-card-topic">Human&nbsp;Factors</span>
+            </a></li>
+      </ul>
+      <div class="op-panel" id="op-panel" aria-live="polite">
+          <article class="op-proj" id="op-foursubsea" data-proj="foursubsea" aria-labelledby="op-foursubsea-title">
+            <header class="op-proj-head">
+              <div>
+                <h3 class="proj-title" id="op-foursubsea-title">Insight Platform</h3>
+                <p class="proj-subtitle">Platform UX and a first design system for offshore wind and oil-and-gas operations. Part of my time at <a class="proj-joblink" href="#job-4subsea">4Subsea</a>.</p>
+              </div>
+              <img class="op-lead" src="../img/foursubsea-lead.webp" width="474" height="266" alt="Illustration of offshore oil and gas and wind installations with subsea cables and a data display" />
+            </header>
+            <ul class="mc-points op-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> The platform had grown product by product, with inconsistent patterns, terms, and navigation.</li>
+            <li><span class="mc-key">Role</span> Sole UX practitioner, from single components to the structure of the whole platform.</li>
+            <li><span class="mc-key">Approach</span> Adopted and refined the company's first design system and led a platform-level usability redesign.</li>
+            <li><span class="mc-key">Outcome</span> More consistency across products, and user research shared across product teams.</li>
+          </ul>
+            <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>4Subsea develops monitoring and integrity-management software for the offshore energy industry — tools used by engineers responsible for assets in demanding, high-stakes environments. I have been the sole UX practitioner on the team, which means my responsibilities cover the full scope of UX: from individual component design to the overall structure and consistency of the platform. I have shaped the tool from its early engineer-designed beginnings through a number of iterations.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>The platform had grown product by product, without a unified design foundation to keep it consistent. The result was variation in interaction patterns, terminology, and navigation that created unnecessary friction for users. At the same time, the company was expanding its user base, which made addressing those inconsistencies more urgent.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="../img/foursubsea-sitemap.webp" width="2196" height="455" alt="Sitemap of the platform: a home page branching into dashboards, monitoring, search, and work areas, each with its own sub-pages" loading="lazy" />
+                <figcaption>The platform sitemap.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>Working as a solo practitioner in an engineering-led organization means managing competing priorities. The users are experienced engineers with well-developed opinions about their tools, as well as limited availability for formal research sessions. Hence, research must be embedded into existing workflows rather than staged separately.</p>
+              <p>In addition, developer resources are extremely limited, and any time they devote to design implementation means less time they can spend on core functionality. So design must progress in small, spaced increments and through compromise.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <h4>First steps</h4>
+              <p>One of the early goals was to adopt and refine the company's first design system, bringing more consistency and an updated look across products. I then led an initial platform-level usability redesign focused on fixing some of the biggest usability issues with the platform.</p>
+              <h4>Later steps</h4>
+              <p>With the exception of localized page additions and redesigns, we maintained that overall design for several quarters while I focused on a more complete overhaul to address remaining issues, and dev returned to the backend. The refresh will be squeezed into and spread across several sprints the next couple of quarters.</p>
+              <h4>AI</h4>
+              <p>The design system and all page designs used to live in Figma, but both now reside in GitHub repos that I maintain. I converted them into HTML, CSS, and JavaScript files via Claude Code, worked for a couple of months to get everything looking as it should, constructed design.md and other guidance docs based on them, and now modify them and create new pages via iterations with Claude.</p>
+              <h4>Compromise</h4>
+              <p>It's worth emphasizing that every component on every page has been a compromise in design. Business objectives, user needs, consistency, and the need to minimize developer effort continually combine to dictate the result, with me judging when to push for high-priority items.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig proj-fig-cluster">
+                <div class="proj-fig-imgs">
+                  <img src="../img/dp-home-customer.webp" width="1800" height="1125" alt="Home page as a customer sees it: a welcome banner and a row of vessel cards listing live solutions" loading="lazy" />
+                  <img src="../img/dp-home-internal.webp" width="1800" height="1125" alt="Home page as an internal user sees it: all assets across customers, grouped by type" loading="lazy" />
+                  <img src="../img/dp-asset-vessel.webp" width="1800" height="1164" alt="Asset page for a vessel: an overview of activity and analyses, in progress, next, and planned" loading="lazy" />
+                  <img src="../img/dp-solution-valves.webp" width="1800" height="1125" alt="Solution page for a valve tracker: a table of equipment with status, location, and approval columns" loading="lazy" />
+                  <img src="../img/dp-solution-manager.webp" width="1800" height="1694" alt="Solution page for a manager tool: a table of activities grouped by project, with controls above" loading="lazy" />
+                  <img src="../img/dp-campaign.webp" width="1800" height="2388" alt="Campaign page: details and a grid of solution cards for a drilling campaign" loading="lazy" />
+                </div>
+                <figcaption>A sampling of designs from the platform.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>Compared to my other projects, the main learnings in this one were more on the team and organizational side than on the design one. When development resources are a severely limiting factor, UX becomes just as much a matter of communication and negotiation with your team, your stakeholders, and your leadership as it is of research and design.</p>
+            </section>
+          </div>
+          </details>
+          </article>
+          <article class="op-proj" id="op-national-security" data-proj="national-security" aria-labelledby="op-national-security-title">
+            <header class="op-proj-head">
+              <div>
+                <h3 class="proj-title" id="op-national-security-title">National Security</h3>
+                <p class="proj-subtitle">Highlighting patterns in heterogeneous risk data for analysts performing work critical to national security. Part of my time at <a class="proj-joblink" href="#job-dnv">DNV</a>.</p>
+              </div>
+              <img class="op-lead" src="../img/national-security-assessment.webp" width="474" height="316" alt="A printed risk assessment matrix, severity against probability, beside a keyboard" />
+            </header>
+            <ul class="mc-points op-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> Risk analysts had no interface tying together large volumes of unconnected data.</li>
+            <li><span class="mc-key">Role</span> UX lead and sole UX practitioner on a cross-company team: research, interaction design, and prototyping.</li>
+            <li><span class="mc-key">Approach</span> Reframed the work as a proof of concept and scoped it to one incident scenario, within about 100 hours over five weeks.</li>
+            <li><span class="mc-key">Outcome</span> A Figma prototype that satisfied both the client and the funding agency.</li>
+          </ul>
+            <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>The client performs analyses that are critical to national security. A recent and significant increase in workload had created two related pressures: a need to increase throughput, and a need to get more value from the data already available.</p>
+              <p>My company had a set of backend tools that, combined, would support those needs. However, no user interface tied them together, and the analysts had no existing visualization or interface of any kind to build upon. So a cross-company team of developers, risk engineers, and myself had to create something new.</p>
+              <p>I was the sole UX person on the team, and my role covered the full range of UX activities on the project: all user research, interaction design, and prototyping.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>The key decision the risk analysts make is whether there is a likelihood of some security threat. Making that decision involves looking for patterns across different kinds of information existing in multiple heterogeneous sources. We had tools that could help with the synthesis of that information, theoretically enabling both better efficiency and higher informational value.</p>
+              <p>What we did not have was a window into that synthesis: a common, dynamic threat picture that would present multiple information sources and highlight connections between them that would otherwise go unnoticed.</p>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>The client's requirements for the deliverable were specific and, in combination, demanding. The interactive prototype needed to demonstrate, credibly, that the proposed solution could reduce analysis time and improve risk detection. It also needed to look polished enough to convince the funding agency that the concept was feasible — not a rough sketch, but instead something that looked like a real product. And it needed to be able to demonstrate the solution concept within a few minutes.</p>
+              <p>The deadline left me with approximately 100 hours over the course of 5 weeks for all research, design, and prototyping work.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <p>The first step was to set client expectations. Their ambitions exceeded their timeline, so we worked with them to see this project as an initial step in a much larger effort — a means to form and demonstrate the concept for a solution.</p>
+              <p>The second step was tight scoping. Working with both the client and my own team, I defined a very specific scenario: a single incident, a sequence of activities the analyst would perform in response to it, and a clear endpoint. This level of specificity was essential given the time constraints. It meant I could focus my research on only those user actions, decisions, and needs that fell within that scenario. It also meant I could design only the portions of the interface that scenario would actually touch. And it meant I could add only as much interactivity as was needed to support a scripted demonstration.</p>
+              <p>For the prototype itself, I used Figma and worked from a generic design system, which allowed me to save time that would otherwise have gone to building foundational components from scratch. The actual design work is confidential and cannot be shared publicly, but the outcome of the process was a successful demonstration that satisfied both the client and the funding agency.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="../img/national-security-approach.webp" width="750" height="651" alt="Blurred process map and prototype storyboard from the project" loading="lazy" />
+                <figcaption>Some of the artifacts resulting from the user research phase. (Blurred due to NDA.)</figcaption>
+              </figure>
+              <figure class="proj-fig">
+                <img src="../img/national-security-results.webp" width="750" height="500" alt="Blurred screenshot of the finished risk dashboard prototype" loading="lazy" />
+                <figcaption>Imagine a cool, interactive UI showing relationships between disparate data. (Blurred due to NDA.)</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>This project involved the largest set of compromises I had faced up to that point in my career. Both the research and the design were far from ideal given the time available — user research was minimal, and design iteration was necessarily limited. However, the combination of early expectation management, tight scenario scoping, and a clear focus on a single use case produced something that satisfied the client.</p>
+              <p>The central lesson was one of scope: When time and money are limited, the most important thing is to define a very small, very specific target — and then hit it cleanly.</p>
+            </section>
+          </div>
+          </details>
+          </article>
+          <article class="op-proj" id="op-maritime-refueling" data-proj="maritime-refueling" aria-labelledby="op-maritime-refueling-title">
+            <header class="op-proj-head">
+              <div>
+                <h3 class="proj-title" id="op-maritime-refueling-title">Maritime Refueling</h3>
+                <p class="proj-subtitle">Enabling better coordination for ad hoc ship refueling negotiations at sea. Part of my time at <a class="proj-joblink" href="#job-dnv">DNV</a>.</p>
+              </div>
+              <img class="op-lead" src="../img/maritime-refueling-ships.webp" width="900" height="506" alt="An LNG bunker vessel refuelling a container ship at sea" />
+            </header>
+            <ul class="mc-points op-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> Ships negotiating unplanned fuel purchases at sea had no dedicated tools.</li>
+            <li><span class="mc-key">Role</span> Led UX research and design, from definition to prototype testing.</li>
+            <li><span class="mc-key">Approach</span> Interviews showed scheduling was the real pain, so I proposed narrowing the tool to it, then tested an interactive Axure prototype.</li>
+            <li><span class="mc-key">Outcome</span> The designs became the foundation of the product that was eventually released.</li>
+          </ul>
+            <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>The team behind this project wanted to build a tool that would cover the full negotiation process between companies that have fuel and ships that need it, giving the parties involved a shared environment for reaching agreement. My role was to get the project off the ground: definition, research, concept development, and prototype testing.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>Ships at sea frequently need to negotiate unplanned fuel purchases with nearby suppliers — an activity that occurs over the phone or radio with regularity but has no dedicated tooling to support it.</p>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>The target users for this project were highly specialized and relatively few in number, and also wary of what might read as a sales pitch. Access was consequently limited to a very small number of users for roughly an hour each. That is not an ideal research situation, but it was the realistic one, and it was considerably better than the alternative of continuing to work entirely from assumptions.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <p>On joining the project, I worked with the team to clarify their objectives and map their existing understanding of the current activity. This included producing a diagram of the customer journey as the team understood it at that point — the steps, the actors involved, the assumed pain points. I then compiled what we needed to know and what we needed to verify, which led to a set of initial questions to take to actual users.</p>
+              <p>Rather than attempting to get a complete account of the full negotiation journey in that limited time, I focused on gaining a high-level view of the key steps and then digging into the areas that seemed most challenging or painful. The method was semi-structured interviews combined with task analysis. The research made one thing clear: Building a tool intended to support the entire negotiation process from start to finish would mean competing directly with established tools like Outlook and Excel, which did not fit the team's timeline or available resources.</p>
+              <p>The same interviews that ruled out the broader scope also pointed toward something more tractable. Scheduling — a specific part of the negotiation process involving the coordination of times and locations across multiple parties and communication channels — was a huge hassle. The back-and-forth it required, spread across a number of different channels and involving a number of different stakeholders, was identified as a point of friction.</p>
+              <p>I proposed that the team focus specifically on supporting that activity rather than attempting to cover the full negotiation process. The research provided a clear rationale for the pivot, and the team accepted it.</p>
+              <p>Multi-party remote scheduling is a dynamic, time-sensitive activity that is difficult to convey through static mockups. To communicate the concept effectively, I built a visually simple but highly interactive prototype in Axure to demonstrate the essential mechanics of how the scheduling interaction would work. The prototype was shown first to the project team and then to the users who had participated in the earlier interviews.</p>
+              <p>The response was positive. Although I moved to another project at that point, the team continued in the direction the research and prototype had established. The designs produced during this engagement served as the foundation for the product that was eventually released.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="../img/maritime-refueling-pivot.webp" width="750" height="696" alt="Bunker Schedules prototype: a list of upcoming refuelling nominations with an Edit nomination dialog" loading="lazy" />
+                <figcaption>An early interactive prototype built in Axure for user tests.</figcaption>
+              </figure>
+              <figure class="proj-fig">
+                <img src="../img/maritime-refueling-testing.webp" width="750" height="298" alt="The released FuelBoss app on a tablet, scheduling a bunkering event" loading="lazy" />
+                <figcaption>A glimpse of the resulting design, showing the core of my prototypes and what was learned during testing.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>The most significant constraint throughout this project was user access. With such a small sample of participants, the findings could not be validated as thoroughly as would be ideal. Decisions made on the basis of that research therefore carried a degree of risk — which is a real limitation, but also a characteristic of early-stage innovation work, where waiting for a larger or more representative sample is often not a realistic option.</p>
+              <p>In this case, the risk proved acceptable. The direction the research pointed toward turned out to be viable, and the product that emerged from it was released. The central lesson is that limited user access does not eliminate the value of research. It simply requires being more deliberate about where to focus time and attention.</p>
+            </section>
+          </div>
+          </details>
+          </article>
+          <article class="op-proj" id="op-coffee-ecosystem" data-proj="coffee-ecosystem" aria-labelledby="op-coffee-ecosystem-title">
+            <header class="op-proj-head">
+              <div>
+                <h3 class="proj-title" id="op-coffee-ecosystem-title">Coffee Ecosystem</h3>
+                <p class="proj-subtitle">Mapping the field-to-cup coffee journey to identify opportunities for a new digital service. Part of my time at <a class="proj-joblink" href="#job-yara">Yara International</a>.</p>
+              </div>
+              <img class="op-lead" src="../img/coffee-ecosystem-beans.webp" width="750" height="500" alt="Roasted coffee beans in a burlap sack" />
+            </header>
+            <ul class="mc-points op-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> A planned matchmaking service for small coffee farms had no clear place in the coffee ecosystem.</li>
+            <li><span class="mc-key">Role</span> Led the research, mapping the field-to-cup journey and the actors along it.</li>
+            <li><span class="mc-key">Approach</span> Two rounds of interviews and task analysis: first coffee buyers, then roasters once buyers proved well served.</li>
+            <li><span class="mc-key">Outcome</span> An ecosystem map and several opportunities among roasters, which fed the team's ideation.</li>
+          </ul>
+            <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>A team at Yara had in mind a matchmaking service designed to support small coffee farms, connecting producers with buyers in a more direct and transparent way. My role was to lead the research effort: to map the field-to-cup journey, understand the actors involved, and determine where the team's concept might actually find a foothold.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>The opportunity space was not well defined, and the team was operating largely on assumptions about where in the coffee ecosystem a viable product might fit.</p>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>The target users for this project, coffee buyers and roasters, were relatively accessible and generous with their time compared to many of the specialized professional communities I have worked with. The subject matter itself presented a different kind of challenge: The journey of a coffee bean from field to cup is genuinely complex, involving a large number of actors, geographies, and commercial relationships, each with its own logic. Mapping and making sense of that system was a satisfying research challenge — and one that was still well-contained enough to yield a coherent picture within a reasonable timeframe.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <p>The first step was to work with the team to clarify their objectives, align on what they hoped to learn, and surface the knowledge they already had. This involved documenting their understanding of the field-to-cup journey, their existing assumptions about actors and pain points, and the gaps in their information. The process also identified which actors in the coffee ecosystem the team had in mind as potential users. Based on access considerations, we decided to approach coffee buyers first. That decision shaped the initial set of research questions.</p>
+              <p>Through a combination of company sales contacts and my own networking, I identified and interviewed a number of people responsible for purchasing decisions at local coffee buyers. The method was semi-structured interviews combined with task analysis. The interviews produced a detailed picture of the field-to-cup journey and the actors involved at each stage, the pain points distributed across it, the key purchasing decisions buyers faced and the variables that shaped those decisions, and some early feedback on the feasibility of the team's concept.</p>
+              <p>The findings from this first round, however, did not reveal the kinds of clear opportunities for supporting coffee buyers that the team had hoped to find. The buyers had existing tools and processes that served their needs adequately, and the space for a new matchmaking service was not as open as the team had assumed.</p>
+              <p>While the first round of research did not confirm the team's original direction, it pointed clearly toward a different actor in the ecosystem: coffee roasters. The interviews with buyers had surfaced enough information about the roaster side of the relationship to suggest that the purchasing dynamics there might be more receptive to the kind of support the team had envisioned.</p>
+              <p>I conducted a second round of interviews focused specifically on purchasing activity within local roasters. This round identified a number of potential areas that might benefit from the kind of matchmaking and transparency the team had in mind. The team then entered an ideation phase, using the research findings as the foundation for generating and evaluating product concepts.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="../img/coffee-ecosystem-map.png" width="3034" height="1572" alt="Ecosystem map of the field-to-cup journey: farmers, cooperatives, exporters, importers, roasters, and consumers, with importing roasters, café chains, and big roasters shown buying directly" loading="lazy" />
+                <figcaption>An overview of the players in the ecosystem.</figcaption>
+              </figure>
+              <figure class="proj-fig">
+                <img src="../img/coffee-ecosystem-roasters.webp" width="1500" height="698" alt="Blurred table of the roasters’ purchasing journey, from research and planning to selling" loading="lazy" />
+                <figcaption>The buying journey for coffee roasters. (Blurred due to NDA.)</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>This was one of the more enjoyable projects I have worked on, both for the richness of the domain and for the way the research process itself unfolded, with one round of findings redirecting the effort toward a more promising area.</p>
+            </section>
+          </div>
+          </details>
+          </article>
+          <article class="op-proj" id="op-sewer-corrosion" data-proj="sewer-corrosion" aria-labelledby="op-sewer-corrosion-title">
+            <header class="op-proj-head">
+              <div>
+                <h3 class="proj-title" id="op-sewer-corrosion-title">Sewer Corrosion</h3>
+                <p class="proj-subtitle">Redesigning a corrosion estimation tool to support better decision-making by sewer maintenance managers. Part of my time at <a class="proj-joblink" href="#job-yara">Yara International</a>.</p>
+              </div>
+              <img class="op-lead" src="../img/sewer-corrosion-tunnel.webp" width="750" height="532" alt="A sewer worker in a hard hat and high-visibility vest walking through a corroded concrete tunnel" />
+            </header>
+            <ul class="mc-points op-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> An Excel tool for estimating sewer corrosion needed heavy input and gave results even experts found hard to read.</li>
+            <li><span class="mc-key">Role</span> Redesigned it as an application for mobile and desktop, in Sketch.</li>
+            <li><span class="mc-key">Approach</span> Data entry in small steps, selection controls instead of typing, and a clear view of current state, remaining life, options, and deadlines.</li>
+            <li><span class="mc-key">Outcome</span> Iterated designs at mobile and desktop sizes, with the company's style guide rebuilt for the web.</li>
+          </ul>
+            <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>The topic was sewer corrosion: the slow degradation of pipe infrastructure that, if left unaddressed, eventually leads to ruptures and the significant costs they bring. The goal was to help the people responsible for managing sewer systems understand the current state of their infrastructure, what their options were for addressing it, and how those options compared to one another. The strategy was an application that would simplify data entry and present the results in a way that would be understandable to non-expert users, not only the engineers who understood the underlying models but also the managers and decision-makers who needed to act on the outputs.</p>
+              <p>Sewers corrode over time and eventually fail. The people responsible for managing them need to make a set of interconnected decisions: how severe is the current corrosion, whether the present moment is a good time to invest in repairs, whether pipe replacement might be a better long-term investment than repair, and how long they can realistically delay a decision without incurring greater costs later. The company also wanted to surface a fifth option, the use of its own chemical treatments to extend pipe lifespan, as part of the comparison.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>An existing Excel-based tool covered all of the above, but it required a substantial amount of user input and produced results that were difficult to interpret even for subject-matter experts. The goal was to redesign it as an actual application — one that would be both more efficient to use and more legible to a wider range of users.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig proj-fig-group proj-fig-stack">
+                <div class="proj-fig-imgs">
+                  <img src="../img/sewer-corrosion-estimator.webp" width="1000" height="750" alt="Early H2S corrosion cost estimator: system integrity, remedy costs, and a chart of integrity over time for chemical treatment, repair, and replacement" loading="lazy" />
+                  <img src="../img/sewer-corrosion-lifespan.webp" width="482" height="362" alt="Early concept chart of sewer system lifespan against H2S exposure, with and without treatment" loading="lazy" />
+                </div>
+                <figcaption>What the team was working with before I arrived. The sketches were much too confusing for users to easily understand.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>Some degree of data entry was unavoidable. The underlying estimates required information from the user, and there was no way around that. The challenge was to make that entry as efficient and as low-friction as possible. Equally important was making the outputs of those estimates comprehensible to users who did not have deep familiarity with the domain models behind them.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <p>I focused on a set of design strategies to address both concerns:</p>
+              <ul>
+                <li>Chunking the data entry process into smaller, more clearly bounded steps, rather than presenting it as a single undifferentiated form.</li>
+                <li>Using selection interfaces (dropdowns, sliders, and option groups) wherever possible rather than requiring users to type in values, which reduced input error and cognitive load simultaneously.</li>
+                <li>Supporting situation awareness by making four things clearly visible: the current state of the system (corrosion level and rate of change), the future state (estimated remaining system life), the available options (costs and lifespan implications of replacing, repairing, or applying chemical treatment), and the time constraints on the decision.</li>
+              </ul>
+              <p>The designs were produced in Sketch and went through a number of iterations before reaching a final state. The final deliverable covered both mobile and desktop breakpoints, as the company had a preference for optimizing the experience for mobile use, reflecting where and how the target users would most often be accessing the tool.</p>
+              <p>The project also required applying the company's existing branding and style guide, which I rebuilt in Sketch and adapted as needed for the conventions of a web application context, where the original guide had not been designed with that environment in mind.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig proj-fig-group proj-fig-pair" data-fit>
+                <div class="proj-fig-imgs">
+                  <img src="../img/sewer-corrosion-status.webp" width="300" height="819" alt="Mobile design: corrosion assessment showing level and speed of corrosion, remaining lifespan, and deadline for repair" loading="lazy" />
+                  <img src="../img/sewer-corrosion-options.webp" width="300" height="819" alt="Mobile design: treatment options comparing the cost and resulting lifespan of replacing, repairing, or doing nothing" loading="lazy" />
+                </div>
+                <figcaption>Sketch designs for the mobile app, providing a cleaner and more intuitive visualization of the key concepts that users needed to understand.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>Looking back at this project, there are a number of design decisions I would approach differently today. The desktop version in particular has a wizard-style look and feel that steps the user through a linear sequence of inputs, which I now find somewhat limiting as a design pattern for this kind of tool. It works, but it constrains the user's ability to move freely between sections or revisit earlier inputs in response to later ones. The data visualizations, also, could be more refined and more precisely calibrated to the information the user needs to act on.</p>
+            </section>
+          </div>
+          </details>
+          </article>
+          <article class="op-proj" id="op-search-rescue" data-proj="search-rescue" aria-labelledby="op-search-rescue-title">
+            <header class="op-proj-head">
+              <div>
+                <h3 class="proj-title" id="op-search-rescue-title">Drone command</h3>
+                <p class="proj-subtitle">Designing a drone command interface to give search-and-rescue field commanders direct situational awareness. Part of my time at <a class="proj-joblink" href="#job-sintef">SINTEF ICT</a>.</p>
+              </div>
+              <img class="op-lead" src="../img/search-rescue-drone.webp" width="826" height="561" alt="A field team in high-visibility vests flying a drone beside a river valley" />
+            </header>
+            <ul class="mc-points op-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> Search-and-rescue commanders could not see where drones were or what they recorded; it reached them by radio.</li>
+            <li><span class="mc-key">Role</span> Led UX and UI design: needs, requirements, human factors, wireframes, and evaluation.</li>
+            <li><span class="mc-key">Approach</span> A multi-year user-centred process: domain analysis and workshops, then design iterations tested with users.</li>
+            <li><span class="mc-key">Outcome</span> Working prototypes built with front-end developers, across about a dozen European partners.</li>
+          </ul>
+            <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>This was part of a multi-company, multiyear research project for the EU that focused on tools for improving drone use in search and rescue (SAR) during crisis situations. Drones are increasingly used in SAR operations, providing aerial coverage, thermal imaging, and real-time video that can make the difference in locating a missing person.</p>
+              <p>In practice, though, their use can be haphazard, because (at the time) field commanders directing SAR efforts had no direct view of where the drones were operating or what they were recording. That information reached them indirectly, via radio from drone operators positioned elsewhere on the scene. The result is a significant gap in situational awareness at precisely the level where overall coordination decisions are being made.</p>
+              <p>My company (SINTEF) was part of the consortium building this solution, and I led the design of the command console for it. My responsibilities covered needs identification, requirements generation, human-factors considerations, wireframing, and evaluation. End users were involved throughout the project, contributing through interviews, workshops, participatory design sessions, and usability tests.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>Our goal was to provide first responders in search-and-rescue operations with a system through which they could locate the drones operating on scene, direct their movements, and monitor their feeds. We wanted to give field commanders a direct, real-time picture of the aerial assets under their coordination rather than a secondhand account of what those assets were observing.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="../img/search-rescue-concept.webp" width="826" height="619" alt="DARIUS concept diagram: a deployable search-and-rescue chain linking first responders, ground station, and command post to unmanned ground, sea, and air vehicles" loading="lazy" />
+                <figcaption>An overview of the project in question.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>The project team included approximately a dozen partner organizations — a mix of academic institutions, corporate partners, small and medium-sized enterprises, and research groups distributed across Europe. The coordination challenges that come with that kind of distributed, multi-stakeholder structure were considerable.</p>
+              <p>A separate challenge was the nature of the domain itself. Search-and-rescue events occur infrequently and unpredictably, which made it difficult to observe them in realistic conditions or to test design solutions in the field. The team had to be both strategic and opportunistic — building research plans that could adapt to whatever opportunities arose, while also looking ahead to scheduled events, such as product demonstrations and first-responder training exercises, that would provide access to real users in relevant contexts.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <p>The project followed a user-centered design process structured across multiple years and divided into two broad stages: research and iterative design.</p>
+              <p>The research stage began with a domain analysis. This involved reviewing previous projects and published research in the area, studying existing systems used in similar contexts, talking with field experts, and conducting a workshop with search-and-rescue stakeholders. A SAR operations manual served as a primary reference, and I used it to build a map of the interactions between different roles in a typical SAR operation — how information flowed between them, what decisions each role was responsible for, and where breakdowns in coordination tended to occur. The output of this stage was a set of user requirements for the system interface.</p>
+              <p>The design stage proceeded over a number of iterations, each separated by workshops and evaluation sessions with users. The deliverables included usage scenarios developed to focus and constrain the design effort, as well as wireframes, mockups, storyboards, paper prototypes, and working prototypes built by front-end developers on the team.</p>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="../img/search-rescue-process-crop.webp" width="750" height="503" alt="The design process as a rising arrow: requirements, wireframes, storyboards, mockups, and prototypes" loading="lazy" />
+                <figcaption>The evolution of the designs.</figcaption>
+              </figure>
+              </div>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>Early in the project, my team discovered that the implementation being developed by the technical partners had diverged in a number of ways from the UX designs, which required additional effort to diagnose and correct. This served as a clear illustration of the importance of establishing explicit communication channels between design and development in any distributed project team — not as a formality, but as an active and ongoing practice.</p>
+            </section>
+          </div>
+          </details>
+          </article>
+      </div>
+    </div>
+      </section>
+
+    </main>
+
+    <footer class="ms-footer">
+      <h2 class="ms-footer-label">Contact</h2>
+      <div class="ms-contact-links">
+        <a href="mailto:mikestiso@gmail.com">mikestiso@gmail.com</a>
+        <a href="https://www.linkedin.com/in/mikestiso" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+        <a href="../Michael-Stiso-CV-2026.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+        <span>Oslo, Norway</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../v2.js"></script>
+  <script src="one-page.js"></script>
+</body>
+</html>

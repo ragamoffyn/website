@@ -1,0 +1,215 @@
+/* One-page variant (alternates/one-page.html). Loaded after v2.css,
+   v2-inter.css and v2-white.css; everything here is namespaced .op-*
+   so the live pages are untouched. */
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+:root { --op-nav: 4rem; }
+
+/* ---- Sticky menu ---- */
+.op-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--background);
+  padding-bottom: var(--step-m2);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.op-nav.is-stuck { border-bottom-color: var(--border); }
+
+/* ---- Sections ---- */
+.op-section {
+  min-height: calc(100vh - var(--op-nav));
+  min-height: calc(100dvh - var(--op-nav));
+  padding-bottom: var(--step-4);
+  scroll-margin-top: var(--op-nav);
+  transform-origin: 50% 0;
+}
+.op-section:last-child { padding-bottom: 0; }
+.op-head { padding: var(--step-2) 0 var(--step-3); }
+.op-head .ms-name { font-size: var(--step-3); }
+
+/* ---- Projects: cards down the left, the chosen project on the right ---- */
+.op-layout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 3fr) minmax(0, 9fr);
+  column-gap: var(--step-3);
+  align-items: start;
+  padding-top: var(--step-2);
+}
+.op-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--step-m2);
+  position: sticky;
+  top: calc(var(--op-nav) + var(--step-0));
+}
+.op-card {
+  display: block;
+  padding: var(--step-m1) var(--step-0) var(--step-m1) calc(var(--step-0) + 3px);
+  background: var(--muted);
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+.op-card-year,
+.op-card-title,
+.op-card-topic { display: block; }
+.op-card-year { font-size: var(--step-m1); font-weight: 600; color: var(--foreground); margin-bottom: 2px; }
+.op-card-title { font-size: var(--step-1); line-height: 1.2; color: var(--primary); }
+.op-card-topic { margin-top: 2px; font-size: var(--step-m1); color: var(--muted-foreground); }
+.op-card:hover .op-card-title { text-decoration: underline; text-underline-offset: 3px; }
+.op-card[aria-current="true"] {
+  background: var(--card);
+  border-left-color: var(--foreground);
+  box-shadow: inset 0 0 0 1px var(--border);
+  box-shadow: inset 0 0 0 1px var(--border), inset 3px 0 0 var(--foreground);
+  border-left-color: transparent;
+}
+.op-card[aria-current="true"] .op-card-title { color: var(--foreground); }
+.op-card[aria-current="true"]:hover .op-card-title { text-decoration: none; }
+.op-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.js .op-proj:not(.is-shown) { display: none; }
+.op-proj.is-shown { animation: mc-fade .3s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .op-proj.is-shown { animation: none; } }
+
+.op-proj-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--step-2);
+  align-items: end;
+}
+.op-proj .proj-title { font-size: var(--step-3); line-height: 1.1; margin: 0; }
+.op-proj .proj-subtitle { margin-top: var(--step-m1); font-size: var(--step-0); max-width: 40rem; }
+.op-lead {
+  display: block;
+  width: clamp(9rem, 17vw, 14rem);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.op-points.op-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--step-3);
+  margin: var(--step-1) 0 0;
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+}
+.op-points li {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--step-m2);
+  align-items: start;
+  align-content: start;
+  padding: var(--step-0) 0;
+  border-bottom: 0;
+}
+
+/* The case study opens under the points. */
+.op-projects .mc-more { margin-top: var(--step-0); }
+.op-projects .mc-more > summary {
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  font-weight: 600;
+  color: var(--primary);
+}
+.op-projects .mc-more > summary:hover { border: 0; color: var(--primary); }
+.op-projects .mc-more > summary:hover span,
+.op-projects .mc-more > summary:hover { text-decoration: none; }
+.op-projects .mc-more[open] > summary { margin-bottom: 0; }
+.op-projects .proj-body { margin-top: var(--step-1); border-top: 0; }
+.op-projects .proj-body section { margin-top: var(--step-3); }
+.op-projects .proj-body section:first-child { margin-top: var(--step-1); }
+.op-projects .proj-body h3 {
+  margin: 0 0 var(--step-m1);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+.op-projects .proj-body h4 { margin: var(--step-2) 0 var(--step-m2); font-size: var(--step-1); font-weight: 600; }
+.op-projects .proj-body h3 + h4 { margin-top: 0; }
+.op-projects .proj-body p { max-width: 46rem; font-size: var(--step-0); line-height: 1.6; }
+.op-projects .proj-body p + p { margin-top: var(--step-m1); }
+.op-projects .proj-body ul { max-width: 46rem; padding-left: 1.2em; font-size: var(--step-0); line-height: 1.55; }
+.op-projects .proj-body li + li { margin-top: var(--step-m2); }
+
+/* Figures sit under their section's text, side by side when there is room. */
+.op-projects .proj-figs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--step-1);
+  align-items: start;
+  margin-top: var(--step-1);
+}
+.op-projects .proj-fig { margin: 0; min-width: 0; }
+.op-projects .proj-fig img { display: block; width: auto; max-width: 100%; height: auto; border: 1px solid var(--border); }
+.op-projects .proj-fig figcaption {
+  margin-top: var(--step-m2);
+  font-family: var(--sans);
+  font-size: var(--step-m1);
+  color: var(--muted-foreground);
+}
+.op-projects img.zoomable { cursor: zoom-in; }
+.op-projects img.zoomable:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+/* Grouped figures: an overlapping pair, a side-by-side pair, a cluster. */
+.op-projects .proj-fig-group .proj-fig-imgs { position: relative; }
+.op-projects .proj-fig-stack .proj-fig-imgs { width: 100%; aspect-ratio: 4 / 3; }
+.op-projects .proj-fig-stack .proj-fig-imgs img { position: absolute; width: auto; max-width: none; object-fit: contain; }
+.op-projects .proj-fig-stack .proj-fig-imgs img:first-child { left: 0; top: 0; height: 74%; max-width: 86%; object-position: left top; }
+.op-projects .proj-fig-stack .proj-fig-imgs img:last-child {
+  right: 0;
+  bottom: 0;
+  height: 50%;
+  max-width: 62%;
+  object-position: right bottom;
+  outline: 5px solid var(--background);
+}
+.op-projects .proj-fig-stack,
+.op-projects .proj-fig-pair { max-width: 30rem; }
+.op-projects .proj-fig-pair .proj-fig-imgs { display: flex; gap: var(--step-0); justify-content: center; }
+.op-projects .proj-fig-pair .proj-fig-imgs img { min-width: 0; width: auto; height: auto; max-width: calc(50% - var(--step-0) / 2); }
+.op-projects .proj-fig-cluster { container-type: inline-size; max-width: 30rem; }
+.op-projects .proj-fig-cluster .proj-fig-imgs {
+  --gap: var(--step-m1);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: calc((100cqw - var(--gap)) / 2 / 1.6);
+  gap: var(--gap);
+}
+.op-projects .proj-fig-cluster .proj-fig-imgs img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: top left;
+}
+.op-projects .proj-fig-cluster .proj-fig-imgs img:nth-child(n+5) { grid-row: span 2; }
+
+/* ---- Narrower screens: the cards sit above the project ---- */
+@media (max-width: 899.98px) {
+  .op-layout { grid-template-columns: minmax(0, 1fr); row-gap: var(--step-2); }
+  .op-cards {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: var(--step-m2);
+  }
+  .op-panel { scroll-margin-top: calc(var(--op-nav) + var(--step-0)); }
+}
+@media (max-width: 559.98px) {
+  .op-points.op-points { grid-template-columns: minmax(0, 1fr); }
+  .op-proj-head { grid-template-columns: minmax(0, 1fr); }
+  .op-lead { width: 100%; max-width: 18rem; }
+  .op-cards { grid-template-columns: minmax(0, 1fr); }
+}
