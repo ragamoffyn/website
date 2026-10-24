@@ -2865,3 +2865,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
    wrapped longer than the row and spilled over the rule. */
 .hm-page .ms-hero { grid-template-columns: minmax(0, var(--ratio-a)) minmax(0, var(--ratio-b)); }
 @media (max-width: 699.98px) { .hm-page .ms-hero { grid-template-columns: 1fr; } }
+/* Projects: key points one step smaller (body size), now that Michael's
+   longer wording would push Approach and Outcome below a laptop screen. */
+.kg-page .mc-points li { font-size: var(--step-0); line-height: 1.5; }
