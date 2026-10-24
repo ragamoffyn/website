@@ -2871,3 +2871,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
 /* Home: the portrait (img/portrait-bw.png, 1057 x 1539) is taller than
    square; its box takes the photo's own ratio so it sits flush right. */
 .hm-page .ms-portrait { aspect-ratio: 1057 / 1539; }
+/* Michael (24 Oct): portrait closer to the text. The step-4 margin keeps it
+   clear of "UX and human factors", which runs past the text column. */
+.hm-page .ms-portrait { justify-self: start; margin-left: var(--step-4); }
