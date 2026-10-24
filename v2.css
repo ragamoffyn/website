@@ -2792,6 +2792,11 @@ body.ms-page .mh-side { border-color: var(--primary); }
   gap: var(--step-2);
   margin-top: var(--step-3);
 }
+/* The links stay directly above the footer: on a page shorter than the
+   window the slack goes above them, not between them and the footer. */
+.ms-wrap:has(.pg-steps) > .pg-steps { margin-top: auto; }
+.ms-wrap:has(.pg-steps) > :has(+ .pg-steps) { margin-bottom: var(--step-3); }
+.ms-wrap:has(.pg-steps) > .ms-footer { margin-top: 0; }
 /* Only one rule between the summaries and the footer. */
 .ms-summary:has(+ .pg-steps) { border-bottom: 0; padding-bottom: 0; }
 .pg-steps a {
