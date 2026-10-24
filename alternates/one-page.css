@@ -25,7 +25,12 @@ html { scroll-behavior: smooth; }
   padding-bottom: var(--step-4);
   scroll-margin-top: var(--op-nav);
   transform-origin: 50% 0;
+  position: relative;
+  z-index: 1;
 }
+/* Pinned by one-page.js (top set there): the section stays in place once its
+   bottom is on screen while the next one slides up over it. */
+.op-section.is-pin { position: sticky; }
 .op-section:last-child { padding-bottom: 0; }
 .op-head { padding: var(--step-2) 0 var(--step-3); }
 .op-head .ms-name { font-size: var(--step-3); }

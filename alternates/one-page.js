@@ -1,5 +1,6 @@
-/* One-page variant: sticky menu, the scroll-linked section transition,
-   and the project cards. The Experience tooltips and toggle come from
+/* One-page variant: sticky menu, the scroll-linked section transition
+   (each section pins once its bottom is on screen and fades in place while
+   the next slides up over it), and the project cards. The Experience tooltips and toggle come from
    ../v2.js. Without this script every section and project shows. */
 (function () {
   'use strict';
@@ -10,19 +11,29 @@
   var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
   var ease = function (t) { return t * t * (3 - 2 * t); };
 
+  var main = document.querySelector('.op-main');
+  var pinned = !reduce;
+  var tops = [];
+
+  // Where each section sits in the flow, worked out from the heights so it
+  // does not depend on the pinning or on a section's transform.
   var measure = function () {
-    document.documentElement.style.setProperty('--op-nav', nav.offsetHeight + 'px');
+    var navH = nav.offsetHeight, vh = window.innerHeight, y = 0;
+    document.documentElement.style.setProperty('--op-nav', navH + 'px');
+    for (var el = main; el; el = el.offsetParent) y += el.offsetTop;
+    secs.forEach(function (s, i) {
+      tops[i] = y;
+      y += s.offsetHeight;
+      if (!pinned || i === secs.length - 1) return;
+      // Pinned once its bottom edge is on screen (or its top is under the
+      // menu, for a section shorter than the window).
+      s.classList.add('is-pin');
+      s.style.top = Math.min(navH, vh - s.offsetHeight) + 'px';
+    });
   };
 
-  /* ---- Jumping: a section sliding in is offset by its transform, and the browser's
-     own anchor jump aims at that shifted spot, so aim at the layout position ---- */
-  var layoutTop = function (el) {
-    var y = 0;
-    for (; el; el = el.offsetParent) y += el.offsetTop;
-    return y;
-  };
   var goTo = function (el) {
-    window.scrollTo({ top: Math.max(0, layoutTop(el) - nav.offsetHeight), behavior: reduce ? 'auto' : 'smooth' });
+    window.scrollTo({ top: Math.max(0, tops[secs.indexOf(el)] - nav.offsetHeight), behavior: reduce ? 'auto' : 'smooth' });
   };
   Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (a) {
     var target = a.hash.length > 1 && document.getElementById(a.hash.slice(1));
@@ -38,8 +49,8 @@
   /* ---- Menu: which section is current ---- */
   var spy = function () {
     var vh = window.innerHeight, cur = secs[0];
-    secs.forEach(function (s) {
-      if (s.getBoundingClientRect().top <= nav.offsetHeight + vh * 0.35) cur = s;
+    secs.forEach(function (s, i) {
+      if (tops[i] - window.scrollY <= nav.offsetHeight + vh * 0.35) cur = s;
     });
     // At the very bottom the last section is current, however short.
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) cur = secs[secs.length - 1];
@@ -51,35 +62,41 @@
   };
 
   /* ---- The transition ----
-     A section fades as its lower edge rises under the menu; the one
-     below slides up and fades in as its top rises into the window. The
-     slide and the scale grow with how far down the page you are, so the
-     later sections arrive harder than the first. */
+     A section scrolls normally until its bottom is on screen, then stays
+     put. The one below rises over it, and as it does the pinned section
+     fades out in place while the new one fades in. The slide and the
+     scale grow with how far down the page you are, so the later sections
+     arrive harder than the first. */
   var animate = function () {
-    var vh = window.innerHeight, navH = nav.offsetHeight;
+    var vh = window.innerHeight;
     var max = Math.max(1, document.documentElement.scrollHeight - vh);
     var prog = clamp(window.scrollY / max);
     var dist = vh * (0.05 + 0.13 * prog);
     var shrink = 0.012 + 0.04 * prog;
+    // How far each section has risen into the window: 0 as its top reaches
+    // the bottom edge, 1 after 60% of the window height.
+    var rise = secs.map(function (s, i) {
+      return i === 0 ? 1 : clamp((vh - (tops[i] - window.scrollY)) / (vh * 0.6));
+    });
     secs.forEach(function (s, i) {
-      var r = s.getBoundingClientRect();
-      var enterRaw = i === 0 ? 1 : clamp((vh - r.top) / (vh * 0.6));
-      var leaveRaw = i === secs.length - 1 ? 1 : clamp((r.bottom - navH) / (vh * 0.55));
-      var enter = ease(enterRaw), leave = ease(leaveRaw);
+      var enterRaw = rise[i];
+      var leaveRaw = i === secs.length - 1 ? 1 : 1 - rise[i + 1];
+      var enter = ease(enterRaw);
       // The outgoing section fades a little early and the incoming one a
       // little late, so the two don't sit on top of each other.
-      var op = Math.min(ease(clamp((enterRaw - 0.2) / 0.6)), ease(clamp((leaveRaw - 0.1) / 0.7)));
+      var op = Math.min(ease(clamp((enterRaw - 0.3) / 0.6)), ease(clamp((leaveRaw - 0.4) / 0.5)));
       if (op > 0.995) {
         s.style.opacity = '';
         s.style.transform = '';
+        s.style.visibility = '';
         s.style.willChange = '';
         return;
       }
-      var ty = (1 - enter) * dist;
-      var sc = 1 - (1 - enter) * shrink - (1 - leave) * shrink * 0.6;
       s.style.willChange = 'transform, opacity';
       s.style.opacity = op.toFixed(3);
-      s.style.transform = 'translate3d(0,' + ty.toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
+      // Fully faded sections are hidden so they can't be clicked or selected.
+      s.style.visibility = op < 0.01 ? 'hidden' : '';
+      s.style.transform = 'translate3d(0,' + ((1 - enter) * dist).toFixed(1) + 'px,0) scale(' + (1 - (1 - enter) * shrink).toFixed(4) + ')';
     });
   };
 
@@ -96,6 +113,10 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', function () { measure(); onScroll(); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); onScroll(); });
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(function () { measure(); onScroll(); });
+    secs.forEach(function (s) { ro.observe(s); });
+  }
   measure();
   onScroll();
 
