@@ -2961,3 +2961,7 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .vc-page .proj-body section { display: flex; flex-direction: column; }
   .vc-page .proj-body section > .proj-figs { order: 1; }
 }
+/* Michael (24 Oct): subheadings inside a section (Insight Platform's What
+   I Did steps) no bigger than the section heading: the same size, in
+   sentence case instead of capitals. */
+.ks-page .proj-body h4 { font-size: var(--step-m1); letter-spacing: 0; margin-top: var(--step-1); }
