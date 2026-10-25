@@ -3035,3 +3035,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .zoom-imgs img { max-width: calc((100vw - 2 * var(--step-0) - (var(--n, 1) - 1) * var(--step-1)) / var(--n, 1)); }
   .zoom-step { top: auto; bottom: var(--step-0); margin-top: 0; }
 }
+/* A second figure group further down a section (Maritime Refueling's
+   resulting design) keeps the paragraph gap around it. */
+.mp-page .proj-body section > p + .proj-figs + p { margin-top: var(--step-m1); }
