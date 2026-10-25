@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v2.css?v=20261025c" />
+  <link rel="stylesheet" href="v2.css?v=20261025d" />
   <link rel="stylesheet" href="v2-inter.css" />
   <link rel="stylesheet" href="v2-white.css" />
   <script>document.documentElement.classList.add('js');</script>
@@ -66,6 +66,11 @@
           <span class="mc-title">National Security</span>
           <span class="mc-year">2022</span>
           <span class="mc-topics">Decision&nbsp;Support</span>
+        </a></li>
+        <li><a class="proj-tile" href="#info-viz" data-proj="info-viz">
+          <span class="mc-title">Information Visualization</span>
+          <span class="mc-year">2020–2022</span>
+          <span class="mc-topics">Visual&nbsp;Communication</span>
         </a></li>
         <li><a class="proj-tile" href="#wind-farm" data-proj="wind-farm">
           <span class="mc-title">Wind Farm Analytics</span>
@@ -224,6 +229,85 @@
           </div>
           </details>
         </article>
+        <!-- Drafted by Claude from Michael's description and his workshop deck (25 Oct 2026), for him to edit. -->
+        <article class="proj" id="p-info-viz" data-proj="info-viz" aria-labelledby="info-viz-title">
+          <img class="proj-lead-img" src="img/iv-forecast.webp" width="1600" height="975" alt="A step chart forecasting how much each of four measures will cut CO2 emissions between 2023 and 2030" />
+          <div class="proj-meta">2020–2022 · Information Design · Visual Communication</div>
+          <h2 class="proj-title" id="info-viz-title">Information Visualization</h2>
+          <p class="proj-subtitle">I became the go-to person in several departments for turning complex graphics into visuals that both experts and laypeople could understand, and ended up teaching others how to do it. Part of my time at <a class="proj-joblink" href="experiences.html#job-dnv">DNV</a>.</p>
+          <ul class="mc-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> Teams had important findings buried in dense, hard-to-read charts, and complex concepts and processes with no clear way to show them.</li>
+            <li><span class="mc-key">Role</span> I redesigned existing visuals and created new ones for several departments, working with each team to pin down what they really wanted to say.</li>
+            <li><span class="mc-key">Approach</span> For each visual, I defined the audience and the message first, then looked for inspiration, sketched and iterated with the team, and polished the result.</li>
+            <li><span class="mc-key">Outcome</span> The work culminated in a workshop I gave for one department on how to design effective and understandable visuals.</li>
+          </ul>
+          <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>Much of DNV's expertise reaches clients and the public through charts and diagrams: the uptake of alternative fuels in shipping, the effect of future regulations on a ship's emissions, the structure of the models used to assure complex systems. Those visuals are usually made by the subject experts themselves, who know the content intimately but are not necessarily trained in presenting it.</p>
+              <p>Between 2020 and 2022, I became a go-to person in several departments for two kinds of help: translating complex graphics into a form that both laypeople and experts could understand, and creating new visuals to convey complex concepts and processes.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>The original visuals often tried to show everything at once. Many data points competed for attention, unsorted categories made comparisons slow, colors were hard to tell apart, and secondary details such as medians or decorative 3D effects drew as much attention as the main point. Seeing a trend sometimes meant comparing two separate charts from memory.</p>
+              <p>The challenge was to make the most important information obvious at a glance, without losing the nuance the experts cared about.</p>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <div class="proj-figs">
+              <figure class="proj-fig">
+                <img src="img/iv-process-map.webp" width="1480" height="830" alt="A process map: an arrow labelled establish baseline leads into a cycle of set goals, plan, execute, and implement and assess around the words build assurance case" loading="lazy" />
+                <figcaption>A new visual: the process for building a digital assurance case.</figcaption>
+              </figure>
+              </div>
+              <p>The content always belonged to the teams. Each redesign had to keep their data and the distinctions they considered essential, and their priorities sometimes shifted as we worked, so a design that was nearly finished could need rethinking.</p>
+              <p>The audiences were also mixed. A chart might be read by engineers and by people with no technical background, and conventions that are familiar to one group, such as box-and-whisker plots, can be opaque to the other.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <div class="proj-figs">
+              <figure class="proj-fig proj-fig-group proj-fig-pair proj-fig-wide">
+                <div class="proj-fig-imgs">
+                  <img src="img/iv-fuel-before.webp" width="1420" height="750" style="--ar: 1.893" alt="Before: a pie chart and a stacked bar chart of the number of ships using each alternative fuel, with ship types unsorted" loading="lazy" />
+                  <img src="img/iv-fuel-after.webp" width="920" height="1310" style="--ar: 0.702" alt="After: small bar charts showing three years of uptake for each fuel, overall and for each ship type, grouped by category" loading="lazy" />
+                </div>
+                <figcaption>Before and after: uptake of alternative fuels in shipping. The redesign sorts and groups the ship types and shows the trend over three years in one view (values in the redesign are placeholders).</figcaption>
+              </figure>
+              <figure class="proj-fig proj-fig-group proj-fig-pair proj-fig-wide">
+                <div class="proj-fig-imgs">
+                  <img src="img/iv-carbon-before.webp" width="1600" height="778" style="--ar: 2.057" alt="Before: a carbon intensity chart with ship icons, risk labels, and many dashed arrows competing for attention" loading="lazy" />
+                  <img src="img/iv-carbon-after.webp" width="1520" height="960" style="--ar: 1.583" alt="After: the same chart reduced to two bars, a high-risk and a low-risk build, showing how long each stays compliant under different regulatory paths" loading="lazy" />
+                </div>
+                <figcaption>Before and after: carbon-proofing newbuilds. The message is that reducing carbon risk lengthens a ship's compliance life, so the redesign shows just that.</figcaption>
+              </figure>
+              <figure class="proj-fig proj-fig-group proj-fig-pair proj-fig-wide">
+                <div class="proj-fig-imgs">
+                  <img src="img/iv-loa-before.webp" width="1600" height="888" style="--ar: 1.802" alt="Before: a blurry 3D spiral diagram of levels of abstraction with unclear arrows" loading="lazy" />
+                  <img src="img/iv-loa-after.webp" width="1380" height="870" style="--ar: 1.586" alt="After: stacked rings, one per level of abstraction, with labelled models, iteration arrows, and a legend" loading="lazy" />
+                </div>
+                <figcaption>Before and after: a concept diagram of levels of abstraction in system modelling.</figcaption>
+              </figure>
+              </div>
+              <p>Every visual started with a conversation with the team about what they really wanted to say. Who is the audience? What specifically should they learn from this visual? What is the key information they need to get there? From that, I sorted the content into primary information, which belongs in the foreground, secondary information, which can sit in the background, and anything nonessential, which can go.</p>
+              <p>Then I looked for inspiration in references such as chart catalogs and visual vocabularies, and sketched. Most visuals went through many iterations, each shared with the team, as we traded off clarity against completeness. The last step was polish for print or release.</p>
+              <p>A few rules of thumb guided the work: be ruthless about unnecessary visual detail, because it competes for attention; use styling to separate foreground from background; use color, shape, and position to link related things without accidentally linking unrelated ones; avoid relying on color alone; and prefer bars and small multiples over pie charts and stacked bars, which make accurate comparisons difficult.</p>
+              <p>Eventually one department asked me to teach this. I gave a workshop on designing information that meets user needs, walking through the process and a series of before-and-after examples from my own work.</p>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>The hardest part of a visual is rarely the drawing. It is deciding what the visual should say, and that decision belongs to the people who own the content. Settling the message with the team up front made the iterations faster and the results clearer.</p>
+              <p>It also confirmed that the quickest way to make a visual clearer is usually to take things away. Almost every improvement in these examples came from removing, softening, or regrouping elements rather than adding new ones.</p>
+            </section>
+          </div>
+          </details>
+        </article>
+
         <!-- Drafted by Claude from Michael's WindGEMINI documents (25 Oct 2026), for him to edit. -->
         <article class="proj" id="p-wind-farm" data-proj="wind-farm" aria-labelledby="wind-farm-title">
           <img class="proj-lead-img" src="img/wind-turbine-comparison.webp" width="902" height="540" alt="The tool's Turbine Comparison page: temperature deviations for one turbine's generator sensors plotted over three years" />

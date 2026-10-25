@@ -3038,3 +3038,15 @@ body.ms-page .mh-side { border-color: var(--primary); }
 /* A second figure group further down a section (Maritime Refueling's
    resulting design) keeps the paragraph gap around it. */
 .mp-page .proj-body section > p + .proj-figs + p { margin-top: var(--step-m1); }
+/* Information Visualization (25 Oct): before-and-after pairs of wide
+   charts are set by width like the sitemap; each image takes width in
+   proportion to its shape (--ar, width / height) so the two stand
+   equally tall. */
+.ks-page .proj-fig-pair.proj-fig-wide .proj-fig-imgs { align-items: flex-start; }
+.ks-page .proj-fig-pair.proj-fig-wide .proj-fig-imgs img { flex: var(--ar, 1) 1 0; min-width: 0; width: 0; max-width: none; height: auto; }
+@media (min-width: 640px) {
+  .vc-page .proj-figs .proj-fig-pair.proj-fig-wide { display: block; width: 26rem; max-width: 100%; }
+  .vc-page .proj-figs .proj-fig-pair.proj-fig-wide .proj-fig-imgs { height: auto; }
+  .vc-page .proj-figs .proj-fig-pair.proj-fig-wide .proj-fig-imgs img { height: auto; }
+  .vc-page .proj-figs .proj-fig-pair.proj-fig-wide > figcaption { display: block; }
+}
