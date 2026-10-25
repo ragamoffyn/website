@@ -347,7 +347,9 @@
 })();
 
 /* Projects page: clicking an image inside a case study opens a larger copy in a
-   dialog. Click, Escape or the close button dismisses it. */
+   dialog. Click, Escape or the close button dismisses it. Previous and next
+   buttons, the arrow keys, the scroll wheel and a swipe step through the
+   other images of the same case study (a grouped figure counts as one). */
 (function () {
   if (!document.body.classList.contains('ks-page') || typeof HTMLDialogElement === 'undefined') return;
   var imgs = document.querySelectorAll('.proj .proj-fig img');
@@ -364,10 +366,40 @@
   close.className = 'zoom-close';
   close.setAttribute('aria-label', 'Close');
   close.innerHTML = '&times;';
+  var mkStep = function (cls, label, glyph) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'zoom-step ' + cls;
+    b.setAttribute('aria-label', label);
+    b.innerHTML = glyph;
+    return b;
+  };
+  var prev = mkStep('zoom-prev', 'Previous image', '&#8249;');
+  var next = mkStep('zoom-next', 'Next image', '&#8250;');
+  var count = document.createElement('p');
+  count.className = 'zoom-count';
   dlg.appendChild(close);
+  dlg.appendChild(prev);
+  dlg.appendChild(next);
   dlg.appendChild(shown);
   dlg.appendChild(cap);
+  dlg.appendChild(count);
   document.body.appendChild(dlg);
+
+  // The case study's images in reading order; a grouped figure is one entry.
+  var list = [], at = 0;
+  var setList = function (img) {
+    var art = img.closest('.proj');
+    list = [];
+    Array.prototype.forEach.call(art.querySelectorAll('.proj-fig img'), function (i) {
+      var fig = i.closest('figure');
+      if (fig.classList.contains('proj-fig-group') && list.some(function (j) { return j.closest('figure') === fig; })) return;
+      list.push(i);
+    });
+    at = Math.max(0, list.findIndex(function (i) {
+      return i === img || (img.closest('.proj-fig-group') && i.closest('figure') === img.closest('figure'));
+    }));
+  };
 
   var show = function (img) {
     var fig = img.closest('figure');
@@ -384,19 +416,56 @@
     });
     cap.textContent = text ? text.textContent : '';
     cap.hidden = !cap.textContent;
-    dlg.showModal();
+    var many = list.length > 1;
+    prev.hidden = next.hidden = count.hidden = !many;
+    count.textContent = (at + 1) + ' / ' + list.length;
+    if (!dlg.open) dlg.showModal();
   };
+  var step = function (d) {
+    if (list.length < 2) return;
+    at = (at + d + list.length) % list.length;
+    show(list[at]);
+  };
+  var open = function (img) { setList(img); show(img); };
+  prev.addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
+  next.addEventListener('click', function (e) { e.stopPropagation(); step(1); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); step(-1); }
+    else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); step(1); }
+  });
+  // One wheel gesture moves one image.
+  var wheelLock = 0;
+  dlg.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    var d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    if (Math.abs(d) < 4 || Date.now() < wheelLock) return;
+    wheelLock = Date.now() + 450;
+    step(d > 0 ? 1 : -1);
+  }, { passive: false });
+  var touchX = null;
+  dlg.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  dlg.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 40) { swiped = true; step(dx < 0 ? 1 : -1); }
+  });
+  var swiped = false;
   imgs.forEach(function (img) {
     img.classList.add('zoomable');
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
     img.setAttribute('aria-label', (img.alt ? img.alt + '. ' : '') + 'Enlarge image');
-    img.addEventListener('click', function () { show(img); });
+    img.addEventListener('click', function () { open(img); });
     img.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(img); }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
     });
   });
-  dlg.addEventListener('click', function () { dlg.close(); });
+  // A tap closes it, unless it ended a swipe.
+  dlg.addEventListener('click', function () {
+    if (swiped) { swiped = false; return; }
+    dlg.close();
+  });
 })();
 
 /* Projects page: grouped figures (data-fit) make their images as tall as
