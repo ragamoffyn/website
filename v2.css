@@ -2990,3 +2990,17 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .mh-chart .mh-era .mh-era-text,
   .mh-chart .mh-era + .mh-era .mh-era-text { margin: var(--step-2) 0 0; padding: var(--step-1); }
 }
+/* Michael (25 Oct): the section label and a first subheading share one
+   line. Same size, so the same line height puts them level. */
+@media (min-width: 1500px) {
+  .ks-page .proj-body h3 + .proj-figs + h4,
+  .ks-page .proj-body h3 + h4 { line-height: calc(var(--step-0) * 1.6); }
+}
+@media (min-width: 1500px) {
+  /* Where the section opens with a paragraph (a larger size), drop the
+     label so its baseline meets the paragraph's first baseline
+     (Inter's baseline sits .36em below the middle of the line). */
+  .vc-page .proj-body section:not(:has(> h3 + h4, > h3 + .proj-figs + h4)) > h3 {
+    top: calc((var(--step-0) - var(--step-m1)) * .3635);
+  }
+}
