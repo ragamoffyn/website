@@ -67,6 +67,11 @@
           <span class="mc-year">2022</span>
           <span class="mc-topics">Decision&nbsp;Support</span>
         </a></li>
+        <li><a class="proj-tile" href="#wind-farm" data-proj="wind-farm">
+          <span class="mc-title">Wind Farm Analytics</span>
+          <span class="mc-year">2020–2021</span>
+          <span class="mc-topics">Market&nbsp;Discovery</span>
+        </a></li>
         <li><a class="proj-tile" href="#maritime-refueling" data-proj="maritime-refueling">
           <span class="mc-title">Maritime Refueling</span>
           <span class="mc-year">2020</span>
@@ -219,6 +224,66 @@
           </div>
           </details>
         </article>
+        <!-- Drafted by Claude from Michael's WindGEMINI documents (25 Oct 2026), for him to edit. -->
+        <article class="proj" id="p-wind-farm" data-proj="wind-farm" aria-labelledby="wind-farm-title">
+          <img class="proj-lead-img" src="img/wind-turbine-comparison.webp" width="902" height="540" alt="The tool's Turbine Comparison page: temperature deviations for one turbine's generator sensors plotted over three years" />
+          <div class="proj-meta">2020–2021 · UX Research · Market Discovery</div>
+          <h2 class="proj-title" id="wind-farm-title">Wind Farm Analytics</h2>
+          <p class="proj-subtitle">I investigated who an early-stage tool for spotting underperforming wind turbines could serve, and what it would take to grow its market. Part of my time at <a class="proj-joblink" href="experiences.html#job-dnv">DNV</a>.</p>
+          <ul class="mc-points" aria-label="Key points">
+            <li><span class="mc-key">Problem</span> The team had a working tool that analyzed turbine data for wind farm owners, but only a handful of customers. They needed to know who it was really for, whether there were users beyond them, and what would make it worth paying for.</li>
+            <li><span class="mc-key">Role</span> I was the UX lead, responsible for the research strategy, the interviews, and the design recommendations.</li>
+            <li><span class="mc-key">Approach</span> I interviewed current, former, and potential users about their work and their use of the tool, and made targeted fixes to its graphs along the way.</li>
+            <li><span class="mc-key">Outcome</span> The findings defined the core users, showed what the main customer needed in order to commit, and set out a research and redesign plan for the following year.</li>
+          </ul>
+          <details class="mc-more">
+            <summary>Read the full case study</summary>
+          <div class="proj-body">
+            <section>
+              <h3>Context</h3>
+              <p>WindGEMINI was an early-stage digital service at DNV GL that combined turbine sensor data with engineering models to flag problems on wind farms: drivetrain temperatures that might indicate faults, structural wear that could shorten a turbine's life, power curves pointing to incorrect settings, and production that fell short of what the wind should have delivered.</p>
+              <p>The tool worked, but it had a small user base and one main customer. I joined as UX lead from DNV GL's Digital Frameworks and Tools group, working alongside the product team, to help them understand who the tool was for and how to make it more valuable to them.</p>
+            </section>
+
+            <section>
+              <h3>Challenge</h3>
+              <p>The team wanted to verify their assumptions about their target users, understand those users' needs regarding real-time and projected turbine performance data, and assess how well the current tool met them. Just as important, they wanted to find related opportunities: other kinds of users, and other needs, the tool might serve.</p>
+              <p>That turned into a set of research questions. Who are the target end users, and what are their responsibilities? Are they the same people who make purchasing decisions? Who do they share their findings with? What turbine information matters most to them? What usability problems lower the tool's value, and which of their needs does it not meet?</p>
+            </section>
+
+            <section>
+              <h3>Constraints</h3>
+              <p>Wind farm performance analysis is a specialized field with few practitioners, so participants were scarce and their time was limited to about an hour each. Surveys, which would normally help validate interview findings, are of little use with a population that small.</p>
+              <p>The direction of the work was also unusual. User research is well suited to building solutions that help people, but it is much harder when the goal is to find people in need of a solution that already exists.</p>
+            </section>
+
+            <section>
+              <h3>What I Did</h3>
+              <div class="proj-figs">
+              <figure class="proj-fig proj-fig-wide">
+                <img src="img/wind-graph-notes.webp" width="1260" height="810" alt="One of the tool's temperature graphs with callouts suggesting a toolbar, clearer zoom and time-scale controls, and aligned overview and plot areas" loading="lazy" />
+                <figcaption>My notes on the usability of one of the tool's graphs.</figcaption>
+              </figure>
+              <figure class="proj-fig proj-fig-wide">
+                <img src="img/wind-graph-revised.webp" width="915" height="364" alt="A revised bearing temperature graph with a title bar, export icons, alert levels in yellow and red, and an overview strip below" loading="lazy" />
+                <figcaption>A revised graph design.</figcaption>
+              </figure>
+              </div>
+              <p>I started with a strategy that set out the goals, research questions, methods, and participant types, and then held semi-structured, one-hour interviews with current, former, and potential users at wind farm owners, operators, and consultancies, including Ørsted, Contour Global, and DNV GL's own consultants. Some interviews were generative, covering what people were trying to get done and how; others were evaluative, covering their experience with the tool.</p>
+              <p>The interviews showed that the core users were people at asset owners whose work depended on assessing turbine performance and health, and that they often built the case for buying the tool themselves, so marketing could be aimed at them directly. Those working as consultants needed to share their findings, which pointed to an export feature for graphs and tables. Nearly everyone found the tool too slow, too many clicks away from the important information, and its alerts too often wrong.</p>
+              <p>Most requests for new features involved diagnosing faults, which was outside the tool's intended scope. Turbine life, on the other hand, interested people at older farms and at banks that own farms, but those roles were too new to be easy to find. The main customer named a few specific measures, such as lost production factor and forced outages, that would let them drop a competing tool.</p>
+              <p>Design work during this phase was limited to revising individual graph types. Based on the feedback, I recommended a larger overhaul of the page layouts and interactions, and put together a plan for the following year: an ecosystem map of the wind power industry, interviews on the manufacturer and farm side, personas, cognitive task analysis, usability testing, and analytics to show which dashboards were actually used.</p>
+            </section>
+
+            <section>
+              <h3>What I Learned</h3>
+              <p>Searching for a market for an existing tool is a different exercise from designing a tool for a known need. Interviews were good at showing how current users worked and where the tool fell short, but finding new users meant looking for people whose roles were barely defined yet. A map of the whole ecosystem would have been a better starting point than a list of the people we already knew.</p>
+              <p>It also showed how quickly user requests can pull a product away from its purpose. Almost everyone wanted help diagnosing faults, and adding it would have made the tool more useful to them, but also less clear about what it was for.</p>
+            </section>
+          </div>
+          </details>
+        </article>
+
         <article class="proj" id="p-maritime-refueling" data-proj="maritime-refueling" aria-labelledby="maritime-refueling-title">
           <img class="proj-lead-img" src="img/maritime-refueling-ships.webp" width="900" height="506" alt="An LNG bunker vessel refuelling a container ship at sea" />
           <div class="proj-meta">2020 · UX Research · Concept Development</div>
