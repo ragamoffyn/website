@@ -3054,10 +3054,10 @@ body.ms-page .mh-side { border-color: var(--primary); }
 /* Section 21, continued (2026-10-31): the band under the menu holds
    Michael's UX process diagram (Strategy, Research, Content, UI Design,
    Testing, with dashed feedback loops), drawn in light greys so the name
-   below leads, on a soft grey haze that fades out on every side. Hidden
-   below 760px, where its labels get too small, and the band closes up. */
+   below leads, straight on the page. Hidden below 760px, where its
+   labels get too small, and the band closes up. */
 .hm-deco {
-  background: radial-gradient(closest-side, #eeece8 35%, rgba(238, 236, 232, 0)) no-repeat;
+  background: none;
   -webkit-mask-image: none;
   mask-image: none;
 }
@@ -3070,5 +3070,5 @@ body.ms-page .mh-side { border-color: var(--primary); }
 }
 @media (max-width: 759.98px) {
   .hm-deco svg.hm-svg { display: none; }
-  .hm-deco { min-height: 0; background: none; }
+  .hm-deco { min-height: 0; }
 }
