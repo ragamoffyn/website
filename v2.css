@@ -3070,8 +3070,8 @@ body.ms-page .mh-side { border-color: var(--primary); }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, #dcd8d1 1px, transparent 1px),
-    linear-gradient(to bottom, #dcd8d1 1px, transparent 1px);
+    linear-gradient(to right, #e8e5df 1px, transparent 1px),
+    linear-gradient(to bottom, #e8e5df 1px, transparent 1px);
   background-size: 24px 24px;
   -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
   mask-image: linear-gradient(to bottom, #000 40%, transparent);
