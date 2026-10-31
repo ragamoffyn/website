@@ -3052,18 +3052,15 @@ body.ms-page .mh-side { border-color: var(--primary); }
 }
 
 /* Section 21, continued (2026-10-31): the band under the menu now holds
-   Michael's UX process diagram, five stages with dashed feedback loops.
-   The graph paper moves to a ::before so only it fades out; the diagram
-   keeps its 1236 : 270 shape at the top of the band and is hidden below
-   760px, where its labels would get too small. */
+   five columns after Michael's chart of what UX covers (Strategy,
+   Research, Content, UI Design, Testing): a thin grey line icon, the name
+   in ink and three terms in grey. The graph paper moves to a ::before so
+   only it fades out. Hidden below 760px, where five columns get too
+   narrow; phones keep the graph paper. */
 .hm-deco {
   background-image: none;
   -webkit-mask-image: none;
   mask-image: none;
-  --ph-ink: var(--foreground);
-  --ph-line: #9b9a95;
-  --ph-accent: var(--primary);
-  --ph-bg: var(--background);
 }
 .hm-deco::before {
   content: "";
@@ -3076,13 +3073,40 @@ body.ms-page .mh-side { border-color: var(--primary); }
   -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
   mask-image: linear-gradient(to bottom, #000 40%, transparent);
 }
-.hm-deco svg.process-header {
+.hm-uxcols {
   position: relative;
-  inset: auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--step-1);
+  padding: var(--step-2) 0 var(--step-1);
+  text-align: center;
+}
+.hm-deco .hm-uxcols svg {
+  position: static;
   display: block;
-  width: 100%;
-  height: auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 auto;
+  fill: none;
+  stroke: var(--muted-foreground);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.hm-ux-name {
+  margin: var(--step-m1) 0 0;
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--foreground);
+}
+.hm-ux ul {
+  margin: var(--step-m2) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--step-m1);
+  line-height: 1.6;
+  color: var(--muted-foreground);
 }
 @media (max-width: 759.98px) {
-  .hm-deco svg.process-header { display: none; }
+  .hm-uxcols { display: none; }
 }
