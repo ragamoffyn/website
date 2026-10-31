@@ -3076,6 +3076,8 @@ body.ms-page .mh-side { border-color: var(--primary); }
   -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
   mask-image: linear-gradient(to bottom, #000 40%, transparent);
 }
+/* A grid square of space between the diagram and the paper's edges. */
+.hm-deco:has(.hm-svg) { padding: 24px 24px 32px; }
 .hm-deco svg.hm-svg {
   position: relative;
   inset: auto;
