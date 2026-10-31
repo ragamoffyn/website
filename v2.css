@@ -3055,12 +3055,29 @@ body.ms-page .mh-side { border-color: var(--primary); }
    five columns after Michael's chart of what UX covers (Strategy,
    Research, Content, UI Design, Testing): a thin line icon, the name and
    three terms, all in light greys and a step smaller than the content so
-   the name below leads. No graph paper behind it any more. Hidden below
+   the name below leads, with arrows between the columns and a soft tint
+   behind them instead of graph paper. Hidden below
    760px, where five columns get too narrow, and the band closes up. */
 .hm-deco {
   background-image: none;
   -webkit-mask-image: none;
   mask-image: none;
+}
+/* A soft grey tint behind the chart, fading out on every side. */
+.hm-deco:has(.hm-uxcols) {
+  background: radial-gradient(closest-side, #eeece8 35%, rgba(238, 236, 232, 0)) no-repeat;
+}
+/* Thin grey arrows between the columns, level with the icons. */
+.hm-ux { position: relative; }
+.hm-ux:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: calc(100% + var(--step-1) / 2);
+  width: 4rem;
+  height: .75rem;
+  transform: translate(-50%, -50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 12' fill='none' stroke='%23b8b3ab' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 6H62M57 1.5L62 6L57 10.5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 .hm-uxcols {
   position: relative;
