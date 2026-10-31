@@ -3086,8 +3086,16 @@ body.ms-page .mh-side { border-color: var(--primary); }
   width: 100%;
   height: auto;
 }
+/* One line under the diagram saying what it shows, so it reads as how
+   Michael works rather than decoration. */
+.hm-caption {
+  position: relative;
+  margin: var(--step-m1) 0 0;
+  font-size: var(--step-m1);
+  color: var(--muted-foreground);
+}
 @media (max-width: 859.98px) {
-  .hm-deco svg.hm-svg { display: none; }
+  .hm-deco svg.hm-svg, .hm-caption { display: none; }
   .hm-deco, .hm-deco:has(.hm-svg) { min-height: 0; padding: 0; }
   .hm-deco::before { display: none; }
 }
