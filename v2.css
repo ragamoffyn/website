@@ -3050,3 +3050,39 @@ body.ms-page .mh-side { border-color: var(--primary); }
   .vc-page .proj-figs .proj-fig-pair.proj-fig-wide .proj-fig-imgs img { height: auto; }
   .vc-page .proj-figs .proj-fig-pair.proj-fig-wide > figcaption { display: block; }
 }
+
+/* Section 21, continued (2026-10-31): the band under the menu now holds
+   Michael's UX process diagram, five stages with dashed feedback loops.
+   The graph paper moves to a ::before so only it fades out; the diagram
+   keeps its 1236 : 270 shape at the top of the band and is hidden below
+   760px, where its labels would get too small. */
+.hm-deco {
+  background-image: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  --ph-ink: var(--foreground);
+  --ph-line: #9b9a95;
+  --ph-accent: var(--primary);
+  --ph-bg: var(--background);
+}
+.hm-deco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, #dcd8d1 1px, transparent 1px),
+    linear-gradient(to bottom, #dcd8d1 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+  mask-image: linear-gradient(to bottom, #000 40%, transparent);
+}
+.hm-deco svg.process-header {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 759.98px) {
+  .hm-deco svg.process-header { display: none; }
+}

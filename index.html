@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v2.css?v=20261025d" />
+  <link rel="stylesheet" href="v2.css?v=20261031a" />
   <link rel="stylesheet" href="v2-inter.css" />
   <link rel="stylesheet" href="v2-white.css" />
 </head>
@@ -40,15 +40,30 @@
       <a class="mw-owner" href="index.html">Michael E. Stiso</a>
     </nav>
 
-    <!-- Decoration only: faint graph paper and a wireframe sketch (section 21). -->
-    <div class="hm-deco" aria-hidden="true">
-      <svg viewBox="470 16 860 136" preserveAspectRatio="xMaxYMin meet" fill="none" stroke="#b3afa8" stroke-width="1" vector-effect="non-scaling-stroke">
-        <rect x="480" y="24" width="168" height="96"/><path d="M492 40H600M492 56H572"/><rect x="492" y="70" width="60" height="38"/>
-        <rect x="744" y="48" width="120" height="72"/><path d="M756 64H840M756 80H820"/>
-        <rect x="960" y="24" width="168" height="48"/><rect x="960" y="96" width="168" height="48"/><path d="M972 44H1080M972 116H1060"/>
-        <path d="M648 72H696V84H744M864 84H912V48H960M912 84V120H960"/>
-        <g fill="#fcfcfb"><circle cx="648" cy="72" r="3"/><circle cx="744" cy="84" r="3"/><circle cx="960" cy="48" r="3"/><circle cx="960" cy="120" r="3"/></g>
-        <g stroke-dasharray="4 4"><rect x="1224" y="24" width="96" height="96"/><path d="M1128 48H1176V72H1224"/></g>
+    <!-- Michael's UX process diagram on faint graph paper (section 21). -->
+    <div class="hm-deco">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1236 270" role="img" aria-labelledby="ph-title ph-desc" class="process-header">
+      <title id="ph-title">The UX process</title>
+      <desc id="ph-desc">Five stages in sequence: Understand, Define, Ideate, Prototype, Test. Dashed arcs show feedback loops: Understand to Define, Test back to Understand, Test back to Prototype, Prototype back to Ideate, and Test back to Define.</desc>
+      <defs>
+      <marker id="ph-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 1L7 4L0 7" fill="none" stroke="var(--ph-accent, #b5541f)"></path>
+      </marker>
+      </defs>
+      <path d="M288 135H392M508 135H612M728 135H832M948 135H1052" fill="none" stroke="var(--ph-line, #9b9a95)"></path>
+      <g fill="none" stroke="var(--ph-accent, #b5541f)" stroke-dasharray="4 4" marker-end="url(#ph-arrow)">
+      <path d="M1064 127A446 108 0 0 0 172 127"></path>
+      <path d="M184 127A107 44 0 0 1 398 127"></path>
+      <path d="M1052 127A107 44 0 0 0 838 127"></path>
+      <path d="M838 143A110 44 0 0 1 618 143"></path>
+      <path d="M1058 143A330 100 0 0 1 398 143"></path>
+      </g>
+      <g fill="var(--ph-bg, #fbfaf8)" stroke="var(--ph-ink, #2b2a27)">
+      <circle cx="178" cy="135" r="6"></circle><circle cx="398" cy="135" r="6"></circle><circle cx="618" cy="135" r="6"></circle><circle cx="838" cy="135" r="6"></circle><circle cx="1058" cy="135" r="6"></circle>
+      </g>
+      <g font-family="Inter, system-ui, sans-serif" font-size="15" fill="var(--ph-ink, #2b2a27)">
+      <text x="194" y="140">Understand</text><text x="414" y="140">Define</text><text x="634" y="140">Ideate</text><text x="854" y="140">Prototype</text><text x="1074" y="140">Test</text>
+      </g>
       </svg>
     </div>
 
