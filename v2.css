@@ -3088,5 +3088,6 @@ body.ms-page .mh-side { border-color: var(--primary); }
 }
 @media (max-width: 859.98px) {
   .hm-deco svg.hm-svg { display: none; }
-  .hm-deco { min-height: 0; }
+  .hm-deco, .hm-deco:has(.hm-svg) { min-height: 0; padding: 0; }
+  .hm-deco::before { display: none; }
 }
