@@ -19,10 +19,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v2.css?v=20261031h" />
+  <link rel="stylesheet" href="v2.css?v=20261102a" />
   <link rel="stylesheet" href="v2-inter.css" />
   <link rel="stylesheet" href="v2-white.css" />
   <script>document.documentElement.classList.add('js');</script>
+  <script>
+    /* Page slide (v2.css section 25): remembers the last of the three main
+       pages in this tab and, when the one being opened is a different one
+       reached from within the site (menu, page links, back or forward),
+       marks the page as coming from the right (a later page) or the left. */
+    (function () {
+      try {
+        var o = { '': 0, index: 0, experiences: 1, projects: 2 },
+            c = o[location.pathname.split('/').pop().replace(/\.html$/, '')];
+        if (c === undefined) return;
+        var l = sessionStorage.getItem('ms-page'), n = performance.getEntriesByType('navigation')[0];
+        sessionStorage.setItem('ms-page', c);
+        var inSite = document.referrer && new URL(document.referrer).origin === location.origin;
+        if (l !== null && +l !== c && (inSite || (n && n.type === 'back_forward')))
+          document.documentElement.setAttribute('data-slide', c > +l ? 'next' : 'prev');
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="ms-page mp-page mc-page mt-page mk-page ks-page kg-page vc-page">
 
