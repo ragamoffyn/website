@@ -3110,8 +3110,11 @@ body.ms-page .mh-side { border-color: var(--primary); }
    --------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
   html[data-slide] { overflow-x: clip; }
-  html[data-slide="next"] .ms-wrap > :not(.ms-nav) { animation: ms-slide-next .6s cubic-bezier(.2, .7, .2, 1) backwards; }
-  html[data-slide="prev"] .ms-wrap > :not(.ms-nav) { animation: ms-slide-prev .6s cubic-bezier(.2, .7, .2, 1) backwards; }
+  /* Held invisible until the head script says the page is ready (data-go). */
+  html[data-slide]:not([data-go]) .ms-wrap > :not(.ms-nav) { opacity: 0; }
+  html[data-slide][data-go] .ms-wrap > :not(.ms-nav) { will-change: transform, opacity; }
+  html[data-slide="next"][data-go] .ms-wrap > :not(.ms-nav) { animation: ms-slide-next .6s cubic-bezier(.2, .7, .2, 1) backwards; }
+  html[data-slide="prev"][data-go] .ms-wrap > :not(.ms-nav) { animation: ms-slide-prev .6s cubic-bezier(.2, .7, .2, 1) backwards; }
 }
 /* Travels 40% of the window width and is fully opaque by a third of the
    way, so the movement reads rather than a fade. */

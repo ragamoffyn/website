@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="v2.css?v=20261102c" />
+  <link rel="stylesheet" href="v2.css?v=20261102d" />
   <link rel="stylesheet" href="v2-inter.css" />
   <link rel="stylesheet" href="v2-white.css" />
   <script>
@@ -35,8 +35,19 @@
         var l = sessionStorage.getItem('ms-page'), n = performance.getEntriesByType('navigation')[0];
         sessionStorage.setItem('ms-page', c);
         var inSite = document.referrer && new URL(document.referrer).origin === location.origin;
-        if (l !== null && +l !== c && (inSite || (n && n.type === 'back_forward')))
-          document.documentElement.setAttribute('data-slide', c > +l ? 'next' : 'prev');
+        if (l !== null && +l !== c && (inSite || (n && n.type === 'back_forward'))) {
+          var h = document.documentElement, go = function () { h.setAttribute('data-go', ''); };
+          h.setAttribute('data-slide', c > +l ? 'next' : 'prev');
+          /* Start the slide once fonts and the portrait are ready (at most
+             0.3s), so loading work does not stutter the first frames. */
+          setTimeout(go, 1000);
+          document.addEventListener('DOMContentLoaded', function () {
+            var p = document.querySelector('.ms-portrait img'),
+                w = [document.fonts && document.fonts.ready, p && p.decode && p.decode()].map(function (x) { return Promise.resolve(x).catch(function () {}); });
+            Promise.race([Promise.all(w), new Promise(function (r) { setTimeout(r, 300); })])
+              .then(function () { requestAnimationFrame(function () { requestAnimationFrame(go); }); });
+          });
+        }
       } catch (e) {}
     })();
   </script>
