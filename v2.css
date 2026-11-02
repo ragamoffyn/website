@@ -3104,14 +3104,16 @@ body.ms-page .mh-side { border-color: var(--primary); }
    25. Page slide (index.html, experiences.html, projects.html). Moving
    to a later page in the order Home, Experience, Projects, by the menu,
    the page links or the forward button, the new page slides in from the
-   right; to an earlier page, from the left. A small script in each
+   right (a long, quick slide); to an earlier page, from the left. A small script in each
    page's head sets data-slide on <html>; not used when the page is
    opened from outside the site or reloaded, or with reduced motion.
    --------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
   html[data-slide] { overflow-x: clip; }
-  html[data-slide="next"] .ms-wrap { animation: ms-slide-next .4s cubic-bezier(.2, .7, .2, 1) backwards; }
-  html[data-slide="prev"] .ms-wrap { animation: ms-slide-prev .4s cubic-bezier(.2, .7, .2, 1) backwards; }
+  html[data-slide="next"] .ms-wrap { animation: ms-slide-next .6s cubic-bezier(.2, .7, .2, 1) backwards; }
+  html[data-slide="prev"] .ms-wrap { animation: ms-slide-prev .6s cubic-bezier(.2, .7, .2, 1) backwards; }
 }
-@keyframes ms-slide-next { from { opacity: 0; transform: translateX(12vw); } }
-@keyframes ms-slide-prev { from { opacity: 0; transform: translateX(-12vw); } }
+/* Travels 40% of the window width and is fully opaque by a third of the
+   way, so the movement reads rather than a fade. */
+@keyframes ms-slide-next { from { opacity: 0; transform: translateX(40vw); } 35% { opacity: 1; } }
+@keyframes ms-slide-prev { from { opacity: 0; transform: translateX(-40vw); } 35% { opacity: 1; } }
