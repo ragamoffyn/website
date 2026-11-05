@@ -18,11 +18,10 @@
 <body class="ms-page ln-page">
 
   <!-- Alternate Experience page (2026-11-05): the work history in lanes.
-       The period names are stacked tightly on the left; each period's lane
-       widens on the right to hold its jobs, and the lane borders curve
-       between the two. Enterprise UX is a dotted lane inside Applied
-       research. The borders are drawn by the script at the end; below
-       1000px they are dropped and each lane gets its own heading. -->
+       Each period is a lane between full-width rules, its name on the
+       left level with its first job, its jobs on the right with the
+       description beside each. Enterprise UX is a dotted, indented lane
+       inside Applied research. Below 1000px the name sits above the jobs. -->
   <div class="ms-wrap">
 
     <nav class="ms-nav" aria-label="Site">
@@ -39,17 +38,9 @@
     </header>
 
     <div class="ln" id="ln">
-      <svg class="ln-lines" aria-hidden="true"></svg>
-      <ol class="ln-labels" aria-hidden="true">
-        <li class="ln-label" data-label="industrial"><span class="ln-name">Industrial UX</span><span class="ln-span">2023–now</span></li>
-        <li class="ln-label" data-label="digital"><span class="ln-name">Digital transformation</span><span class="ln-span">2015–2023</span></li>
-        <li class="ln-label" data-label="applied"><span class="ln-name">Applied research</span><span class="ln-span">2003–2015</span></li>
-        <li class="ln-label ln-label-sub" data-label="enterprise"><span class="ln-name">Enterprise UX</span><span class="ln-span">2005–2008</span></li>
-        <li class="ln-label" data-label="foundations"><span class="ln-name">Foundations</span><span class="ln-span">1998–2003</span></li>
-      </ol>
       <div class="ln-lanes">
         <section class="ln-lane" data-lane="industrial" aria-labelledby="lane-industrial">
-          <h2 class="ln-head" id="lane-industrial">Industrial UX <span class="ln-head-span">2023–now</span></h2>
+          <h2 class="ln-head" id="lane-industrial">Industrial UX<span class="ln-head-span">2023–now</span></h2>
           <ul class="ln-jobs">
         <li class="ln-job" id="job-4subsea">
           <div class="ln-item"><span class="ln-emp">4Subsea</span><span class="ln-meta"><span class="mw-dates">2023–now</span> UX Lead &amp; Product Designer</span></div>
@@ -61,7 +52,7 @@
           </ul>
         </section>
         <section class="ln-lane" data-lane="digital" aria-labelledby="lane-digital">
-          <h2 class="ln-head" id="lane-digital">Digital transformation <span class="ln-head-span">2015–2023</span></h2>
+          <h2 class="ln-head" id="lane-digital">Digital transformation<span class="ln-head-span">2015–2023</span></h2>
           <ul class="ln-jobs">
         <li class="ln-job" id="job-dnv">
           <div class="ln-item"><span class="ln-emp">DNV</span><span class="ln-meta"><span class="mw-dates">2019–2023</span> UX Lead</span></div>
@@ -86,7 +77,7 @@
           </ul>
         </section>
         <section class="ln-lane" data-lane="applied" aria-labelledby="lane-applied">
-          <h2 class="ln-head" id="lane-applied">Applied research <span class="ln-head-span">2003–2015</span></h2>
+          <h2 class="ln-head" id="lane-applied">Applied research<span class="ln-head-span">2003–2015</span></h2>
           <ul class="ln-jobs">
         <li class="ln-job" id="job-sintef">
           <div class="ln-item"><span class="ln-emp">SINTEF ICT</span><span class="ln-meta"><span class="mw-dates">2008–2015</span> HCI Researcher</span></div>
@@ -97,7 +88,7 @@
         </li>
           </ul>
           <section class="ln-lane ln-sub" data-lane="enterprise" aria-labelledby="lane-enterprise">
-          <h3 class="ln-head" id="lane-enterprise">Enterprise UX <span class="ln-head-span">2005–2008</span></h3>
+          <h3 class="ln-head" id="lane-enterprise">Enterprise UX<span class="ln-head-span">2005–2008</span></h3>
           <ul class="ln-jobs">
         <li class="ln-job" id="job-oracle">
           <div class="ln-item"><span class="ln-emp">Oracle</span><span class="ln-meta"><span class="mw-dates">2005–2008</span> Senior Usability Engineer</span></div>
@@ -117,7 +108,7 @@
           </ul>
         </section>
         <section class="ln-lane" data-lane="foundations" aria-labelledby="lane-foundations">
-          <h2 class="ln-head" id="lane-foundations">Foundations <span class="ln-head-span">1998–2003</span></h2>
+          <h2 class="ln-head" id="lane-foundations">Foundations<span class="ln-head-span">1998–2003</span></h2>
           <ul class="ln-jobs">
         <li class="ln-job" id="job-intern">
           <div class="ln-item"><span class="ln-emp">Internships</span><span class="ln-meta"><span class="mw-dates">1998 · 2000 · 2002</span> Human factors</span></div>
@@ -158,51 +149,5 @@
     </footer>
   </div>
 
-  <script>
-    /* Draws the lane borders: each runs level under a period name on the
-       left, curves across the gap and runs level again where that period's
-       jobs end on the right. Enterprise UX's borders are dotted and start
-       indented. Wide windows only. */
-    (function () {
-      var ln = document.getElementById('ln'), svg = ln.querySelector('.ln-lines'),
-          NS = 'http://www.w3.org/2000/svg';
-      function rel(el) { var r = el.getBoundingClientRect(), t = ln.getBoundingClientRect();
-        return { l: r.left - t.left, r: r.right - t.left, t: r.top - t.top, b: r.bottom - t.top }; }
-      function add(x0, yl, yr, dotted) {
-        var w = ln.getBoundingClientRect().width,
-            a = rel(ln.querySelector('.ln-labels')).r, b = rel(ln.querySelector('.ln-lanes')).l - 8,
-            m = (a + b) / 2, p = document.createElementNS(NS, 'path');
-        p.setAttribute('d', 'M' + x0 + ' ' + yl + 'H' + a + 'C' + m + ' ' + yl + ' ' + m + ' ' + yr + ' ' + b + ' ' + yr + 'H' + w);
-        if (dotted) p.setAttribute('class', 'dot');
-        svg.appendChild(p);
-      }
-      function draw() {
-        svg.textContent = '';
-        if (!window.matchMedia('(min-width: 1000px)').matches) return;
-        var t = ln.getBoundingClientRect();
-        svg.setAttribute('viewBox', '0 0 ' + t.width + ' ' + t.height);
-        svg.setAttribute('width', t.width); svg.setAttribute('height', t.height);
-        var tops = ln.querySelectorAll('.ln-lanes > .ln-lane'), last;
-        tops.forEach(function (lane) {
-          var k = lane.getAttribute('data-lane'), L = rel(ln.querySelector('[data-label="' + k + '"]')), R = rel(lane);
-          add(0, L.t, R.t, false); last = [L, R];
-        });
-        /* bottom border: under the last label and the last lane */
-        add(0, last[0].b, last[1].b, false);
-        var sub = ln.querySelector('.ln-sub');
-        if (sub) {
-          var SL = rel(ln.querySelector('[data-label="enterprise"]')), SR = rel(sub),
-              x0 = rel(ln.querySelector('[data-label="enterprise"] .ln-name')).l - 14;
-          add(x0, SL.t, SR.t, true); add(x0, SL.b, SR.b, true);
-        }
-      }
-      var q; function later() { cancelAnimationFrame(q); q = requestAnimationFrame(draw); }
-      window.addEventListener('resize', later);
-      window.addEventListener('load', later);
-      if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
-      if (window.ResizeObserver) new ResizeObserver(later).observe(ln);
-      draw();
-    })();
-  </script>
 </body>
 </html>

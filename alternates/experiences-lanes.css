@@ -2,15 +2,12 @@
    Experience in lanes (alternate, 2026-11-05).
    Loads after v2.css, v2-inter.css and v2-white.css.
 
-   From 1000px: period names stacked tightly on the left, their jobs on
-   the right; the script draws each lane border level under a name,
-   curving across the gap to where that period's jobs end. Enterprise UX
-   is a dotted lane inside Applied research, its job set further right.
-   Below 1000px the curves and the name column are hidden and each lane
-   shows its own heading over a plain rule.
+   From 1000px: each period is a lane between full-width rules, its name
+   in the left column level with its first job. Enterprise UX is a dotted,
+   indented lane inside Applied research. Below 1000px the name sits above
+   the jobs.
    --------------------------------------------------------------- */
 .ln { position: relative; padding: var(--step-1) 0 var(--step-3); }
-.ln-lines, .ln-labels { display: none; }
 
 .ln-lanes { display: block; }
 .ln-lane { border-top: 1px solid var(--border-strong); padding: var(--step-0) 0; }
@@ -44,24 +41,24 @@
 }
 
 @media (min-width: 1000px) {
-  .ln { display: grid; grid-template-columns: 13rem minmax(0, 1fr); column-gap: 7rem; align-items: start; }
-  .ln-lines { display: block; position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
-  .ln-lines path { fill: none; stroke: var(--foreground); stroke-opacity: .7; stroke-width: 1; }
-  .ln-lines path.dot { stroke-dasharray: 1 3; stroke-linecap: round; }
-
-  .ln-labels { display: block; list-style: none; margin: 0; padding: 0; }
-  .ln-label { padding: var(--step-0) 0; }
-  .ln-label-sub { padding-left: var(--step-1); }
-  .ln-name { display: block; font-size: var(--step-0); font-weight: 600; line-height: 1.3; }
-  .ln-span { display: block; margin-top: 2px; font-size: var(--step-m2); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); }
-
-  /* Lines are drawn by the script instead. */
-  .ln-lane, .ln-lane:last-child, .ln-sub { border: 0; margin: 0; }
-  .ln-lane { padding: var(--step-0) 0; }
-  .ln-head {
-    position: absolute; width: 1px; height: 1px; overflow: hidden;
-    clip: rect(0 0 0 0); white-space: nowrap;
+  .ln-lane {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    column-gap: var(--step-3);
+    align-items: start;
+    padding: var(--step-0) 0;
   }
-  .ln-sub { padding: var(--step-m1) 0; }
-  .ln-sub .ln-job { margin-left: var(--step-4); }
+  .ln-lane > .ln-head { grid-column: 1; grid-row: 1; }
+  .ln-lane > .ln-jobs { grid-column: 2; }
+  .ln-head { margin: 0; padding-top: var(--step-m1); line-height: calc(var(--step-1) * 1.2); }
+  .ln-head-span { display: block; margin: 2px 0 0; font-size: var(--step-m2); line-height: 1.4; }
+
+  /* Enterprise UX: its own dotted lane, indented, inside Applied research. */
+  .ln-lane > .ln-sub {
+    grid-column: 1 / -1;
+    margin: var(--step-m1) 0 var(--step-m1) var(--step-3);
+    padding: var(--step-m2) 0;
+    grid-template-columns: calc(13rem - var(--step-3)) minmax(0, 1fr);
+    border-left: 0; border-right: 0;
+  }
 }
