@@ -13,7 +13,8 @@
 .ln-lane { border-top: 1px solid var(--border-strong); padding: var(--step-0) 0; }
 .ln-lane:last-child { border-bottom: 1px solid var(--border-strong); }
 .ln-sub { border-top: 1px dotted var(--border-strong); border-bottom: 1px dotted var(--border-strong); margin: 0 0 0 var(--step-1); }
-.ln-head { margin: 0 0 var(--step-m1); font-size: var(--step-0); font-weight: 600; }
+.ln-head { margin: 0 0 var(--step-m1); font-size: var(--step-1); font-weight: 600; }
+.ln-note { margin: 0 0 var(--step-m1); font-size: var(--step-m1); line-height: 1.5; color: var(--muted-foreground); }
 .ln-head-span { margin-left: .5em; font-size: var(--step-m1); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); }
 
 .ln-jobs { list-style: none; margin: 0; padding: 0; }
@@ -43,14 +44,16 @@
 @media (min-width: 1000px) {
   .ln-lane {
     display: grid;
-    grid-template-columns: 13rem minmax(0, 1fr);
+    grid-template-columns: 16rem minmax(0, 1fr);
     column-gap: var(--step-3);
     align-items: start;
-    padding: var(--step-0) 0;
   }
-  .ln-lane > .ln-head { grid-column: 1; grid-row: 1; }
+  .ln-lane > .ln-side, .ln-lane > .ln-head { grid-column: 1; grid-row: 1; }
+  .ln-note { margin: var(--step-m1) 0 0; }
+  .ln-job { padding: var(--step-m2) 0 var(--step-m1); }
+  .ln-lane { padding: var(--step-m1) 0; }
   .ln-lane > .ln-jobs { grid-column: 2; }
-  .ln-head { margin: 0; padding-top: var(--step-m1); line-height: calc(var(--step-1) * 1.2); }
+  .ln-head { margin: 0; padding-top: var(--step-m2); line-height: 1.2; }
   .ln-head-span { display: block; margin: 2px 0 0; font-size: var(--step-m2); line-height: 1.4; }
 
   /* Enterprise UX: its own dotted lane, indented, inside Applied research. */
@@ -58,7 +61,7 @@
     grid-column: 1 / -1;
     margin: var(--step-m1) 0 var(--step-m1) var(--step-3);
     padding: var(--step-m2) 0;
-    grid-template-columns: calc(13rem - var(--step-3)) minmax(0, 1fr);
+    grid-template-columns: calc(16rem - var(--step-3)) minmax(0, 1fr);
     border-left: 0; border-right: 0;
   }
 }
