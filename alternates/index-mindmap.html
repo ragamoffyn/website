@@ -17,14 +17,34 @@
     /* Home as a mind map (alternate, 2026-11-09): a recreation of
        Michael's diagram. The SVG scales to the page width; below 900px it
        keeps a readable size and scrolls sideways inside its own box. */
-    .mm-h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .mm { padding: var(--step-2) 0 var(--step-3); overflow-x: auto; }
-    .mm-svg { display: block; width: 100%; min-width: 860px; height: auto; font-family: Inter, system-ui, sans-serif; }
+    .mm-svg { display: block; width: 100%; height: auto; font-family: Inter, system-ui, sans-serif; }
     .mm-svg { fill: var(--foreground); }
     .mm-svg text { fill: #211d19; }
     .mm-svg .lf { font-size: 28px; }
     .mm-svg .nm { font-size: 28px; }
     .mm-svg .it { font-size: 23px; font-style: italic; }
+    .mm-intro { padding-top: var(--step-3); max-width: 46rem; }
+    .mm-intro .ms-lede { margin-top: var(--step-0); }
+    .mm { padding: var(--step-1) 0 0; }
+    .mm-cta { margin: var(--step-0) 0 var(--step-4); }
+    .mm-svg a .lk { fill: var(--primary); }
+    .mm-svg a:hover .lk { text-decoration: underline; }
+    .mm-list { display: none; }
+    @media (max-width: 899.98px) {
+      .mm-svg { display: none; }
+      .mm-list { display: block; font-size: var(--step-0); }
+      .mm-photo { width: 6rem; border: 2px solid var(--foreground); background: #fff; padding: 6px 6px 0; }
+      .mm-photo img { display: block; width: 100%; height: auto; }
+      .mm-branch { margin: 0 0 0 calc(3rem - 1px); padding: var(--step-0) 0 var(--step-0) var(--step-0); border-left: 3px solid var(--foreground); }
+      .mm-ed { border-left-color: #b4541c; }
+      .mm-sub { padding-left: var(--step-0); border-left: 1px solid var(--border-strong); }
+      .mm-k { margin: var(--step-0) 0 var(--step-m2); font-weight: 500; }
+      .mm-k:first-child { margin-top: 0; }
+      .mm-k em { font-weight: 400; color: var(--muted-foreground); }
+      .mm-list ul { list-style: none; margin: 0; padding: 0 0 0 var(--step-0); }
+      .mm-list li { padding: 2px 0; }
+      .mm-list a { color: var(--primary); text-decoration: none; }
+    }
   </style>
 </head>
 <body class="ms-page mm-page">
@@ -43,7 +63,13 @@
       <a class="mw-owner" href="index-mindmap.html">Michael E. Stiso</a>
     </nav>
 
-    <h1 class="mm-h1">Michael E. Stiso, UX and human factors</h1>
+    <header class="mm-intro">
+      <div class="ms-namerow">
+        <h1 class="ms-name">Michael E. Stiso</h1>
+        <p class="ms-role">UX and human factors</p>
+      </div>
+      <p class="ms-lede">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer. I tend to focus on decision-support tools for professionals working in complex, high-stakes environments, but I have worked on many kinds of products.</p>
+    </header>
 
     <div class="mm">
       <svg class="mm-svg" viewBox="80 70 1860 1400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mm-title mm-desc">
@@ -80,11 +106,11 @@
         <path d="M1238 489C1309.5 489 1283.5 377 1368 377" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1376" y="387" class="lf">enterprise software</text>
         <path d="M1238 489C1309.5 489 1283.5 420 1368 420" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1376" y="430" class="lf">digital farming</text>
+        <a href="../projects.html#coffee-ecosystem"><text x="1376" y="430" class="lf lk">digital farming</text></a>
         <path d="M1238 489C1309.5 489 1283.5 464 1368 464" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1376" y="474" class="lf">maritime</text>
+        <a href="../projects.html#maritime-refueling"><text x="1376" y="474" class="lf lk">maritime</text></a>
         <path d="M1238 489C1309.5 489 1283.5 508 1368 508" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1376" y="518" class="lf">energy</text>
+        <a href="../projects.html#wind-farm"><text x="1376" y="518" class="lf lk">energy</text></a>
         <path d="M1238 489C1309.5 489 1283.5 551 1368 551" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1376" y="561" class="lf">banking</text>
         <path d="M1238 489C1309.5 489 1283.5 594 1368 594" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -93,7 +119,7 @@
         <path d="M975 757H1398" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="1186.5" y="739" class="it" text-anchor="middle">doing things like</text>
         <path d="M1398 757C1469.5 757 1443.5 646 1528 646" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1536" y="656" class="lf">designing software platforms</text>
+        <a href="../projects.html#foursubsea"><text x="1536" y="656" class="lf lk">designing software platforms</text></a>
         <path d="M1398 757C1469.5 757 1443.5 690 1528 690" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1536" y="700" class="lf">running design sprints</text>
         <path d="M1398 757C1469.5 757 1443.5 735 1528 735" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -103,7 +129,7 @@
         <path d="M1398 757C1469.5 757 1443.5 824 1528 824" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1536" y="834" class="lf">task analyses</text>
         <path d="M1398 757C1469.5 757 1443.5 868 1528 868" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1536" y="878" class="lf">making dashboards</text>
+        <a href="../projects.html#info-viz"><text x="1536" y="878" class="lf lk">making dashboards</text></a>
         <path d="M617 752C695 752 712 800 712 900C712 1060 730 1131 818 1131" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <path d="M818 1131H908" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="863.0" y="1113" class="nm" text-anchor="middle">HCI</text>
@@ -111,7 +137,7 @@
         <path d="M1002 1031H1170" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="1086.0" y="1013" class="it" text-anchor="middle">in areas like</text>
         <path d="M1170 1031C1218.4 1031 1200.8 943 1258 943" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1266" y="953" class="lf">military operations</text>
+        <a href="../projects.html#national-security"><text x="1266" y="953" class="lf lk">military operations</text></a>
         <path d="M1170 1031C1218.4 1031 1200.8 987 1258 987" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1266" y="997" class="lf">emergency response</text>
         <path d="M1170 1031C1218.4 1031 1200.8 1031 1258 1031" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -119,7 +145,7 @@
         <path d="M1170 1031C1218.4 1031 1200.8 1075 1258 1075" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1266" y="1085" class="lf">air traffic control</text>
         <path d="M1170 1031C1218.4 1031 1200.8 1119 1258 1119" stroke="#211d19" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <text x="1266" y="1129" class="lf">drone command</text>
+        <a href="../projects.html#search-rescue"><text x="1266" y="1129" class="lf lk">drone command</text></a>
         <path d="M908 1131C1048.0 1131 1048.0 1217 1188 1217" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <path d="M1188 1217H1436" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="1312.0" y="1199" class="it" text-anchor="middle">making things like</text>
@@ -161,7 +187,31 @@
         <circle cx="1158" cy="1424" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
         <circle cx="1250" cy="1424" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
       </svg>
+      <!-- Phones: the same tree as nested lists below 900px (the SVG is hidden there). -->
+      <div class="mm-list">
+        <div class="mm-photo"><img src="../img/portrait-bw.png" alt="" width="1057" height="1539" /></div>
+        <div class="mm-branch mm-ed">
+          <p class="mm-k"><em>educated in</em> cognitive psychology, Ph.D. <em>with specialties in</em></p>
+          <ul><li>expert performance</li><li>situation awareness</li><li>decision making</li><li>perception</li><li>learning</li></ul>
+        </div>
+        <div class="mm-branch mm-ex">
+          <p class="mm-k"><em>experience in</em></p>
+          <div class="mm-sub">
+            <p class="mm-k">UX <em>in industries like</em></p>
+            <ul><li>enterprise software</li><li><a href="../projects.html#coffee-ecosystem">digital farming</a></li><li><a href="../projects.html#maritime-refueling">maritime</a></li><li><a href="../projects.html#wind-farm">energy</a></li><li>banking</li><li>telecommunications</li></ul>
+            <p class="mm-k">UX <em>doing things like</em></p>
+            <ul><li><a href="../projects.html#foursubsea">designing software platforms</a></li><li>running design sprints</li><li>prototyping</li><li>testing usability</li><li>task analyses</li><li><a href="../projects.html#info-viz">making dashboards</a></li></ul>
+            <p class="mm-k">HCI <em>in areas like</em></p>
+            <ul><li><a href="../projects.html#national-security">military operations</a></li><li>emergency response</li><li>naval aviation</li><li>air traffic control</li><li><a href="../projects.html#search-rescue">drone command</a></li></ul>
+            <p class="mm-k">HCI <em>making things like</em></p>
+            <ul><li>command systems</li><li>instructional systems</li><li>decision-support systems</li></ul>
+            <p class="mm-k">journalism <em>in</em> a previous life</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <p class="hm-cta mm-cta"><a href="../projects.html">See my projects &#8594;</a></p>
 
     <footer class="ms-footer">
       <h2 class="ms-footer-label">Contact</h2>
