@@ -19,11 +19,14 @@
        Below 900px: the same tree as nested lists, one downward line per
        section with short ticks where each section and subsection starts. */
     .mm-intro { padding-top: var(--step-2); }
-    .mm-intro .ms-lede { font-size: var(--step-0); line-height: 1.55; }
+    .mm-intro .mm-one { margin: var(--step-m1) 0 0; max-width: none; font-size: var(--step-0); line-height: 1.5; }
+    .mm-thread { max-width: 40rem; margin: var(--step-1) 0 0; font-size: var(--step-0); line-height: 1.55; }
     .mm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--step-0) var(--step-3); margin-top: var(--step-0); max-width: 70rem; }
     .mm-cols .ms-lede { margin: 0; max-width: none; }
-    .mm { padding: var(--step-0) 0 0; }
+    .mm { position: relative; padding: var(--step-0) 0 0; }
+    @media (min-width: 1100px) { .mm-thread { position: absolute; right: 0; bottom: 3%; width: 34%; margin: 0; } }
     .mm-cta { margin: var(--step-0) 0 var(--step-4); }
+    .mm-intro .ms-namerow { margin: 0; }
     .mm-svg { display: block; width: 100%; height: auto; font-family: Inter, system-ui, sans-serif; }
     .mm-svg text { fill: #211d19; }
     .mm-svg .lf, .mm-svg .nm { font-size: 15px; }
@@ -78,10 +81,7 @@
         <h1 class="ms-name">Michael E. Stiso</h1>
         <p class="ms-role">UX and human factors</p>
       </div>
-      <div class="mm-cols">
-        <p class="ms-lede">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer.</p>
-        <p class="ms-lede">The thread connecting my work is an interest in helping expert users build and maintain situation awareness and make effective decisions in dynamic situations, and I have pursued that both in research labs and in commercial settings.</p>
-      </div>
+      <p class="ms-lede mm-one">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer.</p>
     </header>
 
     <div class="mm">
@@ -220,6 +220,7 @@
         <div class="mm-sec mm-pr"><ul><li class="it"><span>has worked on projects like</span>
 <ul><li class="lf"><span><a href="../projects.html#foursubsea">Insight Platform</a></span></li><li class="lf"><span><a href="../projects.html#national-security">National Security</a></span></li><li class="lf"><span><a href="../projects.html#info-viz">Information Visualization</a></span></li><li class="lf"><span><a href="../projects.html#wind-farm">Wind Farm Analytics</a></span></li><li class="lf"><span><a href="../projects.html#maritime-refueling">Maritime Refueling</a></span></li><li class="lf"><span><a href="../projects.html#coffee-ecosystem">Coffee Ecosystem</a></span></li><li class="lf"><span><a href="../projects.html#sewer-corrosion">Sewer Corrosion</a></span></li><li class="lf"><span><a href="../projects.html#search-rescue">Drone command</a></span></li></ul></li></ul></div>
       </div>
+      <p class="mm-thread">The thread connecting my work is an interest in helping expert users build and maintain situation awareness and make effective decisions in dynamic situations, and I have pursued that both in research labs and in commercial settings.</p>
     </div>
 
     <p class="hm-cta mm-cta"><a href="../projects.html">See my projects &#8594;</a></p>
