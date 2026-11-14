@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Michael Stiso, Ph.D. (mind map)</title>
-  <meta name="description" content="Michael Stiso's background as a mind map: what he was educated in, his experience and his skills." />
+  <meta name="description" content="Michael Stiso's background as a mind map: what he was educated in, his experience, and his projects." />
   <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
   <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,44 +14,52 @@
   <link rel="stylesheet" href="../v2-inter.css" />
   <link rel="stylesheet" href="../v2-white.css" />
   <style>
-    /* Home as a mind map (alternate, 2026-11-09): a recreation of
-       Michael's diagram. The SVG scales to the page width; below 900px it
-       keeps a readable size and scrolls sideways inside its own box. */
-    .mm-svg { display: block; width: 100%; height: auto; font-family: Inter, system-ui, sans-serif; }
-    .mm-svg { fill: var(--foreground); }
-    .mm-svg text { fill: #211d19; }
-    .mm-svg .lf { font-size: 28px; }
-    .mm-svg .nm { font-size: 28px; }
-    .mm-svg .it { font-size: 23px; font-style: italic; }
-    .mm-intro { padding-top: var(--step-3); max-width: 46rem; }
-    .mm-intro .ms-lede { margin-top: var(--step-0); }
+    /* Home as a mind map (alternate, 2026-11-09; redrawn 2026-11-14 from
+       Michael's second graphic). Wide screens: one SVG scaled to the page.
+       Below 900px: the same tree as nested lists, one downward line per
+       section with short ticks where each section and subsection starts. */
+    .mm-intro { padding-top: var(--step-3); }
+    .mm-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--step-0) var(--step-3); margin-top: var(--step-0); max-width: 70rem; }
+    .mm-cols .ms-lede { margin: 0; max-width: none; }
     .mm { padding: var(--step-1) 0 0; }
     .mm-cta { margin: var(--step-0) 0 var(--step-4); }
+    .mm-svg { display: block; width: 100%; height: auto; font-family: Inter, system-ui, sans-serif; }
+    .mm-svg text { fill: #211d19; }
+    .mm-svg .lf, .mm-svg .nm { font-size: 28px; }
+    .mm-svg .it { font-size: 23px; font-style: italic; }
     .mm-svg a .lk { fill: var(--primary); }
     .mm-svg a:hover .lk { text-decoration: underline; }
     .mm-list { display: none; }
     @media (max-width: 899.98px) {
+      .mm-cols { grid-template-columns: minmax(0, 1fr); }
       .mm-svg { display: none; }
       .mm-list { display: block; font-size: var(--step-0); }
       .mm-photo { width: 6rem; border: 2px solid var(--foreground); background: #fff; padding: 6px 6px 0; }
       .mm-photo img { display: block; width: 100%; height: auto; }
-      .mm-branch { margin: 0 0 0 calc(3rem - 1px); padding: var(--step-0) 0 var(--step-0) var(--step-0); border-left: 3px solid var(--foreground); }
-      .mm-ed { border-left-color: #b4541c; }
-      .mm-sub { padding-left: var(--step-0); border-left: 1px solid var(--border-strong); }
-      .mm-k { margin: var(--step-0) 0 var(--step-m2); font-weight: 500; }
-      .mm-k:first-child { margin-top: 0; }
-      .mm-k em { font-weight: 400; color: var(--muted-foreground); }
-      .mm-list ul { list-style: none; margin: 0; padding: 0 0 0 var(--step-0); }
-      .mm-list li { padding: 2px 0; }
+      /* One downward line per section, hanging from the photo's centre. */
+      .mm-sec { --c: var(--foreground); margin-left: calc(3rem + 5px); }
+      .mm-ed { --c: #e0a06c; }
+      .mm-pr { --c: #9b968e; }
+      .mm-sec > ul { border-left: 4px solid var(--c); padding: var(--step-0) 0 var(--step-0) 0; margin: 0; }
+      .mm-list ul { list-style: none; }
+      .mm-list li ul { margin: 2px 0 0 6px; padding: 0; border-left: 2px solid var(--c); }
+      .mm-list li { position: relative; padding: 3px 0 3px 22px; }
+      /* Short horizontal tick where each item branches off its line. */
+      .mm-list li::before { content: ""; position: absolute; left: 0; top: calc(3px + .7em); width: 14px; border-top: 2px solid var(--c); }
+      .mm-sec > ul > li::before { border-top-width: 4px; top: calc(3px + .7em - 1px); }
+      .mm-list li.lf::before { border-top-width: 1px; width: 12px; }
+      .mm-list li.lf { padding-left: 20px; }
+      .mm-list .it > span { font-style: italic; color: var(--muted-foreground); font-size: var(--step-m1); }
+      .mm-list .nm > span { font-weight: 600; }
       .mm-list a { color: var(--primary); text-decoration: none; }
     }
   </style>
 </head>
 <body class="ms-page mm-page">
 
-  <!-- Alternate Home page (2026-11-09, redrawn 2026-11-14 from Michael's
-       second graphic): his mind map, photo at the left, two branches:
-       educated in (site orange) and experience in (ink). -->
+  <!-- Alternate Home page: Michael's mind map, photo at the left, three
+       branches: educated in (light orange), experience in (ink) and with
+       projects like (grey). Leaves with case studies link to them. -->
   <div class="ms-wrap">
 
     <nav class="ms-nav" aria-label="Site">
@@ -68,33 +76,36 @@
         <h1 class="ms-name">Michael E. Stiso</h1>
         <p class="ms-role">UX and human factors</p>
       </div>
-      <p class="ms-lede">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer. I tend to focus on decision-support tools for professionals working in complex, high-stakes environments, but I have worked on many kinds of products.</p>
+      <div class="mm-cols">
+        <p class="ms-lede">By training, I'm a cognitive psychologist. By practice, I'm both an applied researcher and a UXer.</p>
+        <p class="ms-lede">I tend to focus on decision-support tools for professionals working in complex, high-stakes environments, but I have worked on many kinds of products.</p>
+      </div>
     </header>
 
     <div class="mm">
-      <svg class="mm-svg" viewBox="80 70 1860 1400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mm-title mm-desc">
+      <svg class="mm-svg" viewBox="80 70 1860 1760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mm-title mm-desc">
         <title id="mm-title">Michael Stiso in a mind map</title>
-        <desc id="mm-desc">Educated in cognitive psychology, Ph.D., with specialties in expert performance, situation awareness, decision making, perception and learning. Experience in UX, in industries like enterprise software, digital farming, maritime, energy, banking and telecommunications, doing things like designing software platforms, running design sprints, prototyping, testing usability, task analyses and making dashboards; in HCI, in areas like military operations, emergency response, naval aviation, air traffic control and drone command, making things like command systems, instructional systems and decision-support systems; and in journalism, in a previous life.</desc>
+        <desc id="mm-desc">Educated in cognitive psychology (Ph.D.), with specialties in expert performance, situation awareness, decision making, perception and learning. Experience in UX, in industries like enterprise software, digital farming, maritime, energy, banking and telecommunications, doing things like designing software platforms, running design sprints, prototyping, testing usability, task analyses and making dashboards; in HCI, in areas like military operations, emergency response, naval aviation, air traffic control and drone command, making things like command systems, instructional systems and decision-support systems; and in journalism, in a previous life. With projects like Insight Platform, National Security, Information Visualization, Wind Farm Analytics, Maritime Refueling, Coffee Ecosystem, Sewer Corrosion, Drone command.</desc>
         <rect x="86" y="446" width="196" height="258" fill="#fff" stroke="#211d19" stroke-width="3"/>
         <image href="../img/portrait-bw.png" x="100" y="455" width="168" height="245" preserveAspectRatio="xMidYMin meet"/>
-        <path d="M282 575C427 575 427 203 572 203" stroke="#b4541c" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <path d="M572 203H738" stroke="#b4541c" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M282 575C427.0 575 427.0 203 572 203" stroke="#e0a06c" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M572 203H738" stroke="#e0a06c" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="655.0" y="185" class="it" text-anchor="middle">educated in</text>
-        <path d="M738 203H1160" stroke="#b4541c" stroke-width="7" fill="none" stroke-linecap="round"/>
-        <text x="949.0" y="185" class="nm" text-anchor="middle">cognitive psychology, Ph.D.</text>
-        <path d="M1160 203H1390" stroke="#b4541c" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M738 203H1160" stroke="#e0a06c" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <text x="949.0" y="185" class="nm" text-anchor="middle">cognitive psychology (Ph.D.)</text>
+        <path d="M1160 203H1390" stroke="#e0a06c" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="1275.0" y="185" class="it" text-anchor="middle">with specialties in</text>
-        <path d="M1390 203C1439.5 203 1421.5 115 1480 115" stroke="#b4541c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M1390 203C1439.5 203 1421.5 115 1480 115" stroke="#e0a06c" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1488" y="125" class="lf">expert performance</text>
-        <path d="M1390 203C1439.5 203 1421.5 159 1480 159" stroke="#b4541c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M1390 203C1439.5 203 1421.5 159 1480 159" stroke="#e0a06c" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1488" y="169" class="lf">situation awareness</text>
-        <path d="M1390 203C1439.5 203 1421.5 203 1480 203" stroke="#b4541c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M1390 203C1439.5 203 1421.5 203 1480 203" stroke="#e0a06c" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1488" y="213" class="lf">decision making</text>
-        <path d="M1390 203C1439.5 203 1421.5 248 1480 248" stroke="#b4541c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M1390 203C1439.5 203 1421.5 248 1480 248" stroke="#e0a06c" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1488" y="258" class="lf">perception</text>
-        <path d="M1390 203C1439.5 203 1421.5 293 1480 293" stroke="#b4541c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M1390 203C1439.5 203 1421.5 293 1480 293" stroke="#e0a06c" stroke-width="3" fill="none" stroke-linecap="round"/>
         <text x="1488" y="303" class="lf">learning</text>
-        <path d="M282 575C374 575 374 752 466 752" stroke="#211d19" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M282 575C374.0 575 374.0 752 466 752" stroke="#211d19" stroke-width="8" fill="none" stroke-linecap="round"/>
         <path d="M466 752H617" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="541.5" y="734" class="it" text-anchor="middle">experience in</text>
         <path d="M617 752C703.5 752 703.5 598 790 598" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
@@ -162,12 +173,31 @@
         <text x="1204.0" y="1406" class="it" text-anchor="middle">in</text>
         <path d="M1250 1424H1318" stroke="#211d19" stroke-width="7" fill="none" stroke-linecap="round"/>
         <text x="1330" y="1434" class="lf">a previous life</text>
-        <circle cx="572" cy="203" r="5.5" fill="#fff" stroke="#b4541c" stroke-width="3"/>
-        <circle cx="738" cy="203" r="5.5" fill="#fff" stroke="#b4541c" stroke-width="3"/>
-        <circle cx="738" cy="203" r="5.5" fill="#fff" stroke="#b4541c" stroke-width="3"/>
-        <circle cx="1160" cy="203" r="5.5" fill="#fff" stroke="#b4541c" stroke-width="3"/>
-        <circle cx="1160" cy="203" r="5.5" fill="#fff" stroke="#b4541c" stroke-width="3"/>
-        <circle cx="1390" cy="203" r="5.5" fill="#fff" stroke="#b4541c" stroke-width="3"/>
+        <path d="M282 575C340 575 352 640 352 800C352 1300 360 1660 466 1660" stroke="#9b968e" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M466 1660H760" stroke="#9b968e" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <text x="613.0" y="1642" class="it" text-anchor="middle">with projects like</text>
+        <path d="M760 1660C809.5 1660 791.5 1506.0 850 1506.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#foursubsea"><text x="858" y="1516.0" class="lf lk">Insight Platform</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1550.0 850 1550.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#national-security"><text x="858" y="1560.0" class="lf lk">National Security</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1594.0 850 1594.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#info-viz"><text x="858" y="1604.0" class="lf lk">Information Visualization</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1638.0 850 1638.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#wind-farm"><text x="858" y="1648.0" class="lf lk">Wind Farm Analytics</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1682.0 850 1682.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#maritime-refueling"><text x="858" y="1692.0" class="lf lk">Maritime Refueling</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1726.0 850 1726.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#coffee-ecosystem"><text x="858" y="1736.0" class="lf lk">Coffee Ecosystem</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1770.0 850 1770.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#sewer-corrosion"><text x="858" y="1780.0" class="lf lk">Sewer Corrosion</text></a>
+        <path d="M760 1660C809.5 1660 791.5 1814.0 850 1814.0" stroke="#9b968e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <a href="../projects.html#search-rescue"><text x="858" y="1824.0" class="lf lk">Drone command</text></a>
+        <circle cx="572" cy="203" r="5.5" fill="#fff" stroke="#e0a06c" stroke-width="3"/>
+        <circle cx="738" cy="203" r="5.5" fill="#fff" stroke="#e0a06c" stroke-width="3"/>
+        <circle cx="738" cy="203" r="5.5" fill="#fff" stroke="#e0a06c" stroke-width="3"/>
+        <circle cx="1160" cy="203" r="5.5" fill="#fff" stroke="#e0a06c" stroke-width="3"/>
+        <circle cx="1160" cy="203" r="5.5" fill="#fff" stroke="#e0a06c" stroke-width="3"/>
+        <circle cx="1390" cy="203" r="5.5" fill="#fff" stroke="#e0a06c" stroke-width="3"/>
         <circle cx="466" cy="752" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
         <circle cx="617" cy="752" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
         <circle cx="790" cy="598" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
@@ -186,28 +216,27 @@
         <circle cx="1158" cy="1424" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
         <circle cx="1158" cy="1424" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
         <circle cx="1250" cy="1424" r="5.5" fill="#fff" stroke="#211d19" stroke-width="3"/>
+        <circle cx="466" cy="1660" r="5.5" fill="#fff" stroke="#9b968e" stroke-width="3"/>
+        <circle cx="760" cy="1660" r="5.5" fill="#fff" stroke="#9b968e" stroke-width="3"/>
       </svg>
-      <!-- Phones: the same tree as nested lists below 900px (the SVG is hidden there). -->
       <div class="mm-list">
         <div class="mm-photo"><img src="../img/portrait-bw.png" alt="" width="1057" height="1539" /></div>
-        <div class="mm-branch mm-ed">
-          <p class="mm-k"><em>educated in</em> cognitive psychology, Ph.D. <em>with specialties in</em></p>
-          <ul><li>expert performance</li><li>situation awareness</li><li>decision making</li><li>perception</li><li>learning</li></ul>
-        </div>
-        <div class="mm-branch mm-ex">
-          <p class="mm-k"><em>experience in</em></p>
-          <div class="mm-sub">
-            <p class="mm-k">UX <em>in industries like</em></p>
-            <ul><li>enterprise software</li><li><a href="../projects.html#coffee-ecosystem">digital farming</a></li><li><a href="../projects.html#maritime-refueling">maritime</a></li><li><a href="../projects.html#wind-farm">energy</a></li><li>banking</li><li>telecommunications</li></ul>
-            <p class="mm-k">UX <em>doing things like</em></p>
-            <ul><li><a href="../projects.html#foursubsea">designing software platforms</a></li><li>running design sprints</li><li>prototyping</li><li>testing usability</li><li>task analyses</li><li><a href="../projects.html#info-viz">making dashboards</a></li></ul>
-            <p class="mm-k">HCI <em>in areas like</em></p>
-            <ul><li><a href="../projects.html#national-security">military operations</a></li><li>emergency response</li><li>naval aviation</li><li>air traffic control</li><li><a href="../projects.html#search-rescue">drone command</a></li></ul>
-            <p class="mm-k">HCI <em>making things like</em></p>
-            <ul><li>command systems</li><li>instructional systems</li><li>decision-support systems</li></ul>
-            <p class="mm-k">journalism <em>in</em> a previous life</p>
-          </div>
-        </div>
+        <div class="mm-sec mm-ed"><ul><li class="it"><span>educated in</span>
+<ul><li class="nm"><span>cognitive psychology (Ph.D.)</span>
+<ul><li class="it"><span>with specialties in</span>
+<ul><li class="lf"><span>expert performance</span></li><li class="lf"><span>situation awareness</span></li><li class="lf"><span>decision making</span></li><li class="lf"><span>perception</span></li><li class="lf"><span>learning</span></li></ul></li></ul></li></ul></li></ul></div>
+        <div class="mm-sec mm-ex"><ul><li class="it"><span>experience in</span>
+<ul><li class="nm"><span>UX</span>
+<ul><li class="it"><span>in industries like</span>
+<ul><li class="lf"><span>enterprise software</span></li><li class="lf"><span><a href="../projects.html#coffee-ecosystem">digital farming</a></span></li><li class="lf"><span><a href="../projects.html#maritime-refueling">maritime</a></span></li><li class="lf"><span><a href="../projects.html#wind-farm">energy</a></span></li><li class="lf"><span>banking</span></li><li class="lf"><span>telecommunications</span></li></ul></li><li class="it"><span>doing things like</span>
+<ul><li class="lf"><span><a href="../projects.html#foursubsea">designing software platforms</a></span></li><li class="lf"><span>running design sprints</span></li><li class="lf"><span>prototyping</span></li><li class="lf"><span>testing usability</span></li><li class="lf"><span>task analyses</span></li><li class="lf"><span><a href="../projects.html#info-viz">making dashboards</a></span></li></ul></li></ul></li><li class="nm"><span>HCI</span>
+<ul><li class="it"><span>in areas like</span>
+<ul><li class="lf"><span><a href="../projects.html#national-security">military operations</a></span></li><li class="lf"><span>emergency response</span></li><li class="lf"><span>naval aviation</span></li><li class="lf"><span>air traffic control</span></li><li class="lf"><span><a href="../projects.html#search-rescue">drone command</a></span></li></ul></li><li class="it"><span>making things like</span>
+<ul><li class="lf"><span>command systems</span></li><li class="lf"><span>instructional systems</span></li><li class="lf"><span>decision-support systems</span></li></ul></li></ul></li><li class="nm"><span>journalism</span>
+<ul><li class="it"><span>in</span>
+<ul><li class="lf"><span>a previous life</span></li></ul></li></ul></li></ul></li></ul></div>
+        <div class="mm-sec mm-pr"><ul><li class="it"><span>with projects like</span>
+<ul><li class="lf"><span><a href="../projects.html#foursubsea">Insight Platform</a></span></li><li class="lf"><span><a href="../projects.html#national-security">National Security</a></span></li><li class="lf"><span><a href="../projects.html#info-viz">Information Visualization</a></span></li><li class="lf"><span><a href="../projects.html#wind-farm">Wind Farm Analytics</a></span></li><li class="lf"><span><a href="../projects.html#maritime-refueling">Maritime Refueling</a></span></li><li class="lf"><span><a href="../projects.html#coffee-ecosystem">Coffee Ecosystem</a></span></li><li class="lf"><span><a href="../projects.html#sewer-corrosion">Sewer Corrosion</a></span></li><li class="lf"><span><a href="../projects.html#search-rescue">Drone command</a></span></li></ul></li></ul></div>
       </div>
     </div>
 
