@@ -5,6 +5,7 @@ Pages from the `gh-pages` branch (which is the repo's default branch).
 Open `index.html` directly in a browser to preview, or run
 `python3 -m http.server` from the repo root.
 
+- **Home since 2026-11-14** is the mind map (body class `mm-page`, styles inline in `index.html`): portrait box with three branches (educated in, experience in, has worked on projects like) as one inline SVG, a nested-list tree below 900px, the expert-user sentence in a muted panel, and the Next page link. The previous Home (process diagram, four summaries; body `hm-page`, CSS section 21) is kept as `alternates/index-process.html`; `alternates/index-mindmap.html` now redirects to Home.
 - **Layout since 2026-10-11.** The repo root holds only the live site:
   `index.html` (home), `experiences.html` (Experience; renamed from `work-history.html` on 2026-10-11, which is now a noindex redirect that keeps the #hash), `projects.html`,
   `v2.css`, `v2-inter.css`, `v2-white.css`, `v2.js`, `img/`,
